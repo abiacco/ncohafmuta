@@ -1,0 +1,36 @@
+Quick primer to get your talker up and running
+-----------------------------------------------
+
+1. Edit the main port in config/init_data. First line, first variable.
+   This is the main port the talker will listen on. See 
+   docs/README.init_data for specifc help.
+2. Edit essential variables in hdrfiles/constants.h file to meet your 
+   talker theme. 
+   You're not REQUIRED to change anything in here just to get the talker
+   running, but there are things you SHOULD change right off the bat, before
+   compiling.  The ROOT_ID, password lock string, port offsets.
+3. Configure and Compile the talker. Read docs/README.compiling
+4. Boot the talker by typing "./restart"
+5. Connect to the talker with your favorite telnet-type client (e.g. 
+   telnet ip_address port_number) and login as the ROOT_ID username with 
+   whatever password you want that root/admin account to have.
+6. Go back and really start changing stuff. Major things are:
+   * Variables in hdrfiles/constants.h and hdrfiles/text.h
+   * MOTDs (Log-in title screens), agreefile, rulesfile, faqfile, mapfile, 
+     newsfile in lib/
+   * Room and system variables in config/init_data  Read 
+     docs/README.init_data for details.
+   * Command levels in srcfiles/server.c under sys[] (if you wish)
+   * Variables in webfiles/webport.cfg
+   * index.html in webfiles/
+   * The README doc specifies the locations of all relevant files!
+7. Recompile the talker after changing any .h or .c files. If you just
+   change .h file(s), do a "make clean" before "make"
+8. Restart the talker. If it's already running, use ".shutdown -r" from 
+   inside the talker to do a soft-boot. To hard-boot, use ".shutdown -h" 
+   from inside. From the outside, do ./shutdown and then ./restart
+
+
+-Cygnus
+ncohafmuta@asteroid-b612.org
+10-16-00

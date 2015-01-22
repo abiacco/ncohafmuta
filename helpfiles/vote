@@ -1,0 +1,19 @@
+ Syntax:  .vote
+          .vote <choice #>
+          .vote -c  (specific levels only)
+          .vote -d  (specific levels only)
+
+Results:  Typed by itself, this command will show what current issue
+          is being voted on by all users in the talker.  There are 3
+          possible vote choices for the issue..1, 2, and 3.  By itself,
+          if also shows how many votes are currently tallied for each
+          choice.
+          To vote on the issue, type .vote <choice #>
+          If choice 1 was "Yes, I would like to see this command here"
+          and you wanted to vote in that direction, you would type
+          .vote 1
+
+  Notes:  ALL votes are anonymous. One vote per person per issue.
+          Times to vote on each issue will be posted in .news or on the
+          main message board. .vote -c is for the admin to clear/start 
+          voting on an issue. .vote -d is to enter the vote topic.

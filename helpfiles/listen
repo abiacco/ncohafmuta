@@ -1,0 +1,16 @@
+ Syntax:  .listen <message_type>   or   .listen all
+
+Results:  This command will turn off ignoring specified messages. Where 
+          <message_type> is the message being ignored.  If specified with no 
+          keyword, it will show what you are listening to.  The keyword all 
+          will turn on all things.
+              
+   Note:  To ignore all messages again, type --> .ignore all
+
+Example:  To listen to shout messages, type --> .ignore shouts
+
+  Types:  all afks says logs shouts knocks messages topics kills
+          bcasts moves echos greets picture fights atmos wiztells
+          succs fails nerfs roomdescs beeps tictactoes tells colornames
+
+See also: ignore

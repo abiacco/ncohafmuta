@@ -1,0 +1,11 @@
+ Syntax:  .set car
+
+Results:  This command allows you to set whether linefeeds are sent after
+          every line along with carriage returns. (\n\r instead of \n)
+          Use this on VAX/VMS systems or whenever your text seems to step
+          down diagnally.
+                         like this line
+                                       and this line does
+          This command is a TOGGLE. Meaning, every time you type it, it
+          will either turn the option on or off.
+

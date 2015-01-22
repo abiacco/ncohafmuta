@@ -1,0 +1,29 @@
+0) afk        bafk       cls        desc       entpro     examine    
+   faq        go         help       ignore     listen     log        
+   look       map        news       password   quit       read       
+   say        schedule   set        sos        suicide    swho       
+   tell       time       version    visemail   who        wlist      
+   cygnus     wizards    
+1) abbrs      autofwd    autoread   bubble     call       creply     
+   cbuff      cmail      color      csent      emote      entermsg   
+   exitmsg    fight      find       fmail      gripe      guru       
+   heartells  hilite     home       igtells    invite     last       
+   macros     mutter     nerf       nstat      quote      reload     
+   review     rmail      rooms      rsent      semote     shout      
+   sing       smail      socials    sthink     stalker    suggest    
+   think      to         write      alert      fail       friends    
+   gag        knock      meter      preview    private    public     
+   search     shemote    shthink    succ       topic      ustat      
+   vote       with       beep       echo       follow     ranks      
+2) greet      ptell      show       arrest     unarrest   memory     
+   gagcomm    muzzle     system     unmuzzle   wipe       bcast      
+   bring      clist      hide       monitor    move       picture    
+   wiztell    frog       whois      kill       nslookup   samesite   
+   site       wlog       wnote      
+3) cline      demote     descroom   finger     force      permission 
+   promote    realuser   swipe      addatmos   delatmos   listatmos  
+   atmos      bannew     banname    expire     nuke       restrict   
+   resolve    unbannew   unrestrict users      xcomm      suname     
+   supass     readlog    
+4) allow_new  autonuke   autoprom   bbcast     close      gwipe      
+   open       quota      reinit     shutdown   wwipe      

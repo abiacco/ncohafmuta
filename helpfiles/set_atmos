@@ -1,0 +1,28 @@
+ Syntax:  .set atmos <countdown> <random factor>
+
+Results:  This command allows you to set the global chancing for all atmos-
+          pherics. The atmosphere cycle starts at the number <countdown>.
+          This number decreases every minute based on the randomness of
+          the <random factor>. 
+          The time it takes for any possible atmosphere to appear is a range
+          calculated by the equation:
+           <countdown> / ( <random factor> + 1 )
+	  If the <countdown> is set to 75 and the <random factor> is set to 2
+	  the equation is 75 / 2 + 1 or 25. This is the lower end of the range
+	  The higher end of the range is simply the countdown number.
+          So with these settings, the amount of time it takes for any atmos-
+          phere can appear can range from 25 to 75 minutes.
+          The default <countdown> is 5. The default <random factor> is 5.
+          This gives a range of 1 to 5 minutes.
+
+Example:  Countdown     Random factor     Range (in minutes)
+          100           5                 17-100
+          100           2                 33-100
+          50            5                 8-50
+          50            2                 17-50
+          25            5                 4-25
+          25            2                 8-25
+          10            5                 2-10
+          10            2                 3-10
+          5             5                 1-5     (default)
+          5             2                 1-2

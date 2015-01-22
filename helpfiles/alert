@@ -1,0 +1,13 @@
+ Syntax:  .alert    or   .alert <user>
+
+Results:  When <user> is on your alert list, when they log in, you 
+          will hear an audible beep to let you know they are 
+          online.
+          If you don't specify a user, it will show a list of people
+          you are currently being alerted of.
+          To take someone off your list, type .alert <user>    It's a toggle.
+          Ask the admin to find out how many people you can have on
+          your list.
+
+See also: beep
+

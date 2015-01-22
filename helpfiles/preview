@@ -1,0 +1,12 @@
+ Syntax:  .preview
+          .preview <picture_name> [<#_of_lines_from_bottom>]
+
+Results:  Displays a file from the picture directory to you only.
+          <picture_name> is the file you wish to display.
+          Typed by itself, the command will list pictures you can see.
+          If you specify a number after the filename, it will show you
+          that many lines from the bottom of the file.
+
+Example:  To see an ascii pic of 'Gumby' type: .preview Gumby
+
+See also: picture, ptell

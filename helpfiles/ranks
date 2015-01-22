@@ -1,0 +1,5 @@
+ Syntax:  .ranks
+
+Results:  This command shows you how many ranks are in the system, how
+          many commands go with each rank, and the odds each rank hass of
+          winning a .fight

@@ -1,0 +1,8 @@
+ Syntax:  .set homepage <url_address>
+
+Results:  This command allows you to set your web page address for people
+          to see when they .ustat you. It will also act as a link to your
+          page on the WWW port list of people online.
+
+See also: ustat
+

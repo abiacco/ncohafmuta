@@ -1,0 +1,12 @@
+ Syntax:  .set fail <mess>
+	  .set fail [clear|none|-c]
+
+Results:  This is to set your fail message. This is what people see when
+          they fail to .tell .semote .sthink  or .beep you (i.e.
+          you have .ignore tells or .ignore set), or when you are not 
+          online. You can clear your message/no message by using the 
+          later syntax shown above.  Length is limited to 80 characters.
+
+Example:  .set fail I'm not online now. Mail me, please.
+
+See also: set_succ

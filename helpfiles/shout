@@ -1,0 +1,13 @@
+ Syntax:  .shout <message>  or  ! <message>
+
+Results:  Displays what you shout in all the rooms on the board.
+          <message> is the line you want displayed. Users can ignore
+          shouts if they wish. ! is a shortcut key.
+          To do a shout review type .shout by itself
+
+  Notes:  Please refrain from overusing this command.  Keep in
+          mind the fact that shouts are displayed to all users,
+          even those in private rooms, so please try not to swamp
+          them with needless shouting.  (Thank you!)
+
+See also: shemote, ignore

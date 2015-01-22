@@ -1,0 +1,11 @@
+ Syntax:  Alone shows your current message. 
+          .set exitmsg <message>        lets you put a message in.
+          .set exitmsg [clear|-c|none]  resets to default
+
+Results:  When you walk out a room, instead of "<user> goes to the <room>"
+          it shows "<user> <your exitmsg>" If you don't change your
+          message from the default it will put the room name you are going
+          to at the end.
+          This message is saved to disk between logins.
+
+See also: go, set_entermsg

@@ -1,0 +1,20 @@
+ Syntax:  .afk [-l] [<message>]
+
+ Result:  This command will allow you to step away and have people know
+          you are (A)way (F)rom your (K)eyboard.  If anyone does a who or
+          a tell, they will be informed as to whether or not a specific
+          user is AFK.
+          The <message> is optional and, if used can be up to 60 chars in
+          length. A user that tells/semotes/etc.. you will see that
+          message too.
+          As soon as you type something, it will turn off the AFK status
+          and return you to the normal status.
+           IF you use -l option, this will enable the terminal
+          locking feature. It will lock your terminal from all input, and
+          require you to enter your normal account password to un-lock it.
+          Useful when you want to leave the computer unattended, and don't
+          want to worry about anyone screwing with it. You CAN specify a
+          message on a lock now.
+          Messages will still be displayed to your terminal.
+
+Example:  .afk -l is going to find another terminal

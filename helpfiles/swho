@@ -1,0 +1,13 @@
+Results:  This command is a useful, conenient way to look at the users.
+          The users on the list will fall into 4 categories based on idle
+          time. They are..
+
+          Active:    Users that are idle less than 3 minutes.
+          Awake:     Users that are idle 3 minutes to 60 minutes.
+          Idle:      Users that are idle 60 minutes to 3 hours (180 min.)
+          Comatose:  Users idle more than 3 hours.
+
+          This also shows number of users connected and invis users,
+          following the conditions of the normal .who command.
+
+See also: who

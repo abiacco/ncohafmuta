@@ -1,0 +1,21 @@
+ Syntax:  .wiztell <message>    .wiztell ;<action>   .wiztell '<action>
+          > <message>           >; <action>          >' <action>
+
+Results:  Sends a message to all the wizards currently on the board.  These
+          messages will be seen only by the wizzes, so this command is
+          useful when discussing private matters.  <message> is the text you
+          wish to send to the other wizards.
+            The ; key is the default key for making the wiztell
+          with <action> a wiz emote. If you changed your .emote key with 
+          .abbrs, then THAT key will replace the ; instead. The same 
+          applies to the > shortcut key.
+            If a ' is specified before the <action> it becomes a 
+          posessive wiz emote. If you do not specify a message, you will 
+          be shown a list of the most recent wiztells that were 
+          performed. (a review)
+
+Example:  To tell all the wizzes that Cygnus sucks, type:
+            .wizt Cygnus sucks!   or   >Cygnus sucks!
+          We all know this won't happen..but hypothetically.
+
+See also: tell, wnote, semote

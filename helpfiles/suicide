@@ -1,0 +1,6 @@
+ Syntax:  .suicide <your_password>
+
+Results:  This command allows you to nuke/delete your own account.
+          <your_password> is your current password, and must be typed in
+          full.  This command does NOT ask for confirmation, so make sure
+          you really want to do this, before typing it.

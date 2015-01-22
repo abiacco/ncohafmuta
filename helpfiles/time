@@ -1,0 +1,9 @@
+Syntax :  .time
+          .time -l
+          .time <zone>
+
+Results:  With no input string, gives you the correct time, in the
+          timezone the board is and time for major timezones around the
+          world.
+           Given the -l option, will list other timezone times you can
+          look at with .time <zone>

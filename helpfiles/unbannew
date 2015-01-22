@@ -1,0 +1,36 @@
+
+ Syntax:  To ban new users w/defaults:  .bannew <ip-address>
+          To ban new users w/comment :  .bannew <ip-address> -c <message>
+          To ban new users w/reason  :  .bannew <ip-address> -r <message>
+          To list newbanned sites    :  .bannew
+          To unbannew a site..       :  .unbannew <ip-address>
+
+Results:  Bannew turns off access to the talker for new_users at an entire 
+          site. <ip-address> is the address that is to be denied access.
+          If can be in the number format OR in the hostname format (below)
+          If you don't specify an address, you will get a list of 
+          all the new restricted sites, how long ago they were banned,
+          the reason shown to new users that TRY to login from there,
+          and the comments for wizzes why the site is new-banned.
+          <message> is REQUIRED if -c or -r option is given, and if the
+          site is already banned, the site will not be rebanned, just the
+          comment/reason added.
+          If no option is given, the default reason and comment is used.
+
+External
+Influences:
+          This command creates a possible 3 files in the NEWRESTRICT_DIR
+          directory. <ip_address>, <ip_address>.c, <ip_address>.r
+          During login access, if a person is attempting to log in
+          from a site that has a file in the newrestrict directory, they
+          will not be allowed access.
+
+          <ip-address> can have one of four numeric forms..
+                a.b.c.d  - Specific IP
+                a.b.c    - Cluster
+                a.b      - Sub-network
+                a        - Network
+          and four alpha-numeric forms..
+                misty.com   would ban all hosts from that domain
+
+See also: unbannew, unrestrict, restrict

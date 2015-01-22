@@ -1,0 +1,20 @@
+ Syntax:  .set autoread    (it's a toggle)
+
+Results:  Turns your autoreading feature on or off. This is a toggle 
+	  command.
+          Autoreading is, when you have new mail, it will say you
+          have new mail AND proceed to read your mail.
+          The toggle options are:
+           1. off
+              Doesn't read any new mail automatically.
+           2. on logins only
+              Only reads new mail when you login.
+           3. online only
+              Only reads new mail when you get it while you're online.
+           4. on logins and online
+              Reads new mail when you log in and when you get mail while
+              you're online/on the talker.
+
+          This setting is saved between logins.
+
+See also: rmail, set_autofwd

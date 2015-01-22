@@ -1,0 +1,9 @@
+ Syntax:  .set rows <# of lines to show>
+
+Results:  This command allows you to set how many lines you want the
+          talker to show on your screen at one time before prompting you
+          to go to the next page of output. The default and normal is 24
+          lines at a time.  Valid values are 5 to 256.
+          If you wanted the paging to use a longer screen..of 40 lines for
+          example, you would type:  .set rows 40
+          

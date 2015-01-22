@@ -1,0 +1,140 @@
+<HTML>
+<HEAD>
+
+<!-- You will want to change the text starting here. -->
+
+<TITLE>Java connect to %system%</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#000000" TEXT="#FF0000" LINK="#ffff00" VLINK="#bb0000">
+<H1>Java connect to %system%</H1>
+<HR>
+
+<P>
+In a few moments, a window should appear.  Please wait on this page
+for the window to appear -- it may take up to two minutes, depending
+on your connection to the Internet.
+<P>
+Enjoy your stay!
+<P>
+Applet created by <A HREF="http://www.joot.com">Dave Jarvis</A>
+<HR>
+
+<!-- This configures and launches the Terminal Emulator
+     The 5's must be at least 5.  There is a glitch in some browsers that
+     causes them to crash if the applet's width and height are smaller than
+     5 pixels. -->
+<APPLET CODEBASE="http://%host%:%webport%/connect" CODE="Telnet.class" WIDTH=5 HEIGHT=5>
+
+  <!-- When running the Terminal Emulator as an applet, and without
+       using the Proxy Server software, the value of the host you
+       place here must be the same as the server name shown in the
+       URL to download the applet.  That is, if the URL for this
+       page was "http://%host%/~palace", then you would
+       set the HOST value to "%host".
+       
+       If you are using this software as an application, then the
+       contents of this file will be ignored. -->
+  <PARAM NAME="HOST" VALUE="%host%">
+  <PARAM NAME="PORT" VALUE="%mainport%">
+
+  <!-- If you have the Proxy Server installed on the same machine as
+       the Web server, change these two lines to the same configuration
+       as the Proxy Server.  By using the Proxy Server, you are then
+       free to change the above two lines (HOST and PORT) to any server
+       and any port on the Internet.
+
+       Once again, if you do not have the Proxy Server installed, the
+       only place the Terminal Emulator may connect to is the Web Server
+       that hosts the Terminal Emulator itself. -->
+  <PARAM NAME="PROXYHOST" VALUE="your.web.server.com">
+  <PARAM NAME="PROXYPORT" VALUE="10000">
+
+  <!-- DEFAULT APPLET CONFIGURATION OPTIONS -->
+
+  <!-- Does the user type in the main screen, or in a special place
+       that doesn't interfere with the text displayed on the screen?
+       This option is best left ON for chat systems, but OFF if used
+       for shell access. -->
+  <PARAM NAME="TypingBar" VALUE="on">
+
+  <!-- What font size should the applet come up in? -->
+  <PARAM NAME="FontSize" VALUE="12">
+
+  <!-- Timing, in milliseconds, that the cursor uses for blinking.
+       These options are currently ignored. -->
+  <PARAM NAME="BlinkingCursor" VALUE="off">
+  <PARAM NAME="BlinkOnTime" VALUE="500">
+  <PARAM NAME="BlinkOffTime" VALUE="250">
+
+  <!-- For any parameter involving colour, the possible choices are:
+         Black, Green, Yellow, Red, Blue, Magenta, Cyan, White, Lightgray,
+         Lightgrey, Dark Green, Dark Yellow, Dark Red, Dark Blue,
+         Dark Magenta, Dark Cyan, Dark Gray, and Dark Grey.
+         
+       Caveat: The spelling of Colour in all the PARAM tags is British.
+       "CursorColor" would be ignored, for example.  Don't change the
+       spelling, and no problems will ensue. -->
+
+  <!-- Different types of cursor shapes:
+         block       a cursor filling up an entire character width
+         underscore  a cursor that sits below the characters
+         hollow      a block cursor that isn't filled
+         vbar        a vertical line
+
+         This option is currently ignored (only block cursor). -->
+  <PARAM NAME="CursorType" VALUE="block">
+
+  <!-- What's the default cursor colour? -->
+  <PARAM NAME="CursorColour" VALUE="cyan">
+
+  <!-- Colour of the applet's background.  If you change the background
+       colour of this page (BODY BGCOLOR tag), you may wish to change
+       the colour here to match. -->
+  <PARAM NAME="AppletColour" VALUE="black">
+
+  <!-- Default foreground and background colours for the text. -->
+  <PARAM NAME="ForegroundColour" VALUE="lightgray">
+  <PARAM NAME="BackgroundColour" VALUE="black">
+
+  <!-- Some systems know the user has pressed Enter when they get a
+       carriage return followed by a line feed.  If things don't
+       happen when you press enter, change the "on" to "off", and
+       the emulator will send a CR/LF pair when enter is pressed,
+       instead of just sending a line feed. -->
+  <PARAM NAME="EnterSendsCRLF" VALUE="on">
+
+  <!-- Some systems send out a line feed to drop the cursor to the next
+       line, but don't send a carriage return to tell the cursor to
+       move to the beginning of the next line!
+                                                This causes the screen
+       to look very jagged, and difficult to read.
+                                                    For example, the
+       screen may have text that appears like this.
+                                                    If this happening,
+       then try setting this option to "on".
+                                              Or else people will
+       complain they can't read a thing!  -->
+  <PARAM NAME="LFtoCRLF" VALUE="off">
+
+  <!-- If set to "off", the screen will flash white instead of making
+       a sound.  If set to "on", the program will attempt to make the
+       computer beep. -->
+  <PARAM NAME="Beep" VALUE="on">
+
+  <!-- Does the window get closed when the user disconnects from the
+       site?  If set to "on", the window will close.  If set to "off",
+       the window will remain open (allowing users to reconnect). -->
+  <PARAM NAME="DisconnectCloses" VALUE="off">
+
+  <!-- Default web page the browser will show after the applet has
+       loaded.  Comment this line out if no URL should be shown. -->
+  <PARAM NAME="SHOW_URL" VALUE="http://%host%:%webport%">
+
+<!-- Message displayed if the browser cannot run Java applets. -->
+You need a <A HREF="http://www.microsoft.com/ie">Java-enabled Web Browser</A>
+in order to connect.
+</APPLET>
+
+</BODY>
+</HTML>

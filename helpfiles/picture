@@ -1,0 +1,11 @@
+ Syntax:  .picture
+          .picture <picture_name> [<#_of_lines_from_bottom>]
+
+Results:  Displays a file from the picture directory to everyone in the
+          room.  <picture_name> is the file you wish to display.
+          Typed by itself will list the files you can show.
+          If you specify a number after the filename, it will show you
+          that many lines from the bottom of the file.
+          Please limit use of this command.
+
+See also: preview, ptell

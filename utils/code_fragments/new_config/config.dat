@@ -1,0 +1,772 @@
+#
+# This is the main config file for the talker.
+# These settings can be reloaded with .admin <config name> load <type>
+# i.e. .admin config load strings or .admin config load globals
+# Lines with # in front are ignored
+# Lines with spaces in front are ignored unless part of a description
+#
+..Globals..
+PORT		5000
+WHO_PORT	5001
+WIZ_PORT	5050
+WWW_PORT	5030
+#
+ROOT_ID		"cygnus"
+#
+# Change this to the talkers email address that mail
+# can be sent to. This is also the addy that mail from
+# the talker will come from.
+# YOU MUST SET THIS!
+#
+SYSTEM_EMAIL	"pw@ncohafmuta.com"
+
+#
+# Change this to the domain of the machine the talker is
+# on. (i.e. if you're on talker.com, set to talker.com
+# if you're on joe.blow.net, set to blow.net
+# This will only be used if we cant get the domain from
+# getdomainname()
+#
+DEF_DOMAIN	"ncohafmuta.com"
+
+#
+# change BOT_ID to the bot's id on this system
+# if you're using the bot, otherwise comment out
+# ALL LOWERCASE
+#
+BOT_ID		"spokes"
+
+#
+# change this to the name of the owner of the bot
+# ALL LOWERCASE
+#
+BOTS_ROOTID	"cygnus"
+
+#
+# Set to what you want to call the talker and then change the rest of
+# occurences where you see the marker  SYSNAME
+#
+# DO NOT USE A SINGLE QUOTE (') or DOUBLE QUOTE (") IN THE NAME
+#
+SYSTEM_NAME	"PinWHeeLs"
+
+#
+# Macro variable definitions
+#
+# set to 1 if you want users to be able to make macros for .nerf
+NERF_MACRO	0
+
+# are we resolving to alphanumeric addresses?
+RESOLVE_NAMES	1
+
+# talker-wide DNS cache limit size, for when RESOLVE_NAMES = 1
+# if you will never use RESOLVE_NAMES = 1, this setting doesnt matter
+# see resolution strings below for more info.
+SITECACHE_SIZE	250
+
+# max room topic length
+TOPIC_LEN	45
+# max length of siteban reason to file and for .wlog for users
+REASON_LEN	320
+# 2 lines of text & a possible @ for newline
+ATMOS_LEN	161
+# max message on a custom .kill
+KILL_LEN	160
+# length of your longest room name
+ROOM_LEN	15
+
+# max number of profile lines stored
+PRO_LINES	15
+# max number of vote topic lines stored
+VOTE_LINES	10
+# max number of room desc lines
+ROOM_DESC_LINES	10
+# max number of people you can multi-comm at one specific time
+MAX_MULTIS	10
+# max users a person can be alerted of
+MAX_ALERT	15
+# max users a person can gag
+MAX_GAG		15
+# max commands total you can grant to or revoke from a user
+MAX_GRAVOKES	15
+# max number of atmospherics per room
+MAX_ATMOS	10
+# max number of forwarded smails allowed per day per user. For SPAM
+MAX_AUTOFORS	15
+# max size in bytes user mailboxes can be
+MAX_MAILSIZE	50000
+# max size in bytes user SENT mailboxes can be
+MAX_SMAILSIZE	40000
+
+# This is how many abbreviations are declared in the command
+# structure sys[]  Default is fine unless you change them in server.c
+# This is the number of commands that have character abbreviations
+# and can be changed
+NUM_ABBRS	16
+
+#
+# room or area settings
+#
+# number of users in room b4 it can be private
+PRINUM		2
+# room that arrested users go to
+ARREST_ROOM	"outhouse"
+# room for special users only, which are defined in go()
+HEAD_ROOM	"headquarters"
+# only room to nerf in
+NERF_ROOM	"arena"
+# room the bot STAYS in and in which a blank say is not .review
+# for bot reasons
+BOT_ROOM	"pond"
+
+#  Room that newbies log into
+# Try not to change this setting after users are already made
+# IF you make this the same as INIT_ROOM, users will not be able
+# to .home or .go until they set a description or are a level
+# higher than 0
+# I suggest making this room right after INIT_ROOM in
+# config/init_data 
+NEW_ROOM	"newbie_heaven"
+
+# main, normal talker room
+# 0 = first room defined, 1 = second room, and so on.
+INIT_ROOM	0
+
+SHOW_HIDDEN	1
+
+# set to 1 if you want users to be able to go afk or bafk in the nerf_room
+AFK_NERF	0
+
+# users this number of days old to be nuked on a auto-expire or .expire -n
+# These users are also shown in .expire
+DAYS_OFF	30
+
+# This sets the option for automatically expiring users older than
+# DAYS_OFF, daily at midnight. Here's the options:
+# 0 - Disable expiring, Disable warning
+# 1 - Disable expiring, Enable warning
+# 2 - Enable expiring, Enable warning
+# 3 - Enable expiring, Disable warning
+#
+# Set it to some other number if you want to do the .expire -n yourself 
+# Warning explained below with TIME_TO_GO
+# Use ".auto expire" online to toggle
+AUTO_EXPIRE	2
+
+# The time in days a user has left before an auto-expire will remove them.
+# When the user hits this number of days b4 the nuking, an email will be
+# sent out to them, provided they have their email addy set. This number
+# must be a whole number greater than 0 to be activated.
+TIME_TO_GO	3
+
+# set this to 1 if you want the talker to automatically nuke users on
+# logout that haven't set a short description use ".auto nuke" while
+# online to toggle
+NUKE_NOSET	1
+
+# set this to 1 if you want users to be able to promote themselves after
+# they do .desc, .entpro, and .set gender use ".auto promote" online to
+# toggle
+AUTO_PROMOTE	1
+
+# set this to 1 if you want .follow to allow teleports instead of the room
+# having to be connected
+FOLLOWIS_JOIN	0
+
+# set this to 1 is you want suggestions with .suggest to be anonymous, or
+# to 0 if you want the users name with their suggestion.
+ANON_SUGGEST	0
+
+# the type of who shown when user types who at the login prompt.
+# 0 is a .swho   1 is a normal .who
+LONGLOGIN_WHO	1
+
+# if we crash from a segmentation fault or bus error (usual crash causes)
+# should we reboot? 1 for yes, 0 for no
+REBOOT_A_CRASH	0
+
+# number of MOTDs in the lib directory to be picked from at random for a
+# login screen. 2 would mean there's an motd0 and motd1. Just an example
+NUM_MOTDS	2
+
+# for .banname, should names be banned exactly the way given or as
+# sub-strings. Exactly means that if you ban 'joe' only 'joe' will be
+# banned. sub-string means if you ban 'joe' then joe, papajoe, joey, etc..
+# will be banned
+# Set to 1 for sub-strings, 0 for exactly
+SUB_BANNAME	1
+
+# Max new users per day the system allows. Can change online with ".quota"
+MAX_NEW_PER_DAY	50
+
+# Is coloring for new users on by default?
+# 0 for no, 1 for yes
+# Coloring by default for new users is DISCOURAGED because you dont know
+# if the users terminal is capable of it. It may have unpredictable
+# results to their screen.  You have been warned!
+COLOR_DEFAULT	0
+
+# if set to localtime,talker time will be whatever the servers localtime
+# is. i.e. talker.com is set to GMT. If you want it to be different, enter
+# the path to the timezone file in the tzinfo talker directory. i.e. if
+# you want US Pacific standard time, set to "US/Pacific"
+TZONE		"localtime"
+
+# Timeouts
+#
+# alarm time in seconds
+# DONT CHANGE unless you know what youre doing
+MAX_ATIME	60
+# time in mins. user can idle before booting
+IDLE_TIME	240
+# time in mins. before the user is kicked out of the login prompt
+LOGIN_TIMEOUT	2
+
+..End Globals..
+..Strings..
+#              <username> <ip addy> <user #>:<socket #> <host>
+SYS_SITE_LINE   "%-13.13s %-15.15s (%2.2d:%3.3d) %s"
+SYNTAX_ERROR    "Huh?  Type '.h' for help."
+ANNOUNCEMENT_HI " [** ^HGARRIVING is:^ %s %s ^HR(%s)^ **] "
+ANNOUNCEMENT_LO " [^HGARRIVING is:^ %s %s ^HR(%s)^ ] "
+SYS_DEPART_HI   " [** ^HMLEAVING is:^ %s %s **]"
+SYS_DEPART_LO   " [ ^HMLEAVING is,^ %s %s ]"
+
+# Connection responses
+WWW_CLOSED "<HTML><CENTER><H1>Sorry - the web port is not open for access at this time</H1></CENTER><BR></HTML>\n"
+WHO_CLOSED "Sorry - the who port is not open for access at this time\n"
+WIZ_CLOSED "Sorry - the system is closed to further wiz logins at the moment"
+SYS_CLOSED "Sorry - the system is closed to further logins at the moment"
+TOTAL_USERS_MESS "                *** Currently serving  %ld  happy Lag Haters ***"
+BANNED_MESS "* Your site has been banned , email %s *"
+BANNED_NEW_MESS "New user accounts are prohibited from your site."
+BANNED_COMMENT  "None."
+
+# Login messages
+SYS_LOGIN       "So, what's your name?: "
+SYS_PASSWD_PROMPT "Enter your secret code: "
+PASS_VERIFY     "Please re-enter your secret code: "
+EMAIL_VERIFY    "Enter an email address we can send your password to: "
+PASEMAIL_VERIFY "Enter the password you were given in email: "
+
+# Login responses
+ATTEMPT_MESS    "Maximum attempts exceeded..."
+
+# New user message when re-entered password doesn't match the first */
+NON_VERIFY      "Come now, your secret codes have to match."
+
+PASS_NOT_RIGHT  "Nah, that's not right!"
+NO_NEW_LOGIN    "New user creation is not allowed at this time"
+ONLY_LET        "Only letters are allowed in login name"
+SYS_NAME_SHORT  "Nah, that name is too short"
+SYS_NAME_LONG   "Nah, that name is too long"
+SYS_PASSWD_LONG "Password too long"
+SYS_PASSWD_INVA "Invalid password given [must be at least 3 letters]."
+PASS_NO_NAME1   "Password cannot be the login name."
+PASS_NO_NAME2   "That's like suicide!"
+IF_QUIT_LOGIN   "\nAbandoning login attempt\n"
+NEW_CREATE      "A New account has been created for you!"
+NEW_USER_MESS   "Well well well, a new user..."
+ALREADY_ON      "^HGAlready online! - Terminating old session and saving comm buffers^"
+TERMIN          "This session is being terminated"
+
+AFK_BACK        "- %s is back -"
+AFK_BACK2       "Terminal UN-locked! You are back!"
+AFK_BACK3       "- You are back from %s! -"
+HELP_HELP       "The command is \".help\" If you are new here type \".h help\""
+NEW_USER_TO_WIZ "**NEW USER**  %s at %s (%s)\07"
+NEW_HELP        "\n\r\07              **Please read  .h new  .faq  AND  .rules**"
+NEW_HELP2       "\07     ** To auto-promote yourself, do .desc, .entpro, and .set gender **"
+SYS_LOOK_FAILED " * Lookup Failed * "
+SYS_RES_OFF     " Resolver turned off "
+
+# Prompts
+CONF_PROMPT     "** Press RETURN to continue, Q to stop reading **"
+PROFILE_PROMPT  "(S)ave, (V)iew, (R)edo, or (A)bort?: "
+
+# No No No
+NO_USER_STR     "  [Dude, the user doesn't exist]"
+NO_WIZ_ENTRY    "You are not permitted to enter the wizard port."
+NO_NEWS         "There is no news today"
+NO_FAQ          "FAQ is not available."
+NO_MAP          "There is no map."
+NO_WIZLIST      "There is no wizard list."
+NO_TLIST        "There is no talkers on the list."
+NO_RULESFILE    "There are no rules defined."
+NO_ROOM         "There is no such room!"
+NO_SINGSTR      "You forgot the words already?!"
+NO_COMM         "You can't do that in your current condition!"
+NO_MESS		"What do you want to say?"
+NO_SHOUT        "You can hardly make a sound."
+NO_SHOUT_SOS    "You have been naughty, wizards don't want to be bugged by you."
+NO_MATCH_SUIC   "The password you entered doesn't match your current password."
+NOT_UNIQUE      "Name was not unique, matched: %s"
+NOT_WORTHY      "Sorry - you're not worthy of that command"
+GIVE_CAPNAME    "You have to give your name!"
+
+BYE_MESS        "\07Goodbye! See ya soon!..."
+IDLE_BYE_MESS   "\07Well you had your chance....Bye bye"
+USE_MESS        "%16.16s after %s of use"
+#               DATE after DAYS,HOURS,MINUTES of use
+#               sent on .quit
+
+# Tic-tac-toe stuff
+TTT_WON		"Yippee!! you beat %s at TTT :)"
+TTT_LOST	"Doh!! you lost TTT to %s :("
+TTT_DRAW	"Your TTT game with %s is a draw :|"
+TTT_ABORT1	"You abort your TTT game against %s."
+TTT_ABORT2	"%s aborts your TTT game."
+TTT_PLAYING	"Sorry, but %s is currently playing someone else"
+TTT_OFFERED	" %s has offered a game of Tic Tac Toe"
+
+# Hangman stuff
+HANG_BADGUESS	"Your guess is wrong!!  And you know what that means..."
+HANG_BADLETTER	"That letter isn't in the word!  And you know what that means..."
+HANG_WON	"^HGCongratz!  You guessed the word without dying!^"
+HANG_LOST	"^HRUh-oh!  You couldn't guess the word and died!^"
+HANG_GUESSED	"You have already guessed that letter!  And you know what that means..."
+HANG_1OCCUR	"Well done!  There was 1 occurrence of the letter %s"
+HANG_MOCCUR	"Well done!  There were %d occurrences of the letter %s"
+
+APROMOTE_MESS   "Thank you. You have been auto-promoted to ^%s^"
+PROMOTE_MESS    "^HR%s^ has promoted you to ^HR%s^"
+UPROMOTE_MESS   "You have promoted ^HR%s^ to ^HR%s^"
+DEMOTE_MESS     "^HR%s^ has demoted you to ^HR%s^"
+UDEMOTE_MESS    "You have demoted ^HR%s^ to ^HR%s^"
+DEF_KILL_MESS   "You have been vaporized ...   HAVE A NICE DAY."
+XCOMM_CANT      "%s wanted to xcomm you!"
+XCOMMON_MESS    "I suspect you made somebody mad. Now you are a zombie."
+XCOMMOFF_MESS   "You have been returned to the living users. Play nice or else"
+GCOMM_CANT      "%s wanted to gagcomm you!"
+GCOMMON_MESS    "Not behaving ourselves, are we? Gotta pay the piper now"
+GCOMMOFF_MESS   "The piper thinks you have paid your dues. Play nice or else."
+FROG_CANT       "%s wanted to turn you into a frog, hah!"
+FROGON_MESS     "Someone turned you into kermit's cousin. Ribbit!"
+FROGOFF_MESS    "Maybe a princess didn't kiss you, but you're not a frog anymore :)"
+FROG_TALK       "Ribbit, ribbit"
+FROG_EMOTE      "croaks at everyone.\0"
+FROG_SEMOTE     "croaks at you"
+FROG_ECHO       "A frog croaks nearby."
+MUZZLE_CANT     "%s wanted to muzzle you!"
+MUZZLEON_MESS   "You are no longer allowed to shout"
+MUZZLEOFF_MESS  "You are again allowed to shout"
+ANCHOR_CANT     "%s wanted to staple you to the floor, hah!"
+ANCHORON_MESS   "Someone just stapled you to floor. Time for a snickers?"
+ANCHOROFF_MESS  "You are again free to move around!"
+ANCHORED_DOWN   "Where do you think you're going stapled to the floor?"
+MOVE_TOUSER     "A force grabs you and pulls you into the beyond!!"
+MOVE_TOREST     "%s is pulled into the beyond!"
+MOVE_TONEW      "%s appear%s from nowhere!"
+ARREST_TOUSER   "A man in a white coat grabs you and throws you into a van!!"
+ARREST_TOREST   "A man in a white coat grabs %s and throws them into a van!!"
+ARREST_TOJAIL   "A group of white coats bring %s in!!"
+COME_VIS        "%s steps out of the shadows."
+UCOME_VIS       "%s You step out of the shadows."
+GO_INVIS        "%s fades into the darkness..."
+UGO_INVIS       "%s You fade, shimmer, and vanish..."
+COME_TELEMESS   "arrives in a blinding flash!"
+GO_TELEMESS     "%s disappears in a shimmer of light!"
+
+INVIS_ACTION_LABEL "A shadow"
+INVIS_TALK_LABEL   "A mysterious voice"
+INVIS_MOVES        "Something disturbs the air."
+
+# goes before wiztells and wiz messes
+STAFF_PREFIX       "<wiz>"
+
+NOW_PUBLIC      "Room access returned to public"
+WHO_COLOR       "Current citizens on ^HM%s^"
+WWHO_COLOR      "Current wizards on ^HM%s^"
+FWHO_COLOR      "Current friends on ^HM%s^"
+WHO_PLAIN       "Current citizens on %s"
+SHORT_WHO       "%d citizen%s %s connected."
+SHADOW_COLOR    "There %s ^HM%d^ shadow%s"
+SHADOW_PLAIN    "There %s %d shadow%s"
+SHADOW_WWW      "<tr> <td colspan=\"2\">There %s <b>%i</b> shadow%s at the moment</td> </tr>"
+USERCNT_COLOR   "Total of ^HG%d^ citizen%s signed on."
+WUSERCNT_COLOR  "Total of ^HG%d^ wizard%s signed on."
+FUSERCNT_COLOR  "Total of ^HG%d^ friend%s signed on."
+USERCNT_PLAIN   "Total of %d citizen%s signed on."
+USERCNT_WWW     "<tr> <td colspan=\"6\">There %s <b>%i</b> citizen%s logged on right now</td></tr>"
+USER_WRITE      "You write the message on the board."
+OTHER_WRITE     "%s writes a message on the board"
+INVIS_WRITE     "A ghostly hand writes a message on the board"
+
+# Message defaults
+DEF_DESC        "-- a new citizen"
+DEF_EMAIL       "--- email not specified ---"
+DEF_GENDER      "No idea"
+DEF_SUCC        "Thank you for paging me."
+DEF_FAIL        "I'm not here right now."
+DEF_URL         "--- homepage not specified ---"
+DEF_PICURL      "--- picture not specified --- "
+DEF_ICQ		"No idea"
+DEF_ENTER       "walks in."
+# DEFAULT exitmessage must leave space for room name at the end
+DEF_EXIT        "goes to the"
+
+# Communication formats
+# The @@ chars in these formats is used to turn off the color codes
+# before the next to last " is printed. If you're not using an end
+# character like a " after the user's message the @@ can be taken out
+#
+# Some VIS_ and INVIS_ defines are the SAME but the VIS_ ones replace
+# the first %s with the users name and the INVIS_ ones replace it with
+# either INVIS_ACTION_LABEL or INVIS_TALK_LABEL
+#
+# ALSO NOTE: The bot operates on using the default communications for-
+#            mats..so if you change these at all, the bot is not gonna
+#            work unless you modify the bot's code.  Sorry.
+#
+VIS_SAYS        "%s says \"%s@@\""
+INVIS_SAYS      "* %s says \"%s@@\""
+VIS_DIRECTS     "%s says ^HR(to %s)^ \"%s@@\""
+INVIS_DIRECTS   "* %s says ^HR(to %s)^ \"%s@@\""
+VIS_DIREMOTE    "%s%s@@ ^HR(to %s)^"
+INVIS_DIREMOTE  "* %s%s@@ ^HR(to %s)^"
+VIS_TELLS       "%s tells you: \"%s@@\""
+VIS_TELLS_M     "%s tells you%s: \"%s@@\""	/* multi */
+INVIS_TELLS     "%s tells you: \"%s@@\""
+INVIS_TELLS_M   "%s tells you%s: \"%s@@\""	/* multi */
+VIS_FROMTELLS   " <priv-com %s>: %s"		/* to sender */
+VIS_FROMLINK    " <priv-link %s>: %s"		/* to sender */
+VIS_SEMOTES	"--> %s %s"
+VIS_SEMOTES_P	"--> %s\'%s"			/* possesive */
+VIS_SEMOTES_M	"--> (To you%s) %s %s"		/* multi */
+VIS_SEMOTE_MP	"--> (To you%s) %s\'%s"		/* multi-posses */
+INVIS_SEMOTES	"%s --> %s %s"
+INVIS_SEMOTES_P	"%s --> %s\'%s"			/* possesive */
+INVIS_SEMOTES_M	"%s --> (To you%s) %s %s"	/* multi */
+INVIS_SEMOTE_MP	"%s --> (To you%s) %s\'%s"	/* multi-posses */
+VISFROMSEMOTE	"You posed to %s: %s %s"	/* to sender */
+VISFROMSEMOTE_P	"You posess-posed to %s: %s\'%s"
+VIS_MUTTERS     "%s mutters \"%s@@\" (to everyone but %s)"
+INVIS_MUTTERS   "* %s mutters \"%s@@\" (to everyone but %s)" 
+VIS_MUTEMOTE    "%s%s@@ (behind %s's back)"
+INVIS_MUTEMOTE  "* %s%s@@ (behind %s's back)"
+USER_SHOUTS     "%s shouts \"%s@@\""
+INVIS_SHOUTS    "%s shouts \"%s@@\""
+YOU_SHOUT       "You shout \"%s@@\""
+USER_SHTHINKS   "& %s thinks . o O ( %s@@ )"
+INVIS_SHTHINKS  "& %s thinks . o O ( %s@@ )"
+YOU_SHTHINKS    "You think to everyone . o O ( %s@@ )"
+
+IS_PRIVATE      "You left in a room that is now private so will be put in the main room."
+IS_ARRESTED     "You can't do that while you're arrested!"
+IS_GAGGED       "That user has you gagged. Sorry."
+IS_ENTERING     "That user is entering a profile, room description, or vote topic at the moment"
+IS_BANNED       "Sorry, that name is banned from use on this talker"
+VIS_IN_HERE     "^There %s %d shadow%s in here.^"
+
+# Message that gets mailed to users who exceed their mailsize quota
+MAILFILE_NOTIFY "Your mailbox has exceeded the size limit by %ld characters. You will not be able to receive any more mail until you delete some of the messages in you mailbox."
+
+# Message that goes to a sender that exceeeds his or her sentmail quota
+MAILFILE2_NOTIFY "Your sentmail box has exceeded the size limit by %ld characters. Please delete some sentmail so that messages can be written to it again."
+
+MAILFROM_TALKER "\n^HY==^ You have mail waiting from ^HGTHE TALKER^ ^HY==^"
+MAILFROM_USER "\n^HY==^ You have mail waiting from ^HG%s^ ^HY==^"
+MAIL_AUTOFWD "New_mail has been sent to your email address. *autofwd*"
+MAIL_TO "You write %s some mail"
+MAIL_NEW "\07You have  ^HG%i ^ new mail message%s"
+MAIL_ACCESS "==> last mail access was %s"
+
+# SYSNAME
+EXT_WHO1 "+------------------------------------------+\n\r"
+EXT_WHO2 "| External who list                V1.2    |\n\r"
+EXT_WHO3 "| For PinWHeeLs  Port %-4d                 |\n\r"
+EXT_WHO4 "+------------------------------------------+\n\r\n\r"
+# SYSNAME
+
+# Standard footer that is put on the end of an auto-forwarded smail
+EXT_MAIL1     "\n          ---------------------------------------------------------------\n"
+EXT_MAIL2     "                       This is your new mail from %s\n"
+EXT_MAIL3     "                  Do not reply to this through normal e-mail\n"
+EXT_MAIL4     " \n"
+EXT_MAIL5     "              If you wish to respond to the writer of this message\n"
+# if they have their email address set and is visible
+EXT_MAIL8     "              you may reply to the address above normally.\n"
+# if not
+EXT_MAIL9     "              you must mail them on the talker.\n"
+# next line used if an RFC-compliant mail program is not used
+EXT_MAIL10    "              try replying to %s\n"
+EXT_MAIL7     "          ---------------------------------------------------------------\n"
+
+#
+# these are the files needed to run the talker
+#
+INIT_FILE    "init_data"
+MESSDIR      "messboards"
+NEWSFILE     "lib/newsfile"
+LOGFILE      "syslog"
+HELPDIR      "helpfiles"
+MAILDIR      "maildir"
+RESTRICT_DIR "restrict"
+RESTRICT_NEW_DIR "newrestrict"
+USERDIR      "users"                 
+PICTURE_DIR  "picture"            
+FAQFILE      "lib/faqfile"
+LASTFILE     "lastcommand"
+MAPFILE      "lib/mapfile"
+PRO_DIR      "prodir"
+LIBDIR       "lib"
+LASTLOGS     "lib/lastlogs"
+SCHEDFILE    "lib/schedule"
+WIZFILE      "lib/wizlist"
+EXEMFILE     "lib/exempts"
+NBANFILE     "lib/namebans"
+AGREEFILE    "lib/agreefile"
+VERIFILE     "lib/emailver/veritracking"
+VERIINSTRUCT "lib/emailver/e-instruct1"
+VERINSTRUCT2 "lib/emailver/e-instruct2"
+VERIEMAIL    "lib/emailver/veriemail"
+ACTVYFILE    "lib/activity"
+RULESFILE    "lib/rulesfile"
+TALKERLIST   "lib/talkerlist"
+SYSFULLFILE  "lib/sysfullfile"
+NUKEWARN     "lib/nukewarn"
+HANGDICT     "lib/hangman_words"
+WLOGDIR      "warnings"
+WEBFILES     "webfiles"
+WEBCONFIG    "webfiles/webport.cfg"
+
+# Hostname resolution options
+# the talker-wide DNS cache lookup files, for when resolve_names = 1
+# if you will never use resolve_names = 1, these 2 settings dont matter
+# See docs/README.dns_resolving for more info
+SITECACHE_FILE     "lib/sitecash"
+SITECACHE_FILE_DEF "lib/sitecash.def"
+
+# the side-wide DNS cache lookup files, for when resolve_names = 2
+# if you will never use resolve_names = 2, these 2 settings dont matter
+# See docs/README.dns_resolving for more info
+SITE_WIDE_CACHE_FILE   "/.sitecash"
+SITE_WIDE_REQUEST_FILE "/.sitecash.req"
+
+# file used to restart talker
+PROGNAME     "./restart"
+
+# If the following programs exist on your system..you can find them
+# by doing a "locate sendmail" and "which fortune" at the UNIX prompt
+# and inserting the proper paths here
+# If you do not have sendmail, you can fallback to using the normal "mail"
+# program. You can find its correct path by typing "which mail"
+# sendmail is USUALLY under /usr/bin/sendmail or /usr/lib/sendmail
+#
+# Program used to send email. If sendmail, use -t switch
+MAILPROG     "/usr/sbin/sendmail -t"
+# Program used to send a fortune or quote of the day
+FORTPROG     "/usr/local/bin/fortune"
+
+
+/*----------------------------*/
+/* Port status descriptors    */
+/*----------------------------*/
+char *opcl[]={"CLOSED",
+              "OPEN"};
+#else
+extern char *ranks[];
+extern char *opcl[];
+#endif
+
+/*--------------------------------------------------------*/
+/* Message types used for writeall                        */
+/*--------------------------------------------------------*/
+#define NUM_IGN_FLAGS 24
+typedef struct
+{
+        char text[32];
+} flag_names_type;
+#ifdef _DEFINING_CONSTANTS
+flag_names_type flag_names[NUM_IGN_FLAGS+1] = {
+       {"misc_things"},
+       {"afks"}, 
+       {"says"}, 
+       {"logs"},
+       {"shouts"},
+       {"knocks"},
+       {"messages"},
+       {"topics"},
+       {"kills"},
+       {"bcasts"},
+       {"moves"},
+       {"echos"},
+       {"greets"},
+       {"pictures"},
+       {"fights"},
+       {"atmos"}, 
+       {"wiztells"},
+       {"succs"}, 
+       {"fails"},
+       {"nerfs"}, 
+       {"roomdescs"},
+       {"beeps"},
+       {"tictactoes"},
+       {"<not defined yet>"},
+       {""}
+      };
+#else
+extern flag_names_type flag_names[NUM_IGN_FLAGS+1];
+#endif
+
+#define NONE      0
+#define AFK_TYPE  1   /* .afk .bafk */
+#define SAY_TYPE  2   /* .say .emote .mutter .to */
+#define LOGIO     3   /* logins and logouts */
+#define SHOUT     4   /* .shout .shemote .shthink */
+#define KNOCK     5   /* .knock */
+#define MESSAGE   6   /* .write */  
+#define TOPIC     7   /* .topic */
+#define KILL      8   /* .kill */
+#define BCAST     9   /* .bcast .bbcast name changes */
+#define MOVE      10  /* .move .bring .hide */
+#define ECHOM     11  /* .echo */
+#define GREET     12  /* .greet */
+#define PICTURE   13  /* .picture .ptell */   
+#define FIGHT     14  /* .fight */
+#define ATMOS     15  /* atmospherics */
+#define WIZT      16  /* .wiztell */
+#define SUCCS     17  /* .succs after priv. comm */
+#define FAILS     18  /* .fails after failed priv. comm */
+#define NERFS     19  /* .nerf */
+#define ROOMD     20  /* room descriptions in .look */
+#define BEEPS     21  /* any beeping */
+#define TTTS      22  /* tic-tac-toes */
+#define MISC2     23  /* future */
+
+/*-----------------------------------------------------------------*/
+/* Gagged types                                                    */
+/*  These are message types that user Y won't see from user X when */
+/*  a .gag is put on user X by user Y                              */
+/*  The whole list is right above this comment                     */
+/*  Private communication, mail, and .examine/.ustat being         */
+/*  gagged is a GIVEN                                              */
+/*-----------------------------------------------------------------*/
+#ifdef _DEFINING_CONSTANTS
+int gagged_types[]={ECHOM,PICTURE,
+		    GREET,SAY_TYPE,
+		    SHOUT,KNOCK,
+		    FIGHT,AFK_TYPE,
+		    NERFS,TTTS};
+
+/*-----------------------------------------------------------*/
+/* Port offsets (added) to the main port, which is           */
+/* defined in config/init_data.                              */
+/* If you set any offset to 0, that port wont bind/listen    */
+/* when the talker boots.				     */
+/* INTER and CRYPT currently dont work. for future use.      */
+/*-----------------------------------------------------------*/
+int WIZ_OFFSET    =  50;   /* wiz port for incoming          */
+int WHO_OFFSET    =   1;   /* standard offset for who        */
+int WWW_OFFSET    =  30;   /* www offset                     */
+int INTER_OFFSET  =   2;   /* inter talker offset         DONT CHANGE   */
+int CRYPT_OFFSET  =   3;   /* offset for caller-id verify DONT CHANGE   */
+#else
+extern int gagged_types[];
+extern int WIZ_OFFSET;
+extern int WHO_OFFSET;
+extern int WWW_OFFSET;
+extern int INTER_OFFSET;
+extern int CRYPT_OFFSET;
+#endif
+
+/* abbreviation structure */
+typedef struct {
+char abbr[2]; 
+char com[20];
+} Abbr;
+
+#define CANT_MACRO      "Sorry, you can't macro that command."
+#define MACRO_NLONG     "Sorry, that macro name is too long."
+#define MACRO_LONG      "Sorry, that macro is too long."
+
+#define EMAILLOG	"logs/emailver.log"
+#define LOGINLOG	"logs/logins.log"
+#define ERRORLOG	"logs/errors.log"
+#define WARNINGLOG	"logs/warnings.log"
+..End Strings..
+..Ranks..
+/* Globals that have to do with ranks */
+/* NOTE: It is not wise to EVER make the superuser rank and the  */
+/* Senior level the same number                                  */
+
+#define RANKS "01234"        /* Your ranks, lowest to highest */
+
+/*----------------------------------------------------*/
+/* this line is the odds for each rank for .fight,    */
+/* separated by commas                                */
+/* Make the odds what you want and make sure you have */
+/* a number for every rank                            */
+/*----------------------------------------------------*/
+#ifdef _DEFINING_CONSTANTS
+int odds[]={10, 30, 270, 2150, 21000};
+#else
+extern int odds[];
+#endif
+
+#define MIN_HIDE_LEVEL  2    /* level at which invisibility is allowed */
+                             /* also level users can see invis users   */
+                             /* in .who list */
+#define ROOMVIS_LEVEL   3    /* level at which users can see the name */
+                             /* of an invisible room in .w */
+#define MONITOR_LEVEL   2    /* level at which monitor is allowed */
+#define EMAIL_LEVEL     3    /* level at which a hidden email is shown */
+#define WHO_LEVEL       1    /* level at which user can see ranks on */
+                             /* the .who list */
+#define LINENUM_LEVEL   2    /* level at which line numbers on message */
+                             /* boards can be seen */
+#define GRIPE_LEVEL     3    /* level that can read gripes and hidden  */
+                             /* room message boards*/
+#define CBUFF_LEVEL     2    /* level that can clear all buffers */
+#define IDLE_LEVEL      2    /* level exempt from idle timeouts  */
+#define TELEP_LEVEL     2    /* level that can teleport to rooms */
+#define PRIV_ROOM_RANK  2    /* rank before private without two users   */
+#define EXPIRE_EXEMPT  -1    /* users at or above this level get 30     */
+                             /* extra days before they're up for an     */
+                             /* expire.  Set to -1 to disable the bonus */
+#define WIZ_LEVEL       2    /* wiz rank         */
+                             /* this user is seen under .wizards, gets */
+                             /* wiztells, can go through gags and      */
+                             /* other priv-com stopage, etc.. */
+#define SENIOR_LEVEL    3    /* level that can unmuzzle THEMSELVES  */
+#define MAX_LEVEL       4    /* highest level in the system  */
+
+
+/* Do NOT make TO_SAME and TO_ABOVE both 1..it doesn't work      */
+/* because if you allow users to promote others to a rank higher */
+/* than their own, OF COURSE you're gonna allow PROMOTE_TO_SAME  */
+/* 1-YES  0-NO */
+#define PROMOTE_TO_SAME  1   /* allow promotions to the same level as promoter */
+#define PROMOTE_TO_ABOVE 0   /* allow promotions to a higher level as promoter */
+#define DEMOTE_SAME      0   /* allows a wiz or higher to demote users */
+                             /* same level as them */
+
+#define RANK_LEN	 8   /* length of your longest rank name. for formatting */
+			     /* in .who						 */
+
+#ifdef _DEFINING_CONSTANTS
+/*------------------------------*/
+/*  Rank descriptors            */
+/*------------------------------*/
+char *ranks[]={"Newbie",
+               "Wheeler",
+               "Wizard",
+               "Manager",
+               "Admin"};
+
+..End Ranks..
+..Rooms..
+::Name
+Astor Place
+::Desc
+Just
+a
+fun
+
+place
+::Atmos
+10 atmos1
+20 atmos2
+::Exits
+
+..End Rooms..

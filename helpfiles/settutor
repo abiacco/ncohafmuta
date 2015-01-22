@@ -1,0 +1,52 @@
+----------------------------------------------------------------------------
+                   The "How to Change Settings/Info" Tutorial
+
+Well, now that you have gotten this far, it is time to change settings 
+regarding info other users will see via ".examine" and ".ustat"
+
+The first command that is an obvious no brainer is the ".set" command.
+Typing this command by itself will list out all of the sub-commands you 
+can use with it.
+
+Some of the main ones are email, gender, homepage, hidden, and recap.
+
+The syntax for the command is ".set <sub-command> <value>"
+For example:
+
+To set your email you would type: .set email eat@joes.com
+To set your gender you would type: .set gender male (female)
+To set your homepage you would type: .set homepage http://www.test.com
+
+The ".set hidden" and ".set recap" functions are special commands.
+
+The ".set hidden" will hide your password at login time so that it isn't
+echoed back when you type it.  This keeps your password private and lessens
+the chances of someone hacking into your account.
+
+The ".set recap" allows you to change how your name appears in the talker.
+For example:
+The user name jazzin can be changed to JaZzIn by typing:
+         ".set recap JaZzIn"
+
+These are just some of the things that you can set with the ".set" command.
+Please read the help files for more detailed descriptions on usage.
+Help on the sub-commands is under ".h set_<subcommand>" i.e. ".h set_email"
+
+The ".ignore" command is another great command to know and understand.
+This command allows you to ignore specific messages in the talker.
+For example, ignoring shouts.  If shouts start to bother you, all
+you have to do is type ".ignore shouts" and you won't have to listen
+to them anymore.
+
+Going along with the .ignore command is the .listen command.  This
+allows you to listen to messages that you have ignored.
+To listen to a message you have ignored, like shouts, all you have to
+do is type ".listen shouts" and you are in business.
+
+By default, you are set to listen too ALL messages. By typing ".ignore"
+or ".listen" by themselves, it will tell you which messages you are ignoring 
+or listening to, respectively.
+
+
+Next you should read the "General Concepts" tutorial by typing ".h gentutor"
+----------------------------------------------------------------------------

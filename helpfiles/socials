@@ -1,0 +1,15 @@
+Results:  Use this command to list all the socials that are available on
+          the talker. A social is a action in the list in command format.
+          Like the social "hug" is typed as ".hug"
+          The syntax for each social is as follows..
+            <social> [<user>]
+           <user> is optional. If no user is specified, social is directed
+          to everyone in the room you are in.
+           If <user> IS specified and in the room with you, it will
+          emote-directed towards that person.
+           If <user> IS specified and NOT in the room with you, it will
+          be private emoted (semoted) to them.
+           All conditions like gag, invisibility, igtells, etc..
+          apply to this command just like with others.
+
+See also: emote  semote

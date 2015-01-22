@@ -1,0 +1,9 @@
+You can tell me a story in two different ways.
+If you want to start a story from scratch, just tell
+me "write" followed by the title of your story. If you
+want to add a paragraph to an existing story, just
+read the story up to the point where you want to add
+something, and then tell me "add". You don't necessarily
+have to add on to the end; if you say "add" in the middle
+of a story, I will create a new branch of the story at
+that point for you. This is how story trees get created.

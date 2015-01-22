@@ -1,0 +1,18 @@
+ Syntax:  .wwipe <parameter>
+
+Results:  Wipes the messages from the wizards board.
+          .wwipe <NUM> <NUM> where both number are the same is a line delete.
+          UNLIKE .cmail or .csent, you will NOT be asked to verify the    
+          wipe. 
+          
+Example:
+   To wipe all messages from the board, type            : .wwipe all
+   To clear the first line type                         : .wwipe          
+   To clear line 10 from the board, type                : .wwipe 10        
+   To clear all lines from the beginning to line 5, type: .wwipe to 5        
+   To clear all lines from line 8 to the end, type      : .wwipe from 8      
+   To clear all lines from line 8 to line 10, type      : .wwipe from 8 to 10
+   To clear all lines except line 4, type               : .wwipe except 4     
+   To clear all lines except line 4 through 9, type     : .wwipe except 4 to 9
+
+See also: wipe, gwipe, swipe, wnote

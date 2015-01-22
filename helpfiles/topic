@@ -1,0 +1,7 @@
+ Syntax:  .topic <message>
+
+Results:  Changes the current room topic.  <message> is the topic you 
+          want to set it to.
+          To view the current room topic, type:  .topic
+
+See also: look, rooms

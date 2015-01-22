@@ -1,0 +1,9 @@
+ Syntax:  .shthink [']<message>
+
+Results:  Used to shout a thought across the talker.
+          Where <message> is the thought.  If a ' is specified
+          before the message, it will become posessive.
+
+Example:  .shthink I need a life.
+
+See also: shout, shemote

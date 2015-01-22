@@ -1,0 +1,40 @@
+To add new command, do the following (BASICALLY)..
+
+Go in srcfiles/command_funcs.c
+
+1. In the sys[]. commands structure where all the commands are defined,
+   add a line for your command, in the following form..
+   {"NAME", LEVEL, JUMP_LEVEL, TYPE, "ABBREVIAITON"},
+   NAME        : The name of the command
+   LEVEL       : The lowest level that can use the command
+   JUMP_LEVEL  : A unique number for the command. This is the next highest 
+                 number not used in sys[].
+   TYPE        : The type of command for .h categorization. Types are listed
+                 in constants.h
+   ABBREVIATION: The single character abbreviation given to the command by 
+                 default. Users cna change theirs with .abbrs
+
+ Example: {".newcmd",   0,   200, NONE, ""},
+
+
+2. In the exec_com() function add a case: for your command just like the
+   rest of the commands. The format is:
+   case JUMP_LEVEL: FUNCTION_NAME; break; /* short command comment */
+
+Example: case 200: newcmd(user,inpstr);  break;  /* a test command */
+
+
+3. Add your function in the code where the other commands are defined.
+   (So as to tell the program what you want the command to do.)
+
+   Example:
+    newcmd(user,inpstr)
+    int user;
+    char *inpstr;
+    {
+
+    }
+
+
+4. Re-compile the talker
+

@@ -1,0 +1,15 @@
+
+Topic: **COMPATIBILTY** with vaxes and MAC telnet clinets :-)
+**************************************************************************
+NOTICE - Having problems getting into the Talker via direct telnet from 
+MAC NCSA telnet.  Try this: 1)Make sure local echo and linemode are 
+turned on. 2)Telnet to the talker. 3)When asked for a name, type in your 
+name but do not press enter.  Instead turn local echo off.  This will 
+simulate an enter for you.  Next turn local echo back on, then enter your 
+password.  Again turn local echo off and then back on.  You should now be 
+ready to go.  
+If you're using verion 2.7 or greater of MAC NCSA TELNET ignore the 
+previous and at the name prompt type in your login name, and instead of 
+pressing the <return> key, press and hold the <control> then press the 
+<n> key then type your password in normally and press <return>
+**************************************************************************

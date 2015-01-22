@@ -1,0 +1,36 @@
+ Syntax:  .descroom
+  Type1:  .descroom [clear | -c]
+  Type2:  .descroom <line_number> <text>
+  Type3:  .descroom <line_number> [-b | -c]
+  Type4:  .descroom -i [<text> | -b]
+  Type5:  .descroom -i<line_number> [<text> | -b]
+
+Results:  This is to write a description for the current room you are in.
+          The command works just LIKE the command .entpro in the way it
+          works. The description can be up to 10 lines, or whatever the
+          current number is in .version. 
+          Make sure that you press return after each line you type 
+          in.  Remember that each line can only be as long as the screen 
+          is.  To finish the description before 10 lines, type a single '.'
+          on a line by itself. This will bring up a 4-choice prompt.
+          hit 's' to save the description, 'v' to view it, to make sure 
+          it's going to appear the way you want it,  'r' to do it all
+          over..or hit 'a' to abort whatever you wrote and keep your
+          current description. 
+   Type1: If you give the -c or clear option, the command will erase
+          the room description.
+   Type2: Giving a line number and <text> replaces the current text for
+          that line in the room description with <text>.
+   Type3: Giving a line number and the -b option, makes that line in the
+          room description blank. or use the -c option instead to erase that 
+          line from the room description.
+   Type4: Giving the -i flag and <text> adds <text> to the end of the
+          room description. Giving the -i flag and the -b flag adds a blank 
+          line to the end of the room description.
+   Type5: Giving the -i flag immediately followed by a line number (i.e. 
+          -i2) and <text> inserts <text> on a line after <line_number>. 
+          Giving -b instead of <text> inserts a blank line after 
+          <line_number>
+ 
+See also: look, rooms
+

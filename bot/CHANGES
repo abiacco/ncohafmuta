@@ -1,0 +1,10 @@
+/* 1.6 - 03/04/2001 */
+
+* Added "status" command to bot to output somerunning information.
+* Added ability to turn off the bot killing people who swear to him.
+* Fixed failure to close the conversation log file desc. before reading
+  the log to the user.
+* On a "logging clear" now have the conversation log file flush and close
+  before removing it and re-opening it again.
+* Added #define to hold the version number.
+

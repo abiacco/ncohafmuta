@@ -1,0 +1,6 @@
+ Syntax:  .unmuzzle <user>
+
+Results:  Allows you to let a user that has been shut up from shouting
+          talk again, where <user> is the person in question.
+
+See also: muzzle, arrest

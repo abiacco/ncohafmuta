@@ -1,0 +1,16 @@
+Results:  Allows you to see the user from which speech, tells, shouts, 
+          echoes, emotes, broadcasts, etc., originate.  Best used to
+          monitor the abuse of invisibility and echoes.
+
+          There are several TOGGLE options for monitor.
+          1. off
+             Monitor nothing.
+          2. users
+             Monitor user acitivity for the above criteria.
+          3. incoming logins
+             Monitor incoming connections from hosts before
+             a user logs on.
+          4. users and incoming logins
+             Both 2 and 3.
+
+See also: tell, echo, bcast

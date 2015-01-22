@@ -1,0 +1,16 @@
+% EXISTING 127.0.0
+TIME 9000000000
+USER cygnus
+REASON Existing users are note wanted from here
+COMMENT Existing users suck!
+% NEW stevenjude2.compustrat.com
+TIME 9000000001
+USER matrix
+REASON New users are not wanted from here
+COMMENT New users suck!
+% BOTH compustrat.com
+TIME 9000000002
+USER jazzin
+REASON All users are not wanted from here
+COMMENT All users suck!
+

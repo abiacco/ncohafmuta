@@ -1,0 +1,6 @@
+ Syntax:  .bbcast <message>
+
+ Result:  Allows the admin to send a higlighted, blinking, beeping message
+          over the whole talker. Usually used for announcing a shutdown.
+
+See also:  bcast

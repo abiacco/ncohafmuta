@@ -1,0 +1,51 @@
+#!/bin/sh
+# by Cygnus
+# ncohafmuta@asteroid-b612.org
+#
+
+# The name of the talker binary or program
+BINARY="server"
+
+# The data directory and-or the debugging switch, both optional
+CONFIG=$1
+CONFIG2=$2
+
+# Set to 0 if you dont want it to try and boot the robot
+BOTON=0
+
+# Link changes helpfile to CHANGES file in lib directory
+echo "Linking changes..."
+pushd helpfiles
+if test -f "changes"
+then
+rm -f changes
+fi
+ln -s ../docs/CHANGES changes
+
+# Run TOP in helpfiles directory to update topics helpfile
+echo -n "Updating helpfiles list..."
+./TOP
+popd
+
+echo "Starting the talker server..."
+echo ""
+if test "$CONFIG" = "config"
+then
+ ./$BINARY $CONFIG2
+else
+ ./$BINARY $CONFIG $CONFIG2
+fi
+
+# Start the bot if BOTON is not 0
+	if test $BOTON != 0
+	then
+	pushd bot
+	echo -n "Starting robot.."
+         if test -f "./restart"
+	 then
+	  echo
+	  ./restart
+	 fi
+	popd
+	fi
+

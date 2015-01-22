@@ -1,0 +1,9 @@
+If you give me an empty say in an empty paragraph, I presume
+that you're done writing, and turn my attention back to
+everyone in the room. Hence, at the end of a paragraph, two
+empty says in a row will first save the paragraph, then
+leave writing mode. You can also leave writing mode (without
+saving the current paragraph), by saying "abort" or by leaving
+the room. (Therefore, if someone has locked me into writing
+mode and then logged off, you can take me out of writing mode
+by killing them or moving them.)

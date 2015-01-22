@@ -1,0 +1,13 @@
+ Syntax:  .set picurl <url_address>
+
+Results:  This command allows you to set your a URL web address to tell the
+	  talker where your picture is on the net. The talker will use this to
+	  display your picture on the talker web page next to your user info.
+	  This is NOT a .html file, but the actual link to your picture file.
+	  Like: http://ncohafmuta.com/cygnus/mepics/cygnus.jpg
+
+	  If you have a picture, but it's not on a web page, email it to me at
+	  the talker's email address, and i will put it in for you.
+
+See also: set_homepage  set_email
+

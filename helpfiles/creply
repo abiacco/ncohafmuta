@@ -1,0 +1,16 @@
+ Syntax:  .creply <mess>     .creply ;<action>      .creply '<action>
+          ?<mess>            ?;<action>             ?'<action>
+
+Results:  Replys to the user that you have a tell link with. If you are invis
+          while you make a link, the other user will see your NAME, not 
+          *A mysterious shadow*  when getting replys from you.
+            The ; key is the default key for making the creply
+          with <action> a semote. If you changed your .emote key with
+          .abbrs, then THAT key will replace the ; instead. The same
+          applies to the ? shortcut key.
+            Posessive emotes are done with a ' in front of your action.
+
+Example:  .call cygnus     then..
+          .creply ;laughs at you    or maybe   .creply you suck, cygnus.
+
+See also:  call

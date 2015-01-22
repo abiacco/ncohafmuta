@@ -1,0 +1,15 @@
+ Syntax:  .mutter <user> <text>         .mutter <user> ;<action>
+          # <user> <text>               # <user> ;<action>
+          
+Results:  This command is just like normally talking, but the text goes to
+          everyone in the room BUT <user>. <user> MUST be in the room.
+            The ; key is the default key for making the mutter
+          with <action> a mutter-emote. If you changed your .emote key with
+          .abbrs, then THAT key will replace the ; instead. The same
+          applies to the # shortcut key.
+
+Example:  #cygnus You know, I think this cygnus is a goof!
+        (Will output: <your name> mutters: "I think this cygnus is a goof!" 
+                      (to everyone but cygnus) )        
+
+See also: say

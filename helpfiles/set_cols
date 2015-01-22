@@ -1,0 +1,12 @@
+ Syntax:  .set cols <# of columns>
+
+Results:  This command allows you to set which column on your screen the
+          talker will wrap the text to the next line. The default is 256.
+          Valid values are 16 to 256.
+          If you needed the system to perform line wrapping for a screen
+          that is 80 characters acress, you would type: .set cols 80
+
+  Notes:  DO NOT CHANGE THE COLS UNLESS YOU NEED TO. (ie. .set cols 80)
+          This will reduce you responsiveness and may cause additional 
+          lag for you.  
+

@@ -1,0 +1,71 @@
+Hostname resolution
+-------------------
+Please read all of this document before making any configuration changes.
+
+This talker code, like all others, does ip -> hostname DNS mapping.
+When a connection comes in, the user's socket address is converted into IP
+form..then resolved to hostname/alphanumeric form. The usual method is by
+using the gethostbyaddr() function. This though has the possiblity of
+blocking (or delaying) while the ip is resolved. Either because the route
+to the user's DNS server is slow, the user's DNS server is slow, or the IP
+doesn't resolve at all. During this delay, the talker can become lagged.
+
+To try and remedy this, 2 features have been implemented.
+
+The first is DNS caching. In this feature, when an ip comes
+in, it is checked against a (line-by-line) cache file of IP/hostname
+matches. This first cache file is the default cache file. It's manually
+edited and contains IP/hostname matches that we KNOW dont resolve well or 
+at all. If an IP matches, the hostname or error for that IP is pulled from
+the file and saved to the user. This saves the talker from going and
+trying to resolve the IP via DNS. If the IP does NOT match, it searches
+for the IP in the MAIN cache file. Again, if it's found, the hostname is
+pulled from the file to the user. If not, the IP is resolved via DNS
+gethostbyaddr(), hostname given to the user, then written to the
+END of the cache file. If the cache file is at its size limit, the
+IP/hostname match at the TOP of the file is "bumped" and every address
+moves up one.
+In testing with a 250 line cache file, IPs have matched approximately 60%
+of the time, over an uptime of approximately 20 days.
+#define's associated with this feature are SITECACHE_FILE,
+SITECACHE_FILE_DEF, and SITECACHE_SIZE..found in constants.h. To enable
+this feature, set the resolve_names variable to 1 in init_data. See
+README.init_data for the location of this variable in init_data
+
+
+The second feature is DNS lookup by an external resolver program.
+In this feature, on talker startup a small daemon (clip-on) is also
+started to handle DNS requests. When an ip comes in to the talker, the
+pre-mentioned cache-lookups are done. If nothing matches, a request is
+constructed and is sent to the clip-on. The clip-on takes the
+ip out of the request and proceeds to use non-blocking dns functions and
+sockets to resolve the ip. When the clip-on has an answer, it sends it
+back to the talker, which processes it into the user.
+This has the effect of:
+1) taking the load off the talker to do resolving, and making sure it will
+never freeze.
+2) allow the clip-on to take multiple requests at a time, process them
+as-results-come-in, and timeout requests at a set time. The clip-on does
+NOT use gethostbyaddr() to resolve, but sockets directly to the local DNS
+server, which can be polled without the clip-on freezing itself. 
+To enable this feature, set the resolve_names variable to 2 in init_data
+(this is the default with the distribution). See README.init_data for the
+location of this variable in init_data
+
+These 2 features can also be seperated or combined in use.
+For example:
+setting resolve_names to 3 will make the talker NOT use any
+cache and strictly use the clip-on resolver.
+setting resolve_names to 4 will make the talker NOT use any
+cache and strictly use gethostbyaddr()
+setting resolve_names to 0 will make the talker NOT do any DNS resolution
+of any kind.
+
+resolve_names = 2 is recommended. If that does not suit
+you, recommendations afterwards fall in this order: 3, 1, 4, 0
+
+
+-Cygnus
+Anthony J. Biacco
+ncohafmuta@asteroid-b612.org
+

@@ -1,0 +1,20 @@
+ Syntax:  .readlog
+	  .readlog -l
+          .readlog <log type>|all [<search_string>]
+          .readlog <log type>|all [-<num_of_lines_from_bottom>]
+
+Results:  This command is used to browse or search the system's log files.
+	  By itself it will cat the system log out to you.
+	  With the -l switch it will print out a list of the logs you
+	  can look at.
+	  With the last 2 syntaxes specifying "all" takes in account all
+	  logfiles and browses/searches them for you in succession.
+
+Example:  To browse the whole error log		: .readlog errlog
+	  To search the error log for "JUNK"	: .readlog errlog JUNK
+	  To browse the last 10 lines of the log: .readlog errlog -10
+	  To search all logs for "JUNK"		: .readlog all JUNK
+
+  NOTES:  Logs that don't exist will generate a file I/O error.
+	  This is normal. If they exist but have nothing in them, they
+	  will just display the banner and nothing else.

@@ -1,0 +1,9 @@
+ Syntax:  .search <search_string>
+          .search email <search_string>
+
+Results:  Searches all message boards for a particular word or character
+          string. <search_string> is the string you are searching for.
+          If you give the word "email" first, it'll search your mailfile
+          for the search string.
+
+Example:  To look for my name in all the boards, I type: .search cygnus

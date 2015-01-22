@@ -1,0 +1,8 @@
+ Syntax:  .with <user>
+
+Results:  Shows who is in a room with specified user, where <user> is the
+          person in question.
+
+Example: To see who's in the same room as Bob, type:  .with bob
+
+See also: who, swho, find

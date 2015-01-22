@@ -1,0 +1,18 @@
+ Syntax:  .gwipe <parameter>
+
+Results:  Wipes the messages from the gripe board.
+          .gwipe <NUM> <NUM> where both number are the same is a line delete.
+          UNLIKE .cmail or .csent, you will NOT be asked to verify the    
+          wipe. 
+          
+Example:
+   To wipe all messages from the board, type            : .gwipe all
+   To clear the first line type                         : .gwipe          
+   To clear line 10 from the board, type                : .gwipe 10        
+   To clear all lines from the beginning to line 5, type: .gwipe to 5        
+   To clear all lines from line 8 to the end, type      : .gwipe from 8      
+   To clear all lines from line 8 to line 10, type      : .gwipe from 8 to 10
+   To clear all lines except line 4, type               : .gwipe except 4     
+   To clear all lines except line 4 through 9, type     : .gwipe except 4 to 9
+
+See also: wipe, gripe, swipe, wwipe

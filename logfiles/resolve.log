@@ -1,0 +1,14 @@
+Fri Apr  9 01:08:27: CLIPON: Ready to answer queries with nameserver 206.13.29.12 of 2
+Fri Apr  9 01:08:27: CLIPON: Ready to answer queries with nameserver2 206.13.30.12 of 2
+Fri Apr  9 01:08:27: TALKER: Read from clip-on: "Server Connect:"
+Fri Apr  9 01:08:27: TALKER: Resolver clipon running
+Fri Apr  9 01:08:38: TALKER: send_resolver_request: Send to server "A 0 67.161.149.109 *"
+Fri Apr  9 01:08:38: CLIPON: Starting query for ip 67.161.149.109 user 0 nameserver 206.13.29.12
+Fri Apr  9 01:08:39: CLIPON: RESULT: Wrote results "0 67.161.149.109 c-67-161-149-109.client.comcast.net " from fd 7 to talker (total time 1 secs)
+Fri Apr  9 01:08:39: TALKER: Copied c-67-161-149-109.client.comcast.net to user 0 
+Fri Apr  9 01:12:11: TALKER: send_resolver_request: Send to server "A 1 69.105.17.234 *"
+Fri Apr  9 01:12:11: CLIPON: Starting query for ip 69.105.17.234 user 1 nameserver 206.13.29.12
+Fri Apr  9 01:12:11: CLIPON: RESULT: Wrote results "1 69.105.17.234 adsl-69-105-17-234.dsl.irvnca.pacbell.net " from fd 7 to talker (total time 0 secs)
+Fri Apr  9 01:12:11: TALKER: Copied adsl-69-105-17-234.dsl.irvnca.pacbell.net to user 1 
+Fri Apr  9 01:14:12: TALKER: Killing resolver clip-on
+Fri Apr  9 01:14:12: CLIPON: Got sigterm!

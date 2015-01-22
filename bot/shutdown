@@ -1,0 +1,21 @@
+#!/bin/sh
+# by Cygnus
+# ncohafmuta@asteroid-b612.org
+#
+SIG=$1
+BINARY="storybot"
+
+if test -f "./$BINARY.pid"
+then
+echo "Shutting down storybot.."
+
+if test "$SIG" = ""
+then
+	kill -TERM `cat $BINARY.pid`
+else
+	kill -$SIG `cat $BINARY.pid`
+fi
+echo "storybot is off."
+else
+	echo "Cant find $BINARY.pid file! Is storybot really running to begin with?"
+fi

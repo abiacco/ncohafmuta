@@ -1,0 +1,40 @@
+Fri Apr  9 01:08:24: INIT: Initialized room front_gate (0)
+Fri Apr  9 01:08:24: INIT: Initialized room newbie_heaven (1)
+Fri Apr  9 01:08:24: INIT: Initialized room meadow (2)
+Fri Apr  9 01:08:24: INIT: Initialized room beachhouse (3)
+Fri Apr  9 01:08:24: INIT: Initialized room arena (4)
+Fri Apr  9 01:08:24: INIT: web_opts[0]: "index.html"
+Fri Apr  9 01:08:24: INIT: web_opts[1]: "mimetype.cfg"
+Fri Apr  9 01:08:24: INIT: web_opts[2]: "header.html"
+Fri Apr  9 01:08:24: INIT: web_opts[3]: "footer.html"
+Fri Apr  9 01:08:24: INIT: web_opts[4]: "black"
+Fri Apr  9 01:08:24: INIT: web_opts[5]: "#FF0000"
+Fri Apr  9 01:08:24: INIT: web_opts[6]: "#ffff00"
+Fri Apr  9 01:08:24: INIT: web_opts[7]: "#238E23"
+Fri Apr  9 01:08:24: INIT: web_opts[8]: "#FF0000"
+Fri Apr  9 01:08:24: INIT: web_opts[9]: "#FF0000"
+Fri Apr  9 01:08:24: INIT: web_opts[10]: "#ffff00"
+Fri Apr  9 01:08:24: SYSTEM: 0 old messages deleted from boards
+Fri Apr  9 01:08:24: SYSTEM: 0 old messages deleted from wiz board
+Fri Apr  9 01:08:27: Resolver clipon running
+Fri Apr  9 01:12:19: CREATE: NEW USER created - test
+Fri Apr  9 01:13:22: AUTO-NUKE of Test
+Fri Apr  9 01:14:12: Killing resolver clip-on
+Mon Apr 12 18:28:17: INIT: Initialized room front_gate (0)
+Mon Apr 12 18:28:17: INIT: Initialized room newbie_heaven (1)
+Mon Apr 12 18:28:17: INIT: Initialized room meadow (2)
+Mon Apr 12 18:28:17: INIT: Initialized room beachhouse (3)
+Mon Apr 12 18:28:17: INIT: Initialized room arena (4)
+Mon Apr 12 18:28:17: INIT: web_opts[0]: "index.html"
+Mon Apr 12 18:28:17: INIT: web_opts[1]: "mimetype.cfg"
+Mon Apr 12 18:28:17: INIT: web_opts[2]: "header.html"
+Mon Apr 12 18:28:17: INIT: web_opts[3]: "footer.html"
+Mon Apr 12 18:28:17: INIT: web_opts[4]: "black"
+Mon Apr 12 18:28:17: INIT: web_opts[5]: "#FF0000"
+Mon Apr 12 18:28:17: INIT: web_opts[6]: "#ffff00"
+Mon Apr 12 18:28:17: INIT: web_opts[7]: "#238E23"
+Mon Apr 12 18:28:17: INIT: web_opts[8]: "#FF0000"
+Mon Apr 12 18:28:17: INIT: web_opts[9]: "#FF0000"
+Mon Apr 12 18:28:17: INIT: web_opts[10]: "#ffff00"
+Mon Apr 12 18:28:18: SYSTEM: 0 old messages deleted from boards
+Mon Apr 12 18:28:18: SYSTEM: 0 old messages deleted from wiz board

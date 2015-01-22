@@ -1,0 +1,6 @@
+ Syntax:  .friends
+     
+Results:  Tells you which of your friends (people in your .alert list)
+          are currently on the board.
+
+See also: swho, with, look, who

@@ -1,0 +1,10 @@
+ Syntax:  .greet <text>
+
+Results:  Displays up to 10 alphabetic characters in banner format.  
+          <text> is the string you want to have displayed.
+
+   Note:  Spaces, numbers, and non-alphabetic characters will not
+          be displayed by the .greet command.  Also, continued
+          usage of the .greet command can be annoying to other
+          users, so please use this command in moderation.
+          (Thanks! *smile*)

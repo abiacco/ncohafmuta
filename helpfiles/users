@@ -1,0 +1,13 @@
+Syntax :  .users [<search string>|-n]
+
+Results:  .users will display a list of all current users if no search 
+          string is supplied.  If a search string is supplied, all names 
+          with the search string in it will be displayed. If the search string supplied
+	  is the option "-n", then the command will just return the number of users
+	  counted, instead of printing out the items themselves.
+
+External Influences:
+          This command reads all of the users in the USERDIR directory.
+          Only current users are in this directory.
+
+Example:  To see a listing of users containing "jo", type:  .users jo

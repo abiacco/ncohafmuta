@@ -1,0 +1,28 @@
+As of 03/17/2002, versions are labeled as:
+ <major version>.<minor version>.<patch version>
+
+So in 1.3.0, 
+1 is the MAJOR version, 3 is the MINOR version, 0 is the STEP version
+
+Stable versions have EVEN minor version numbers, i.e. 1.2.3, 1.4.0
+Development versions have ODD minor version numbers, i.e. 1.3.0, 1.5.1
+
+Stable step versions (e.g. 1.2.3, 1.2.4, etc..) will only be released with 
+critical fixes..security fixes, crash fixes.
+
+Development step version (e.g. 1.3.1, 1.3.2, etc..) can contain anything.
+
+
+So development of versions might go in an order such as this..
+
+1.2.3 (stable version, patch level 3)
+1.2.4 (stable version, patch level 4)
+1.3.0 (devel of a new version)
+1.3.1 (devel version)
+1.3.2 (devel version)
+1.4.0 (stable version, new)
+
+
+-Cygnus
+ncohafmuta@asteroid-b612.org
+

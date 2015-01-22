@@ -1,0 +1,278 @@
+===============================================================
+Here is the latest output from my NZ DNS tree walk program.
+
+"Mail" means you can get mail to the address.
+"IP"   means they have a full IP link.
+"  "   means the name is registered but they may not have a link yet.
+
+Remember the heuristic used to determine "Mail" or "IP" sometimes gets it
+wrong.
+
+cheers
+mark
+
+twp.ac.nz.              The Waikato Polytechnic, Hamilton
+ipc.ac.nz.      Mail    International Pacific College, Palmerston North
+usp.ac.nz.      Mail    Obsolete, use usp.ac.fj
+ait.ac.nz.      Mail    Auckland Institute of Technology
+sh.ac.nz.       Mail
+apiu.ac.nz.     Mail    Asia Pacific International University, Auckland
+manawatu.ac.nz. Mail    Manawatu Polytechnic
+nzvcc.ac.nz.    Mail    NZ Vice Chancellors Committee
+bcnz.ac.nz.     Mail    The Bible College of New Zealand
+auckland.ac.nz. IP
+aukuni.ac.nz.   IP
+canterbury.ac.nz.       IP      University of Canterbury, Christchurch.
+chchp.ac.nz.    IP      Christchurch Polytechnic,Christchurch, New Zealand.
+chmeds.ac.nz.   IP
+cit.ac.nz.      IP
+lincoln.ac.nz.  IP
+manukau.ac.nz.  IP
+massey.ac.nz.   IP
+nzonline.ac.nz. IP      New Zealand On-LineChristchurch, New Zealand.
+otago.ac.nz.    IP
+taranaki.ac.nz. IP
+topnz.ac.nz.    IP      The Open Polytechic of NZ, Lower Hutt
+vuw.ac.nz.      IP      Victoria University of Wellington
+waiariki.ac.nz. IP
+waikato.ac.nz.  IP      University of Waikato, Hamilton
+wnmeds.ac.nz.   IP      Wellington School of Medicine
+wnp.ac.nz.      IP      Wellington Polytechnic
+decus.co.nz.    Mail    Obsolete, replaced by decus.org.nz
+trimble.co.nz.          Trimble Navigation New Zealand, Christchurch
+nd.co.nz.       Mail    Network Dynamics Ltd., Christchurch.
+lobb.co.nz.     Mail    Brenda Lobb, Auckland
+digitech.co.nz. Mail    DigiTech Ltd, Wellington
+fib.co.nz.      Mail    Fishing Industry Board, Wellington
+datamark.co.nz. Mail    Datamark, Wellington
+fcnz.co.nz.     Mail    Forestry Corporation of New Zealand Ltd
+electxt.co.nz.  Mail    Electronic Text Ltd, Wellington
+electricorpm.co.nz.     Mail    Electricorp Marketing, Wellington
+csl.co.nz.      Mail    Creative Solutions Ltd, Wellington
+pddl.co.nz.     Mail    Phillips Development Lab, Naenae
+gsees.co.nz.    Mail    Groundsearch EES Ltd
+taylor.co.nz.   Mail    Grant Taylor
+csfbnz.co.nz.   Mail    CS First Boston, Wellington
+awa.co.nz.      Mail    AWA New Zealand Limited, Wellington
+eltext.co.nz.   Mail    Electronic Document Management Ltd, Wellington
+methanex.co.nz. Mail    Methanex New Zealand, New Plymouth
+ctl.co.nz.              No longer valid.
+technz.co.nz.   Mail    Tech Pacific, Auckland
+fivegl.co.nz.   Mail
+inmap.co.nz.    Mail    Integrated Mapping, Christchurch
+sss.co.nz.      Mail
+sequel.co.nz.   Mail    Sequel Software, Wellington
+tracks.co.nz.   Mail    Transportation & Traffic Systems, ChCh
+eymsl.co.nz.    Mail
+gcs.co.nz.      Mail    GCS, Wellington
+inform.co.nz.   Mail    Inform Group Ltd, Wellington
+icl.co.nz.      Mail    ICL, Wellington
+goughs.co.nz.   Mail    Gough Technology Ltd, Christchurch
+idg.co.nz.      Mail    PC World Magazine, IDG Communications Ltd, Auckland
+pec.co.nz.      Mail    Production Engineering Ltd, Marton
+synet.co.nz.    Mail    Synet Communications, Auckland
+bcl.co.nz.      Mail    Business Computers Ltd, Wellington
+ntl.co.nz.      Mail    New Technologies Ltd, Wellington
+comtex.co.nz.   Mail    Comtex Group Ltd, Wellington
+pagoda.co.nz.   Mail    Pagoda Computing Ltd, Auckland
+bcs.co.nz.      Mail    Dave Brooks, Auckland
+classified.co.nz.       Mail    Classified Computers Ltd, Auckland
+datasure.co.nz. Mail    DataSure Management Systems Ltd
+alm.co.nz.              Allied Liquor Merchants, Auckland
+microlink.co.nz.        Mail
+tcnz.co.nz.     Mail    Thomas Cook Ltd., Auckland
+econz.co.nz.    Mail    ECONZ (1971) Limited, Parnell, Auckland
+peterson.co.nz. Mail    Peterson Chemicals Ltd, Wellington
+optimation.co.nz.       Mail    Optimation Consulting, Wellington
+unisys.co.nz.   Mail    Unisys, Wellington
+telecom.co.nz.  Mail    Telecom Corporation of New Zealand, Wellington
+sequent.co.nz.  Mail    Sequent Computers
+united.co.nz.   Mail    The Cure Holdings Ltd., Auckland
+nzfc.co.nz.             no longer used
+dowty.co.nz.    Mail    Dowty Communications
+kinforest.co.nz.        Mail    NZFP Forests, Tokoroa
+quorum.co.nz.   Mail    Quorum Computing Limited, Wellington
+trilogy.co.nz.  Mail    CCL Business Systems
+nzdairy.co.nz.          registered
+planet.co.nz.   Mail    Planet Community, Environmental and Ecological Business
+ Networking, Wellington and Auckland
+sullivan.co.nz. Mail    Capital Research, Wellington
+dmnz.co.nz.     Mail    Datamatic Networks Ltd
+acorn.co.nz.    Mail    Acorn Computers
+dialogic.co.nz. Mail    Dialogic Corporation
+fcp.co.nz.      Mail    Fletcher Challenge Petroleum, Wellington
+legal.co.nz.    Mail    Grant Taylor, Hamilton
+datacom.co.nz.  Mail    Datacom, Auckland
+nbnz.co.nz.     Mail    National Bank of NZ, Wellington
+casecom.co.nz.  Mail    Dowty Communications
+jj.co.nz.       Mail    JJ Consulting, Auckland
+transdata.co.nz.        Mail    Transdata Corporation Ltd, Auckland
+manasys.co.nz.  Mail    Mana Systems Ltd
+opentech.co.nz. Mail    Open Technology Ltd, Wellington
+rmmb.co.nz.     Mail    Russell McVeagh McKenzie Bartleet & Co
+tge.co.nz.              The Great Escape Company, Auckland
+opix.co.nz.     Mail    Fox Faase Baddock Limited, Auckland
+synfuel.co.nz.  Mail    Methanex New Zealand (obsolete addr), New Plymouth
+fujitsu.co.nz.  Mail    Fujitsu NZ Ltd, Wellington
+geco.co.nz.     Mail
+pilkington.co.nz.               Pilkington Automotive Division
+synergy.co.nz.  Mail    Synergy Information Consultants, Wellington
+mdis.co.nz.     Mail    McDonnell Douglas Information Systems, Wellington
+mentor.co.nz.   Mail
+cap-power.co.nz.        IP      Capital Power, Wellington
+citipower.co.nz.        IP      CitiPower, Nelson
+clearfield.co.nz.       IP
+eynz.co.nz.     IP      Ernst & Young New Zealand
+fp.co.nz.       IP      Fisher and Paykel, Auckland
+gp.co.nz.       IP      GP Print, Wellington
+hindin.co.nz.   IP      Hindin Communications,Christchurch, New Zealand.
+isis.co.nz.     IP
+netway.co.nz.   IP
+southpower.co.nz.       IP      Southpower, Christchurch, New Zealand.
+wcs.co.nz.      IP
+waik-lr.cri.nz. Mail    Landcare Research, Hamilton
+aokautere.cri.nz.       IP
+chch.cri.nz.    IP
+eco.cri.nz.     IP
+fri.cri.nz.     IP
+gns.cri.nz.     IP
+grace.cri.nz.   IP
+greta.cri.nz.   IP
+ilam-lr.cri.nz. IP
+invermay.cri.nz.        IP
+irl.cri.nz.     IP
+kelburn.cri.nz. IP
+kyle.cri.nz.    IP
+levin.cri.nz.   IP
+lincoln.cri.nz. IP
+marc.cri.nz.    IP
+palm.cri.nz.    IP
+ruakura.cri.nz. IP
+warc.cri.nz.    IP
+wqc.cri.nz.     IP
+welcom.gen.nz.  Mail    Welcom BBS, Wellington
+cmbbs.gen.nz.   Mail
+status.gen.nz.  Mail
+horn.gen.nz.    Mail    Murray Horn, Wellington
+acme.gen.nz.    Mail
+bowler.gen.nz.  Mail    Lesley Bowler, Wellington
+welly.gen.nz.   Mail    Wellington BBS Group, Wellington
+delphi.gen.nz.  Mail
+amigans.gen.nz. Mail    Wanganui Public Access Usenet
+rden.gen.nz.    Mail
+gesoft.gen.nz.  Mail
+crfm.gen.nz.    Mail    Private UNIX Site, Auckland
+mercury.gen.nz. Mail
+manawatu.gen.nz.                Manawatu BBS Group, Palmerston North
+sequent.gen.nz. Mail
+kurahaupo.gen.nz.       Mail
+kiwi.gen.nz.    Mail    Private UNIX Site, Auckland
+abstract.gen.nz.        Mail    Abstract BBS, Auckland
+kcbbs.gen.nz.   Mail    Kappa Crucis BBS, Auckland
+iq.gen.nz.              David Watterson, Senior VMS Engineer, Auckland
+avril.gen.nz.   Mail
+tawh.gen.nz.    Mail
+nacjack.gen.nz. Mail
+ahuriri.gen.nz. Mail    Ahuriri Systems, Christchurch
+nui-wgtn.gen.nz.        Mail    Netware Users International, Wellington
+owdjim.gen.nz.  Mail    Chris Mackerel, Wellington
+actrix.gen.nz.  IP
+bedroom.gen.nz. IP
+equinox.gen.nz. IP      Equinox Networks,Christchurch, New Zealand.
+mcbbs.gen.nz.   IP      Mirth Control BBS,Christchurch, New Zealand.
+pmail.gen.nz.   IP
+uniforum.gen.nz.        IP      Uniforum NZ show net
+zl2tnm.gen.nz.  IP      Don Stokes, Wellington
+crc.govt.nz.    Mail
+src.govt.nz.    Mail
+natlib.govt.nz. Mail    National Library of New Zealand, Wellington
+nmrc.govt.nz.   Mail
+minhousing.govt.nz.     Mail    Ministry of Housing, Wellington
+wcrc.govt.nz.   Mail
+tourism.govt.nz.                New Zealand Tourism Board, WellingtonNow
+ defunct: contact mark@comp.vuw.ac.nz for details
+nrc.govt.nz.    Mail
+mwrc.govt.nz.   Mail
+manukau.govt.nz.        Mail    Manukau City Council
+wrc.govt.nz.    Mail
+waipadc.govt.nz.        Mail    Waipa District Council
+wdc.govt.nz.    Mail    Whangerei District Council, Whangerei
+ec.govt.nz.     Mail    Electricity Corporation of New Zealand
+fndc.govt.nz.   Mail
+treasury.govt.nz.       Mail    NZ Treasury, Wellington
+stats.govt.nz.  Mail    Department of Statistics, Wellington
+maf.govt.nz.    Mail    Ministry of Agriculture and Fisheries, Wellington
+rsnz.govt.nz.   Mail    Royal Society of NZ, Wellington
+trc.govt.nz.    Mail
+dosli.govt.nz.  Mail    Department of Survey and Land Information, Wellington
+pncc.govt.nz.   Mail    Palmerston North City Council
+hbrc.govt.nz.   Mail
+mafqual.govt.nz.        Mail    MAFQual, Wellington
+orc.govt.nz.    Mail
+arc.govt.nz.    Mail
+met.govt.nz.    Mail
+rbnz.govt.nz.   Mail    Reserve Bank of New Zealand, Wellington
+poli.govt.nz.           Parliament, Wellington
+MoRST.govt.nz.  IP
+boprc.govt.nz.  IP      Bay of Plenty Regional Council
+ccc.govt.nz.    IP      Christchurch City Council,Christchurch, New Zealand.
+chhlth.govt.nz. IP      Canterbury Area Health Board, Christchurch
+dcc.govt.nz.    IP      Dunedin City Council
+dia.govt.nz.    IP      Department of Internal Affairs, Wellington
+dsir.govt.nz.   IP
+mafcent.govt.nz.        IP
+minedu.govt.nz. IP
+moc.govt.nz.    IP      Ministry of Commerce, Wellington
+mof.govt.nz.    IP
+wairc.govt.nz.  IP      Waikato Regional Council, Hamilton
+wcc.govt.nz.    IP      Wellington City Council
+navy.mil.nz.    Mail    Royal New Zealand Navy, Wellington
+NewZnet.net.nz. Mail    NewZnet Support Group, Wellington
+wronz.org.nz.   Mail
+usis.org.nz.    Mail    US Information Service, US Embassy, Wellington
+nzmc.org.nz.    Mail    New Zealand Microcomputer Club Inc, Auckland
+occ.org.nz.     Mail    Office for the Commission for Children, Wellington
+nzcs.org.nz.    Mail    NZ Computer Society, Wellington
+branz.org.nz.   Mail
+aklobs.org.nz.  Mail    Auckland Observatory
+decus.org.nz.   IP
+iac.org.nz.     IP      International Antarctic CentreChristchurch, New Zealand.
+nzdri.org.nz.   IP
+pharos.co.nz            Pharos Systems Ltd, Auckland
+nzier.org.nz            N.Z. Institute of Economic Research, Wellington
+nzic.co.nz              New Zealand Immigration Consultants, Auckland
+adishq.co.nz            Adis International Limited, Auckland
+stargate.gen.nz         Stargate Public Access System, Wellington
+nzqa.govt.nz            NZ Qualifications Authority, Wellington
+
+======================================================
+Christchurch Nodes of
+FidoNet   (23/10/93)
+=======
+Abacab                 3:770/160
+Cashmere High School   3:770/240
+EcoLink                3:770/130
+Enterprise IV - TNG    3:770/190
+FaXination             3:770/205
+Infinity               3:770/225
+Julie's BBS            3:770/195
+Last Byte BBS          3:770/220
+Mirth Control          3:770/140   (Hub)
+Modems Not Included    3:770/175
+Never Never Lande      3:770/155
+Night Eye              3:770/215
+On Line Support        3:770/120
+Outer Limits           3:770/145
+Polyvox IV             3:770/150
+Prompt/2               3:770/135
+Quantum Leap           3:770/200
+Remote Access          3:770/115
+Searing Wet            3:770/230
+Southern Vortex        3:770/505
+Terminal Violation     3:770/210
+The Terrier            3:770/235
+Tony's                 3:770/101   (Hub)
+The Trashcan           3:770/180
+-- 
+:: Craig Shore. Phone +64 3 385-6554  (Christchurch, New Zealand.)     ::
+::   (CraigS on IRC, usually found on channel #talk)                   ::

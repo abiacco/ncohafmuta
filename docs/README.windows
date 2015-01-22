@@ -1,0 +1,52 @@
+***** WINDOWS 95/98/ME/XP/NT/2000/OS2 COMPILING INFO *****
+
+Nate reports successful compilation and running on OS/2 using the EMX
+emulator with gcc 1.2. He also reports successful running on NT using the
+OS/2 binary (as long as you compile with EMX with the -v1 switch)
+
+Cygnus Win32 GCC (http://sources.redhat.com/cygwin): (TESTED AND RECOMMENDED)
+  * Works with latest version of cygwin.
+  * In the setup program, download AT LEAST the following packages:
+    (you may skip all the rest by clicking on the package version, which
+     will change the selection to 'Skip')
+    ash, autoconf, automake, bash, binutils, byacc, bzip2, clear, cygwin, 
+    fileutils, gawk, gcc, grep, gzip, login, make, sed, sh-utils, tar, 
+    textutils, w32api
+    (or just download all of the packages in the Base and Devel categories 
+     (click on 'Default' to 'Install'))
+  * See caveats below.
+For Borland C++ v4.5 and v5.0: (NOT TESTED)
+  * Load the file into the IDE and select WIN32 Console app, static
+    libraries and turn off all compiler warnings.
+Microsoft: (NOT TESTED)
+  * Should work in the same way but it hasn't been tested.
+
+***** END OF WINDOWS COMPILING INFO *****
+
+Running on Cygwin has the following additional functional disadvantages:
+
+* MUST use SMTP option for external/forwarding email (see MAILPROG variable
+  in hdrfiles/constants.h). If you can call that a disadvantage *shrug*
+  You don't really LOSE anything. For a really nice small, free, mail 
+  server to use with ncohafmuta, download SMarTPost from: 
+  http://www.freddys-utilities.co.uk/smtp/index.php
+  and then set your MAILPROG variable to 127.0.0.1:25
+* soft-rebooting kills all talker network sockets, so does NOT work. Jazzin
+  reports though, that on WinXP it DOES work, so it may be dependent on the
+  windows platform and cygwin version.
+
+Running on a Windows OS (NOT CYGWIN - i.e. Borland, Visual C++) has the 
+following functional disadvantages:
+
+* any function using popen() does not work
+* not being able to use the backup or restore scripts
+* not being able to start or reboot with ./restart
+* not being able to shutdown with ./shutdown
+* can't use resolver_clipon
+* MUST use SMTP option for external/forwarding email (see MAILPROG variable
+  in hdrfiles/constants.h). If you can call that a disadvantage *shrug*
+  You don't really LOSE anything. For a really nice small, free, mail 
+  server to use with ncohafmuta, download SMarTPost from: 
+  http://www.freddys-utilities.co.uk/smtp/index.php
+  and then set your MAILPROG variable to 127.0.0.1:25
+

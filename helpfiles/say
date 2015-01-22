@@ -1,0 +1,10 @@
+ Syntax:  .say <text>  
+
+Results:  This is the same thing as just typing text. Where <text> is what is 
+          to be seen.  Selective hilites can also be done by using the ^
+          character.
+
+Example:  .say I ^love^ PinWHeeLs!  comes out with the word "love"
+          hilighted
+          .say I ^love PinWHeeLs!  come out with "love PinWHeeLs!"
+          hilighted  

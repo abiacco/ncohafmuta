@@ -1,0 +1,41 @@
+value main_port 5000
+value who_port 5001
+value wiz_port 5050
+value www_port 5030
+value prinum 2
+value profile_lines 10
+value trim_backup_days 3
+value backup_logs 1 (0 for off/no, 1 for on/yes?)
+
+string root_id cygnus
+string system_email pw@ncohafmuta.com
+string def_desc -- a new citizin
+
+room NAME cavern_of_light OWNER cygnus DESC cavern_of_light.txt SECURITY lockedpublic|public|private FLAGS windy hidden EXITS passageway private_pool atrium MESSBOARD readable|changeable (add/change)
+no room NAME cavern_of_light (delete)
+room NAME testroom OWNER testowner DESC testroom.txt SECURITY lockedpublic FLAGS windy hidden EXITS passageway private_pool atrium MESSBOARD changeable
+
+restrict TYPE site MATCH x.x.x.x SUBTYPE existing-users|new-users|all-users BANNER You can't login from this site COMMENT This is calysto's site..we dont want his ass on here (add/change)
+restrict TYPE user MATCH username SUBTYPE exact|partial BANNER You can't login from this site COMMENT This is calysto's site..we dont want his ass on here (add/change)
+no restrict MATCH x.x.x.x (delete)
+talker auto-adds on add/changes: DONEBY user TIME 90000000
+
+rank NAME A newbie SHORTNAME Newbie LEVEL 0 ODDS 100 (add/change)
+no rank NAME A newbie (delete)
+
+command NAME quit LEVEL 0 TYPE misc FUNCTION user_quit ABBREVIATION @ (add/change)
+command NAME emote LEVEL 1 TYPE comm FUNCTION emote ABBREVIATION ;
+no command NAME emote (delete)
+
+iglisten_flag NAME afks ID 0 (add/change)
+iglisten_flag NAME says ID 1
+not iglisten_flag NAME afks (delete)
+
+expire_exempt NAME cygnus (add)
+expire_exempt NAME jazzin
+no expire_exempt NAME cygnus (delete)
+
+log NAME debuglog PATH logfiles/debug.log (add/change)
+log NAME loginlog PATH logfiles/logins.log
+no log NAME loginlog (delete)
+

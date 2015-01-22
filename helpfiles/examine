@@ -1,0 +1,8 @@
+ Syntax:  .examine <user>
+
+Results:  Allows you to read a specified user's profile. Note that the
+          <user> field is case-INsensitive. (this means you can use
+          upper or lower case letters)
+
+See also: ustat, set_profile
+

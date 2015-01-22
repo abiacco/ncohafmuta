@@ -1,0 +1,14 @@
+ Syntax:  .listatmos
+
+ Result:  Shows the list of atmospheres for the room you are in.
+          The format is..
+           (atmos_number) <probability> : <message>
+
+          If you see an '@', this acts as a newline/carriage return for
+          multiple line atmoses. Wherever the '@' is, the talker will
+          continue to show the atmos starting on a new line.
+          The max atmospherics than can be saved per room is shown in
+          .version (currently 10).
+          Atmospherics are messages that show up in rooms at random.
+
+See also: addatmos, delatmos

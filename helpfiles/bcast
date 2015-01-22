@@ -1,0 +1,10 @@
+ Syntax:  .bcast <message>
+
+Results:  Outputs a message that can be seen by ALL users on the board.
+          <message> is the line that you want to have displayed.
+
+Example:  If you type --> .bcast Easy on the shouting, please
+          it would appear on the screen of everyone as:   
+              ***[ Easy on the shouting, please ]***
+
+See also: bbcast

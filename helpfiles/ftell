@@ -1,0 +1,8 @@
+ Syntax:  .ftell <mess>
+
+Results:  Allows you to send a tell to all the people on your .alert
+          list that are signed on. ".tell -f <mess> yields the same
+	  results.
+
+See also: tell, alert, femote, igtells
+

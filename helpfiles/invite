@@ -1,0 +1,6 @@
+ Syntax:  .invite <user>
+
+Results:  Invites another user into a private room that you are in.
+          <user> is the person that you want to invite.
+
+See also: knock

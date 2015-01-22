@@ -1,0 +1,18 @@
+ Syntax:  .sthink <user> <mess>
+	  .sthink <user,user,user> <mess>
+
+Results:  Allows you to express thoughts visibly to one or more users
+          privately. <user> is the person you are thinking to.
+
+Example:  To think "this is cool" to 'necros':
+  	  .sthink necros this cygnus is cool
+	  To think "this is cool" to 'necros' and 'rager':
+  	  .sthink necros,rager this cygnus is cool
+
+  NOTES: Spaces can be placed in between user combinations w/commas.
+          i.e. .sthink necros, rager this is cool
+               .sthink necros , rager this is cool
+          You can sthink to as many as MAX_MULTIS simultaneous people
+          Default is 10
+
+See also: think, tell, semote, igtells

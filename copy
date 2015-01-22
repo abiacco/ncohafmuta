@@ -1,0 +1,131 @@
+#!/bin/sh
+CODEPATH=~thelittleprince/www/ncohafmuta
+
+# Make options
+# dist
+# distzip
+# distZ
+#
+# distsmall
+# distsmallzip
+# distsmallZ
+#
+# distpic
+# distpiczip
+# distpicZ
+# distutils
+# distutilszip
+# distutilsZ
+# disttzinfo
+# disttzinfozip
+# disttzinfoZ
+# distbot
+# distbotzip
+# distbotZ
+
+# value for $1 is prefix version, i.e. ncoh123
+# value for $2 is version or none
+# value for $3 is path
+# possible OUTPUT values for THISTYPE from $3
+# dist-full
+# dist-minimal
+# bot
+# utils
+# pictures
+# tzinfo
+
+if [ "$1" = "" ]
+then
+echo "Usage: ./copy <version> <path from download> <type>"
+echo "Example: ./copy ncoh123 none stable/1.2.3 distZ"
+echo "Example: ./copy ncoh130 devel/1.3.0 distsmall"
+exit 0
+fi
+
+THISVER="$1";
+THISPATH="$2";
+
+if [ "$3" = "dist" ]
+then
+THISTYPE="dist-full";
+THISEXT="tar.gz";
+elif [ "$3" = "distzip" ]
+then
+THISTYPE="dist-full";
+THISEXT="zip";
+elif [ "$3" = "distZ" ]
+then
+THISTYPE="dist-full";
+THISEXT="tar.Z";
+elif [ "$3" = "distsmall" ]
+then
+THISTYPE="dist-minimal";
+THISEXT="tar.gz";
+elif [ "$3" = "distsmallzip" ]
+then
+THISTYPE="dist-minimal";
+THISEXT="zip";
+elif [ "$3" = "distsmallZ" ]
+then
+THISTYPE="dist-minimal";
+THISEXT="tar.Z";
+elif [ "$3" = "distbot" ]
+then
+THISTYPE="bot";
+THISEXT="tar.gz";
+elif [ "$3" = "distbotzip" ]
+then
+THISTYPE="bot";
+THISEXT="zip";
+elif [ "$3" = "distbotZ" ]
+then
+THISTYPE="bot";
+THISEXT="tar.Z";
+elif [ "$3" = "distpic" ]
+then
+THISTYPE="pictures";
+THISEXT="tar.gz";
+elif [ "$3" = "distpiczip" ]
+then
+THISTYPE="pictures";
+THISEXT="zip";
+elif [ "$3" = "distpicZ" ]
+then
+THISTYPE="pictures";
+THISEXT="tar.Z";
+elif [ "$3" = "distutils" ]
+then
+THISTYPE="utils";
+THISEXT="tar.gz";
+elif [ "$3" = "distutilszip" ]
+then
+THISTYPE="utils";
+THISEXT="zip";
+elif [ "$3" = "distutilsZ" ]
+then
+THISTYPE="utils";
+THISEXT="tar.Z";
+elif [ "$3" = "disttzinfo" ]
+then
+THISTYPE="tzinfo";
+THISEXT="tar.gz";
+elif [ "$3" = "disttzinfozip" ]
+then
+THISTYPE="tzinfo";
+THISEXT="zip";
+elif [ "$3" = "disttzinfoZ" ]
+then
+THISTYPE="tzinfo";
+THISEXT="tar.Z";
+else
+echo $3 is not a recognized type!
+exit 0
+fi
+
+echo -n Copying..
+
+cp /tmp/ncohafmuta/ncohafmuta-$THISTYPE.$THISEXT $CODEPATH/download/$THISPATH/$THISVER-$THISTYPE.$THISEXT
+chmod 644 $CODEPATH/download/$THISPATH/$THISVER-$THISTYPE.$THISEXT
+
+cp docs/CHANGES $CODEPATH
+echo done.

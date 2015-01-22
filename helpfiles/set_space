@@ -1,0 +1,14 @@
+ Syntax:  .set space <setting>
+
+Results:  This command allows you to set whether or not leading spaces
+          that you type in are removed and discarded, or left in as text
+          to show to others.
+          This command is a TOGGLE. Meaning, every time you type it, it
+          will either turn the option on or off.
+
+Example:  If you have this set ON and typed in "     test"  (without
+          the "'s), it might say:
+           Cygnus says "test"
+          If you have this set OFF, it might say:
+           Cygnus says "     test"
+

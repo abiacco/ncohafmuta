@@ -1,0 +1,11 @@
+ Syntax:  .echo <text>
+
+Results:  Displays a line of text on the screen.  This is displayed by
+          itself unlike an .emote or something said.  Your name is not
+          placed in front of the message. 
+ 
+   Note:  Wizards can see who echoes a message if they wish to prevent
+          abuse. Echoes cannot contain lewd words or begin with the name
+          of a person online. 
+
+See also: emote

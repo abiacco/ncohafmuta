@@ -1,0 +1,11 @@
+ Syntax:  .femote [']<action>
+ 
+Results:  Allows you to send a private emote to the people on your
+          alert list that are logged on.
+	  If you specify a ' before the action, it will become posessive
+	  ".semote -f <action>" yields the same results.
+
+Example:  To hug your friends privately, type: .femote hugs
+
+See also: tell, ftell, semote, alert
+

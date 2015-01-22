@@ -1,0 +1,10 @@
+ Syntax:  .wnote
+          .wnote <last # of messages>
+          .wnote <message>
+
+Results:  Writes a message to the wizard board. Where <message> is what
+          is written or <number> is the number of messages you want to
+          read up from the bottom. When used alone, views the wizard
+          board.
+
+See also: wiztell, write, read

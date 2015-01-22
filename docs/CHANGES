@@ -1,0 +1,2812 @@
+                      /*** Ncohafmuta 1.4.* changes ***/
+Quick need-to-do?:
+* if user .hilite==2 multi-tells with a lot of colored names in it might
+cut off the recipients (because of the input socket limit imposed)
+* need to fix web port so you don't need to put a / after the port number
+in the URL to get it to work??
+
+ 03/20/04 1.4.2
+* Fixed glitch in t_who with buffering.
+* Try to dynamically make proper width for room column in .who headers 
+  now.
+
+ 03/15/04 1.4.1
+* Fixed glitch with resetting autoforward limits at midnight, where if 
+  a user was online when the reset was done, their limit wouldn't get reset 
+  back to 0
+* Updated SMTP delivery from and to envelopes to use <> enclosers as per RFC
+* Added header file depends to Makefile.in, so make knows to recompile objects 
+  when a .h file changes (don't need to do a "make objclean" now, if you just
+  change a .h file). Also cleaned up file a bit.
+* Updated docs/smtp_handling.txt explaining SMTP error/failure/success
+  codes and command-reply sequences
+
+ 11/05/03 1.5.0 (new development version)
+* Version 1.4.0 copied to start version 1.5.0. No code release.
+
+ 11/05/03 1.4.0
+* Updated README.windows with info for getting a small, free mail server 
+  for sending/forwarding mail out from the talker.
+
+ 07/01/03 1.3.9
+* Fixed race doing queue_flush_www(), where free_sock() could be called 
+  twice on a socket, causing a segfault.
+* Added bad socket check in free_sock()
+* Updated some of the rwho listings to current IPs
+* Removed hard-coded system name from EXT_WHO3 in hdrfiles/constants.h
+* Added some comments in hdrfiles/constants.h
+
+ 06/08/03
+* Updated Cygwin documentation in docs/README.windows a bit
+* Fixed very strict 'may be undefined' warnings for comm_cmds.c, server.c, 
+  write_funcs.c, check_funcs.c (so far only seen under Cygwin)
+
+ 01/29/03 1.3.8
+* Added do_stafflist() call to startup/reboots.
+* Moved do_stafflist() for ROOT_ID creation out of init_user(), and to 
+  do_login(), as while in init_user(), the ROOT_ID's userfile is not 
+  written to disk yet, and do_stafflist() reads user levels from disk.
+* Added do_stafflist() call to .reinit
+* Removed prototype declaration for getdomainname/gethostname under 
+  Cygwin.
+
+ 12/26/02
+* Fixed bug in send_mail where sending to all users (-a) put the -a 
+  in the mailed message.
+
+ 11/22/02
+* Added WEB_FORBIDDEN and WEB_SERVER_ERROR variables to constants.h.
+  Added more file read/write failure checking in whowww_funcs.c. 
+  Added log entry for web_opt[]s when a .reinit is done.
+
+ 08/03/02 1.3.7
+* Added DO_TRACKING option to constants.h to easily set whether
+  the talker should do tracking or not.
+
+ 06/29/2002 1.3.6
+* Added login limiting. This is, ip x.x.x.x will be auto-restricted 
+  when connecting more than y tiems in 1 minute. Default is 10.
+  You can enable/disable this with LOGIN_LIMITING in constants.h
+* Moved ip address getting, to before motd. This is to facilitate ip
+  restriction and login limiting checking
+* Added additional hostname restriction checking after we get a 
+  reply from the resolver clipon, because in the login we might not
+  know the resolved hostname right away.
+* Modified check_restriction() to take an argument to check just IP 
+  or just hostname.
+* Changed resolver_clipon DNS resolution a bit. Message sent from 
+  talker to clipon now doesn't contain the SYS_LOOK_FAILED message, 
+  just a *, this is for easier parsing by the clipon and by the
+  talker on getting a reply from the clipon (since this field wont ever
+  contain spaces. The clipon now tacks a space onto the reply to the
+  talker. The talker's read_resolver_reply function now will read the 
+  reply buffer until it's empty. This is in case the clipon sends a 
+  reply with more than 1 ip/host in it, which is possible under a lot
+  of resolutions being done. Previously, more than one ip/host combo
+  in a reply would corrupt a user's host info.
+* Made configure say what files were created, and also had it create
+  a config.status file with the last successful configure command run.
+* Created new source file, set_funcs.c which contains the functions
+  from server.c dealing with the .set command
+* Began moving informational setting commands to .set. Moved .desc
+  to .set desc, .entermsg to .set entermsg, .exitmsg to .set exitmsg,
+  .succ to .set succ, .fail to .set fail, .entpro to .set profile
+  Created old_func() which will redirect the old syntaxes to the new
+  functions, while telling the user that said old syntax will be de-
+  precated soon and to use the new syntax.
+* Renamed succm() to set_succ(), failm() to set_fail(), exitm() to 
+  set_exitmsg(), enterm() to set_entermsg(), enter_pro() to 
+  set_profile().  Changed and copied helpfiles for said functions.
+
+ 06/02/2002 1.3.5
+* Fixed small glitch in send_mail where (on some systems) talker would 
+  segfault when you tried to email a non-existant user. Cause was a 
+  badly formatted log line. Only native to 1.3.4
+
+ 05/21/2002 1.3.4
+* Added multi-mails and friend mails to .smail (user,user,user and -f)
+* Updated smail helpfile.
+* Cleaned up send_mail() a little more.
+* Fixed typos and grammar errors in the tutorials.
+* Put prelim. probed terminal type under ".set show" for now.
+
+ 05/04/2002 1.3.3
+* Fixed glitch in exec_com where if users were online and the permission to 
+  write to the lastcommand file was denied when a user did a command, the 
+  talker segfaulted.
+* Added send_ext_mail() function to consolidate code and send external email
+  out. (to smtp_funcs.c). Modified auto_expire(), fmail(), send_mail(), and
+  mail_verify() to use this.
+  Added level-based/mass-mail ability to send_mail(). See .smail helpfile 
+  on use.
+  Multi-user mail to follow at some point. Cleaned up send_mail() a bit.
+* Stopped writing bad file I/O error to user if couldn't write to the last
+  logins file, when they logged in.
+* Took epass argument out of mail_verify() and write_verifile(). In my_login()
+  copied password to ustr[user].login_pass
+* Copied ustr[user].login_name to ustr[user].say_name in my_login() mail veri.
+
+ 04/16/2002 1.3.2
+* wrote helpfile for .set atmos (.h set_atmos) because there is no docs on how
+  the atmosphere cycles, countdowns, factors work.
+* put check in .set atmos for WIZ_LEVEL or above.
+* really fixed the signal warnings this time on Mac OS X, and possible other
+  OSes, by adding a check in the configure.
+* added preliminary telopt negotiation for terminal type. added user struct 
+  variables term_type and prev_term_type. Moved terms struct from main.c to
+  constants.h
+
+ 04/06/2002 1.3.1
+* wizlist is now created on-the-fly. It will get updated whenever a promote or
+  demote or .pcreate is done. added STAFF_FILE_HEADER to hdrfiles/constants.h
+  Added function do_stafflist()
+* fixed --disable-optims in configure. Now it really does turn optims off! :)
+* added --enable-gcc-debug in configure. Will use -g when gcc is present.
+* added check for Darwin (Mac OS X) systems in configure
+* added override for Mac OS X systems for NET_SIZE_T to int. configure returns
+  that it can use size_t, but cc complains about incompatible pointer type and
+  the manpages and includes say to use int. *shrug*
+* prefixed SIG_IGN and SIG_ERR with (handler_t) as Max OS X spewed warnings 
+  about them not being functions.
+* fixed misc Mac OS X compile warnings
+* changed login function to my_login and echo function to my_echo to eliminate
+  confusion with any internal C lib functions of the same name.
+* added "clipon" argument to ./shutdown script to kill the resolver clip-on
+
+ 03/26/2002 1.3.0 (new development version)
+* Added fopen check to get_length(). Changed file read method from !feof loop
+  to while fread.
+* Return bad request in parse_input() in whowww_funcs.c if get_length failed.
+* Return text/plain mimetype in get_mime_type() if filename doesn't contain 
+  a .
+* Moved check_var() function to check_funcs.c
+* Added %webport% substitution variable to hdrfiles/constants.h
+* Modified cat_to_www() to do variable substituion, and to only do it on html
+  and text files.
+* Modified default index.html to use substitution variables for the system's
+  name, host, webport.
+* Added code so that if you try to browse to a directory on the webport, it
+  will cat the index.html file from that directory (if there is one), instead
+  of show nothing
+* Replaced old javaclient with Dave Jarvis's java terminal emulator. Going to
+  the webport at http://yourhost.com:webport/connect will automatically bring
+  up a java window conencting to your talker. (it's actually the index.html
+  file from the webfiles/connect/ directory, with host and webport substi-
+  tution variables in it)
+* Updated COPYING, CREDITS, and README
+
+ 03/11/2002 1.2.3
+* Added fopen checks in some resolve_funcs.c functions that didn't have them.
+* Changed list_last to use file_count_lines() and file_skip_lines() instead of
+  popen()ing to the tail program. I should be shot for waiting so long to
+  update such a kludge!
+* Added IAC case for TELOPT_ECHO, just so it doesn't say it's unrcognized
+* Added newline before printed status after login/password prompt.
+* Added extra delete option to cmail/csent/wipe/wwipe/gwipe/swipe functions.
+  To delete between lines. i.e. to delete from line 3 to line 6 you do:
+  .cmail from 3 to 6
+* Changed/Added "delete except lines" option for cmail/csent/wipe/wwipe/gwipe
+  /swipe functions.  Originally, to delete all lines, EXCEPT x to y, you 
+  would do:
+   .cmail 3 6  (so that would delete all lines except lines 3 through 6)
+  NOW, to do the same thing, it's changed to this format:
+   .cmail except 3 to 6
+  You can also delete all lines except 1, using this:
+   .cmail except 3  (delete all lines except line 3)
+  The FORMER ".cmail 3 6" format will not still work for exceptions, it will 
+  now process it as if you were doing ".cmail 3"
+* Rearranged some configure stuff so that doing a --help does not remove your 
+  current hdrfiles/config.h file
+
+ 03/04/2002
+* Renamed datautils.c to datautil_funcs.c, signals.c to signal_funcs.c, and
+  telopts.c to telopt_funcs.c
+* Moved some more specific functions from server.c to comm_cmds.c, fileutil_
+  funcs.c, and telopt_funcs.c
+* For LONGLOGIN_WHO, setting to 0 now disables "who" at the login prompt.
+  1 now does .swho, 2 does normal .who
+
+ 02/25/2002
+* Made the login process set the ROOT_ID to the highest level on every login.
+  This is in case the admin created their character before setting themselves 
+  as the ROOT_ID.
+* Rewrote ".h new" and wrote a set of tutorials for new users, under 
+  ".h tutorial". Thanx to Jazzin for writing a couple of these.
+
+ 02/24/2002
+* Moved the helpfiles "wizguide" and "newwiz" to "staffguide" and 
+  "newstaff", respectively. Updated them to be more generic for a talker.
+  Updated lib/newsfile with the new names.
+* Updated README, README.debugging, README.quickstart, and 
+  README.init_data in docs/
+* Updated utils/no_make_compile script
+
+ 02/20/2002 1.2.3b-pl5
+* Fixed bug of talker seg-faulting when a SMTP conversation failed, after the
+  free_sock()
+* Put new check in configure script to check if mkdir takes a mode argument.
+* Made fmail strip_color from the mailfile lines before it emails them out.
+  Thanx to Jazzin for finding this.
+* Fixed "demote" helpfile because it said that you can specify the level to 
+  demote to. This is not true. Fixed wrapping lines on "help" helpfile
+* Wrote out messages to user doing grant/revoke notifying them of such.
+  Thanx to Calysto for noticing this.
+* Put in main.c and resolver_clipon.c a default umask set of 066 for -rw-------
+  permissions.
+* Made smtp conversation lines send \r\n because some cygwin implementations
+  don't like to flush lines to the remote host with just \n *boggle*
+  Thanx to Jazzin for figuring this combo out.
+* Moved .guess above .guru in the command list..assuming that .gu would be 
+  likely more used in hangman than as a shortcut for .guru
+* Changed resolver_clipon to read up to 3 nameservers from a 
+  /etc/resolv.conf file, as opposed to the previous behavior which was 
+  only 1. If a bad result is read (NOT an ip that doesn't resolve) or a 
+  resolution times out with a nameserver, the next will be tried. If it's 
+  configure that the fallback server should be the default, it will be put 
+  at the front of the nameserver list, to be tried first.
+
+ 11/29/2001 1.2.3b-pl4
+* Fixed bug of talker seg-faulting when wizport was turned off (WIZ_OFFSET set
+  to 0) and talker was soft-rebooted. Cause was an FD_ISSET check on a socket 
+  set to -1.
+* Stopped adding listening sockets to the readmask set if they are 0.
+* Fixed glitch where in get_mailqueue_file, if the first fileget try failed, 
+  the next fileget put the new file in the MAIN talker directory (bad sprintf)
+
+ 11/15/2001 1.2.3b-pl3
+* Fixed possibility of new rwho implementation using a struct slot it shouldn't
+* Fixed some typos
+* Moved socket creation out of debug check (Forgot about this when i moved 
+  stuff)
+* Added ability to use SMTP (instead of sendmail/mail) to do external email.
+  Mostly to allow external email to work on windows system, since sendmail/mail
+  isn't normally available..you can specify an mail server ip and port. MAKE 
+  SURE YOU CAN RELAY THROUGH THIS SERVER! (e.g. your isp mail server)
+  See comments for MAILPROG variable in hdrfiles/constants.h for more info.
+* Added smtp_funcs.c. Moved some alarm check_* funcs.c to check_funcs.c
+* Added --enable-smtp-debug flags to the configure program. Updated Makefile.in
+* Updated README.win95NT and renamed to README.windows
+
+ 10/28/2001 1.2.3b-pl2
+* Added EPIPE as ok to errno_ok()
+* Made resolver clipon only get suspend message when talker is set to use the
+  clipon
+* Made talker execute shutdown(sock, 2); on Cygwin systems, as close() does
+  not work. Created SHUTDOWN() function as a macro for whether to call the 
+  actual function or not.
+* In resolver_client, changed all close()s to CLOSE()
+* Changed tty detachment to do double-fork on Cygwin now, as it seems to be
+  fixed. Moved socket binding and stdin/out/err redirecting 'til after the
+  forks, as Cygwin would not bring up network the other way.
+* Changed header includes in our own resolv.h as using this on Cygwin tries
+  to include files that don't exist.
+* Changed resolver_clipon to define _res on Cygwin systems, as Cygwin does not
+  define it.
+* Change rwho implementation from fork() to select-on-socket non-blocking.
+  Uses miscconn[] structure
+
+ 09/13/2001 1.2.3b-pl1
+* In a accept() failure, do an errno check to new function errno_ok(),
+  Undocumented accept errors (such as ECONNRESET) may be non-fatal.
+* Update configure script to check for res_nmkquery in -lresolv
+* Update resolver_clipon.c for better portability
+* Make some unsigned longs just longs to satisfy a few compiler warnings.
+* Made talker REBOOT_A_CRASH now on non-signal fatals, such as select or
+  accept failures.
+* Made talker catch a SIGUSR2 signal and do a .reinit on it
+* Updated shutdown script. -c does .reinit
+
+ 08/22/2001
+* Made kill_resolver_clipon() set FROM_SERVER_READ nad FROM_SERVER_WRITE 
+  to -1, because in some screwy situation they would stay at a number and
+  then on a soft-reboot the clipon wouldn't get initalized/started.
+* Made a failed reboot remove the REBOOTFILE.
+* Added -l/listcache,-c/clearache options to the .resolve command so you
+  could look at the entries in the cache and their TTL or clear the cache,
+  from inside the talker.
+
+ 08/10/2001 1.2.3b
+* Added configure script to try and figure out what things we need to
+  compile with for OSes, what includes and functions it has, etc..
+  settings will be put in hdrfiles/config.h. Added a Makefile.in file 
+  which configure will use to create the Makefile.
+  Run "./configure --help" for a list of options you can pass to it.
+  Then run configure with the options you want (if any)
+  YOU MUST RUN CONFIGURE TO GET A Makefile TO COMPILE THE TALKER
+  Added an includes.h file to hdrfiles and now all C files include it 
+  and config.h
+* In a accept() failure, moved the FD_CLR() macro to inside the errno 
+  check statement..if we don't then it might modify errno and 
+  write_log() will contain innacurate info as to the reason for the 
+  accept failure
+* Fixed a glitch in the resolver clipon where a query that failed to 
+  start would return the result for a different slot than the one we
+  want. Rare to hit if the clipon is querying a valid DNS server, but
+  still possible.
+* Added our own snprintf function for systems that dont have it. SunOS
+  to name one. Added our own ctime() function for systems that like to
+  return corrupted time strings. OpenBSD to name one.
+
+ 07/16/2001 1.2.3a-pl1
+* Added additional code to check libc compatability for what we should
+  use for socket length, socklen_t or int. Defined a type, NET_SIZE_T,
+  which we set to whatever one we deem correct (or hope is correct).
+
+ 04/14/2001
+* Added a "help" keyword option to the login prompt. When entered at a
+  login prompt, the user will be presented with help on how to login
+  to the system, or create an account. Said text file path is defined in
+  LOGINFILE in hdrfiles/constants.h and defaults to lib/loginhelp
+
+ 04/10/2001 1.2.3a
+* Added a TTL field to the DNS cache entries. If you're upgrading from a
+  previous version, you MUST remove your cache file (lib/sitecash) first, 
+  so they'll use the TTL field right from the get-go. Added MAX_DNS_TTL 
+  #define to constants.h (TTL explained briefly here) and new 
+  del_from_resolver_cache() function.
+* Added some filename fopen() checks in resolver_funcs.c
+* Fixed a glitch in the resolver clip-on code which failed to retrieve
+  a valid resolution if a CNAME/A/UNKNOWN record was found before the 
+  resolution.
+
+ 01/24/2001 1.2.3draft-14
+* On shutdown/reboots, kill_resolver_clipon() was executing the kill
+  without checking what the value of resolver_clipon_pid was.
+  This is critical, because if the resolver wasn't turned on, the pid
+  would be set to -1, and kill() would execute on -1, which has the effect
+  of SIGTERMing every process the user owns, including shells, and
+  possibly other talkers the user has running. Fixed.
+* Added BIND_INTER #define to constants.h. This lets you bind to a
+  specific interface on a server with multiple interfaces. See constants.h
+  for info on use.
+
+ 01/09/2001 1.2.3draft-13
+* When grants/revokes were read in, any lines <= 3 characters were
+  disregarded as bad, but granting/revoking a single char command id, like
+  .quit (0) IS only 3 chars (0 -) so we make the check just < 3 now, to
+  fix this in read_user() and read_to_user().
+
+ 12/26/2000 1.2.3draft-12
+* Removed code from shutdown functions that tries to remove .pid file.
+  sysud() already does this for us.
+* Added write_log() of bad fopen(),opendir() to check_mess() and 
+  check_total_users(). Added also to abbrcount() and many other functions
+  that may exit() on startup and not leave a note of their failure. If
+  these failed on reboot for some strange reason, we would never see the
+  perror() because stderr is closed.
+* Put additional checks in shutdown functions' reboot code when trying to
+  dup() /dev/null and /dev/tty
+* Did a strip_color on the say_name in suname() notice message.
+* On soft-reboots, made talker ignore SIGALRM until new binary is started
+  If reboot took a long time, SIGALRM would interupt the reboot and muck
+  everything all up.
+* Made the RWHO: log entry log user who did the rwho and host:port tried
+  to retrieve
+
+ 12/05/2000 1.2.3draft-11
+* Added code to have talker let resolver clip-on know when we're soft-
+rebooting so clip-on doesn't exit if it catches a SIGPIPE (when it tries 
+to checkpoint with the talker and fails..thereby killing us all)
+
+ 12/04/2000
+* Added code to close user sockets before execing resolver clip-on in
+resolver_client.c. This fixes the condition of a user socket hanging on
+.quit if the clip-on was re-initialzed while they were online.
+* Added check_sockets() function to check status of sockets after reboot.
+This is to make sure they are still there and available, so select()
+doesn't die while reading a bad descriptor.
+
+ 12/02/2000
+* creply was writing the sender's message out to the receiver's tell buffer.
+  Fixed.
+
+ 12/01/2000
+* Found formatting glitch in resolver clip-on. Fixed.
+ 
+ 11/30/2000
+* If user inputed a seach string to .who, the string would not match names
+  with colors codes in them. Strip-colored the who lines before searching.
+* Added logging of pid with some log entries
+
+ 11/29/2000 1.2.3draft-10
+* Removed double at-sign stuff from code.
+  gender,desc,fail,succ,exitm,enterm,afkmsg,user_quit,constants.h comm
+  formats,www menu user changing. Added check to get_buf() to strip any
+  existing ones when userfiles are read in.
+
+ 11/27/2000
+* Removed the green color wrapper from MAILFROM_USER in constants.h
+  because colornames in there will be fine.
+* in bot_whoinfo() lowered the inpstr to compare it against .name instead
+  of strip_color()ing the say_name.
+* took off-the-wall check out of set_recap() that prevented sane checking
+  for an odd number of color carets.
+* dont strip_color() the bot log now
+
+ 11/22/2000 1.2.3draft-9
+* Seperated more code into smaller C files
+
+ 11/15/2000
+* Changed last_u() (.last) to check if person is invis and if doing
+  user has authority to see if they're online..before sending out
+  when they were last online/if they're online.
+
+ C files CHANGED: server.c
+
+ 11/10/2000
+* Changed PARSE_END_PUNC options/functionality a tad. Setting to 0 will
+return a blank reaction, for people that dont want the reaction in their
+comm string formatting at all. 1 will return the default SAY_REACTION for
+everything, and 2 will do the parsing and return the proper emotional
+_REACTION. Changed prototype and some code for get_reaction.
+
+ protos.h CHANGES:
+ Changed
+  char *get_reaction(char punc);
+	to
+  char *get_reaction(char *inpstr);
+
+ C files CHANGED: server.c comm_cmds.c get_funcs.c
+
+ 11/03/2000
+* Starting to break code into more, smaller C files to decrease compile
+times and organize better, into categories. Will go into details and
+files that have changed when finished.
+
+ 10/27/2000
+* in ttt_new_game() if player was ignoring NERFS, it would say you
+couldn't play because user was ignoring tic-tac-toes. should checks TTTs,
+not NERFSs. Fixed
+
+ C files CHANGED: server.c
+
+ 10/26/2000 1.2.3draft-8
+* Re-wrote bot to use select()/read() instead of ioctl()/read().
+Initialized more signals, signal handling, prototypes for functions.
+Created a write_log() function like the talker's
+* Added a "+++++ WELCOME" message to server.c, to be sent to the bot on
+log-in.
+* Added a shutdown script to the bot directory. Modified compile script.
+* Modified Makefile to make all directories in a "make dist" with
+permissions of mode 700
+
+ C files CHANGED: server.c bot/storybot.c
+
+ 10/25/2000
+* Added own strptime() function called my_strptime() since not all OSes
+have a strptime().
+* The bot's lastcommand wasn't going to the lastcommand file in the log
+directory, but the main directory. Fixed.
+* The talker wasn't sending the bot any further plus-messages after a
+soft-reboot. Failed to read his user number into the bot variable. Fixed.
+
+ protos.h CHANGES:
+ Added
+  char *my_strptime(char *buf, char *fmt, struct tm *tmStruct);
+
+ C files CHANGED: server.c strfuncs.c
+
+ 10/19/2000 1.2.3draft-7
+* Fixed Makefile so it would recognize changes to C files and recompile
+them. It wasn't doing this as of draft-6
+* Fixed the cutoff of messages in write_str() when cols were set < 256. We
+forgot to reget the strlen() of the string AFTER color codes were put in.
+* Made read_rebootdb malloc the macro and conv buffers for the read in 
+users. read_to_user() would crash the talker on soft-reboot otherwise.
+* Fixed writeall_str to clear out the str2 variable in the user loop.
+str2 used to be set once, but we changed it and put it in the user loop,
+but forgot to clear it out every time..as of draft-5
+* Added code for the "NEW" '.set who' type. I was bored. We'll see how
+people like it. Added functions time_format_1() and time_format_2() to
+strfuncs.c
+
+ protos.h CHANGES:
+ Added
+  char *time_format_1(time_t dt);
+  char *time_format_2(time_t dt);
+
+ C files CHANGED: server.c strfuncs.c
+
+ 10/16/2000 1.2.3draft-6
+* Moved source (.c) files to new directory srcfiles/
+* Moved header (.h) files to new directory hdrfiles/
+* Changed objs/ directory to objfiles/
+* Changed Makefiles to take in account new locations of source files
+* Changes source files #include statements to take in account new
+locations of header files
+* Put macros in protos.h to try and use sys_errlist on systems that don't
+have strerror()
+* Removed calls to 'ad' and 'cd' variables of a DNS HEADER structure. They are not present in all
+BIND/DNS server versions. It's futile for us to check version numbers, since these variables really
+aren't needed by us.
+* Updated documentation in docs/
+
+ protos.h CHANGES:
+ Added
+#if defined(_WIN32) && !defined(__CYGWIN32__)
+/* nothing */
+#else
+#if !defined(_LP64)
+#if (defined(sun) && !defined(SVR4)) || defined(macII)
+#if !defined(strerror)
+extern char *sys_errlist[];
+extern int sys_nerr;
+#define strerror(n) \
+    (((n) >= 0 && (n) < sys_nerr) ? sys_errlist[n] : "unknown error")
+#endif /* no strerror defined */
+#endif /* not SYSV or mac */
+#endif /* not _LP64 */
+#endif /* not windows */
+
+ C files CHANGED: all
+
+ 10/10/2000 1.2.3draft-5
+* Added timestamp to writing of bot last command
+* Changed set_recap to take color codes in recaps. Expanded say_name user
+structure to length of SAYNAME_LEN, which is defaulted to 150. You
+shouldn't need to change this. extended mutter user structure to length of
+SAYNAME_LEN too.
+* Add ".ignore colornames" functionality
+* Modified comm. functions say() say_to_user(), to parse ending
+puncutation of inpstr if PARSE_END_PUNC is defined as >= 1. i.e. ? at end
+will put "<user> asks". reaction is gotten with new function
+get_reaction(). Added to constants.h
+#defines PARSE_END_PUNC, SAY_REACTION, QUESTION_REACTION,
+EXCLAMATION_REACTION.
+* Added #defines VIS_SHEMOTE,VIS_SHEMOTE_P,INVIS_SHEMOTE, and
+INVIS_SHEMOTE_P for .shemote formatting
+* Now send non-colored names to bot, except for +++++ logon: and _who
+Changed bot code to pick these up, and also to use its internal user list
+more, rather than the names passed to it in the inbuf.
+* Fixed a bug in .pcreate that would segfault the talker in
+copy_from_user (present in draft-2 and up)
+* Made log entries of fork failures report the errno.
+* Updated helpfiles for .listen, .ignore, and .set recap
+
+ protos.h CHANGES:
+ Added
+  char *get_username_from_delims(char *str, int pos);
+  char *get_reaction(char punc);
+
+ constants.h CHANGES:
+ Changed
+  #define NUM_IGN_FLAGS 24
+	to
+  #define NUM_IGN_FLAGS 25
+ In user structure:
+  char mutter[45];
+	to
+  char mutter[SAYNAME_LEN];
+  char say_name[NAME_LEN];   /* 1.1.0 */
+	to
+  char say_name[SAYNAME_LEN];   /* 1.1.0 - updated for color in 1.2.3 */
+ In comm formats:
+  #define VIS_SAYS        "%s says \"%s@@\""
+  #define INVIS_SAYS      "* %s says \"%s@@\""
+  #define VIS_DIRECTS     "%s says ^HR(to %s)^ \"%s@@\""
+  #define INVIS_DIRECTS   "* %s says ^HR(to %s)^ \"%s@@\""
+  #define VIS_DIREMOTE    "%s%s@@ ^HR(to %s)^"
+  #define INVIS_DIREMOTE  "* %s%s@@ ^HR(to %s)^"
+	to
+  #define VIS_SAYS        "%s %s \"%s@@\""
+  #define INVIS_SAYS      "* %s %s \"%s@@\""
+  #define VIS_DIRECTS     "%s %s ^HG(^to %s^HG)^ \"%s@@\""
+  #define INVIS_DIRECTS   "* %s %s ^HG(^to %s^HG)^ \"%s@@\""
+  #define VIS_DIREMOTE    "%s%s@@ ^HG(^to %s^HG)^"
+  #define INVIS_DIREMOTE  "* %s%s@@ ^HG(^to %s^HG)^"
+
+Added
+  {"colornames"},  to flag_names_type flag_names[NUM_IGN_FLAGS+1]
+  #define COLORNAME 24  /* colornames */
+  #define VIS_SHEMOTE   "& %s %s "
+  #define VIS_SHEMOTE_P "& %s\'%s "                     /* possesive */
+  #define INVIS_SHEMOTE "& %s %s "
+  #define INVIS_SHEMOTE_P       "& %s\'%s "                     /*
+   possesive */
+  #define SAYNAME_LEN   150   /* max username length with color codes   */
+  #define PARSE_END_PUNC        1
+  #define SAY_REACTION          "says"
+  #define QUESTION_REACTION     "asks"
+  #define EXCLAMATION_REACTION  "exclaims"
+
+ C files CHANGED: server.c strfuncs.c datautils.c whowww.c
+
+ 9/27/2000 1.2.3draft-4
+* Made arrest require you to be a rank greater than the user you're 
+arresting, or the ROOT_ID. Made sure gag_comm, muzzle, frog_user, and
+anchor_user operated like this too.
+* We now allow partial room names for .move
+* Now if you RE-LOGIN (not a NORMAL log off/log on, when you log into
+the talker when you're already on/hung) and you were in a private room, it
+will not reset the room back to public and it will put you back in there
+too.
+
+ C files CHANGED: server.c
+
+ 9/1/2000
+* Updated resolver_clipon.c to do DNS recursion. Also to print out more
+  query/answer debugging output.
+
+ C files CHANGED: resolver_clipon.c
+
+ 8/31/2000
+* Added some more platform checks for setpgrp and glibc socklen_t
+* We include sys/types.h before sys/socket.h now to make FreeBSD happy.
+* Removed arpa/inet.h call from resolve.c and replaced with netinet/in.h
+* Made ctime and localtime prototypes in protos.h happier for FreeBSD
+
+ protos.h CHANGES:
+ Changed
+  char *ctime();
+	to
+  char *ctime(const time_t *);
+  struct tm *localtime();
+	to
+  struct tm *localtime(const time_t *);
+
+ C files CHANGED: server.c resolve.c resolver_clipon.c
+
+ 8/21/2000 1.2.3draft-3
+* Added some prototypes for sunos/solaris
+* Added checks for function and macro existance to resolver_clipon code.
+  Code would not compile on systems that already had certain macros or
+  functions defined in the system include libs.
+* Updated README.solaris, README.quickstart, README.compiling,
+  README.utils, and README
+* Fixed number of arguments passed to S_WRITE in resolver_clipon code.
+* Added USE_FALLBACK_AS_DEFAULT define to resolver_clipon.h. If set to 1,
+  we'll use the fallback dns server instead of the local one to us.
+* Created a no_make_compile script in utils/ directory, to be able to
+  compile the code on systems that don't have 'make' installed (ick)
+
+ protos.h CHANGES:
+ Added
+  void tzset(void);
+  char *strptime(const char *buf, const char *format, struct tm *tm);
+
+ resolver_clipon.h CHANGES:
+ Added
+  #define USE_FALLBACK_AS_DEFAULT	0
+
+ C files CHANGED: resolver_clipon.c
+
+
+ 8/16/2000 1.2.3draft-2
+* Fixed a glitch in read_resolver_reply() in the way resolver clip-on
+  output was read. This caused answers from the clip-on to sporadically
+  not get parsed into the users
+* Made area conversation buffers malloc()ed structures instead of static.
+  This will save quite a bit of memory on talkers that dont have a lot of
+  rooms, since memory will only be allocated for the number of rooms
+  defined in init_data, instead of MAX_AREAS.
+* Made user Macros buffers malloc()ed structures instead of static.
+  This will save quite a bit of memory since memory will only be allocated
+  for a user when logged in.
+* Changed user Macro structure. Instead of using multiple structure
+  instances containing single arrays, we now use a single structure
+  containing multiple arrays.
+* conv_mem_get and user_mem_get now takes a mode argument to calculate
+  allocated and used memory.
+* in read_init_data() added code to cleanup rooms that are not used when a
+  .reinit is done for less rooms that were being used. i.e. if 10 rooms
+  were in use and then admin defined only 5 rooms and did .reinit, we now
+  cleanup rooms 6-10. We also kick users in previous rooms, back to main
+  room, since they no longer exist!
+* changed the email address for code tracking to tinfo@asteroid-b612.org
+
+ protos.h CHANGES:
+ Added
+  void addto_conv_buffer(ConvPtr buf, char *str);
+  void init_conv_buffer(ConvPtr buf);
+  void write_conv_buffer(int user, ConvPtr buf);
+  void init_macro_buffer(MacroPtr buf);
+ Changed
+  long conv_mem_get(void)
+	to
+  long conv_mem_get(int mode)
+  long user_mem_get(void)
+	to
+  long user_mem_get(int mode)
+
+ constants.h CHANGES:
+ Added #define macro
+	#define MY_SIZE(buf,mode) (mode==0?strlen(buf):sizeof(buf))
+ Added area conversation buffer structure
+	typedef struct
+	{
+        	int count;
+	        char conv[NUM_LINES][MAX_LINE_LEN+1];
+	} ConvBuffer;
+	typedef ConvBuffer* ConvPtr;
+ Added "ConvPtr conv;" to astr[] structure
+ Changed "Macro Macros[NUM_MACROS];" to "MacroPtr Macros;"  for ustr[]
+ strcuture
+ Changed user macro buffer structure to
+	typedef struct
+	{
+        	char name[NUM_MACROS][12];
+		char body[NUM_MACROS][MACRO_LEN+1];
+	} MacroBuffer;
+	typedef MacroBuffer *MacroPtr;
+
+ C files CHANGED: server.c datautils.c strfuncs.c
+
+ 8/11/2000
+* kill_resolver_clipon() now resets resolver_clipon_pid to -1
+* added RESOLVER_DEBUG define to Makefile
+* updated README.dns_resolving
+
+ 8/1/2000 1.2.3draft-1
+* draft refers to a draft release. It's not even alpha. It'd just
+the latest development stuff.
+* add prototypes for resolver_client.c to protos.h
+* removed request_cache_lookup from resolve.c and protos.h
+* removed SITE_WIDE* stuff from resolve.c and constants.h
+* moved nonblock search code from server.c to constants.h
+* added code to server.c and resolve.c where /* CYGRESOLVE */ comments are
+in main select scan and where resolving commands are for new connections
+* added resolver_clipon.h header file
+* modified Makefile to compile in resolver_client.c
+* modified Makefile to compile in resolver_server.c clip-on
+* modified Makefile to hold default HAVE_NAMESER, HAVE_RESOLV and HAVE_NETDB defines
+* changed server.c to not use bzero anymore since it's a deprecated function
+* included nameser.h and resolv.h includes into the distribution for resolver_server.c in case
+operating system doesn't have them (dunno if this will remedy on all systems)
+* changed resolve option in constants.h to have the site-wide cache option be the
+clip-on resolver option now (I've decided not to pursue the site-wide option anymore)
+* added SYS_LOOK_PENDING to constants.h
+* updated docs/README.init_data for new resolve option
+* redefined HEADER in constants.h as YES_HEADER so we can include constants.h into
+resolver_clipon.c without declaration problems. updated whowww.c to reflect change
+* NEED to update docs/README.dns_resolving
+
+
+ 7/21/2000
+* Put a few lines in to make min and idl variables 0 even if they
+calculate to < 0 (which they shouldn't :))
+
+ C files CHANGED: server.c
+
+ 7/14/2000
+* Changed ctime() calls in t_who() to get_time(0,1) so carriage return in
+time didn't mess up text if admin decided to put text after it.
+
+ C files CHANGED: server.c
+
+ 7/13/2000
+* Changed get_user_num() call to get_user_num_exact() in .kill to prevent
+sub-string user matches so user's can't echo substring usernames to the
+bot and get it to .kill people with obsenities
+* added errno info to bad read() in the bot's own code.
+
+ C files CHANGED: server.c bot/storybot.c
+
+ 6/21/2000 1.2.2
+* Removed commented/phased out code and released as final 1.2.2 version
+
+ 6/9/2000
+* If the talker crashes and lastcommand.CRASH exists, it will be appended 
+to so it has a record of all lastcommands for multiple crashes
+* In t_who() if idl variable is < 0, we set to 0
+
+ 5/31/2000 1.2.2b-3
+* Changed format of .permission a bit. First argument is now <user>
+instead of add|sub. Permissions now have extra flag of "X". "N" now means
+normal access, "Y" means special access, and "X" means no access (unless
+invited). Because of this change the add|sub options to .permission do
+step-clearance now. Meaning, if the user has "N" access, and you "add"
+more access, they get "Y". If they have "Y" access and you "sub" them,
+then get "N", if you "sub" them again, they get "X". Then they would need
+two "add"s to get back to "Y" again.
+Allowed/Denied list now formatted better, with less blank lines and spaces
+Read helpfile.
+* Phased out .igtells. Moved to a .ignore option, ".ignore tells" and 
+".listen tells" respectively..setting WILL be saved on logout.
+Removed igtell flag read and writing from reboot DB.
+The igtell user structure variable is now called tempnum1.
+* modified user_wants_message() to take -1 as a user argument for getting
+a setting for a non-online user after a read_user() (as in usr_stat())
+* Made a few minor changes to the bot code. Also changed the compile and
+restart scripts to use just /bin/sh
+
+ protos.h CHANGES:
+ Removed
+  void igtells(int user);
+  void heartells(int user);
+
+ constants.h CHANGES:
+ Replaced under user structs
+ int igtell;
+  with
+ int tempnum1;           /* 1.2.2 - temp - was igtell */
+
+ C files CHANGED: server.c datautils.c
+
+ 5/4/2000
+* Fixed bug in read_rebootdb() where ustr[].login_name wasn't read back
+in. We just copy the read-in ustr[].name to it.
+* Removed BOT_ROOM define in constants.h. In server.c instead of comparing
+the bot room to the room the current user is in, i now compare the room
+the user is in to the room the bot is in. This lets him move around the
+talker out of his room and still read/listen and respond to
+actions/conversation. the special cases of blank-say-is-a-review and
+"help" triggers bot-help now follow the room he is in.
+* Put standard +++++ notifications into the communication functions the
+bot understands. i.e. if a user does a .tell to the bot, instead of using
+whatever format the talker is set at by the admin, the bot gets a:
+ +++++ comm_tell: username_that_said message
+notification. this frees anyone from having to modify the bot's code if
+they change the communication's formats from the distribution defaults!
+* Made bot not get +++++ REBOOT on a soft-reboot
+* Updated documentation README.compiling, BUGS, BETA-TODO, CREDITS, added
+LAFK and BAFK to the .who helpfile
+
+ constants.h CHANGES:
+ Removed
+#define BOT_ROOM	"pond"
+
+ C files CHANGED: server.c
+
+ 5/3/2000
+* Change %y to %Y in the backup code because some C libs gave a harmless
+warning saying it generates only a 2 digit year. I knew that! I didn't
+need it to warn me about it! And I hate warnings, even harmless ones, so i
+made it happy. :-)
+* Fixed a glitch in make_sockets(). Setting a port offset to 0 and trying
+to soft-reboot the talker would kick some or all of the users off, when it
+shouldn't kick any off.
+* Added function do_tracking() to consolidate code for sending UP and DOWN
+tracking info for the talker. See function code for use.
+* Added function do_timeset() to consolidate local timezone setting on
+bootup and in systime() Also, found a very odd truth regarding the
+setting of the TZ enviromental variable. I noticed this on glibc systems
+where the set TZONE timezone would be reverted back to the normal machine
+clock! After furthur research it was determined that when setting an char
+array to define TZ and then putenv()ing that array to set the environment,
+any furthur modification of the array resulted in the automatic change of
+the environment to that modification, without needing to do a putenv()
+again! This, to me, is ludicrous! If i used the array "mess" and then did
+mess[0]=0; after the putenv(), the TZ variable would disappear from the
+environment! But, according to the standard, it can't be touched..who
+am I to argue with standards? :) the do_timeset() function along with a
+static char array fixes this. NOTE: this fix only affects people that
+change TZONE from localtime and that TZONE is different from local machine
+time.
+
+ protos.h CHANGES:
+ Added
+  void do_tracking(int mode, char *downmess);
+  void do_timeset(char *zonetime);
+
+ C files CHANGED: server.c
+
+ 5/2/2000
+* Replaced tm/time(&tm) usage with time(0) where the tm structure was
+not needed. This should save some CPU cycles and make time calculations
+a tiny bit more accurate.
+
+ C files CHANGED: server.c
+
+ 4/24/2000
+* defined SOCKET_ERROR for unix-type systems. Took out #if's for 
+SOCKET_ERROR/-1 mixing
+* Took nstat reference out of nerf helpfile. Removed nstat helpfile.
+* Updated cygwin info in docs/README.win95NT
+
+ 4/3/2000
+* Added SHOW_SREBOOT #define to constants.h. See file for details on
+  use.
+* Moved some logging of reboots around
+
+ constants.h CHANGES:
+ Added
+#define SHOW_SREBOOT	2
+
+ C files CHANGED: server.c
+
+ 3/30/2000
+* Changed solaris prototype for bcopy()
+
+ protos.h CHANGES:
+  void bcopy(const void, void, size_t);
+	IS NOW
+  void bcopy(const void *, void *, size_t);
+
+ 3/28/2000
+* Added a simple write_log() of the changing of .quota number
+
+ C files CHANGED: server.c
+
+ 3/27/2000
+* Changed .whois to take input string format of <string> or 
+<string>@<whois host>. See updated helpfile.
+
+ C files CHANGED: server.c
+
+ 3/10/2000
+* THe bot was broke with a change i made in write_bot()/write_bot_nr()
+It would not output ANYTHING to him/her/it..fixed now.
+
+ C files CHANGED: strfuncs.c
+
+ 3/5/2000
+* Added the function getonechar() and macro defines rchar() and wchar().
+These are used to read and write the attach_port character in 
+read_/write_rebootdb, because using rvale/wval is invalid and reads/
+writes wrong values.
+* Added some \n's in write_log()'s that i missed
+
+ constants.h CHANGES:
+ Added
+#define wchar(val) fprintf (f, "%c\n", val)
+#define rchar(val) val=getonechar(f)
+
+ protos.h CHANGES:
+ Added
+  char getonechar(FILE *f);
+
+ C files CHANGED: server.c
+
+ 2/28/2000
+* Added clearing of some more variables in reset_user_struct and
+init_user_struct
+
+ C files CHANGED: datautils.c
+
+ 2/25/2000
+* Added VOTE_LEVEL define. This will replcae the requirement for user
+to be ROOT_ID to view tallies and MAX_LEVEL to do -c or -d. Updated
+helpfile
+
+ constants.h CHANGES:
+ Added
+#define VOTE_LEVEL      3    /* level that can do -c and -d and read tallies on votes */
+
+ C files CHANGED: server.c
+
+ 2/19/2000
+* Added README.vt100stuff to docs/ directory, just a little reference.
+* Added "top" option to .clist and some top sub-options. See command.
+
+ C files CHANGED: server.c
+
+ 2/14/2000
+* Updated documentation.  Added README.quickstart doc.  Updated TODO a little.
+
+ 2/1/2000 (devel: b  start of beta & feature-freeze)
+* Added mode to reset_user_struct(). mode will determine if all structs get
+reset or just some (actually ALMOST all). Added reset_user_struct()
+to a few places where structs were reset in the function. Most notably
+user_quit()
+* Fixed a minor race where 2 users of the same username could be created
+if in the login process at the same time. Now, whoever gets to the 
+password prompt first, wins. Added check_for_creation() (1/4/2000)
+* Changed conditions on email verification creation a bit. Previously if
+emailver was on, a user requested verification, then emailver was turned
+off, when the user came back, it'd still act as if emailver was on 'cause
+they were in the verification DB. Now, when they come back they will be
+treated like a normal user. When the talker is booted with emailver off or
+emailver is turned off in the talker, AND a verification DB exists, the DB
+will be removed.
+* Phased out print_to_syslog() and logerror() functions. Replaced with 
+write_log() which will write to specific logs and take variable arguments.
+write_log() was under construction and in server.c. Now put in strfuncs.c
+Logged more errors and try to log errno wherever possible now. Lastlogs file
+will now be in the log directory, as will the lastcommand. (1/18/2000)
+* Added directory "logfiles"
+* Added #include <stdarg.h> to strfuncs.c so write_log() can use variable
+argument functions.
+* Changed promote() so ROOT_ID can promote to same level even if 
+PROMOTE_TO_SAME is set to 0 (From joelie) (1/5/2000)
+* player_create() changed to use a ustr[user] type struct to do it's 
+variable setting instead of t_ustr. We do this so we can use 
+reset_user_struct() to cut down on duplication of the resetting of all 
+user variables before we set them to defaults. We also now use init_user()
+to set the new user to system defaults as much as possible. (1/4/2000)
+* Reset some other user structures in various places. Removed some unneed
+code in login() due to a bit better function usage (1/4/2000)
+* Put bot!=-5 check in write_bot() and write_bot_nr(). Without it it would
+crash on cygwin32. (1/5/2000)
+* Removed <sys/wait.h> from server.c since child wait stuff is in
+signals.c now (1/5/2000)
+* Moved frags/ into utils/code_fragments and www/ into utils/javaclient
+(1/5/2000)
+* Put comments before auth_xxxx() functions and rearranged their flow
+according to execution. Re-coded parts of them to use better methods to 
+set non-blocking and to check for readability/writability. Added error
+logging. Added write timeout variable. THere was no sense to have a read 
+timeout variable if you're gonna select() the writability of the socket
+forever, Arctic! write timeout set to 6 seconds. read reset to 3.
+(1/7/2000)
+* Set all ports to be passed as (unsigned short) to htons() (1/7/2000)
+* Set bootup to get logged even if we're in debugging mode.
+ ** System running ** message will not show in debugging mode. (1/7/2000)
+* Zeroed ALL bind addresses before creating in make_sockets() (1/7/2000)
+* Changed user_quit() to kill() a child remote who if it exists for a
+user, instead of waiting for it to die before closing the connection. If a
+user was in a remote who and a shutdown was performed, the shutdown would
+hang until the child exited..not exactly the behaviour we want (1/11/2000)
+* Jazzin pointed out that if you were afk, then did a remote who, the
+"you're back" message would print twice. This was caused by us not forcing
+a flush of the user's queue before the fork(). Also, the "you may
+play while you wait" message would not show up until the remote who
+succeeded/failed, for the same reasons. Fixed. (1/11/2000)
+* Added define checks for OpenBSD to get rid of some socket call and 
+ANSI C warnings. Thanx for the OpenBSD account, ziffnab. (1/12/2000)
+* Added logfiles directory creation in Makefile "dist" section
+* Updated README.compiling
+* Added functionality for soft-rebooting. This will reboot the binary
+without disconnecting the users or losing their current information (I
+guess you could call it hot-rebooting) User data will be written to a db,
+binary executed, then db read back into the proper user slots. The -r 
+option of shutdown will now do soft-reboots. -h will now do the previous
+hard-reboot. Soft-reboot sets a "restarting" variable, so listening
+sockets dont get reopened with the new binary, since they don't get closed
+to begin with. Changed the outputting of some messages and colsolidated
+some if()s in check_shut() Added define REBOOTFILE, which is the db that
+will be written, read, then removed on soft-reboot. Updated shutdown
+helpfile. (1/15/2000)
+* Modified "help" helpfile (.h help) to be a short guide to the help
+system and to the syntaxes of commands in the command's helpfile.
+(1/15/2000)
+* Had check_var check for hostname and main port var. See HOST_VAR and
+MAINPORT_VAR
+* Tweaked out soft-rebooting some more. (1/17/2000)
+* restart, shutdown, and helpfiles/TOP now run from sh instead of csh
+* If we go down or reboot from an error (shutdown_error()) we're gonna try 
+and move the lastcommand file to lastcommand.CRASH
+* Added backup_logs() function which will get called from check_mess() at
+midnight to backup/rename all logs to a new subdirectory under LOG_DIR
+Added trim_backups() function which will also get called from check_mess()
+at midnight to trim logs to x days (set as TRIM_BACKUPS). Called by staff
+as .backup (function backup_stuff()) Added option to init_data
+to set on or off initially. Added .backup helpfile (1/18/2000)
+* modified/enhanced .readlog to take in account new log file
+format/writing. Added 2 temp. user structures log_stage and temp_buffer.
+log_stage will hold the log number we're reading while in cat() prompting.
+temp_buffer will hold the search string/number of lines. These are needed
+because the user may specify to cat/search all files, which requires us to
+return into the function on our own (w/o user intervention) after each
+file is catting. Updated helpfile (1/19/2000)
+* changed the ranks structure. This now contains the fields lname (long
+rank name), sname (short rank name), abbrev (1 letter/number/character
+abbreviation), and odds. Changed .who listing to use abbrevs and/or short
+name where appropriate. Removed old RANKS define, odds[], and ranks[]
+arrays. (1/19/2000)
+* changed the way partial queue flushes are done. j_mess no longer used,
+because of the limited size. output_size now is alloced_size the total
+size we want to send..this doesn't decrese. new temp user struct variable
+write_offset contains how far we are in write()ing. debug messages for
+queue flushes and queue_writes no longer contain the buffers. (1/25/2000)
+* rechecked the string-terminating character in get_input(). We should be
+able to handle CR, LF, or CRLF. Added some code to try and do this.
+(1/24/2000)
+* tweaked soft-rebooting. make_sockets is now done after everything else
+(but before forking). reboot db is read before make_sockets() This is so
+if the talker is compiled and soft-rebooted with port offsets different
+than the previously running binary, the ports can be open or closed. i.e.
+binary was running with WHO port open, then compiled with WHO offset of 0,
+meaning closed, soft-reboot done, talker detects port was open but needs
+to be closed for new boot, so closes it (1/25/2000)
+* added some checking in get_input() for read() returning -1. If a network
+error, we call user_quit() silently (no output to user) and forego any
+furthur socket flushes. This should get handle most of the "Broken pipe"
+errors from write() which are normal, but just annoy me. BE ADVISED, for
+silent mode user_quit() now has a new "mode" parameter passed to it!
+(1/27/2000)
+* added GRANT_TO_SAME define to constants.h to let your determine whether
+or not you want to let users grant or revoke commands OF THEIR
+LEVEL to/from users (2/1/2000)
+
+ constants.h CHANGES:
+ Replaced
+#define LOGFILE      "syslog"
+  with
+#define LOGDIR       "logfiles"
+ Replaced under user and www structs
+ int output_size;
+  with
+ int alloced_size;
+ 
+ Changed
+#define LASTLOGS     "lib/lastlogs"
+  to
+#define LASTLOGS     "lastlogs.log"
+ Added
+/* Log facility definitions */
+#define VEMAILLOG       0       /* email verification */
+#define LOGINLOG        1       /* connect and login log */
+#define WARNLOG         2       /* warning and security log */
+#define ERRLOG          3       /* error log */
+#define BOOTLOG         4       /* bootup/shutdown log */
+#define SYSTEMLOG       5       /* general system log */
+#define BANLOG          6       /* site/user restriction log */
+#define DEBUGLOG        7       /* debugging log */
+#define NOTIME          0       /* don't timestamp log entries */
+#define YESTIME         1       /* timestamp log entries */
+#define TRIM_BACKUPS	3	/* days to trim backup logs to */
+#define NO_CREATION	"Someone is already in the process of creating that username. Try again."
+#define BAD_FILEIO      "Failed! A file I/O error occured!"
+#define BAD_MALLOC      "Failed! A memory allocation error occured!"
+#define REBOOTFILE	"REBOOT.db"
+#define HOST_VAR        "%host%"
+#define MAINPORT_VAR    "%mainport%"
+#define GRANT_TO_SAME   0    /* allow granting and revoking commands */
+                             /* to/from users of the same level */
+
+log_struct typedef struct and logfacil define of struct
+int log_stage and char temp_buffer[80] to user structure
+rank_struct typedef struct and ranks define of struct
+ Added under user and www structs
+int write_offset;
+
+ Moved from server.c
+#define WIZ_ONLY -4
+#define NORM      0
+#define BOLD      1
+
+ Removed
+#define VEMAIL_L        0
+#define LOGIN_L         1
+#define ERROR_L         2
+#define WARNING_L       3
+#define SYSLOG_ALSO     1
+#define NEWLINE         1
+#define NONEWLINE       0
+#define EMAILLOG        "logs/emailver.log"
+#define LOGINLOG        "logs/logins.log"  
+#define ERRORLOG        "logs/errors.log"  
+#define WARNINGLOG      "logs/warnings.log"
+#define RANKS
+int odds[];
+char *ranks[];
+
+ text.h CHANGES: none
+ protos.h CHANGES:
+  void reset_user_struct(int user);
+	IS NOW
+  void reset_user_struct(int user, int mode);
+  void write_log(char *str, int type, int nl);
+	IS NOW
+  void write_log(int type, int wanttime, char *str, ...);
+  void user_quit(int user);
+	IS NOW
+  void user_quit(int user, int mode);
+  Added int check_for_creation(ustr[user].login_name);
+  Added void read_rebootdb(void);
+  Added void write_rebootdb(int user);
+  Added void user_hot_quit(int user);
+  Added int backup_logs(int user);
+  Added void backup_stuff(int user, char *inpstr);
+  Added void trim_backups(int user, int days);
+  Removed void logerror(char *s);
+  Removed void print_to_syslog(char *logstr);
+ authuser.h CHANGES:
+  extern char *auth_tcpuser4()
+	IS NOW
+  extern char *auth_tcpuser4(register unsigned long inlocal, register unsigned long inremote, register 
+  unsigned short local, register unsigned short remote, register int wtimeout, register int rtimeout);
+  extern char *auth_sockuser2()
+	IS NOW
+  extern char *auth_sockuser2(register int s, register unsigned short local, register unsigned short 
+  remote, int rtimeout, int wtimeout);
+  
+ C files CHANGED: ALL
+
+ 12/15/99
+ Added logging of auto-expires, auto-expire nukes, manual-expire
+nukes, and auto-nukes
+
+ 12/01/99 (devel: pl5)
+ Rewrote the way data is written down to a www socket, just like the
+user sockets (5/10/99 entry). The web port wasn't working on glibc,
+but worked fine on libc5. Added relevant variables.
+* Added code and changes to wwport after get_input() call in server.c
+* Added cat_to_www() function, modified parameter to user instead of sock
+in server.c
+* Modified free_sock() to reset output_data and output_size in server.c
+* Modified init_misc_struct() to reset output_data and output_size in
+datautils.c
+* Added write_str_www(), queue_write_www(), queue_flush_www() in
+strfuncs.c
+* Change cat_to_sock() call to cat_to_www() in whowww.c
+* change write_it() calls to write_str_www() with user pass instead of
+sock pass in whowww.c
+* change external_www() call to pass user instead of sock.
+* expanded size of wwwport[].file by 12 to support adding on of server
+type to be parsed later
+* added new realloc macros and add new data on to malloced
+user/wwwstructure using memcpy()
+* Included string.h instead of strings.h for linux
+* defined __STRICT_ANSI__ before including sys/socket.h on glibc systems
+since it produces a warning due to a glitch in the system include file.
+* www reading was changed so that the head GET line isn't parsed until
+after the browser sends a blank line..this is how it's usually done.
+Previously, we read right after we got the head line in.
+* updated TODO, README.win95NT, and helpfiles for ".site" and ".cline"
+
+ constants.h CHANGES: Added char *output_data and int output_size to
+ wwwport structure
+ text.h CHANGES: none
+ protos.h CHANGES:
+  Added void write_str_www(int user, char *str, int size);
+  Added void queue_write_www(int user, char *new_str, int length);
+  Added int queue_flush_www(int user);
+  Added int cat_to_www(char *filename, int user);
+  void external_www(int as);
+	IS NOW
+  void external_www(int user);
+  void queue_write(int user, char *queue_str);
+	IS NOW
+  void queue_write(int user, char *queue_str, int length);
+ authuser.h CHANGES: none
+ C files CHANGED: ALL except telopts.c
+
+ 11/12/99
+ Added ifdef check for setpgrp on OSF/Digital systems. Digital requires
+arguments passed to setpgrp();
+ Include <string.h> or <strings.h> in resolve.c depending on system.
+ Fixed warning in systime() of passing strlen() calculated values to a
+field width on systems that dont define a strlen() return as int.
+ Fixed some warnings in whowww.c of passing strlen() values to a
+conversion on systems that dont define a strlen() return as int.
+
+ 11/8/99
+ Added trimbackups.c script to utils directory. Compile with "make all" or
+"make trimbackups" This program is used to remove backups older than days
+specified on command line. Type program by itself for arguments it
+requires, or see updated README.backups file.
+ Removed rm -f server.pid from restart script. Talker overwrites the file
+on startup.
+
+ 8/24/99 (stable: pl3  devel: pl4)
+ Fixed memory overwrite in .wlog that causes a segfault when staff gives
+a long inpstr.
+ Fixed glitch in revoking .say where the first word of chat was cut off.
+ constants.h CHANGES: MAX_WWW_CONNECTS now should default to 5
+ text.h CHANGES: none
+ protos.h CHANGES:
+  void say(int user, char *inpstr);
+	IS NOW
+  void say(int user, char *inpstr, int mode);
+
+  void external_users(int user, int mode, char *query);
+	IS NOW
+  void external_users(int user, int mode, char *query, int photofilter);
+ authuser.h CHANGES: none
+
+ 8/4/99 pl3 (stable: pl2  devel: pl3)
+ Fixed a glitch that let users with .say revoked still say messages as
+long as they just typed it and didn't use .say
+ Made it so that if a user has .wiztell revoked they wont see wiztells
+either. Also if they have .wiztell granted, they will also see wiztells.
+ Made it so that a .greet with special characters errors out instead of
+showing the room just blank lines.
+ constants.h CHANGES: none
+ text.h CHANGES: none
+ protos.h CHANGES: none
+ authuser.h CHANGES: none
+
+ 7/12/99 pl2
+ Fixed a bug that caused the talker to segfault on blank username file
+open. Should C really allow a directory to be opened with fopen()???
+ tinfo tracking now sends process PID too to be sure it updates the right
+talker entry (in case multiple running with same SYSTEM_NAME)
+ Fixed hole in .site which allows . (dot) files to go through and segfault
+the talker.
+
+ 7/1/99 1.2.2a-pl1
+ Made code more compliant with glibc2. It was segfaulting in an FD_ISSET
+when it tried to check for a socket in a writemask, and the socket wasn't
+being used. Changed get_input() to a return type of int (was char *) and
+evaluated return value in switch statement. If socket is -1 after get_input
+the user is gone and no need to check for the socket in the writemask.
+ Removed DEBUG define. To make talker NOT fork to background for
+debugging, just use the -d switch on the command line. i.e.
+ ./server -d or ./server <config file> -d
+ Added function get_iac_string to return string versions of IAC numbers to
+the system log.
+ Made it so that you can abort a talker addition (.talker -a) by typing a
+q/Q by itself on any entry line. Made it so that a \n isn't written to the
+end of the addition prompts.
+ Updated compiling README, TODO, and CREDITS
+
+ 5/28/99
+ Cleaned up a few glitches.
+ Put DEBUG define's in Makefile instead of in .c files. 
+ Put all main external who/www functions in whowww.c
+ Finished POST method for web port.
+ Added _login function to web port
+ Started adding functionality to web port login to allow reading and
+changing of a user's preferences.
+
+ 5/10/99
+ Added count calculation in t_who() for friends .who formatting. Thanx
+Joelie.
+ Added brackets around in if in syssign(). Function was telling bot twice
+that a user was logged in. Thanx Joelie.
+ Rewrote the way data is written down to a user socket. Inspired by a
+problem with gmud, where the talker sends data faster than the client is
+ready to receive it. We now use select to poll the user sockets for
+WRITEability. until a user socket is marked as such by select(), data will
+be queued up in a malloced/realloced user structure 
+ustr[user].output_data. When marked, all data will be sent down it
+possible. If only some goes, the rest will go when the socket is next
+marked writable. malloced space will be freed when struct is empty. This
+works but is still in testing for problems/memory leaks. Added funcs
+queue_write() and queue_flush()
+
+ 5/4/99
+ .to direct emote/possesive emotes now handle spaces better.
+ Also, if user you're .to'ing to is invis, they will show up as so as per
+INVIS_TALK_LABEL.
+ Made the code so that if you set a port offset (i.e.
+WIZ_OFFSET,WWW_OFFSET,WHO_OFFSET) to 0 that port wont bind/listen/startup
+on talker boot. modified functions main(), make_sockets(), and 
+system_access() to make this work.
+ Fixed .sthink where the output wasn't being written to the user's
+conversation buffer. Little thing i forgot to put back in.
+
+ 4/25/99 1.2.1
+ Updated and added all relevant helpfiles.
+ Added timestamps to restricts and unrestricts in logs, and logging of
+creation attempts from bannewed sites.
+ Changed format of default ".set" listing. options now shown in 2 columns
+with no descriptions to save space. Help for options still under .h
+set_<option>
+ Added ".set pause" for toggling of the pause during the login sequence. Added
+set_pause(). Moved .autofwd and .autoread to .set autofwd and .set autoread
+ Added mode option to check_site() to specify ip check or hostname check. IP substring
+checks will now match from beginning of restricted site, instead of just anywhere in
+site.
+ Added .to direct emotes/possesive emotes. Added VIS_DIREMOTES and INVIS_DIREMOTES
+defines
+ Added VIS_SEMOTES,VIS_SEMOTES_P,VIS_SEMOTES_M,VIS_SEMOTES_MP,
+INVIS_SEMOTES,INVIS_SEMOTES_P,INVIS_SEMOTES_M,INVIS_SEMOTE_MP,
+VISFROMSEMOTE,VISFROMSEMOTE_P defines
+ Added multi-tells,semotes,sthinks,brings Added MAX_MULTIS define to regulate
+how many simultaneous people can be in a multi-com. 
+ Added .ftell and .femote. Can also use .tell -f and .semote -f to achieve
+same results
+ Added the .ttt (tic-tac-toe) .hangman and .guess (for hangman) commands.
+ Added the following structures for these command: ttt_kills (saved), 
+ttt_killed (saved), ttt_board, ttt_playing, ttt_opponent, hang_wins
+(saved), hang_losses (saved), hang_stage, hang_word, hang_word_show,
+hang_guesses. Added some constant strings to constants.h for new commands.
+ Added saved user structure "icq", .set icq, and icq info to .examine
+ Added 9 miscellaneous saved structures for future expansion. 4 text, 5
+numeric. Changed UDATA_VERSION to 122.ver
+ Changed the way ints,longs,and time_ts are gotten with rval() rlong() and
+rtime(). Added funcs getint() and getlong()
+ Added ROOM_LEN and RANK_LEN that determine spacing for some commands. .rooms, .who to
+name two
+ Fixed hidden room spacing in .ustat
+
+   88888888888888888888888888888888888888888888888888888888888888888888
+   8888888888888888 Below this point are 1.2.0 changes 8888888888888888 
+   88888888888888888888888888888888888888888888888888888888888888888888
+
+ 4/3/99
+ Added -n option to .users to just count the users (as per calysto's request)
+
+ 3/26/99 pl13
+ Finished the color counting in count_color();
+ Finished the NUTS and IFORMS .set who types.
+ The NUTS type is "slightly" different than the real NUTS 3 formatting.
+ There is only 1 space before the name (for invis flag) instead of 2 (2nd
+is used for nuts remote users). There's no spaces between the :'s and most
+variables (to save space). If users aren't at a level where they can see
+user levels in .who (NUTS shows the level by default, we dont) They'll see
+the user status in that field "Awke" "Idle" "AFK", etc..
+ Changed WHO_LEVEL default to level 1.
+
+ 3/23/99
+ Added functions convert_color(char *str) to strfuncs.c and related
+declarations. This is used to convert color codes to HTML color codes for
+viewing on the webpage in the user webinfo and who's online info.
+Multiple spaces in user profiles are now converted to multiple nbsp's on
+the webpage.
+ Fixed glitch in webport where bgcolor name in webport.cfg was showing up
+as BACKGROUND body tag instead of BGCOLOR.
+ Removed the .hilite command. Just use ^text^ instead! :)
+
+ 3/17/99
+ Let EAGAIN errnos continue on accept() failure. Now log to syslog errno
+number along with strerrno.
+ default VIS_MUTEMOTE and INVIS_MUTEMOTE now have no space between user
+and action. A space was cropping up between the username and ' when a
+possesive muttered emote was being done. Fixed mutter() to distiguish and
+space accordingly.
+ Added some function declarations to protos.h to take care of warnings
+from strict -Wmissing-prototypes compiler option.
+
+ 3/9/99 pl12
+ Fixed the TF (and possibly other clients) problem where lines without
+newlines aren't shown. i.e. login prompt, password prompt, entpro line
+prompts, paging prompts. We ask the client if we can do EOR (End Of
+Record) with telnet_ask_eor()..if so, we send EORs after said prompts with
+telnet_write_eor()..if not, we send GAs (Go Aheads) as a backup. Added
+temp int structure ustr[user].promptseq to hold their preference while
+online.
+ Hidden passwords now work right with locked AFKs
+
+ 2/13/99
+ Added a check in nerf() to see if the person being nerfed has the nerf
+command, so they can fight back!
+
+ 2/1/99 pl11
+ on a .search, it will search hidden message boards for you if you are at
+or above GRIPE_LEVEL. Previously, it just ignored these boards.
+ Rewrote .revoke and relevant structures, added .grant. Added temp
+structure ustr[user].tempsuper. Replaced relevant ustr[user].super's with 
+ustr[user].tempsuper in command functions, to work with .grant.
+ Added timestamps to some log entries that previously didn't have them.
+ in .ranks, your rank line will be colored
+
+ 1/28/99
+ Added a new #define called UDATA_VERSION in constants.h. This represents the
+version of our user data files (in user/) An increment in the version
+number means that new user, saved, structs were added to the user's
+datafile format. The version now appears in the first line of the user's
+file. Files conversions are done using this by comparing the current
+version with the one in the file. Make sure to read the new 
+README.converting in the docs/ directory. Added function convert_file()
+to do the actual conversion. Upon booting of code carrying a new file
+version, userfiles will be converted at boot time (in reset_userfors())
+
+ 1/21/99
+ Added a #define called DEF_DOMAIN in constants.h. We tack this onto the
+end of the hostname if a getdomainname() fails. the getdomainname() code
+has changed some to make almost 100% sure we can get a hostname/domainname
+combo for the web port and whereever else it's used.
+ Added a fix for glibc systems using .w @. A .w @ on these systems would
+succeed but the child process would segfault trying to close a user socket
+that didn't exist. This didn't show up in the talker, just in the log and
+is generally not good.
+ Added comment in README.compiling about make'ing on multiprocessor
+systems.
+
+ 1/20/99 pl10
+ Added a #define check in the fork(). openbsd doesn't recognize setpgrp()
+as taking no arguments. we use setpgrp(0,0) on those systems.
+
+ 1/2/99
+ Added a macro #define for compiling on glibc systems. compiler reports 
+warnings on some socket calls, argument 3. size types changed from int to
+socklen_t.
+
+ 12/25/98
+ Fixed the display of the expire setting in ".auto settings" as per
+Jazzin's find. Thanx.
+
+ 12/24/98
+ Talker will now detect 0 length userfiles, remove them, and log the
+action accordingly. a 0 length userfile used to crash the talker on
+reboot. There shouldn't be any of these there to begin with! but if a
+server disk fills up and no longer lets us write our files, this will
+occur, hence the need for checking. Changes are in read_user()
+read_to_user() reset_userfors() quit_multiples() and login()
+ added #define COLOR_DEFAULT. Sets whether color is on or off for new
+users by default.
+
+ 12/9/98 pl9
+ For .entpro, users can now do a .s, .r, .v, or .a on a line by itself
+instead of doing . then s, r, v, or a. Both ways will work.
+ Updated .entpro helpfile
+
+ 11/9/98 pl8
+ Added new TEMP user struct "short int needs_hostname" for hostname
+resolution via caching.
+ Added functions cache_lookup(user) and request_cache_lookup(user) of type
+int for hostname resolution via caching.
+ Added additional option "2" to resolve_names global. This option will do
+hostname reoslution via a master daemon run as a seperate program on the
+machine which can be used for all talkers on that machine (provided they
+configure their code correctly). Option "1" now becomes a talker-wide site
+cache which just belongs to your specific talker.
+ resolve_names_on() and resolve_names_off() were changed to a toggle
+command function resolve_names_set();
+ added SITECACHE_FILE, this is the main talker cache file for resolving
+ips->hostnames when only using talker-wide resolution
+ added SITECACHE_FILE_DEF, this is the default cache file for
+resolving ips->hostnames when only using talker-wide resolution. The
+entries in this file and entered manually. This file exists so particular
+sites that we KNOW dont resolve right dont get bumped from the main cache
+and try to get resolved again. (not mentioning any names...NOMAD!)
+ added SITECACHE_SIZE, this is the number of entries that will be put into
+the main cache file on talker-wide resolutions before we start bumping
+sites from the top of the file.
+ added SITE_WIDE_CACHE_FILE, this is the main cache file that all talkers
+(if more than 1) will use for resolving ips->hostname.
+ added SITE_WIDE_REQUEST_FILE, this is the main queue file that all
+talkers (if more than 1) will use for sending unresolved ips to the master
+daemon to be resolved.
+ these 2 files MUST be readable and writable by the owner (or more
+preferably group) that the talker programs are running as (usually the
+"users" group)
+
+ 10/29/98 pl7
+ Did check for .succ message length in tell_user() and other private comm.
+commands so that if a user clears their message, the sender doesn't get a
+blank line in response, just nothing now.
+ Added feature that will warn users by email so many days (set by TIME_TO_GO) before
+they're going to be auto-expired. Changed AUTO_EXPIRE define to accomodate new
+features. See constants.h for info on TIME_TO_GO and AUTO_EXPIRE. File emailed to users
+is in lib/nukewarn
+ Added feature that lets you put variables in outputted text files. For example if you
+insert the variable %system% in a text file, when called it will output the SYSTEM_NAME
+variable, or maybe %user% will output ustr[user].say_name.
+ Changed .log that you can view up to 100 lastlogs
+ Changed login quote,.quote,.nslookup,.finger,.whois, and any other parts
+of the code where system() was used to now use popen() instead.
+ Got to compile cleanly and run on Digital UNIX 4.0 with -Wall -pedantic
+ Added detection of -s subject switch in MAILPROG and adjust the envelope
+accordingly.
+
+ 10/16/98
+ Finished function declarations in protos.h
+ Calysto finished ANSI declarations in server.c
+ Fixed some bad casts to functions.
+
+ 9/22/98
+ Added helpfiles for .anchor and .auto made by Calysto
+ Removed old helpfiles for .autopromote and .autonuke
+ Moved function declarations into a lib file, protos.h
+ You can now specify color names in the webport.cfg file along with hex
+color codes. Names are like red, black, blue, etc..
+
+ 9/13/98
+ ".ignore topics" now ignores the Topic line in .look too. Dont know why
+Deep never added that in the original Iforms.
+
+ 9/1/98
+ Optimized code to compile with -Wall -pedantic. So far only tested on
+ Linux.
+ Added quit_multiples(); function to disconnect multiple same-name users
+on pre-login. Used mutter structure to hold string temporarily for
+add_user();
+ Took su part out of add_user();
+ Users dont show up on who listings anymore when they're at the pre-login
+stage
+
+ 8/24/98
+ Fixed reset user structure in login(). Nothing big.
+
+ 8/20/98
+ Fixed memory overwrite bugs in check_for_user() and logerror()
+
+ 8/4/98
+ Changed INC_LOGIN to NO_NEW_LOGIN
+ Removed the #define LOGIN_PROMPT
+
+ 7/9/98
+ Inserted a new #define PAUSE_LOGIN in constants.h
+If set to 1, on login, users will get the "--- Press return to complete
+login ---" string/pause before they go into the room. If set to 0, users
+will jump right through like the old code used to be. 
+ Added function add_user2() to make the previous easier to implement.
+
+ 6/22/98
+ Fixed glitch in .cline in trying to clear who and www ports.
+
+ 6/16/98
+ Fixed buffer overwrite bug in set()
+ Updated documentation in docs/
+ Added helpfiles for set_picurl set_who and set_help
+
+ 5/18/98
+ Fixed a bug in remote .look's where the lock status of the remote room
+was showing the lock status of the room currently in. Thanx jazzin and
+kyla.
+
+ 5/4/98
+ Added .revoke command. added user substructures for this command, namely ustr[user].revokes
+and ustr[user].revokes_num.
+ Cleaned up some remote who stuff. Jazzin updated remote who talker list.
+ Web server now has basic POST method functionality. Web server config file has 3 more line
+options. Read comments.
+ Added some more substructures in wwwport[] struct.
+ Users that have their connection hung and relog on (which terminates the previous session)
+now get the .tell/.semote buffer and .call'd user (if there is one) from that session in
+their new login. Online time is not restored to the new login, but is added to their 
+cumulative time and saved to disk as old session is closed.
+
+ 4/21/98
+ Told the bot when someone logged on so he can greet them.
+ Added story-last-changed dates to list of stories bot gives.
+ Added some more actions and #defines to the bot and fixed him with the 1.2 code.
+
+ 4/16/98
+ Removed TELNET_TO #define. I'm able to pull the info from memory now.
+ Added #define WEBCONFIG which defines the files that contains
+configurable settings for the web server port.
+ The web server port now can give info on users of the talker in
+real-time. http://host:webport/_users creates a page of letters to
+choose users from. From those pages, you can go to specific user pages.
+Each user page contains data pulled right from the user's data files.
+If they have their ".set picurl" set, it will import their picture into
+their page also. There's also a searchable user form too.
+ Font colors, link colors, background color/image, and header/footer
+files are set in the file defined as WEBCONFIG. Read the comments in
+that file.
+ The web _who function now also takes the same settings from the
+WEBCONFIG file. Also, the link from user goes to their user info instead of their webpage.
+"Send Email" link also removed because that would be in their user info page too.
+ You can change settings in the WEBCONFIG file while the talker is
+running. For them to take immediate effect, type .reinit in the talker.
+This means that there are new change in read_init_data()
+
+ 4/14/98
+ Added mime types file mimetype.cfg for the web server parse
+function to evaluate request file types against mime encodings, so as to
+make sure files get sent out as the type they are to the browser.
+ #define VERSION2 removed. Updated info for .version is gotten in real
+time by the last modification date on the server binary (which is almost
+always the last time it was compiled). Added "thisprog" global
+ The pid file is now written out by which program is running. Previously,
+if you started a.out it would overwrite server.pid. Now it will write to
+a.out.pid or thisprog.pid
+
+ 4/10/98
+ Tweaked out the remote who code a bit.
+ Restricted users to doing only 1 remote who at a time. If they could do more they
+could possibly fill up the process table on the machine and crash the machine. Added
+temp struct ustr[user].rwho to hold the PID of the child process they're running.
+
+ 4/1/98
+ Added reset_user_struct() function to reset user variables before a
+login, so if they login to a username incorrectly, it doesn't keep that
+user's flags in memory for the next user logging in. More of a safety
+precaution, than anything.
+ Added emptying of more flags in init_user_struct(). Noticed a little
+glitch in how the brackets were balanced out and fixed.
+ Strtolower()'d the username entered at login time.
+
+ 3/31/98
+ Fixed syslog formatting glitch in .auto functions
+
+ 3/29/98
+ Fixed output of kill message on kill to all users.
+ did some work to internal web server
+ fixed singular/plural discrepincy in auto-nuke message
+ updated .allow_new helpfile
+ fixed bug in sent mail message when wiz promotes user
+
+ 3/24/98
+ Gagged users can no longer do and .examine or .ustat of a user.
+ Web port enhanced to take requests from browsers as a real web server.
+Talker web pages can be put in the "webfiles" directory. So if your web
+port is 5030. Your talker homepage would be http://yourhost.com:5030/
+it goes for what MAIN_PAGE is set at in constants.h as the main page.
+This is still in alpha also. It hasn't been tested with cgis or server
+side includes or forms or anything like that.
+The former web-formated WHO listing is at (if your webport is 5030)
+http://yourhost.com:5030/_who
+ .ptell .picture and .greet have been moved to level 1. 
+ added functions include get_input() parse_input() get_length() get_type()
+ web_error()
+ added #defines include WEBFILES MAIN_PAGE BAD_REQUEST NOT_FOUND NO_HEADER
+and HEADER
+
+ 3/10/98
+ Code now in alpha testing for Windows 95/NT. #define for it is in constants.h. Be sure to
+read docs/README.win95NT
+ Added local hostname/domainname/ostype generation code in main()
+ Added macro functions S_READ S_WRITE and CLOSE to constants.h for read,write,and close
+functions depending on whther we're running on unix or win32 OS. Replaced all C calls with
+the new macros.
+ Fixed .log color discrepency. Thanx joelie.
+
+ 3/7/98
+ All emails coming from the talker are now RFC compliant. Meaning valid headers are passed to
+the mail program. The mail program should be sendmail for everybody, otherwise a program that
+will accept standard input and a period to end the message. Normal "mail" can be
+used if you really need to. The mail program is opened via popen() which is a lot
+better way of doing it than system(). For autofordwarded messages, the mail will appear
+to come from the user with their email in the from header so the recipient can respond
+to the .smail just like it was a normal email from the person.
+ Added SYSTEM_EMAIL which is the email address talker emails come from (not .smail autofwds)
+ Alert checks for friends logging on or coming back from afk are shown to you now even if
+you're ignoring logins or afks messages.
+ Fixed generate_password() so that generated password is always 3 or more characters in
+length.
+
+ 3/2/98
+ Moved backup, restore, and backupd to utils/ directory
+ Added more checks for users being frogged. .btell, .sos, etc, etc..
+
+ 2/27/98
+ Removed the .<owner> command from the code. It was just one extra things to configure and
+really served no GOOD purpose.
+
+ 2/25/98
+ Changed putenv() in .time function from putenv("TZ=localtime"); to
+putenv("TZ=:/etc/localtime"); for FreeBSD and NetBSD systems. They don't
+have a localtime symbolic link to its current timezone, so this is
+required. 
+
+ 2/24/98
+ Changed #define SYS_FULL from a global to a file. #define SYSFULLFILE
+"lib/sysfullfile"
+ Added cat_to_sock(filename,accept_sock) function
+ -traditional was removed from compiler flags by default
+
+ 2/23/98
+ Fixed .nuke bug hopefully. Added .afk alerts to .alert. Meaning, if someone on your .alert
+list goes afk, when they come back from being afk you will be alerted like when they log in.
+ In a social, if the receiving user is in the room with you and invisible, it will now show
+the value of INVIS_ACTION_LABEL instead of their name..duh cygnus
+
+ 2/15/98
+ Made NEW_ROOM a room name. The room number is the new_room global in
+the code and is found using read_init_data()
+
+ 2/12/98
+ Fixed auto-expire. It wasn't working at midnight. It helps if you open
+the user directory before you try and read it! duh!
+ Replaced returns in get_rwho() with exit(0);
+ Tweaked socket coding a bit. Added some FD_CLR()s
+
+ 2/8/98
+ Fixed select() and .samesite bug. Investigating bug with auto-expiring.
+ Investigating bug with .monitors on incoming logins.
+ Cut command name/level header (2 lines) off command helpfiles. Talker now
+generates that header itself.
+
+ 12/31/97
+ Finished email verification.
+ Added prompt to a login where user will be
+shown their status before they enter the room on the talker, and press
+ENTER to complete their login. This required moving some code from
+add_user() into login()
+ Took out examine() function. .examine will now point to a mode of
+usr_stat() was usr_stat(user,inpstr), now usr_stat(user,inpstr,mode)
+the .examine will have the less statistical info in it, and .ustat the
+opposite. Took out USTAT_PROFILE. profiles will always be shown in
+.examine because it's short now. Took our nerf_stat() function and .nstat.
+Info now fits in .ustat
+ Took out QUOTE_MESS. Can be just hardcoded.
+ Took out HELPSTYLE. Users specify now with .set help
+ Made IS_PRIVATE1 and IS_PRIVATE2 into IS_PRIVATE
+ Added .anchor <user> <time> to anchor a user down to a room..and
+respective structures ustr[user].anchor, ustr[user].anchor_time, 
+ANCHORED_DOWN, ANCHORON_MESS, ANCHOROFF_MESS, and ANCHOR_CANT
+ 
+ 12/19/97
+ Added VERIINSTRUCT, VERINSTRUCT2, VERIFILE, VERIEMAIL, PASEMAIL_VERIFY,
+and EMAIL_VERIFY #define's. There is a new level for .allow_new which
+requires the user give an email before an account is made. Their
+password..random..will be mailed to them there, they will re-enter the
+talker and verify themselves with that password. VERIINSTRUCT is the
+file catted out to a new user on how to get their account through
+email. VERIFILE is the file which keeps track of non-verified
+(pending) accounts. These, if not verified in a day's time will be
+deleted. RE-READ README.init_data
+ Jazzin added .auto command. 1 command for .autopromote,.autonuke, and
+.autoexpire
+ We now keep how many users we expired (either by an auto-expire or
+.expire -n) in memory while talker is up. Counter is shown in .system
+ (system_stats.tot_expired)
+ .system 1/0 flags changed to YES/NO/ON/OFF
+
+ 12/13/97
+ Made samesite case-INsensitive
+ Added auto_expire() function and #define AUTO_EXPIRE
+
+ 10/11/97
+ Took out cyg_crypt() since noone really uses it (everyone uses st_crypt) 
+and we wont have to worry about anyone needing a crypt library for their compiler
+since we use our own encryption.
+ Started changing help() to use user structure ustr[user].help
+ IFORMS and NCOHAFMUTA (OURS) help types are done, NUTS2 and NUTS3 to go yet.
+
+ 10/1/97
+ Fixed buffer overrun in logerror()
+ Fixed bug in ".force <user> email <a blank>" that corrupted the user's data 
+file.
+ Moved mapfile from helpfiles/map to lib/mapfile
+ Adding ".ignore beeps" NOW, make sure this is understood. If you turn beeps 
+on for private comm. with ".set beeps" and have ".ignore beeps" on, you will 
+NOT get beeps. It's like you're contradicting yourself :)
+ .beep now is a mode of tell_usr..sorta (mode 1) but still has it's own 
+function for !strlen(inpstr) check first.
+ BEEPS mode add for writeall_str()
+ COME_TELEMESS and GO_TELEMESS for the messages for people telelporting in 
+and out. (defaults are "arrives in a blinding flash!" and "disappears in a 
+shimmer of light!")
+
+ 9/22/97
+ When you add an atmos with .addatmos the atmospheres in the file 
+numerically sort themselves from lowest to highest in case someone 
+doesn't add them that way initially (which DOES happen).
+ Now when you do a .delatmos on a atmos file that contains only 1 atmos, 
+the file will be deleted instead of being left empty.
+ When someone .bring's or .move's an invis user..the user's identity is 
+left masked to the old room and new room occupants. Before, it showed you 
+the name of the shadow being brought or moved.
+ Added INVIS_MOVES to stands for the common "Something disturbs the air" 
+shown when a shadow moves in or out of a room.
+ .rooms list is paged out now, instead of continuous.
+
+ 9/17/97
+ Moved .wlog to level 1. let's USERS read their own warnings and that's it.
+updated helpfile.
+ A .suname now logs the name change to the user's new/name-changed warning log
+
+ 9/14/97
+ Made .clist and .readlog searches case IN-sensitive
+ Some minor mods to external_www()
+ Added structs for who and web port connects, mostly for .site to see if any 
+connections are left open. Added MAX_WWW_CONNECTS global.
+ Added SUB_BANNAME global to let admins set whether they want banned names 
+to be banned exactly or by sub-strings. Read the comments in constants.h for 
+more details.
+
+ 9/4/97
+ Added typedef Macro structure into constants.h. Macros now have a macro 
+name and body. This is to implement macro substitutions. Macros now are 
+shown AND added AND deleted with .macro  Macros can be the normal .0 .1, 
+etc.. or a name like .mymacro up to 11 characters including the .
+Substitutions are done with $1, $2 and $3. Yes, only 3 arguements you cna 
+pass. Any after 3 would be tacked onto the end. Read the helpfile on 
+.macro for more info. Rewrote check_macro to do substitution processing.
+Added NUM_MACROS and MACRO_NLONG to constants.h
+ Increased max output butter for user to 7 lines, 560 characters.
+
+ 8/29/97
+ Removed shutdown_it(). shutdown_error(10) will take care of it's job.
+ Added case 10 (SIGTERM,SIGUSR1) case 11 (SIGSEGV) and case 12 (SIGBUS) to
+shutdown_error(). shutdown_error() will perform a reboot if SIGSEGV or
+SIGBUS occurs and REBOOT_A_CRASH #define in constants.h is 1.
+ Added handle_sig() function to do signal handling.
+ Added another toggle option to ".set hi" The new option will allow your
+incoming private communication to be normal with color in it, instead of
+just all hilitied.
+
+ 8/28/97
+ Added another toggle option to .autoread for just reading new mail when
+you get it and are online. Added 2 toggle options to .monitor so you can
+see incoming connections before a user logs in. Updated helpfiles.
+
+ 8/27/97
+ for .expire -n, all nukes won't get wiztelled. Just one wiztell that a
+person did an expire will be shown.
+ added functions remove_exem_data() to remove usernames from expire exempt
+file when users are nuked,autonuked,suicide, or any other form of
+destroying, change_exem_data() to change a name in the expire list from
+one to another (for set_recap() and suname())
+ .expire -e now shows how long ago the user was on, next to their name.
+ remove_user() now removes all files for user, not jsut the data file so
+I don't hafta remove their other files in 4 different places.
+ 
+ 8/24/97
+ Added message to login to tell user to wait if talker is in process of
+booting or doing a system check at midnight.
+ Added checks to user_quit() to reset user if they cut connection or get
+.killed in the middle of profile/votedesc/roomdesc.
+ Made some minor mods to check_mess()
+
+ 8/20/97
+ Added ".look <room>", updated helpfile.
+ Changed Makefile so only have to uncomment 1 def for sunos, bsdi,
+freebsd, netbsd, and linux. #if's in the .c file now check which OS we're
+running under.
+ Added MAX_SMAILSIZE so admins can change different from MAX_MAILSIZE how
+big they want sent mail files to get. the max mailfile size default was
+changed from 65000 to 50000 in constants.h The sentmailfile size default
+was made 40000.
+ MAILFILE_NOTIFY and MAILFILE2_NOTIFY now tell the person how much they
+are over the size limit.
+
+ 8/9/97
+ Added SYS_PASSWD_INVA global to tell user on login when their password in
+invalid (no password given, password less than 3 characters, first letter
+of password less than ASCII 32). Also used in supass() and password()
+ditto on SYS_PASSWD_LONG now.
+ FROG_TALK, FROG_EMOTE, FROG_SEMOTE, FROG_ECHO globals replaces 'Ribbit,
+ribbit' and those other frog messages in server.c
+ Users that try and xcomm users of same or higher rank now dont get the
+xcomm put on themselves.
+ .pcreate now REQUIRES a password. As does creating a new account. This
+also solves the tintin problem with CRs and LFs.
+
+ 8/8/97
+ Added int gagged_types[x] to constants.h to let admins define which
+message types a .gag on a user gags (i.e. if user X gags user Y and user X
+is in the same room with user Y and SAY_TYPE is a gagged_type, user Y
+won't see a user X .say .emote .to, etc.. GET IT? GOT IT? GOOD. )
+ Moved message types #defines along with their respective flag_names
+struct to constants.h
+ Added INVIS_ACTION_LABEL which is the person string name given to an
+invisible user (i.e. "A mysterious shadow");
+ Added INVIS_TALK_LABEL which is the voice string given to an invisible
+user in communication, mostly says and tells? (i.e. "A mysterious voice")
+ Added STAFF_PREFIX so admins can change the prefix that goes in wiztells
+and messages sent to wizzes from the talker.
+ Made possesive commands now require that you type your possesiveness in.
+So a  .say 'talker is cool  which outputted "Cygnus's talker is cool"
+has changed to a  .say 's talker is cool
+This is so you can do possesives like 'll 'd and whatever else there is.
+ Everyone on the talker is notified of Name changes IF the person whose
+name was changed is online.
+ Fixed age old thing where if a user is hidden and they go afk or bafk, or
+come back from afk or bafk their name would be shown in the message to
+everyone instead of 'A shadow' or whatever. Took me 3 years to figure out
+that did that. :-)
+ Made some minor changes to .smail internally
+
+ 8/7/97
+ Moved .color and .visemail to .set color and .set visemail
+ Added some code to start porting to Win95/NT
+
+ 8/3/97
+ Removed .stalker to add .talker command which allows to add, modify, and
+delete talkers. Read the helpfile.
+ Added #define's TALKERLIST and NO_TLIST
+
+   88888888888888888888888888888888888888888888888888888888888888888888
+   8888888888888888 Below this point are 1.1.1 changes 8888888888888888 
+   88888888888888888888888888888888888888888888888888888888888888888888
+
+ 8/2/97
+ Started on 1.2.0
+ Added user structures help,who,friends,gagged.
+ Added functions listen_all(user),ignore_all(user) to replace strcpy(user
+flags,FLAGS_ON/OFF);
+ Remove FLAGS_ON and FLAGS_OFF #defines.
+ Remove MACRODIR,ALERTDIR,GAGDIR #defines since macro,alert, and gag
+directory will no longer exist.
+ Put user abbreviations on separate lines in user data file.
+ Put user's alert and gagged users in data file.
+ Put user's macros to user's data file, no more macro file.
+ Added functions gag_check() and gag_check2(). Modified functions
+alert_check(), alert(), and gag() to take in account loaded structures of
+.friends and .gagged instead of files.
+ Added delimiters to user's data file to signify beginning and end of
+sections.
+ Sent bot info commands +++++ REBOOT, +++++ SHUTDOWN, and +++++ QUIT
+ Added .ignore roomdescs and 2 empty ignores for future use.
+ Modified t_who() to take in account new friends structure for .friends
+(mode 3)
+
+ 7/15/97
+ Added bot global (int bot) to hold bot's user number for its login.
+ Added bot_com and botsys[] (parallel to sys[] and exec_com) for bot
+commands. bot commands will start with a _ and only send info back to the
+bot set as BOT_ID. Some changes to the main loop and get_com_num() were
+done to accomplish this.
+
+ 7/13/97
+ Frogged users can no longer .to speech
+
+ 7/11/97
+ Added check on boot-up for max connections set against file descriptors
+available
+ Fixed glitch in entpro and descroom that a variable wasn't clearing after
+the function return;'ed
+ Increased size of option variable in shutdown function from 80 to
+ARR_SIZE;
+
+ 7/10/97
+ Fixed bug in remove_junk() that wasn't actually removing the files.
+ Added tzinfo/ directory to the distribution with all time zone info in
+it. Do not rename this directory.
+ Changed systime() to take tz info from tzinfo/ directory. FreeBSD, 
+NetBSD, and UnixWare had incomplete or screwy zoneinfos.
+ Changed Makefile so that 'make dist' copied tzinfo/ too.
+
+ 7/6/97
+ Fixed glitch with pcreate
+ .search's are no longer case-sensitive
+ put some stuff in supass and suname
+ Took out all PRIROOM stuff..i think it was a stupid iforms idea really.
+ singular/plural-sensitiveD converttime() string
+
+ 6/20/97
+ Compiled successfully on Digital UNIX. (a few warnings..they're no harm)
+ Where it says "The room is set to...." in .look, if the area is locked
+public, it will say, "The room is ^HClocked^ to..."
+ Colors in .private and .public function.
+ Removed year from time/date stamp in syslog entries..just takes up space.
+
+ 6/14/97
+ fmail/autofwd security hole fixed.
+ .shutdown -r now reboots the talker properly. No more socket errors 
+plauging the log.
+ NEW feauture. Rwho (remote who), gets a real-time who listing from the 
+given talker. ".who @<talker keyword>"  ".w @" gives you a list. Iforms 
+style and ncohafmuta talkers are supported. MOST NUTS talkers dont have 
+external who ports. This command is forked so you and other players may 
+talk while the talker gets the rwho listing in the background.
+ Added .rules command. takes file from global RULESFILE which contents i 
+made from a combination of .h etiquette and .h disclaimer
+ For .look, if there are shadows in the room it will tell you (with 
+global define VIS_IN_HERE), unless you are >= MIN_HIDE_LEVEL in which 
+case it will give their name/desc thing with (invis) after their name.
+ Cumulative time structure (totl) resets at 999 days, not 99 days
+
+ 6/12/97
+ More <wiz> messages written to the wiztell buffer, SUICIDE, etc..
+ If a user is ignoring pictures, they wont get ptells pics either now.
+ Finished .pcreate. Read help file.
+ FILETEMP is replaced by function get_temp_file() which creates a new 
+tempfile with a random number os no two tempfile creations clash. These 
+tempfile will be stuck in junk/ directory and removed on startup and at 
+midnight with new utility function remove_junk()
+ Trying to forward/autoforward mail will not even be ATTEMPTED now if the 
+user has their email address as the default.
+
+ 6/10/97
+ If a user .ustat's themselves and their email address is hidden, it will
+show it to them now instead of just saying -hidden-
+ If a user .ustat's themselves they will see what rank they are now.
+
+ 6/9/97
+ Added abbrcount() function, and execute it on startup to compares counts
+between the sys[] structure and NUM_ABBRS.
+ .clist bans/newbans <search string> to search for banned sites instead of
+having to look at the whole list.
+
+ 6/3/97
+ Users that have .permission to a room can go there now EVEN IF it's not
+adjoined to their current room. They can also make the room their home if
+they have .permission to it.
+
+ 6/2/97
+ Modified password() passwords can no longer have spaces in them. Too many
+people using the syntax .password <old_pass> <new_pass> when it's just
+.password <new_pass>
+ Modified Makefile to add system specific -D's
+ Modified code to use Makefile defined -D's
+ Modified main function..did checking for non-blocking function from fcntl
+Changed select() descriptors that are read to FD_SETSIZE.
+ Modified make_sockets() to check for non-blocking from fcntl.
+Added check to make sure machine is a host with gethostname and
+gethostbyname.
+ All sockets that get close()'d, now also get a shutdown(sock,2);
+ Declared bzero() for make_sockets()
+ Added more error cases to shutdown_error()
+ 
+ 6/1/97
+ Removed check_abbrs() function. Checks are performed for all users on talker
+boot in reset_userfors() instead.
+ Bug fix put in abbreviations check. Talker previously did not
+recognize you changing the name of a command and changing the command name in
+the user .abbr's. Symptoms of this problem were user's name changing to
+abbreviations, $ \ ", etc.. Also added 10 to a user's abbreviation space
+allocation in the user struct {} profile, since NUM_ABBRS doesn't allow
+enough room for user abbreviations to be read in intially if the global was
+decreased in constants.h
+ Removed incompatible pointer type errors for the utility announce.c
+ Added some lib options to the Makefile for UnixWare compiles (ick!)
+
+ 5/28/97
+ Users are now kicked out when they hit IDLE_TIME, instead of going 1 over
+it
+ LOGIN_TIMEOUT now defines how many minutes a user can be at the login
+prompt before getting kicked out (WAS hardcoded to 3)
+ Gagcommed users can't .smail
+ Gagged users can't .to or .join the gagger
+ Can't suname or supass users that are of same rank or greater rank than
+you.
+
+ 5/19/97 pl6
+ Changed ptell output message
+ Fixed macro making so you can macro commands that start with .n except
+for .nerf if it's set not to be macroed..previously it wouldn't let you
+macro any .n command because it thought it was .nerf
+
+ 5/15/97
+ Added shutdown_error() function to shut down the talker on an error
+accepting a socket..esp. on a reboot with .shutdown -r
+ Modified the external_www() function a bit to increase the chance of it
+spitting out the user list correctly.
+ Fixed the social function.
+ Modified check_mess() function to print to the system log how many
+messages are deleted at midnight and to tell the users when a system check
+is completed so they don't think they lagged out. Also changed way temp
+messages are written back to the message boards so it's faster.
+
+ 5/13/97
+ Finished changes from "headquarters" to HEAD_ROOM
+ Made kill messages global.
+ You can still look at warning logs of people that dont exist anymore
+ When a user is renamed their warning log is moved to the new name too.
+
+ 5/5/97
+ Made some changes in .suname and .supass
+
+   88888888888888888888888888888888888888888888888888888888888888888888
+   8888888888888888 Below this point are 1.1.0 changes 8888888888888888 
+   88888888888888888888888888888888888888888888888888888888888888888888
+
+ 5/2/97 pl5
+ Fixed bugs and glitches
+
+ 4/28/97 pl2
+ Updated functions read_user(), descroom(), inedit_file(), and
+inedit_file2()
+
+ 4/27/97 pl1
+ Fixed abbreviation re-evaluation by adding checks to reset_userfors()
+which is executed on talker startup.
+
+ 4/25/97
+ The .banname check uses in-string checks now instead of exact checks.
+Meaning, if you ".banname shit" any user trying to login with the word
+"shit" in their name will fail. Previously if you banned that name, a user
+like "shithead" could login since the name didn't match the banned 
+name exactly.
+ Added global LONGLOGIN_WHO. If set to 0, when a user types "who" at the
+login prompt they will get a short who (.swho) If 1, they get the normal
+.who
+
+ 4/23/97
+ Added a line to the WWW port output to connect to the talker. Points to
+the global TELNET_TO
+ logged ip addresses for who and www ports connects are now resolved. This
+is because if a site is totally restricted, they should not be allowed to
+make www and who port connections, which is checked for now.
+
+ 4/19/97
+ A .h now doesn't show the '.' before the commands in the list
+ For users who used to or currently do try to do help on a command
+literally (i.e. .h .succ) instead of .h succ, both ways will now work.
+
+ 4/17/97
+ Added mail_warn ustr[user]. structure. Saved to user data file. This
+structure is a check to see whether a user has received mail that their
+mail file is over the size limit, so that they do not receive the message
+each time someone tries to email them. (i.e. if someone is spam mails them
+and they're over thier limit, the talker is gonna send them a message for
+every mail, saying that they're over their limit, therefore spamming them
+anyway) this flag is reset to 0 when the user uses .cmail successfully.
+
+ 4/16/97
+ Fixed minor glitches.
+ Fixed all occurences of things like "1 citizens online" or "displayed 1
+users"
+ Added SHORT_WHO message global.
+
+ 4/14/97
+ AFK_BACK3 global shown to users who come back from being afk.
+
+ 4/13/97 
+ Added .banname command to ban names from logging in or creating accounts
+  Added nbanned[] list, NBANFILE, and NUM_NAMEBANS
+ Added some more globals for messaging.
+ For .to, now you can't .to a user that is AFK or BAFK
+
+ 4/12/97 
+ Added stuff in .ranks
+ Remove from constants.h *numcmds[] list and NUM_COMS global
+ Put autopromote checking in command line .entpro (BUT YOU MUST INSERT 
+TEXT FOR IT TO TAKE THE PROMOTION STEP), inserting blank lines doesnt count.
+ Changed init_user() and add_user() to work more efficiently.
+ Jazzin added 18 socials
+
+ 4/11/97
+ You can now move users that are NOT online.
+ Added <message> option to .kill (i.e. .kill <user> <message>)
+with <message> being the global message sent on a user-kill.
+ Added "all" option to .delatmos
+ Changed file naming for atmosphere from "atmos<room number>" to <room 
+name>.atmos (i.e. front_gate.atmos)
+ Added enhanced profile editing to .descroom command.
+
+ 4/10/97
+ Added some stuff in ./restart
+ Changed the way MOTDs randomize..now instead of set globals for motds 
+(MOTD1/motd and DTOM1/dtom1) it will be just the word motd with a number, 
+starting with 0..first motd is motd0, then motd1, then motd2, and so on.
+The number of motds you have should be set in the global NUM_MOTDS, in 
+constants.h
+ Fixed .picture bug of showing the list of filenames to everyone.
+ Typing .ptell by itself now results in a file listing, not "Who do you 
+want to send a picture to" or whatever.
+
+ 4/4/97
+ Added init_netname structure which is the resolved site a user was 
+created from. Runs with the already existing, but not-known-of, init_site
+ Changed .entpro so you can edit profiles from the command line/prompt.
+Lots of options in here, so READ THE HELP FILE.
+ Fixed reading and writing of user data files.
+ Now if you .ustat a user that is online, it reads their current 
+strcuture, not their saved data file, which may not be as updated.
+ Fixed bug in .examine that could crash the talker.
+ Added more info in .examine, to make it look a little nicer.
+
+ 3/28/97
+ In write_board() changed a line for the wiznote btell from sprintf() to
+strcpy()..dunno HOW it got to sprintf. *shrug*
+ Added global ANON_SUGGEST in constants.h so admins can set whether they want
+.suggest suggestions to be anonymous or not.
+ Added globals MOVE_TOUSER, MOVE_TOREST, and MOVE_TONEW to set messages
+that are shown when a user is moved.
+ Added globals ARREST_TOUSER, ARREST_TOREST, and ARREST_TOJAIL to set
+messages that are shown when a user is arrested.
+
+ 3/27/97
+ Added -c/clear option to .macros
+ Added help glboal HELPSTYLE to let admins decide if they want..
+  A) A blank help as the new style (commands by type) and ".h old" would
+     be commands by level. OR
+  B) A blank help as the old style (commands by level) and ".h old" would
+     be commands by type.
+ Added subject lines to autoforwarded and .fmail email that is sent out
+from talker to user.
+ .expire -n doesn't show how long ago they were on, it just nukes them now
+
+ 3/25/97
+ Finished .set beeps and .set show.
+ Fixed .suicide so that if a user gets demoted, they can't suicide and
+come back and repromote themselves. Thanx Jazzin for pointing it out.
+ Added .friends, untested as of yet. It's a new mode in t_who()
+
+ 3/23/97
+ Logged adding of atmospherics to a room.
+ Removed sw mode from init_user(), no need for it.
+ Added resolve_names variable to init_data file first line, and removed
+RESOLVE_DEFAULT global. Added dummy character to room lines in init_data
+file so you know which room is which.
+ Added in the .set recap function.
+
+ 3/19/97
+ .expire -e won't exempt users that don't exist.
+ Added globals for tells and creplys, VIS_TELLS, INVIS_TELLS,
+VIS_FROMTELLS, VIS_FROMLINK.
+ Added homepage and desc search options for .clist
+
+ 3/18/97
+ Removed comment from checked line in check_mess();
+ Removed temp user strctures: pcount, icount, acount, pmode, and pinput.
+
+ 3/17/97
+ Added emote option to .mutter (.mutter <user> <your emote abbr><message>)
+ Finished .time revamp. Removed globals ZONE_OFF, and all the DST globals.
+Main timezones are still show, but now in am pm 0-12 hour format, not 24
+hour format. a .time -l gets you a list of lesser-main zones, which you
+can get time on by doing .time <zone> (i.e. .time hawaii)
+ Added get_emote(user) function to get the emote abbreviation placer
+for user commands that checked for a ; or : to do emotes in stuff.
+Like a .wiztell ;<action>  now becomes..
+.wiztell <what user has set for .emote><action>
+ Changed formatting in last 3 lines of .ustat
+ Removed user structures that aren't needed anymore. listen, dir, and 
+tzone
+ Removed .set tzone command and functions related to it. I never liked
+this idea in the first place, most people just look at .time
+ Added more line variables to the [Muzzled, Visible, ....] line
+ Changed login message of when you were last logged in.
+ Fixed nuke() for kill-nukes.
+
+ 3/15/97
+ Changed MONTH_OFF to DAYS_OFF, if we expire by number of days, we don't
+have to worry about the fluctuating number of days in a month, esp. Feb.
+ Added EXPIRE_EXEMPT global. If this is set to a user level #, users at
+and above that level get an extra 30 days before showing up on .expire -n
+Setting this global to -1 disables this bonus.
+ Changed show_expire() to reflect the DAYS_OFF change.
+ Moved rank odds from text.h to constants.h
+ Changed user data readfile and writefile macros from xwrite() and
+xread() to fscanf()'s fprintf()'s and 4 macros rlong() and rtime() that
+both point to a read_time()..and wlong() and wtime(). I'm planing on writing
+the user data files with them instead. Easier to read, easier to change a
+user's file by hand if need be, and minimizes the program's chance of reading
+an improper value or corrupting the file.
+ Changed user structures rawtime, numcoms, and totl to "long" declarations.
+
+   88888888888888888888888888888888888888888888888888888888888888888888
+   8888888888888888 Below this point are 1.0.* changes 8888888888888888 
+   88888888888888888888888888888888888888888888888888888888888888888888
+
+ 3/14/97
+ Moved timed alarm() events to main function and made easier to read.
+ Changed Daylight Savings Time info in constants.h (more coming later)
+ Made .suname so that you can't chaneg a user's name to a name that
+already exists.
+ Cleaned up some small stuff, probably unnoticeable.
+
+ 3/5/97
+ Added .wlog and .unarrest command. Read the help.
+ Added bzero() to make_sockets()
+ Added email search option to .search
+ Now you can give a "kill -USR1 <pid>" from the unix command line to
+give the talker a clean shutdown if you can't connect for some reason.
+
+ 3/1/97
+ Patched .expire for 29/28 days in february
+ Patched send_mail function checking of partial-named recepient.
+ Patched storage space for get_help_file(), preview(), and picture()
+
+ 2/19/97
+ Fixed bug in .fight as per smoothie. Thanx!
+ Fixed password case-mixing. No biggie.
+ Added a line option to .preview and .picture. Read the respective
+helpfiles
+
+ 2/15/97
+ Made .echo so that you can't echo usernames even if they're NOT ONLINE.
+ Made a nuke do a kill on auto, since nuking a user before killing them
+is useless, this takes care of it for you.
+
+ 2/11/97
+ Made gag and alert so you can ungag and unalert users that don't exist
+anymore.
+ Made DEMOTE_SAME global to constants.h so admins can decide easily if
+they want wizzes and up to be able to demote their own kind.
+ Made USTAT_PROFILE global to constants.h so admins can decide easily if
+they want .ustat to show a user's .ex profile
+
+ 2/7/97
+ Added more options to the .cbuff command. The former "all" option is now
+the "rooms" option. Read the helpfile
+ Added functions cshbuff() ctellbuff()
+ Set paging (one screen at a time) for .samesite, .restrict, .bannew, and
+.clist
+ Fixed bug in .force which tried to allows users to force offline users
+certain flags which they must be online for.
+
+ 2/1/97
+ Added another toggle level for .autoread and .autofwd. FOR autoread, the
+toggles are now off, autoread on just login, or autoread on login and when
+you get mail inside the talker. FOR autofwd, the toggles are now off,
+autofwd all the time, or autofwd just when you're not online.
+ Long usernames that exactly match as input string for .site now print out
+their info, not like before.
+ Redid socket code. Made accept sockets just one sockaddr, instead of like
+6. What was once in set_up_socket() is now make_sockets().
+ Updated helpfiles.
+
+ 1/29/97
+ Took out arpa/inet.h include, don't need it anymore. Fixed bug that
+.greet crashes the talker if you don't compile with the -traditional flag.
+ Added .guru command structure. Sort of like eight-ball. I promised him I
+would do it :-)
+ Added afk desc-messages to who port userlist.
+
+ 1/27/97
+ Stripped color before sending off an autoforward email.
+ Added -h option to .rooms, to see a list of hidden rooms for users above
+the ROOMVIS_LEVEL.
+ Added global FOLLOWIS_JOIN for admins to turn on/off whether a .follow
+for a user allows the user to telport to the target user's room. i.e. the
+room doesn't have to be connected.
+ Fixed log_misc_connect getting of ip addresses
+ Added resolve_add() to simplify resolution of incoming addresses to
+hostnames.
+
+ 1/25/97
+ Fixed unnoticeable glitch in .afk and .bafk
+ Added a -l option to .meter to see login activity to the talker per hour.
+ At the end of every day, the info will be appended to the file pointed to
+by the global, ACTVYFILE. Also will be put there on a shutdown or reboot.
+actually done in write_meter();
+
+ 1/22/97
+ Fixed bug in .site
+ Took out suggest() function and integrated the command into read_board()
+and write_board() homogenaity. (What a word) You cna now do selective
+reads on the wiz, suggestion, and gripe board.
+ Color codes for blinking, reverse video, and underline are now BL, RV,
+and UL respectively.
+
+ 1/17/97
+ Made BOTS_ROOTID so users can't echo the bot's owner's name to do
+his commands.
+ Made it so that you can't suname a user to a name with non-letters.
+ Made the color test option, turn color on, then off after the test
+because if a user had color of, which is the default, user won't see color
+in the test.
+
+ 1/14/97
+ Fixed bug in the successes and fails
+ Fixed glitch in .log, Finished .set pbreak. If set on, who list will be
+paged out to the user based on how they have their rows set.
+ Fixed it so that if user is above a level 0 and has their description as
+the default description, they don't get mistakenly autonuked.
+ Cleaned up some things and fixed all the minor glitches with this new
+version.
+
+ 1/6/97
+ Fixed a few bugs in the new version. Added a mode option to
+write_hilite() so you cna write colors with it. Added a color_strip()
+function. Added check_for_file() function. Found out the reboot option for
+.shutdown doesn't work on SunOS.
+
+ 1/3/97
+ Added lots more globals to .h file. Most for defaults and for ranks.
+ Made gripes not anonymous anymore.
+ Fixed column write problem with write_str()
+ Finished custom abbreviations for commands with .abbr  Added NUM_ABBRS
+global. It EQUALS the number of abbreviations set in the sys[] command
+structure.
+ 
+ 1/1/97
+ Added color options to selective hilites. Read .h coloruse
+ Added port type argument to .close and .open commands. Read the help.
+
+ 12/29/96
+ Added -s option to .rmail so users can see how big their mailfiles are,
+so they know they won't go over their disk limit.
+ Added .gagcomm command and all code that goes with it. Added globals for
+its messages and more globals for muzzle and xcomm messages, among others.
+ Commands users cannot do when gagcommed are .tell, .semote, .creply,
+.sthink, .ptell, .picture, .echo, and all socials.
+ Added a btell for auto-nukes.
+ Added auto_promote code. If user is level 0 and enters a description
+gender and profile, they will be promoted to level 1 by the talker. If use
+is demoed for some reason or promoted by a wizard before they auto-promote
+themselves, user will NOT be able to auto-promote themselves again by
+doing those 3 commands. It only makes sense. Added AUTO_PROMOTE global in
+library file so admins can turn the feature on or off.
+ Finished .frog command. Read the help on it.
+ 
+ 12/27/96
+ Added in that users in a profile, room description, or vote topic, will
+no longer ignore tells, but checks will go in all private comm. commands
+to tell people That a person is entering a profile, vote desc. or whatever
+with #define IS_ENTERING
+ Made the .vote -c delete the vote topic too. So to start a vote, you do
+.vote -c and then .vote -d. NOT the other way around!
+
+ 12/26/96
+ You should be able to use caret hilites anywhere now. The formatting on
+some things might be off since i can't remember everything that changes.
+If you find something wrong, let Cygnus know.
+ Finished the mail checks for auto-forwarding and mailfile size. Added
+global defines MAX_AUTOFORS, MAX_MAILSIZE, MAILFILE_NOTIFY, and
+MAILFILE2_NOTIFY.
+ Added PROMOTE_TO_ABOVE flag to let admin control whether people with
+.promote can promote ABOVE their level.
+ Changed .who formatting to accomadate caret hilited descriptions.
+ Changed .site so you can site someone that is offline.
+ Fixed little .entpro/.vote -d/.descroom glitch
+ Made .samesite so that you can search for hostnames as well as ip #s
+ Made roomsec() function for .permission less screwy and more normal. A
+non-permission for a room is now a 'N' not a ' '
+ User listen and ignore flags are now 1's and 0's not 1's and spaces. 2
+defines for total flags, FLAG_ONS, FLAG_OFFS
+ Fixed glitch that .vote had on Linux.
+ Added .to command for directed says.
+ Added NUKE_NOSET define global to let admins tell the talker whether
+new users signing off without changing their description should be nuked.
+
+ 12/20/96
+ .suicide's are now logged.
+ Changed .demote so that if a user is being demoted to a level that
+shouldn't have .monitor privledges, it resets their monitor to off. It's
+only fair.
+ Fixed .gag and .alert so you can't add users that don't exist. DUH!
+ Made array sizes larger to try and stop memory overwrites. Started adding
+code to limit autoforwards messages per day for each user. Started
+.gagcomm function/command. Next code compile will result in level changes,
+data file structure increases, and a necessary user wipe.
+ 
+12/7/96
+ Added (V)iew option to .entpro prompt. Added PROFILE_PROMPT global.
+
+12/6/96
+ If you do an .examine <user>, it will give you the real status on
+them, if they exist or jsut don't have a profile..before it used to say
+"User doesn't exist or doesn't have a profile", but now you know which.
+ Increased .expire exempt users to 15 by default.
+ Added Save, Redo, or Abort? option to all the editor commands, .entpro,
+.vote -d, .descroom
+ Updated .samesite so you can also samesite a user as well as an ip.
+ Added a reboot (-r) option with time to .shutdown
+ FINALLY FIXED the .site for linux..added get_ip_address() function.
+ Added color write_str and write_str_nr functions but did not implement
+yet.
+
+12/3/96
+ Made .mutter so person has to be in room with you for it to work AND you
+must type the name of the person IN FULL.
+ Updates the read_exem_data() function to detect on bootup whether the
+number of expire names in the globals file was changed. If so, it updates
+the file with more or less globals.
+
+12/2/96
+ Added possesive emote options to .semote, .shemote, .wiztell,
+.emote, and .creply.  Re-read the help files on these commands.
+
+11/26/96
+ Made .cbuff all  and .monitor level 4 commands now instead of 5.
+ Changed the output of .muzzle just a litte.
+
+11/23/96
+ A logout now is in blue for people who see colors, so as to distinguish
+from logins
+ If you have someone on your .alert list, but you are ignoring
+logins/outs, it still will tell you that the user has logged in AND beep.
+ Added 'profdel' option to .force to let wizzes and up delete users'
+profiles if they have to.
+ Made more messages to globals progressively. Promotions and demotions are
+now .wiztelled as per request.
+ Added a new command .suicide to let a user nuke his/her own account.
+Read the helpfile on it.
+
+11/20/96
+ Added a -c/clear option to .set email  for users that want to clear their
+email address. (Since setting an email address requires a @ and a .)
+
+11/6/96
+ Added .shthink (shout think)
+ Cleaned up some small stuff and globals
+ Added BOT_ID like ROOT_ID
+ Made if_cons.h now constants.h and if_text.h is now text.h
+ Added stuff so that the bot can work easier on the talker. Included
+the bot code in the talker distribution.
+
+11/1/96
+ Added partial helpfile matching. Like if you did ".h rea" it would say
+that the pattern was not unique, matched: read readlog
+but like ".h atm" would show the 'atmos' helpfile
+ Made .h to list commands from the command structure, instead of having to
+edit a rank helpfile everytime i add a command. also ".h old" brings up
+the old way of looking at the command list. Added a few "#define"s
+ The command structure was changed internally to make the .h possible and
+to make checking for abbreviations and adding default abbreviations for
+commands easier.
+ Added my own password encryption function in case anyone doesn't like
+deep's.  cyg_crypt()
+ Abbreviation check for commands in get_com_num() are now done by querying
+the command structure instead of it being set ni the function. Soon, users
+will be able to set their own character abbreviations for commands.
+
+10/30/96
+ Added 3 commands for atmospheric control.  .addatmos to add atmospherics
+to the current room you are in.  .delatmos to delete them one at a time.
+.listatmos to list the current atmospheres for a room.  For Level 5
+and up.  Read the help files on them for full explanation.
+ Fixed the .time command/function to take in account Daylight savings for
+all zones shown. Global to turn daylight savings on or off is in the lib
+file. Added New Zealand and Brazil time zones.
+ Modified profile, vote topic, and room description entry functions so
+that user's ignore/listen flags are restored to what they were before they
+entered the function. Previously, they were ignoring all, then listening
+to all, which meant they had to restore their listen/ignore flags
+manually.
+
+10/26/96
+ Made ranks more global so other talkers could change the NUMBER of ranks
+more easily. Like from 8 to 4, or whatever.
+ Made ".cbuff all" a level 5 command option.
+ Made .entpro show you at the beginning how many lines you can write.
+
+10/25/96
+ Made a lot of messages in the talker globals in the if_cons.h library
+file so that it's easier for others to chaneg the code for a new talker.
+Hopefully gonna get all of them as globals, but there are so damn many of
+them. :)
+ Changed .bannew and .restrict yet again. Keep getting requests on them.
+You know who you are. There is now a -c and -r option. The -c option lets
+you write a long comment about the site (why it is banned..who caused the
+banned..your name if you want to show you banned it..how long it SHOULD be
+banned). The -r option again lets you give a reason why it is banned. This
+is different in that THIS is the message shown to people who try and log
+in from said 'site'. The max length is set as REASON_LEN in if_cons.h,
+currently 320 characters (4 lines). On the list of banned sites, now along
+with the site name/ip and how long ago it was banned, it shows comments too.
+The commands' helpfile tells you most of this and some more.
+
+10/13/96
+ Made .atmos command now .atmos [all|<room_name>] if all, it will toggle
+whether atmospherics are on or off for all rooms like normal. If a room
+name is specified, the atmospheres for that room will be toggled on or
+off. In the init_data file, the room line info has another flag for
+initial atmospheres (right after the hidden flag) if 0, the room initially
+has them turned off, if 1, on.
+ Example..    town_square AGDB 0 1
+The room's atmospheric status will also now show up in the .rooms command,
+next to the private/public area_change flag. If the atmos are on for the
+room, it will show an "A", if not, nothing will be shown.
+ Bans now have time/date stamping. A blank .bannew or .restrict will show
+the sites/clusters/domains banned and how long ago it was banned.
+ You can now specify a reason to be shown to all who log in from a banned
+or new-banned site, by specifying a message after the sitename for the
+restrict or bannew command.
+ Example.. .restrict microserve.com You're site is banned from this talker
+           because of excessive player making.
+The SYS_NOT_ALLOWED and NO_NEW_MESS globals were replaced with BANNED_MESS
+and BANNED_NEW_MESS to be the initial messages shown to users that are
+banned if a banner does not specify a reason on the command line.
+ Made a little auto_restrict() function to simplify the auto restricting
+of a site by the talker.
+ Fixed bug in read_board() for reading # of messages.
+ Put "all" option for .cbuff to clear all room buffers.
+ Connections to the WHO port are now logged.
+added .smiles social
+put one or two lines in version()
+in t_who() put PROF in "Idle" field if user is entering profile
+in t_who() put users' afkmsg as their desc., if they are afk and have one
+therefore, made afkmsg length to DESC_LEN
+in lock_afk check in main while() loop, put a telnet_echo_off for users
+that are bafk locked so when they enter their password, it won't be shown
+can't put in the normal afk lock, because a telnet_echo_off() would then
+supress all info to the user, just like a bafk
+WORKING on the paged who list..added 5 structures to use with it.
+ * pcount - to hold the "u" variable (user num) when the function breaks
+            out to get confirmation
+ * acount - to hold the "v" variable (area num) when the function breaks
+            out to get confirmation
+ * icount - to hold the "invis" variable (invisible users already in
+            counter) when the function breaks out to get confirmation
+ * pmode  - to hold the "mode" variable (who mode) when the function
+            breaks out to get confirmation
+ * pinput - to hold the "inpstr" variable (user search string, if any)
+            when the function breaks out to get confirmation
+In .ustat took out the User Status line with the two "---" lines before
+and just put one line with "User is logged in" in between the "---"'s if
+the specified user is logged in. Saves two lines of junk.
+Changed autofwd to also forward 3 lines which say that if you would like
+to respond to this sender, try emailing them at their email address, and
+it writes ustr[user].email_addr in there. However, if the user's email is
+hidden, it just shows the normal external mail message. See EXT_MAILx in
+if_cons.h
+ Made it so that invisible people can't participate in nerfs..All users
+must be visible.
+ Made it so that people in remote rooms can't read hidden boards
+ Changed the end of read_mail to handle number inpstrs better and to
+decrease new mail messages instead of just set to 0 when only some new
+ones are read. Also fixed so that if a user enters a number > the number
+of messages in their mailfile, it WILL cat out the whole file instead of
+showing them nada.
+ Changed .ustat's function to say (if the user has new mail) "Has %d new
+mail messages." instead of "Has unread mail messages."
+ Made .vote -d so you can change the vote topic internally. which included
+non-saved user structures vote_enter, vote_start, vote_end. And functions
+enter_votedesc() and write_vote()
+ Now users of same level as promote or demote victim, can't promote or
+demote the victim.
+ Made AFK_NERF global to prevent people from going afk or bafk in the
+nerf_room (if set to 0 in the lib file)
+ Updated creply() to take in account gagged users, afks, igtell, and if
+the phoned user logs off.
+ Made time function so ZONE_OFF global can be negative (i.e. time zones to
+the right of EST, UK, Europe, etc..)
+ Made the .memory command for level 3 and above to check mem stats on all
+major structures and buffers.
+
+ 
+# Version 1.0.23 #
+
+* Pawn added WWW port for a who listing. VERY COOL.
+  http://leopard.misty.com:5030
+* Tried to put some telnet IAC commands in to help people log in.
+  Hope it helps. Put coloring in Autofwd command.
+* Made hilites ON by default.
+* Cleaned up some miscellaneous stuff.
+* Added write_raw() function.  Changes the headquarters comparison to
+  HEAD_ROOM 
+* In #includes, added <ctype.h>
+* Added do_telnet_commands() function
+* Owner message function updated a bunch.
+* char_buffer and char_buffer_size added as user structures. Not saved to
+  disk.
+* Made the .wlist command cat one file instead of have it hardcoded in to 
+  show color, no more wlist() (Reason: too hard to change the list..have
+  to reboot every time you promote a wiz/user)
+* Character mode clients should be supported now.
+* Passwords are not echoed back to users anymore.
+* Made a global #define for selective hilites, since they don't work on
+  linux.
+* Made a global #define for password echoing also.
+* Added the .force command to force users to change their settings
+* Added command .expire with all it's switches. Purpose of it is to nuke
+  users that are a specified number of months old. Read help.
+* Changed .version to reflect real globals, not just print out set text.
+* Changed .time to show time zones!
+* Added the -l/-lock switch for .afk and .bafk to allow users to lock
+  their terminal to their account password.
+* Changed the FIGHT_ROOM constant..the room number specified is now the
+  room you CAN'T fight in..also users now must be in the same room as one
+  another to fight.
+* Removed TIME_ZONE and TIME_MESSAGE (?) global defines.
+* Updated help files.
+
+# Version 1.0.22#
+Added: .gag  (Syntax, .gag <user>)
+       Will stop tells, semotes, ptells, sthinks, and smails
+       .alert (Syntax, .alert <user>)
+       Alerts you of a user in your alert list when they log on with
+       an audible beep
+       .wlist  -   Replaces the  .h new_wiz
+       .schedule -  Shows Important/Relevant upcoming CG events.
+       .bannew , .unbannew - Ban only new users from a site, check for this
+       is where the check for any new logins is (in login()?)
+       No new function, just changed restrict(user,inpstr)  and
+        unrestrict(user,inpstr)  TO  restrict(user,inpstr,type)  and
+        unrestrict(user,inpstr,type)  where type == ANY  or  NEW
+       MORE COLORS! In mail notify, ignore, listen, log, call, fail, succ,
+                   suggest, and autoread. Selective hilites now in .write
+                   and .smail
+       added selective reads to .read, .rmail, and .rsent  to read the last
+       5 mail messages, you do --> .rmail 5
+       autoread now reads only your NEW messages.
+       on login, check_mail returns  you have  %i  new mail messsages, now.
+       .help (general) changed to groups/list commands together by category.
+
+# Version 1.0.21#
+
+Added: .finger, .nslookup, .whois from the system
+       Logging of use of fmail and autoforward, echos, bcasts, etc..
+       Added homepage option to ".set"
+       Added Creation dates and command totals in .ustat
+       Formatted ustat slightly different..lined certain things up
+       Mail you sent will go to a personal SENT mailbox.
+       Read it with new .rsent  and clear with .csent
+       Message "== You have mail waiting ==" now says..
+               "== You have mail waiting from (user) =="
+       .samesite <search_string>  
+         To look for people with the <search_string> contained in their
+         last_site     i.e.  .same 205  might show..  
+         Cygnus    from  205.164.146.11
+         Cray      from  145.205.3.4
+          *NOTE: Since it has to check EVERY user file, it causes lag and
+                 CPU% usage for a minute maybe.
+Fixed: process stdout from errors in autoforwarding.
+Changed: added the rest of cline..will it work? 
+
+# Version 1.0.20#
+
+Added new .realuser command. Moved .wnote to level 4 where it should be.
+Added profiles from .examine in .ustat. Capitalization now allowed 
+in a  .examine <user> 
+Added selective ^ hilites for .say, emotes, shouts, and thinks.
+Changed macro length from 45 characters to 70 characters by request.
+Made title screen random. Chooses between the MOTD or the DTOM. :-)
+DTOM - 4 parts
+MOTD - 6 parts
+Made MOTD and DTOM disclaimer come up on new users only.
+Feature files: .h birthday     .prev lotd   (Laugh Of The Day)
+               BIRTHDAY_SQUARE file in config dir. to change the square's 
+               descrip. for specific people's birthdays
+Help files for .say, .follow, and .quote updated.
+
+# Version 1.0.19#
+
+New site. Ported to Sunos 4.1.4. Works great. No more site problems.
+Whoda thunk it?
+Added .log command.
+
+# Version 1.0.18#
+Removed: .afklog, .cafklog (too much mem usage) and not needed
+         .punt (can just move them) groups commands (stupid idea
+         in the first place) .gripe (can just use suggest)
+         .vsugg (can just use a blank .suggest)
+Changed: .go (normal users can now warp to main room with blank command,
+         except for room "jail"..hehe, almost forgot about that)
+         swho(lined up columns...again, forgot about a minor thing)
+         idle times (users time out after 300 minutes, made so that
+         "gardener" bot never times out)
+         Sites still stuff up..I'm pissed. :)
+
+# Version 1.0.17#
+Sites still not fixed *sigh* I just don't know.
+Added: .bubble, random color in .look exits, more color in .who, (afk) string
+       after user desc. in .look to show being afk. .stalker searches the 
+       talker address list for the talker you specify. Changed say and
+       tell format to use quotes. Needed for story bot.
+Changed: swho(lined up columns), optional messages for .afk(.afk <mess>), 
+         changed .echo so users cannot echo login/outs. 
+
+# Version 1.0.15#
+
+Fixed incompatible pointer type in gethostbyaddr, integer variable 
+changed to (char *). Maybe that'll fix the sites?? Added .quote to allow 
+users to turn the quotes feature off at login time. Added level 4's to
+the .wizards list. 
+
+# Version 1.0.14#
+
+Added .cafklog and .afklog. They work, but up the mem usage 2%! Go figure.
+Added additional help and quit pointers. ('HELP','QUIT')
+
+# Version 1.0.13#
+
+Tried to fix stuffing of sites with new function addrout(long a);
+Added clears for .succ and .fail.  Added .visemail for hidden email
+address. Add pointers to .help and .quit for says of 'help' '/help'
+'/quit' 'quit', etc..  
+

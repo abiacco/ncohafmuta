@@ -1,0 +1,10 @@
+ Syntax:  .ptell <user> <picture_name>
+
+Results:  Sends a picture to a user to view privately, where <user> is the
+          user you wish to see the picture and <picture_name> is the
+          picture you wish to send.  Type .ptell by itself for a list of
+          pictures.
+
+Example:  To send a picture "ack" to scupper, type: .ptell scupper ack
+
+See also: picture, preview

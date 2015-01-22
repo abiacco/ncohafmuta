@@ -1,0 +1,37 @@
+
+----------------------------------------------------------------------------
+                       The "Getting Started" Tutorial
+
+As mentioned in the "Introduction" tutorial, all commands start with a 
+period (.)
+This tutorial, if it exists will instruct you on how to initially set up
+your user for residency, so that you can access the normal user's set of 
+commands and features.
+The <>'s represent a variable, do not type these literally.
+To get advanced help on a command, type ".h <command>" For example, ".h desc"
+
+3 things/commands must be done by you to set up your user to the next level:
+
+1. Set a very short description for your user (<40 chars)
+   To do this, type ".desc <your description>"
+   So if your username was Joe and you wanted to make your description say
+   "versus the volcano" (i.e. your name listing would show up as
+   "Joe versus the volcano") you would do ".desc versus the volcano"
+
+2. Set a gender for yourself. This can be anything. Male/Female/
+   Guy/Girlbot
+   To do this, type ".set gender <your gender>"
+
+3. Create a text profile. This can be you describing yourself in more detail,
+   a poem, whatever.
+   To do this, type ".entpro"
+   This will put you in a small line-by-line editor.
+   Type in line-by-line your profile (hitting ENTER after each line)
+   When you are done, on a BLANK LINE, type ".s"
+
+After you do these 3 things, you will have residency and have access to
+the commands and features of a normal user.
+
+You should now read "The Basics" tutorial by typing ".h basictutor"
+----------------------------------------------------------------------------
+

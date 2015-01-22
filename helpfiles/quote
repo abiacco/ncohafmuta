@@ -1,0 +1,10 @@
+ Syntax:  .quote
+	  .quote -l
+	  .quote -s
+
+Results:  Typed once it by itself will turn the quote_of_the_day, at
+	  login, off.  Typed again by itself will turn the
+	  quote_of_the_day, at login, back on again.
+	  Typed with the -l flag will show you a random, normal size quote
+	  Typed with the -s flag will show you a random, small size quote
+

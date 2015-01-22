@@ -1,0 +1,32 @@
+
+ Syntax:  .help [<topic>]
+
+Results:  This command returns info about the specified command or topic. Commands can
+	  be specified with or without the leading period (.)
+	  Both commands and topics can be specified down to their own uniqueness.
+	  Multiple matches will be displayed, if a unique match cannot be found.
+	  For example to get help on the .alert command, you could type:
+		.h .alert
+		.h alert
+		.h ale
+
+	  Command syntaxes listed in helpfiles can be tricky. Variables that 
+	  are passed to commands (strings, numbers, etc) are usually
+	  enclosed in <>'s. You DO NOT type the <> when you enter the 
+	  input, just the input itself. Optional variables to the command 
+	  are enclosed in []'s  This means those options or variables may 
+	  be ommited from the command, and are usually usually for 
+	  additional features or functionality.
+	  Options or variables seperated by the pipe sign (|) mean you 
+	  may specify either/or. The pipe sign basically means "OR".
+
+Example:  For the .shutdown command there is a syntax of:
+	  [-r|-h] [<num_of_minutes>]
+	  This means:
+	  1) Both the -r and -h options are optional. The number of 
+	     minutes is also optional.
+	  2) Of the optional options -r and -h, either may be specified, 
+	     NOT both
+	  3) If you specify the num_of_minutes, you pass it like 300, not 
+	     <300>
+

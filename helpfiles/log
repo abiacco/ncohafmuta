@@ -1,0 +1,6 @@
+ Syntax:  .log     or    .log <number>
+
+Results:  This command shows you the last <number> logins to CG. If a number
+          is not specfied, the defualt is 10.  Limit is 29.
+          Output format is...
+              <user_name> <user_description> <last_login_time_and_date>

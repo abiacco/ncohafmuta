@@ -1,0 +1,13 @@
+ Syntax:  .muzzle
+          .muzzle <user> [<time>]
+
+Results:  Allows you to quiet down users who have been abusing the .shout
+          command, where <user> is the person in question.
+          If no user is specified, a list of all users with shouts removed
+          and logged on users will be displayed.
+          A time is optional. If you do not specify a time (in mins), the
+          user will be muzzled until you or someone else unmuzzles them.
+          Otherwise, the talker will auto-unmuzzle them after they have
+          served <time> online.
+
+See also: unmuzzle, arrest

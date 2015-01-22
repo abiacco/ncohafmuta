@@ -1,0 +1,5 @@
+Results:  Returns a locked room to public access. This means that
+          anyone can enter it. Some rooms are locked public, so that
+          users going to other rooms can pass through.
+
+See also: private

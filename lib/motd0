@@ -1,0 +1,8 @@
+                                 -===--------===-
+             This is the 1st Title Screen (MOTD) for the main login port
+
+                         You can change this in lib/motd0
+
+          \\ New users after logging in, PLEASE type --> .h new //
+ Type "who" to see who's online, "quit" to abort login, "help" for login help
+

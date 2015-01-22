@@ -1,0 +1,7 @@
+ Syntax:  .last <user>
+
+Results:  Allows you to look and see when a user last logged in,
+          and how long ago. If the user is online, it will tell you
+          that and return no time.
+
+See also: ustat

@@ -1,0 +1,8 @@
+ Syntax:  .open
+          .open <all | main | who | wiz | www>
+
+Results:  Opens the talker to all further logins for the specified port.
+          Or all ports if "all" is the given argument. No argument will
+          list the status of the ports.
+ 
+See also: close, allow_new

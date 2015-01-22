@@ -1,0 +1,12 @@
+ Syntax:  .move <user> <room_name>
+
+Results:  Moves a user from one room to another.  <user> is the person you
+          want to move, and <room_name> is the room you want to move the 
+          user to. You can only move users of the same level or lower
+          than you. Wizards cannot move users to private rooms.
+          If the room is not specified, it will default to the main room.
+
+   Note:  YOU CAN MOVE USERS THAT ARE NOT ONLINE.
+
+Example:  To move scupper to the gazebo  : .move scupper gazebo
+          To move weasal to the main room: .move weasal

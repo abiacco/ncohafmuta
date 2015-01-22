@@ -1,0 +1,107 @@
+
+/*** Handle macros... if any ***/
+check_macro(user,inpstr)
+int user;
+char *inpstr;
+{
+int macnum,i,lng;
+char line[ARR_SIZE];
+char tmpnum[3];
+char buffer[3];
+char filename[FILE_NAME_LEN];
+FILE *fp;
+
+if (inpstr[0]=='.' && inpstr[1]>='0' && inpstr[1]<='9') {
+   if (inpstr[1]>'0' && inpstr[1]<'2' && inpstr[2]>='0' && inpstr[2]<='9')
+    {
+     midcpy(inpstr,line,4,ARR_SIZE);
+     midcpy(inpstr,tmpnum,1,2);
+     macnum=atoi(tmpnum);
+     if (inpstr[3]=='=') {
+        midcpy(inpstr,buffer,4,5);
+        if (!NERF_MACRO) {
+        if (!strcmp(buffer,".n")) {
+         write_str(user,CANT_MACRO);
+         inpstr[0]=0;
+         return;
+         }
+        }
+        if (strlen(inpstr) > MACRO_LEN) {
+         write_str(user,MACRO_LONG);
+         inpstr[0]=0;
+         return;
+         }
+      strcpy(ustr[user].macros[macnum],line);
+      inpstr[0]=0;
+      sprintf(t_mess,"%s/%s",MACRODIR,ustr[user].name);
+      strncpy(filename,t_mess,FILE_NAME_LEN);
+
+      if (!(fp=fopen(filename,"w"))) {
+         write_str(user,"SYSTEM: Can't access your macro file");
+         logerror("Cannot access macros files");
+         return;
+         }
+      for (i=0;i<20;++i) {
+         sprintf(mess,"%s\n",ustr[user].macros[i]);
+         fputs(mess,fp);
+         }
+      FCLOSE(fp); 
+      write_str(user,"Ok");
+      }
+   else {
+      lng=inpstr[3];
+      strcpy(inpstr,ustr[user].macros[macnum]);
+      if (lng) {
+         strcat(inpstr," ");
+         strcat(inpstr,line);
+         }
+      }
+   } /* end of main sub-if */
+  else if (inpstr[1]>='0' && inpstr[1]<='9' && !isdigit(inpstr[2]))
+   {        
+   midcpy(inpstr,line,3,ARR_SIZE);
+   macnum=inpstr[1]-'0';
+   if (inpstr[2]=='=') {
+        midcpy(inpstr,buffer,3,4);
+        if (!NERF_MACRO) {
+        if (!strcmp(buffer,".n")) {
+         write_str(user,CANT_MACRO);
+         inpstr[0]=0;
+         return;
+         }
+        }
+      if (strlen(inpstr) > MACRO_LEN) {
+         write_str(user,MACRO_LONG);
+         inpstr[0]=0;
+         return;
+         }
+      strcpy(ustr[user].macros[macnum],line);
+      inpstr[0]=0;
+      sprintf(t_mess,"%s/%s",MACRODIR,ustr[user].name);
+      strncpy(filename,t_mess,FILE_NAME_LEN);
+
+      if (!(fp=fopen(filename,"w"))) {
+         write_str(user,"SYSTEM: Can't access your macro file");
+         logerror("Cannot access macros files");
+         return;
+         }
+      for (i=0;i<20;++i) {
+         sprintf(mess,"%s\n",ustr[user].macros[i]);
+         fputs(mess,fp);
+         }
+      FCLOSE(fp); 
+      write_str(user,"Ok");
+      }
+   else {
+      lng=inpstr[2];
+      strcpy(inpstr,ustr[user].macros[macnum]);
+      if (lng) {
+         strcat(inpstr," ");
+         strcat(inpstr,line);
+         }
+      }
+    } /* end of main sub-else */
+   }
+}
+
+ 

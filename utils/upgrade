@@ -1,0 +1,37 @@
+#!/bin/sh
+
+if [ "$1" = "" ]
+then
+	echo Usage: ./upgrade <absolute path to your current ncohafmuta> <absolute path to the new ncohafmuta>
+	echo e.g.: ./upgrade ~/ncoh123 ~/ncohafmuta-1.3.7
+fi
+
+if [ "$2" = "" ]
+then
+	echo Usage: ./upgrade <absolute path to your current ncohafmuta> <absolute path to the new ncohafmuta>
+	echo e.g.: ./upgrade ~/ncoh123 ~/ncohafmuta-1.3.7
+fi
+
+echo Copying over your data..
+
+cp -a $2/config $2/config.beforeupgrade
+rm -fr $2/config/*
+cp $2/server.pid $1/
+cp -a $2/config/* $1/config/
+cp -a $2/maildir/* $1/users/
+cp -a $2/prodir/* $1/prodir/
+cp -a $2/maildir/* $1/maildir/
+cp -a $2/warnings/* $1/warnings/
+cp -a $2/restrict/* $1/restrict/
+cp -a $2/newrestrict/* $1/newrestrict/
+
+
+echo You should now compare your constants.h with the constants.h in the
+echo new distribution, and update the new one with your info
+echo You might also need to do the same for text.h, if you modified that file
+echo
+echo You should then run:
+echo ./shutdown
+echo ./configure
+echo make
+echo ./restart

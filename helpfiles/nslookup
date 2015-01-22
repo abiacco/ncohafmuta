@@ -1,0 +1,10 @@
+ Syntax:  .nslookup <ip/number address>
+
+Results:  Use the Unix "nslookup" command to get a site's alpha hostname,
+          ip address, and any aliases that go along with it. The first two
+          lines outputted are the servers you are getting the info from.
+          Following that are the info lines you are seeking. If a lookup
+          fails, nothing will be returned.
+        
+See also: finger  whois
+

@@ -1,0 +1,10 @@
+ Syntax:  .write <message>
+
+Results:  Enters a message on the message board of the room you are in.
+          Selective hilites can be done with ^'s  One before the text you
+          want to hilite in the message of another after. The number of
+          ^'s you can use is unlimited.
+
+  Notes:  Message lifetimes are currently approximately 6 days.
+
+See also: read, wnote, suggest

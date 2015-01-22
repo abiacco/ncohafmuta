@@ -1,0 +1,10 @@
+As you may notice, I work in units of paragraphs.
+When I'm reading a story, I pause at the end of
+each one so that you can tell me what I should
+do next. Saying "next", for instance, makes me go
+to the next paragraph; saying "back" makes me go
+back a paragraph. You can also do things like
+add a following paragraph (more on this later),
+or edit the paragraph I just read, if you wrote
+it originally. Saying 'help' while I'm in the
+middle of the story describes these commands and more.

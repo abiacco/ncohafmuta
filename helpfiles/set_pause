@@ -1,0 +1,9 @@
+ Syntax:  .set pause    (it's a toggle)
+
+Results:  Toggles whether you want the talker to stop on login, when it
+	  shows your status. This will ask you to press a <return> to
+	  complete your login into the talker.
+	  With it off, no prompt will be presented to you and it will
+	  not pause.
+
+See also: set

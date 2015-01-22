@@ -1,0 +1,8 @@
+ Syntax:  .sos <message>
+
+Results:  Allows you to make a request for help to all logged on wizards,
+          Please use this command ONLY if absolutely neccessary. 
+
+Example:  To send a sos for help, type: .sos help me please!
+
+See also: wizards, wlist

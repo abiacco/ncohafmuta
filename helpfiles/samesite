@@ -1,0 +1,17 @@
+ Syntax:  .samesite <IP search string/hostname>
+          .samesite <user>
+
+Results:  Allows high level users to see who came from a certain site,
+          based on the last site they came from. Will also show how
+          long ago they were last online.
+          The search string can be full ip addresses or partial ones.
+          When you search by <user> it searches for the exact match to
+          <user>'s last site.
+
+Example:  .samesite 205.164
+
+             might show..  Cygnus    from  205.164.146.11 <last time on>
+                           Gardener  from  205.164.128.11 <last time on>
+
+  Notes:  Use this command sparcely since it causes additional lag from
+          having to look through every user file in the database.

@@ -1,0 +1,4 @@
+Fri Apr  9 01:08:24: BOOT on port 1900 using datadir: config with pid 6310
+Fri Apr  9 01:14:12: SHUTDOWN pid 6310 due to the command line shutdown script
+Fri Apr  9 01:14:12: SHUTDOWN by the talker complete
+Mon Apr 12 18:28:18: BOOT on port 1900 using datadir: config with pid 8639

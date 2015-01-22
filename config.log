@@ -1,0 +1,227 @@
+checking for gcc...
+configure:1: gcc -c -O  conftest.c
+checking how to run the C preprocessor
+configure:1490: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking system type...
+checking for mmap support...
+configure:2: gcc -c -O  conftest.c
+checking for errno in errno.h...
+configure:2: gcc -c -O  conftest.c
+checking for sys_errlist declaration in errno.h... 
+configure:xxx: gcc -c -O  conftest.c
+conftest.c: In function `main':
+conftest.c:3: `sys_errlist' undeclared (first use in this function)
+conftest.c:3: (Each undeclared identifier is reported only once
+conftest.c:3: for each function it appears in.)
+configure: failed program was:
+#include <errno.h>
+int main() {
+char *msg = *(sys_errlist + 1); if (msg && *msg) return 12;
+; return 0; }
+checking for sys_errlist in library... 
+configure:xxx: gcc -o conftest -O   conftest.c 
+/tmp/ccA2n3R7.o(.text+0x11): In function `main':
+: `sys_errlist' is deprecated; use `strerror' or `strerror_r' instead
+/tmp/ccA2n3R7.o(.text+0xa): In function `main':
+: `sys_nerr' is deprecated; use `strerror' or `strerror_r' instead
+checking if setpgrp takes arguments...
+configure:xxx: gcc -o conftest -O   conftest.c 
+conftest.c: In function `main':
+conftest.c:2: too many arguments to function `setpgrp'
+configure: failed program was:
+#include <unistd.h>
+main() { exit(setpgrp(NULL,NULL));}
+checking if mkdir takes arguments...
+configure:xxx: gcc -o conftest -O   conftest.c 
+conftest.c: In function `main':
+conftest.c:3: too few arguments to function `mkdir'
+configure: failed program was:
+#include <unistd.h>
+#include <sys/stat.h>
+main() { exit(mkdir(NULL));}
+checking for last argument type to accept...
+configure:xxx: gcc -c -O  conftest.c
+checking whether time.h and sys/time.h may both be included...
+configure:xxx: gcc -c -O  conftest.c
+checking for sys/wait.h that is POSIX.1 compatible...
+configure:xxx: gcc -c -O  conftest.c
+checking for arpa/inet.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for sys/fcntl.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for sys/select.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for fcntl.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for sys/time.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for sys/unistd.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for stdarg.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for varargs.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for a working netdb.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for a working resolv.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for a working nameser.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for unistd.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for ctype.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for sys/wait.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for sys/param.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for sys/resource.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for sys/ioctl.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for sys/mode.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+conftest.c:1:22: sys/mode.h: No such file or directory
+configure: failed program was:
+#include <sys/mode.h>
+checking for string.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for strings.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for stdlib.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for sys/socket.h...
+configure:xxx: gcc -E  conftest.c >/dev/null 2>conftest.out
+checking for waitpid
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for getcwd
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for strdup
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for strerror
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for strchr
+configure:xxx: gcc -o conftest -O   conftest.c 
+conftest.c:7: warning: conflicting types for built-in function `strchr'
+checking for strstr
+configure:xxx: gcc -o conftest -O   conftest.c 
+conftest.c:7: warning: conflicting types for built-in function `strstr'
+checking for bzero
+configure:xxx: gcc -o conftest -O   conftest.c 
+conftest.c:7: warning: conflicting types for built-in function `bzero'
+checking for memset
+configure:xxx: gcc -o conftest -O   conftest.c 
+conftest.c:7: warning: conflicting types for built-in function `memset'
+checking for snprintf
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for strpbrk
+configure:xxx: gcc -o conftest -O   conftest.c 
+conftest.c:7: warning: conflicting types for built-in function `strpbrk'
+checking for pipe
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for strftime
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for select
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for mktime
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for rename
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for srandom
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for random
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for srand
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for rand
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for setenv
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for bcopy
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for memcpy
+configure:xxx: gcc -o conftest -O   conftest.c 
+conftest.c:7: warning: conflicting types for built-in function `memcpy'
+checking for tzset
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for uname
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for gethostname
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for getdomainname
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for umask
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for dirent.h that defines DIR...
+configure:xxx: gcc -c -O  conftest.c
+checking for opendir in -ldir...
+configure:xxx: gcc -o conftest -O   conftest.c -ldir  
+/usr/bin/ld: cannot find -ldir
+collect2: ld returned 1 exit status
+configure: failed program was:
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char opendir();
+
+int main() {
+opendir()
+; return 0; }
+checking for main in -lnsl...
+configure:xxx: gcc -o conftest -O   conftest.c -lnsl  
+checking for library containing connnect...
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking for library containing gethostbyaddr...
+configure:11: gcc -o conftest -O   conftest.c 
+checking for library containing gethostbyname...
+configure:11: gcc -o conftest -O   conftest.c 
+checking return type of signal handlers...
+configure:13: gcc -c -O  conftest.c
+checking if SIG_IGN function declaration is a prototype...
+configure:xxx: gcc -c -O -Wstrict-prototypes  conftest.c >/dev/null 2>conftest.out
+checking flavor of signal routines... 
+configure:xxx: gcc -o conftest -O   conftest.c 
+checking if we need -lnsl...
+configure:14: gcc -o conftest -O   conftest.c 
+checking if we need -lsocket...
+configure:15: gcc -o conftest -O   conftest.c 
+checking if we need -lmalloc...
+configure:16: gcc -o conftest -O   conftest.c 
+checking for res_nmkquery...
+Running ${CC-cc} -o conftest${ac_exeext} $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS
+configure:xxx: gcc -o conftest -O   conftest.c 
+/tmp/cc8YObaI.o(.text+0x21): In function `main':
+: undefined reference to `__res_nmkquery'
+collect2: ld returned 1 exit status
+configure: failed program was:
+#include "hdrfiles/config.h"
+#include <stdio.h>
+#include <sys/types.h>
+#if defined(HAVE_ARPA_NAMESER_H)
+#include <arpa/nameser.h>
+#elif defined(HAVE_NAMESER_H)
+#include <nameser.h>
+#else
+#include "hdrfiles/nameser.h"
+#endif
+
+#include <netinet/in.h>
+
+#if defined(HAVE_RESOLV_H)
+#include <resolv.h>
+#elif defined(HAVE_ARPA_RESOLV_H)
+#include <arpa/resolv.h>
+#else
+#include "hdrfiles/resolv.h"
+#endif
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+int res_nmkquery();
+
+int main() {
+res_nmkquery(NULL,(int)NULL,NULL,(int)NULL,(int)NULL,
+NULL,(int)NULL,NULL,NULL,(int)NULL)
+; return 0; }
+checking for res_nmkquery in -lresolv...
+configure:xxx: gcc -o conftest -O   conftest.c -lresolv  

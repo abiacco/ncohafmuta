@@ -1,0 +1,10 @@
+ Syntax:  .set pbreak
+
+Results:  This command allows you to set whether the .who list will be
+          shown to you to prompted, broken out pages (if it is larger
+          than your screen size) or one big list.
+          This command is a TOGGLE. Meaning, every time you type it, it
+          will either turn the option on or off.
+
+See also: who
+

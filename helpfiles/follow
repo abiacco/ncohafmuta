@@ -1,0 +1,7 @@
+ Syntax:  .follow <user>
+
+Results:  Allows you to follow another user into another room.
+          Room you are going to MUST be connected to the one you are in.
+          Will not work if the target room is private..obviously. :)
+
+See also: go

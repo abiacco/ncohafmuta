@@ -1,0 +1,24 @@
+ Syntax:  .revoke <command> <user>
+	  .revoke <command> [<rank>|all]
+	  .revoke -l [<user>|all]
+
+Results:  This command stops a user from using a command. You cannot revoke
+	  commands from users at or above your rank.
+	  The 1st syntax revokes a command from a user.
+	   To take .tell from jazzin;  .revoke .tell jazzin
+
+	  The 2nd syntax revokes a command from a whole rank..or everyone if
+	  "all" is given.
+	   To take .tell from all level 1's:  .revoke .tell 1
+
+	  The 3rd syntax shows a list of the commands revoked from <user> or,
+	  if "all" is given, a list of users with revoked commands, and
+	  what commands are revoked from them.
+
+Note   :  In an effort to keep track of who has what revoked, without having a
+	  huge list which spams people, the person revoking will get a
+	  smail telling them who they revoked, and the person getting
+	  revoked will get a smail if they are not online. If they are
+	  online, it will just tell them.
+
+See also: grant, bannew, unbannew, unrestrict, restrict

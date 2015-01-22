@@ -1,0 +1,60 @@
+READ THIS FILE BEFORE UPGRADING TO A NEWER CODE VERSION!!!
+
+Converting userfiles when upgrading to a new code version
+---------------------------------------------------------
+When upgrading to newer code, sometimes I add new structures (data) to the
+userdata file (users/<username>). In the past, conversion of userfiles
+wasn't easy and it was sometimes easier to just wipes the users.
+
+Now conversions are done internally by the code, where possible. In
+the file constants.h you'll notice a define called UDATA_VERSION. This
+represents the current file format of the userfile. The string will always
+contain ".ver" and will increment if i change/add any new structures.
+This standardization starts with "121.ver" and this string should not be
+changed by anybody other than me. If you change it and it screws up your
+userfiles, dont come cryin' to me. You have been warned!
+
+For those of you that DONT add new structures/data to userfiles (via
+read_user(), write_user(), etc..), conversion is as simple as copying your
+old userfiles into the users/ directory of the new code, finish the rest
+of the upgrading process (adding your own commands back, copying over
+MOTDs, etc..), and upon startup of the talker, all userfiles will be
+updated. These people can stop reading this document here.
+
+For those of you that HAVE added new structures/data to userfiles.
+Starting with UDATA_VERSION 121.ver (code version 1.2.0b-pl11 and greater)
+you're instructed and URGED to add your reading and writing calls (in 
+read_user(),read_to_user(),and write_user()) BEFORE you boot the new 
+talker code with your userbase. In these 3 functions I have set aside
+space for your own calls. This space is set aside RIGHT before the "END:"
+label in each function.
+An example would be:
+	You have a structure at the end of your user files called "age"
+	(ustr[user].age,t_ustr.age) with a size of MAX_AGE
+
+	IN FUNCTION read_user() THE ORIGINAL CODE READS:
+
+rbuf(buff1,-1); /* ENDVER STRING */
+                
+/* add your own structures to read in here */
+        
+/* STOP adding your own structures to read in here */
+                
+END:
+
+
+	YOU WOULD CHANGE THIS TO:
+
+rbuf(buff1,-1); /* ENDVER STRING */
+                
+/* add your own structures to read in here */
+rbuf(t_ustr.age,MAX_AGE);
+/* STOP adding your own structures to read in here */
+                
+END:
+
+And so on for in write_user() and read_to_user()
+If this document is not clear or you have any confusion, Email me.
+
+-Cygnus
+ncohafmuta@asteroid-b612.org

@@ -1,0 +1,9 @@
+ Syntax:  .close
+          .close <all | main | who | wiz | www>
+ 
+Results:  Closes the talker to all further logins for the specified port.
+          Or all ports if "all" is the given argument. No argument will
+          list the status of the ports.
+
+See also: open, allow_new
+

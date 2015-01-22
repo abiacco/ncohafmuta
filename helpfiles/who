@@ -1,0 +1,29 @@
+ Syntax:  .who
+          .who <name|string|room>
+ REMOTE:  .who @<talker>
+     
+Results:  Gives a list of all visible users currently on the board.
+          If a room is specified, all users in the room will be 
+          displayed and if an name or search_string is specified only that 
+          name(s) will be listed containing the string.
+
+          If you use a '@' after the command it will give you a listing 
+          of all talkers (and their keywords) you can get who listings from. 
+          Then use .who @<talker keyword> to get their who listing.
+          i.e.  .w @village
+
+          The status column of the listing shows a code from this list:
+           ACTV - User has typed a command in the last 3 minutes
+           AWKE - User is idle between 3 minutes to 1 hour.
+           IDLE - User is idle between 1 hour and 3 hours.
+           COMA - User has been idle for more than 3 hours.
+           AFK  - User is away from the keyboard.
+           BAFK - User is AFK and not getting any output.
+           LAFK - User is AFK and their terminal is locked.
+           PROF - User is entering a profile.
+           DESC - User is writing a room description.
+           VOTE - User is entering a vote topic.
+
+Example:  To see the users in the cave, type:  .who cave
+
+See also: swho, with, look, friends

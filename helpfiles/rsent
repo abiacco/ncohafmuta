@@ -1,0 +1,10 @@
+ Syntax:  .rsent   or   .rsent <number of messages>
+
+Results:  Allows you to read your system SENT mail. It will be displayed in
+          pages to you and each line numbered. If you specify a number at
+          the end of the command, you can read that many messages from the
+          bottom of your SENT mailfile.
+
+Example:  To read the last 4 messages in your SENT mail, type --> .rsent 4
+
+See also: csent, rmail

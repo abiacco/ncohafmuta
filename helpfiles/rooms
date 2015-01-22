@@ -1,0 +1,11 @@
+Syntax :  .rooms [-h]
+
+Results:  Lists data on all the rooms, including the room name,
+          public/private status, number of users in the room, number 
+          of messages on the room's board, and current room topic.
+          If a room is locked public, it will have an * next to it.
+          If a room has atmospherics turned on, it will have an 'A' next
+          to it. For higher users, the -h is to get a list of the hidden
+          rooms only.
+
+See also: look, map

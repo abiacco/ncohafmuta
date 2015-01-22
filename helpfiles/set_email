@@ -1,0 +1,13 @@
+ Syntax:  .set email <address>
+          .set email [-c|clear]
+
+Results:  This setting allows you to set you email address shown (or
+          hidden, depending on your .set visemail setting) in .ustat,
+          and use it for forwarding and auto-forwarding talker mail to it
+          in conjunction with .autofwd and/or .fmail
+          <address> must contain at least one @ and . character
+          The -c or clear option will set your address back to the
+          unspecified default
+
+See also: set_visemail, set_autofwd, fmail
+

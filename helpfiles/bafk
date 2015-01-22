@@ -1,0 +1,19 @@
+ Syntax:  .bafk [-l] [<message>]
+        
+ Result:  Some people call this the boss command.  It is like AFK but
+          unlike AFK, all output your your screen is turned off until
+          you return.  It will also clear your screen before disabling
+          output to it.
+          As soon as you type something, it will turn off the BAFK status
+          and return you to the normal status.
+           IF you use -l option, this will enable the terminal
+          locking feature. It will lock your terminal from all input, and
+          require you to enter your normal account password to un-lock it.
+          Useful when you want to leave the computer unattended, and don't
+          want to worry about anyone screwing with it.
+           MAKE NOTE that if you type your password incorrectly, you
+          will NOT get a password prompt back, since bafk means you're not
+          supposed to see anything. Just assume that it's there. If you
+          have .set hidden on, your password, when typed, will not echo
+          back to you, unlike an .afk -l
+          MESSAGES WILL NOT be displayed to your terminal and they are lost.

@@ -1,0 +1,19 @@
+ Syntax:  .cbuff [tells]
+          .cbuff [rooms | shouts | wiz | all]   (usually just for wizzes)
+  
+Results:  Clears the room's conversation buffer.  In other words, when
+          the .review command is used after the .cbuff command, nothing
+          is displayed. 
+           The "tells" option lets a user clear their own tell buffer.
+           The "all" option is given to clear shout, wiztell, and room
+          buffers.
+           The "rooms" option clears the conversation buffer in all the
+          rooms.
+           The "wiz" option clears the wiztell buffer.
+           The "shouts" option clears the talker's shout buffer.
+
+   Note:  If two users are in a room and one leaves..cbuff is done
+          automatically. For privacy reasons. Also applys in some other
+          cases.
+
+See also: review

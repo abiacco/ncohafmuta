@@ -1,0 +1,3 @@
+Results:  Displays the main system parameters. Global flags, number of
+          logins today, number of logins since boot, number of new users
+          today, message lifetime, etc..

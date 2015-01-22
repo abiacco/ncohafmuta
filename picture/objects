@@ -1,0 +1,49 @@
+Object:
+	type
+	subtype
+	size
+	
+List:
+	objects
+	
+OrderedList:
+	list
+	
+Port:
+	Address (List)
+	Status
+	Read Masks
+	Pending Transactions
+	Max Connections
+	
+Peer:
+	Port
+	Peer_to_peer Encryption Key
+	
+Room:
+	description
+	topic
+	bulletin (list)
+	command (list)
+	connection (list)
+	saved data (list)
+	
+User:	
+	name
+	password
+	priveledge class
+	interaction mode
+	mail (list)
+	execution (list)
+	review (list)
+	macro (list)
+	saved data (list)
+	
+Command:
+	name
+	abbreviation
+	permission level
+	help 
+	modes
+	save data (list)
+	

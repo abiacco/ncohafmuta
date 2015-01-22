@@ -1,0 +1,10 @@
+ Syntax:  .promote <user> [<level>]
+
+Results:  Allows you to grant levels to other users, where <user> is the
+          person in question. If number is not specified, user will be
+          promoted up 1 level. Otherwise, to the level number specified.
+          See .ranks for a description of the levels.
+
+Example:  To promote necros to 4 *laugh*, type: .promote necros 4
+
+See also: demote

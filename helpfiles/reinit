@@ -1,0 +1,5 @@
+Results:  Reinitialize the system data from the INIT_FILE. Reloads
+          the number of rooms, room connections if rooms were added,
+          and deletes old messages from the boards.
+
+	  Also reloads the web port configuration file.

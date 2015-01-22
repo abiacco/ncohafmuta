@@ -1,0 +1,36 @@
+ Syntax:  .set profile
+  Type1:  .set profile [clear | -c]
+  Type2:  .set profile <line_number> <text>
+  Type3:  .set profile <line_number> [-b | -c]
+  Type4:  .set profile -i [<text> | -b]
+  Type5:  .set profile -i<line_number> [<text> | -b]
+
+Results:  This command allows you to create an up to 10 line (or
+          whatever the current number is in .version) profile of
+          yourself which can be seen when other users .examine or .ustat
+          you.  Make sure that you press return after each line you type 
+          in.  Remember that each line can only be as long as the screen 
+          is.  To finish the profile before 10 lines, type a single '.'
+          on a line by itself. This will bring up a 4-choice prompt.
+          hit 's' to save the profile, 'v' to view it, to make sure
+          it's going to appear the way you want it,  'r' to do it all
+          over..or hit 'a' to abort whatever you wrote and keep your
+          current profile. You can combine these two steps into 1 by
+          typing the . and <letter> together on a line by itself, as in .s
+
+   Type1: If you give the -c or clear option, the command will erase
+          your profile.
+   Type2: Giving a line number and <text> replaces the current text for 
+          that line in your profile with <text>.
+   Type3: Giving a line number and the -b option, makes that line in your 
+          profile blank. or use the -c option instead to erase that line
+          from your profile.
+   Type4: Giving the -i flag and <text> adds <text> to the end of your 
+          profile. Giving the -i flag and the -b flag adds a blank line to 
+          the end of your profile.
+   Type5: Giving the -i flag immediately followed by a line number (i.e. -i2)
+          and <text> inserts <text> on a line after <line_number>. Giving 
+          -b instead of <text> inserts a blank line after <line_number>
+
+ See also: examine, ustat
+

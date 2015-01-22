@@ -1,0 +1,10 @@
+ Syntax:  .set recap <new_capped_name>
+
+Results:  This command allows you to recapitalize your name the way you
+          want it. You can use color codes in it if you wish.
+	  For example, if you're cygnus, you can change it to
+          Cygnus, cYgnUs, CYgnUS, etc..but it must be the same name. If
+          you wish to totally change your name, ask a staff member
+
+See also: set_name
+

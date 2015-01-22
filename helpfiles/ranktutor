@@ -1,0 +1,45 @@
+----------------------------------------------------------------------------
+                     The "Ranks and Heirarchy" Tutorial
+
+Ok, last but certainly not least, is a discussion about ranks.
+
+There is a rank system on this talker ranging from an Applicant (Level 0), 
+which is what most of us know as a newbie or new user to the talker, to an 
+Admin, which is an owner/administrator over the talker.
+
+With each rank/level you get more commands.  One quick note though,
+
+** Don't ask for promotions!  This will get you nowhere and in a hurry     **
+** The admins and staff members of the talker do love having you here, but **
+** demanding they promote you, or you will leave, will have no affect      **
+
+The easiest way to track the ranks on the talker, is to type ".ranks"
+
+This will list out the ranks, in order, from top to bottom, and from lowest 
+to highest.  It will also show you the commands total per level, along with
+how many more are added to that level.
+
+This command also shows you what rank you currently hold.
+
+This is a common output from the ".ranks" command:
+
+Your rank is 2 (a Honor) <----- ***YOUR RANK***
+------------------------------------------------------------------
+lvl  rank                  odds     cmds this level    cmds total
+------------------------------------------------------------------
+0    an Applicant         (00010)          31               31   
+1    a Student of Magic   (00030)          69               100
+2    a Honor              (00270)          8                108
+3    a Wizard             (02150)          40               148
+4    an Admin             (21000)          19               167
+
+There are 167 commands in the system.
+
+
+For more information on this command please see ".h ranks"
+
+Well, that about does it for the tutorials session.  Thank you
+for your patience and we hope that you enjoy your time here.
+
+THANK YOU!!
+----------------------------------------------------------------------------

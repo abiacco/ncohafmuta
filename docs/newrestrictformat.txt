@@ -1,0 +1,23 @@
+1 restrict file
+
+Each entry is marked by a % at the beginning og the first entry line
+# lines are ignored
+
+% EXISTING x.x.x.x or host.domain.com
+TIME 0000000000
+TIMELEFT 0000000000
+USER username
+REASON Reason to give to user trying to log in
+COMMENT Comment given by banner
+
+
+EXISTING means "disallow login from an established player"
+NEW means "disallow login from someone creating a new player"
+BOTH means "disallow all logins EXISTING and NEW"
+
+TIME is unix time site was banned
+TIMELEFT is time in seconds before ban is removed (if timed ban) left at
+0 for non-timed
+USER is user that banned the site
+
+

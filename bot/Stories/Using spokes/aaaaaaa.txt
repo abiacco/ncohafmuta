@@ -1,0 +1,9 @@
+Once your paragraph has been recorded in the story tree, you
+can still change it later on. If you've just read one of your
+paragraphs and decide you want to change it, say "edit". That
+puts me into writing mode for that one paragraph. It also
+puts you at the END of the paragraph. That means that any lines
+you say will be added on to the paragraph, unless you delete
+some lines first or wipe the whole paragraph and start over
+by saying "clear". Once you finish the paragraph, I come back
+out of writing mode.

@@ -1,0 +1,40 @@
+
+----------------------------------------------------------------------------
+                     The "How To Communicate" Tutorial
+
+Some of these commands are repeated from the "Basics" tutorial, but it
+won't hurt to brush up on them.
+
+To talk to other users in the same room:
+       <just type your message>  OR
+       .say <message>                         Example: hi, i'm joe
+
+To direct a message at someone in the room:
+       .to <user> <message>                   (Everyone will still see it)
+
+To do an emote/action to the room:
+       .emote <action>  OR
+       ;<action>                              Example: ;jumps on you
+
+To send a private message to someone:
+       .tell <user> <message>                 Example: .tell susan Hi
+
+To send a private emote/action to someone:
+       .semote <user> <action>                Example: .semote susan hugs you
+
+To shout a message to all users in all rooms:
+       .shout <message>
+
+To do an action to all users in all rooms:
+       .shemote <action>                      Example: .shemote screams!
+
+To say something to all users in the room EXCEPT <user>:
+       .mutter <user> <message>
+
+See the "COMM" section under ".h" for all communication commands available
+to you.
+
+You should now read the "Rooms/Moving Around" tutorial by typing 
+".h movetutor"
+----------------------------------------------------------------------------
+

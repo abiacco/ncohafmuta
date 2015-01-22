@@ -1,0 +1,14 @@
+ Syntax:  .addatmos <probability> <message>
+
+ Result:  Adds an atmospheric to the current room you are in.
+          Probability is a number from 1 to 100. <message> can be as long
+          as the length shown in .version (now 161) which is 2 lines of
+          text plus a @. The @ acts as a newline/carriage return for
+          multiple line atmoses. Just put the @ wherever you want for the
+          talker to continue showing the atmos starting on a new
+          line.
+          The max atmospherics than can be saved per room is shown in
+          .version (currently 10).
+          Atmospherics are messages that show up in rooms at random.
+
+See also: delatmos, listatmos

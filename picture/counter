@@ -1,0 +1,18 @@
+1. Go into your web page directory
+2. type:  mkdir cnt
+   type:  chmod 700 cnt
+   type:  chgrp nobody cnt
+
+3. type:  echo "0" > cnt/counter
+   type:  chmod 660 cnt/counter
+   type:  chown nobody cnt/counter
+
+4. In your html page put these lines where you want to show how many hits
+your page is getting..
+
+   This page has been accessed
+   <!--#exec cmd="perl -pi -e '$_++' cnt/counter;cat cnt/counter"-->
+   times
+
+5. Finally, make that page (assuming index.html) executable
+   type:  chmod 755 index.html

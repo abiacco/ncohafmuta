@@ -1,0 +1,73 @@
+Finish email verification option
+
+Add .staffmail and .massmail
+
+Add .anchor or .set anchor for users to stop themselves from being brought.
+.anchor <user> for wizzes to tie down a user to a room.
+
+Add .disable [command] [level] will disable a command from all users 
+up to [level] except ROOT_ID
+
+Add .revoke [command] [user] which should take away access to a command that 
+the user normally has access to.
+
+Add route command to display a route between two rooms.  Maybe 
+make it an option of another command instead of making a new command?
+
+Add function for setting up external email messages and making them RPC
+compliant with reply-tos, error-tos and such.
+
+Change options for:
+ Deleting/reading mail   and   Wiping/reading message boards
+ New options:
+  <number>-             <number> to end
+  -<number>             beginning to <number>
+  <number>-<number>     <number> to <number>
+  <number>              just message number <number>
+  l<number>             the last <number> messages
+
+".set help" for different command list style formats 
+(OURS,IFORMS,NUTS2,NUTS3)
+
+".set who" for different format .who lists
+
+Still, multi-user recepients for .tell (and other private commands), .move, 
+and .smail.
+
+Enhance color codes so users can STACK codes. like:
+^HR^BLthis is bold red and blinking^
+
+Fix/enhance write out code in write_str() write_str_nr() because it 
+doesn't take in account color codes when writing out column-specific text 
+blocks to user
+
+Create standards for different terminal types
+
+Split code into multiple C files
+
+Port code to Win95?/NT
+
+Implement and create load-in module support. Maybe have a directory with 
+a .c file for every user .<command>
+This also includes re-loading of commands, strings, and other data from 
+inside the talker.
+
+Complete inter-talker connectivity
+
+Greatly enhance web port so that it can truely send and receive HTTP
+requests.
+
+Create and implement an email gateway to external email. Maybe have a 
+talker email accoutn and to send email to a person you put their name in 
+the Subject: field. Or maybe just <name>.<talker_name>@<talker's host>
+cygnus.pinwheels@leopard.misty.com
+
+Allocate memory for structures dynamically. Right now user structures are 
+allocated on bootup for MAX_USERS. Should allocate as needed (login/logout)
+Same for rooms. All rooms are allocated on bootup. Should be as needed.
+
+
+**Things being considered still**
+
+Using a database
+Using Async I/O threads

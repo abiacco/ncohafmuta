@@ -1,0 +1,12 @@
+ Syntax:  .look
+          .look <room>
+
+Results:  Given by itself gives a description of the room that you are in,
+          including the people who are there, the number of messages on
+          the message board, current room topic, and various other
+          details. (profile) after a user's entry means they are entering
+          a profile. (vote topic) after a user's entry means they are
+          entering a topic to vote on. (room desc) after a user's entry
+          means they are entering a room description for the current room.
+          Given a <room> it does a remote look on <room>. If the room is
+          secured/hidden, you must be of proper rank to view it.

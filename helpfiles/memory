@@ -1,0 +1,11 @@
+Results:  Use this command to show the memory stats for the main
+          structure areas for the talker. The user data type is the memory
+          that holds the user flags and info. The area data holds the
+          area names, security flags, hidden flags, etc.. The convo bufs
+          hold the review buffers for the rooms, wiztells, and shouts.
+          the temp user data is the data used when saving and reading
+          flags of other users.
+           If you see any one of these types at or above 90% capacity,
+          please notify a god or head god.
+
+See also: system

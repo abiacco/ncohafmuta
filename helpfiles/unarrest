@@ -1,0 +1,9 @@
+ Syntax:  .unarrest <user>
+
+Results:  Places the troublesome user back in the main room and
+          removes the muzzle and gagcomm from them.
+
+Example:  To use, type: .unarrest <user>
+             .unarrest Bob
+
+See also: arrest, gagcomm, xcomm, move, muzzle, unmuzzle

@@ -1,0 +1,12 @@
+
+%user%,
+
+This is to let you know that your account on %system% is ready
+to be deleted. Inactive users are deleted by the system to save disk space
+and keep things organized.
+
+If you dont want to be deleted, you have %var1% days left to login.
+
+Thanx!
+
+%system%'s staff
