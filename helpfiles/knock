@@ -1,0 +1,6 @@
+ Syntax:  .knock <room_name>
+
+Results:  Informs users in a private room that you wish to enter.
+          <room_name> is the private room that you want to enter into.
+
+See also: invite, go

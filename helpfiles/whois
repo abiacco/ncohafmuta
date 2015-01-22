@@ -1,0 +1,16 @@
+ Syntax:  .whois <search string>
+          .whois <search string>@<whois host>
+
+Results:  Use the Unix "whois" command to search the Internet's Domain
+          Registration Service for info on domain names, sites, or
+          even people.
+	  The first syntax is usually for normal domains and people.
+	  The second is for more specific info, like:
+	  * IP address information (.whois ip-address@rs.arin.net)
+	  * European domain info (.whois domain@whois.ripe.net)
+	  * Asia/Pacific domain info (.whois domain@whois.apnic.net)
+	  etc..
+        
+Example:  .whois misty.com
+
+See also: finger, nslookup

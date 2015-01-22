@@ -1,0 +1,11 @@
+ Syntax:  .set desc <description>
+
+Results:  Provides a description beside your name that can be seen when
+          using the .look and .who commands and when you sign on and off the
+          board. <description> is the description you choose to have.
+          To view your current description, type .set desc by itself.
+
+Example:  To set it to "likes to have fun" type:
+	  .set desc likes to have fun 
+
+See also:  look, who

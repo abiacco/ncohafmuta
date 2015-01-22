@@ -1,0 +1,50 @@
+ Syntax:  .smail <user> <message>
+          .smail <user,user,user> <message>
+	  .smail <level #>|from <level #>|to <level #> <message>
+          .smail -f <message>
+	  .smail -a <message>
+
+Results:  Sends a private mail to any user on the board. <user> is the
+          person you wish to send the mail to, <message> is that note.  
+	  To send a level-based mail, use the 2nd example above, with
+	  the level # as the argument.
+	  To send to multiple levels, use the "from" and "to" keywords.
+          To send mail to all your friends on your .alert list, use
+	  the -f syntax above.
+	  To send a mail to EVERYONE, use the -a syntax. (This is
+	  equivalent to using "to <your MAX_LEVEL>")
+	  If user(s) is logged on at the time you send the mail he/she
+	  will be notified immediately.  If not, then the user will be
+	  notified the next time that he/she logs on or through email if
+	  they have auto-forward on.
+	  A <user> specified must be typed in full.
+	  This command will work in any room on the board. 
+	  Message will also be saved to your sent mail box, for further 
+	  reference by you (providing the message reached at least 1 
+	  recipient successfully)
+
+Example:  To send a mail to cygnus, type:
+	   .smail cygnus hiya!
+	  To send a mail to cygnus and rager, type:
+	   .smail cygnus,rager hiya!
+	  To send a mail to all your friends, type:
+	   .smail -f hiya!
+	  To send a mail to all level 2s, type:
+	   .smail 2 hiya!
+	  To send a mail to all level 2's and up, type:
+	   .smail from 2 hiya!
+	  To send a mail from the lowest level up to level 3s, type:
+	   .smail to 3 hiya!
+	  To send a mail to EVERYONE, type:
+	   .smail -a hiya!
+
+  NOTES:  In LEVEL-based mails, you cannot send mail to users of
+	  higher rank than you.
+
+	  Spaces can be placed in between user combinations w/commas.
+          i.e. .smail cygnus, rager hiya!
+               .smail cygnus , rager hiya!
+          You can mail to as many as MAX_MULTIS simultaneous people
+          Default is 10
+
+See also: rmail, cmail, fmail, rsent, csent

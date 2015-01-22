@@ -1,0 +1,6 @@
+Results:  Show the last 10 lines said or emoted in the current room.
+          This is useful if you logout, come back, and want to see what
+          happened while you were gone..or if you come into a room, and
+          want to see what everyone is talking about.
+
+See also: cbuff, review

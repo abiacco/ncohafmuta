@@ -1,0 +1,8 @@
+ Syntax:  .beep <user>    or   .beep <user> <message>
+
+ Result:  Allows you to tell one user something without anyone else being
+          able to see it and have a tone on the other users terminal.
+          <user> is the person you want to talk to.
+          <message> is the message you want to send him/her and is optional.
+
+Example:  To beep Bob with "WAKE UP!!", type:  .beep bob WAKE UP!!

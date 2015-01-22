@@ -1,0 +1,19 @@
+Using color codes
+-----------------
+The ANSI color codes can be used almost anywhere in the talker.
+All the color codes start with a caret, which is shift-6. If you
+just want BOLD text you put a caret before the text you want bold and then
+a caret where you want the boldness to stop. If you want it to go right to
+the end of the string you are typing an ending caret is NOT necessary.
+
+Colors are done with 2 letter codes. The codes are listed next to the
+colors in ".set color test" They go after your first caret, like you're doing
+a bold..and then you use the ending caret again where you want the color
+to stop.
+
+Other codes are blinking, underline, and reverse video. They're used just
+like the color codes.
+
+Examples to say "This is blue" in bold blue to everyone.
+.say <caret>HBThisis blue<end caret>
+

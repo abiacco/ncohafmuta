@@ -1,0 +1,28 @@
+ Syntax:  .grant <command> <user> [level]
+	  .grant <command> [<rank>|all] [level]
+	  .grant -l [<user>|all]
+
+Results:  This command grants a user access to a command. You cannot grant
+	  commands to users at or above your rank.
+	  The 1st syntax grant a command to a user.
+	   To grant .tell to jazzin;  .grant .tell jazzin
+	  If you dont specify a [level] they will be given the default access
+	  to the command. Otherwise they will have access as though they
+	  had a rank of [level]
+
+	  The 2nd syntax grants a command to a whole rank..or everyone if "all"
+	  is given.
+	   To grant .tell to all level 1's:  .grant .tell 1
+	  Again, the rules for the [level] option apply.
+
+	  The 3rd syntax shows a list of the commands granted to <user> or, if
+	  "all" is given, a list of users with granted commands, and what
+	  commands are granted to them.
+
+Note   :  In an effort to keep track of who has what granted, without having a
+	  huge list which spams people, the person granting will get a
+	  smail telling them who they granted, and the person getting
+	  granted will get a smail if they are not online. If they are
+	  online, it will just tell them.
+
+See also: revoke, bannew, unbannew, unrestrict, restrict

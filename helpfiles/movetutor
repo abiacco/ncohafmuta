@@ -1,0 +1,62 @@
+
+----------------------------------------------------------------------------
+                      The "Rooms/Moving Around" Tutorial
+
+The talker is made up of a series of connected "virtual rooms".
+The type and number of rooms are usually based on the theme of the talker,
+the # of users in the community, and how often users need a room to talk
+privately.
+A normal room is set "public", meaning it is freely enterable.
+These rooms can be made "private" by a user, for private conversations.
+2 or more users must be in a room before it can be made "private".
+Once private, noone else can enter the room unless invited (see help on 
+.invite) 
+Once a private room is left with less than 2 users, the room automatically 
+becomes public again. 
+Some rooms are LOCKED public, meaning the admin has made them so that they
+can't be changed to private. They are usually the main room and other rooms
+which are party to heavy public conversations.
+
+To list the rooms on the talker:
+       .rooms
+
+To move to another room:
+       .go <room name>
+       .go just by itself moves you the main room
+
+To move to a room as a normal user, the room must be connected to the 
+room you are currently in! You can tell this by either looking at the
+map (.map) or by seeing if the room is in the "You can go to the:" exits
+line displayed with .look
+
+To follow/join a user in the room they are in:
+       .follow <user>
+
+To request to enter a room that is "private":
+       .knock <room name>
+
+By default, when you log into the talker, you are put back into the
+same room you logged out from. So if you were in the "foyer" when you
+left, you will log back into the "foyer". Assuming the "foyer" isn't
+private at the time.
+You can make a room on the talker your "home" room. You will be moved 
+there whenever you type the ".home" command.
+You change this using the ".set home <room name>" command.
+
+Each room on the talker has a conversation buffer. This buffer holds XX 
+number of lines of previous public conversation.
+The conversation buffer in a "private" room is wiped when the room is auto-
+matically set public again.
+
+To read a room's conversation buffer:
+       .review
+
+To clear a room's conversation buffer:
+       .cbuff
+
+To look at the current room and its exits, users, and description:
+       .look
+
+You should now read the "How To Use Mail" tutorial by typing ".h mailtutor"
+----------------------------------------------------------------------------
+

@@ -1,0 +1,44 @@
+Using color codes
+-----------------
+The ANSI color codes can be used almost anywhere inside the talker or in the 
+code. 
+
+All the color codes start with a ^ which is shift-6. If you
+just want BOLD text you put a caret before the text you want bold and then
+a caret where you want the boldness to stop. If you want it to go right to
+the end of the string you are typing an ending caret is NOT necessary.
+e.g. this is ^bold^
+     this is ^bold
+
+Colors are done with 2 letter codes. They go after your first caret, like 
+you're doing a bold..and then you use the ending caret again where you want 
+the color to stop.
+
+e.g. To say "This is blue" in bold blue to everyone.
+.say ^HBThis is blue^ or
+     ^HBThis is blue  since blue is the last word in the sentence
+
+To do the same type of write in the code, you may do:
+write_str(user,"^HBThis is blue^");
+
+The codes are listed as follows:
+Color          Code
+-------------------------
+Low Green      LG
+Low Yellow     LY
+Low Red        LR
+Low Blue       LB
+Low Magenta    LM
+Low White      LW
+Low Cyan       LC
+High Green     HG
+High Yellow    HY
+High Red       HR
+High Blue      HB
+High Magenta   HM
+High White     HW
+High Cyan      HC
+Bold           None
+Blinking       BL
+Underlined     UL
+Reverse Video  RV

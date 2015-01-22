@@ -1,0 +1,8 @@
+ Syntax:  .cline <socket #>
+
+Results:  This command clears a login line or a www/who port that is
+	  hung for whatever reason. Line/socket number information is
+	  found in .site
+
+See also:  site
+

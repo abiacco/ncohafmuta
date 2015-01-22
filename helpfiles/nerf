@@ -1,0 +1,15 @@
+ Syntax:  When you want to start/fire at a user  :  .nerf <user>
+          To see nerf stats for you or another   :  .ustat [<user>]
+
+Results:  The nerf command allows two users to fight until one user is
+          nerfed to death. This is done by hitting the other user so many
+          times, that their energy hits 0. Whoever gets to 0 first, gets
+          kicked off. You can come right back. Each user starts with an
+          energy of 10 and 5 nerf shots. When your nerf-gun is empty,
+          type ".reload" and your gun will reload with 5 shots. You CANNOT
+          reload before you use all 5 shots. Rank has no affect with any
+          user. You gotta be fast. Cheating, (macros or otherwise) WILL
+          NOT be tolerated. The users must be visible and in the set
+          nerf_room.
+
+See also: reload  ustat

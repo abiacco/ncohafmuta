@@ -1,0 +1,17 @@
+ Syntax:  .delatmos <atmospheric number>
+          .delatmos all
+
+ Result:  Deletes an atmospheric from the current room you are in.
+          The atmospheric number is a number from 1 to the highest atmos
+          number shown up in .listatmos.
+          Use this command if you want to add an atmos message to a room
+          but they are already maxed out..or just if you want to delete
+          an atmos message.
+          The max atmospherics than can be saved per room is shown in
+          .version (currently 10).
+          Specifying the "all" options deletes all teh atmospherics for
+          that room
+          
+   Note:  Atmospherics are messages that show up in rooms at random.
+
+See also: addatmos, listatmos

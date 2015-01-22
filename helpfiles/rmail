@@ -1,0 +1,16 @@
+ Syntax:  .rmail
+          .rmail -s
+          .rmail <number of messages>
+
+Results:  Allows you to read your system mail. If you specify a number at
+          the end of the command, you can read that many messages from the
+          bottom of your mailfile. If you give a number greater than the
+          number of messages you have in your file, the whole file will be
+          shown. If you give the -s flag, the system will show you how
+          much mail diskspace you have and are currently using.
+          Remeber that if you go over the limit, you will not be able to
+          receive mail until you delete some of it.
+
+Example:  To read the last 4 messages in your mail file, type --> .rmail 4
+
+See also: smail, cmail, fmail, rsent

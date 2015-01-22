@@ -1,0 +1,18 @@
+Syntax :  .backup
+	  .backup -b
+	  .backup -t [<number of days>]
+
+Results:  By itself, toggles (on/off) the archiving status of system logs.
+	  When on, system logs are archived at midnight to a timestamped
+	  subdirectory in the main log directory.
+	  With the -b option, performs an archive of logs immediately.
+	  With the -t option, performs log trimming. This is deleting
+	  of archived logs older than x days.
+	  If <number_of_days> is specified, logs older than this many of
+	  days will be deleted. If not specified, the system variable
+	  TRIM_BACKUPS will be used, given it's larger than 0.
+
+  NOTES:  When logs are archived, this then clears the logs in the main
+	  log directory.
+
+See also: .readlog

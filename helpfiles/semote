@@ -1,0 +1,33 @@
+ Syntax:  .semote <user> [']<action>         /<user> [']<action>
+	  .semote <user,user,user>	     /<user,user,user> [']<action>
+	  .semote -f [']<action>	     /-f [']<action>
+
+Results:  Allows you to emote one or more users something without anyone
+	  else being able to see it.  <user> is the person you want to
+	  action to.
+          <action> is the action you want to do towards him/her/them.
+          If you use the -f syntax above, <action> will be sent to all   
+          your friends on your .alert list. Works the same as .femote
+          This command also allows you to review your semotes if you do not
+          specify anything after the .semote command. If you specify a '
+          before the action, it will become posessive.
+          If you do NOT specify an action, it will send to the user(s)..
+          "You sense that <your name> is looking for you in <your_room>"
+          while still applying to vis/invis conditions.
+
+Example:  To hug 'cygnus' privately: .semote cygnus hugs you  or  
+                                     /cygnus hugs you         or
+                                     /cyg hugs you
+          To hug 'cygnus' and 'rager' privately:
+                                     .semote cygnus,rager hugs you  or  
+                                     /cygnus,rager hugs you         or
+                                     /cyg,rag hugs you
+          To review your semotes: .semote
+
+  NOTES:  Spaces can be placed in between user combinations w/commas.
+          i.e. .semote cygnus, rager hugs you
+               .semote cygnus , rager hugs you
+	  You can semote to as many as MAX_MULTIS simultaneous people
+	  Default is 10
+
+See also: tell, igtells, sthink

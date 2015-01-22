@@ -1,0 +1,8 @@
+ Syntax:  .demote <user>
+
+Results:  Allows you to remove ranks from other users, where <user> is the
+          person in question.  User will be demoted one level. 
+          If user is online, they will be notified of 
+          the demotion. See .ranks for a description of the levels. 
+
+See also:  ranks, promote

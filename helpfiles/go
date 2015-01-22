@@ -1,0 +1,9 @@
+ Syntax:  .go <room>
+
+Results:  Use this command to go to another room on the talker. For normal
+          users, the room must be connected to you. The <room> string
+          may be abbreviated to the most unique letter of the room name.
+          To see what rooms you can go to, type  .map  or  .rooms
+        
+See also: follow  move
+

@@ -1,0 +1,17 @@
+Results:  This command toggles allowing new users on the talker.
+
+          There are several TOGGLE options for allowing new user
+          1. new users are allowed to create their own accounts upon
+	     connection to the talker.
+          2. new users are not allow to create their own account upon
+	     connection to the talker. A staff member can make it with
+	     .pcreate
+          3. new users accounts are created on an email verification
+	     basis. upon connection to the talker, the talker detects a
+	     new user and asks for an email address. a randomly generated
+	     password (along with the selected username) is then emailed
+	     to that address. When the user receives it, they then can
+	     reconnect and login.
+
+See also: close, open, pcreate
+

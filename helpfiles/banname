@@ -1,0 +1,12 @@
+ Syntax:  .banname
+          .banname <name>
+
+Results:  Banname turns off access to the talker for users trying to login
+          or create accounts with certain names  
+          <name> is the name that is to be banned from use.
+          If you don't specify a name, you will get a list of 
+          all the names currently banned.
+           This is a toggle for <name>. If the <name> already exists
+          in the list, it will be removed.
+
+See also: bannew, unbannew, unrestrict, restrict

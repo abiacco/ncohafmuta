@@ -1,0 +1,9 @@
+ Syntax:  .set abbrs
+
+Results:  This command allows you to set whether your abbreviations (set
+          under .abbrs) will work with the commands they are set for, or
+          not, and come out as normal text.
+          This command is a TOGGLE. Meaning, every time you type it, it
+          will either turn the option on or off.
+
+See also: abbrs

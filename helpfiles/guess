@@ -1,0 +1,10 @@
+ Syntax:  .guess <letter|word>
+
+Results:  This command is to make a guess and your current Hangman game.
+	  To guess at one letter in the word, type .guess <letter>
+	  like, .guess a
+	  To take a guess at the whole wordl, type .guess <word>
+	  like, .guess hangman  
+
+See also: hangman
+

@@ -1,0 +1,79 @@
+init_data file format
+---------------------
+
+Example file:
+5000 3 1 1 4 1 1 0 ABC
+A square BC 0 1
+B pond AC 0 1
+C shop AB 0 1
+
+First line variables seperated by spaces:
+PORT #                  number between 1000 and 9999
+                        This is the main login port for the talker.
+                        Port offsets for who/wiz/web port are set in 
+                        hdrfiles/constants.h
+TOTAL ROOMS             total number of rooms defined in this file.
+                        Increase this when you add a new room in here.
+ROOM ATMOSPHERICS       1 for yes, 0 for no. Can be toggled online.
+                        Determines whether all rooms will have random
+                        atmospheric messages on at bootup.
+SYSTEM LOGGING          1 for yes, 0 for no. Can be toggled online.
+MESSAGE LIFETIME        a whole number in days. This is how long the talker
+                        will wait before deleting messages from the message
+                        boards that many days old.
+NEW USERS ALLOWED       2 for yes, unrestricted user creation
+                        1 for yes, by email verification only
+                        0 for no
+RESOLVE IP ADDRESSES    1 for yes with talker caching and gethostbyaddr() 
+                        (NOTE: gethostbyaddr() is a blocking function. 
+                        This means that and ip->hostname resolution can 
+                        freeze the talker for X number of seconds while 
+                        lookup is attempted. option 2 is recommended where 
+                        supported)
+                        2 for yes with talker caching and external 
+                        resolver clip-on. The external clip-on resolver is 
+                        a helper app that takes the burden off the talker 
+                        for doing ip->hostname resolution. This prevents 
+                        the talker from freezing while lookup is 
+                        attempted.
+                        3 for yes with just external resolver clip-on
+                        4 for yes with just gethostbyaddr()
+                        0 for no resolution of ips->hostnames
+                        See README.dns_resolving for more info
+                        This is only the initial setting..can be toggled 
+                        online.
+BACKUP/ARCHIVE LOGS     1 to have the talker backup/archive logs at
+                        midnight (can be changed with .backup)
+                        0 to not have it back/archive them up
+
+ROOMS LOCKED TO PUBLIC  room letters locked to public (can't be made 
+                        private)
+
+
+Room connection lines, variables seperated by spaces:
+ROOM LETTER IDENTIFIER the letter indentifying the room. start from "A", all
+                       the way to "Z", then the following characters:
+                       [ \ ] ^ _ ` and then start with "a" to "z"
+ROOM NAME              the name of the room, case-sensitive, no spaces
+EXITS                  consecutive letters designating a 1-way connection
+                       to another room(s). For a room with no connections,
+                       use a *
+IS ROOM HIDDEN?        1 for yes, 0 for no
+IS ROOM WITH ATMOS ON? 1 for yes, 0 for no. Can be toggled online.
+
+Each line after the first line is considered a room. The first room line
+designates the first room as room A, the second as room B, and so on; So 
+that you can make the exits from room to room in the EXITS field. If
+you need more than 26 rooms (A-Z) refer to the 437 code page table for the
+characters that come after them (or refer above).
+
+Room descriptions are stored in a text file named as the room name. 
+So the room description for the room "pond" will be in a file called 
+"pond" in the config directory. You can edit/create this with a text 
+editor or create/edit it online with the .descroom command.
+
+ALL fields for the lines are required!
+
+-Cygnus
+Anthony J. Biacco
+ncohafmuta@asteroid-b612.org

@@ -1,0 +1,11 @@
+Saying 'format' while I'm reading a story toggles my
+paragraph formatting feature. When paragraph formatting is off,
+I read lines just as they were originally told to me.
+When formatting is on, I rearrange the line breaks so that lines
+are as long as possible, but less than 80 characters.
+If you're reading a story with extra-long lines or paragraphs,
+you may want to turn formatting on to read it more easily.
+When reading poetry, or other stories where the line breaks
+are significant, you'll probably want formatting off.
+Paragraph formatting is always turned off when I'm in write
+mode.

@@ -1,0 +1,12 @@
+Sometimes there will be several different paragraphs
+by different authors following the one I just read.
+If you wish to continue along a particular author's
+branch, just say "next" followed by the name of the
+author. For instance, if a paragraph has following paragraphs
+by Yossarian and Lynx, saying "next lynx" will make me
+go on to Lynx's paragraph and branch of the story.
+(CS types will recognize this as a tree structure.)
+If you simply say "next", I will try to stay with the
+same author as the current paragraph's; if the author
+didn't write a following paragraph, I will just pick the
+first paragraph that was written to follow the current one.

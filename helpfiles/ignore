@@ -1,0 +1,17 @@
+ Syntax:  .ignore <message_type>   or   .ignore all
+
+Results:  Stops specified message types from appearing in your screen. 
+          Where <message_type> is the type of message ignored.  This command is 
+          useful if you wish to read the message boards or the news without 
+          trying to keep up with speech appearing on the screen.
+         .ignore all will ignore all messages.
+              
+   Note:  To listen to all messages again, type --> .listen all
+
+Example:  To ignore shout messages, type --> .ignore shouts
+
+  Types:  all afks says logs shouts knocks messages topics kills
+          bcasts moves echos greets picture fights atmos wiztells
+          succs fails nerfs roomdescs beeps tictactoes tells colornames
+
+See also: listen

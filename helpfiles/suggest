@@ -1,0 +1,9 @@
+ Syntax:  .suggest
+          .suggest <last # of messages>
+          .suggest <message>
+
+Results:  Allows you to write a suggestion on the suggestion board.
+          A blank suggestion will read the board or a number specified
+          will read that many messages up from the bottom of the
+          suggestion board.
+          ALL suggestions are anonymous.

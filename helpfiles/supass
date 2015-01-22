@@ -1,0 +1,8 @@
+ Syntax:  .supass <user> <new_password>
+
+Results:  Used to change a user's password. Password will be saved and 
+          changed automatically in real time. Victim need not be online.
+
+  Notes:  DON'T use special characters in the password.
+
+See also: suname, nuke

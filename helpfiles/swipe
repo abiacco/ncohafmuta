@@ -1,0 +1,18 @@
+ Syntax:  .swipe <parameter>
+
+Results:  Acts just like .wipe, but for the suggestion board.
+          .swipe <NUM> <NUM> where both number are the same is a line delete.
+          UNLIKE .cmail or .csent, you will NOT be asked to verify the    
+          wipe. 
+          
+Example:
+   To wipe all messages from the board, type            : .swipe all
+   To clear the first line type                         : .swipe          
+   To clear line 10 from the board, type                : .swipe 10        
+   To clear all lines from the beginning to line 5, type: .swipe to 5        
+   To clear all lines from line 8 to the end, type      : .swipe from 8      
+   To clear all lines from line 8 to line 10, type      : .swipe from 8 to 10
+   To clear all lines except line 4, type               : .swipe except 4     
+   To clear all lines except line 4 through 9, type     : .swipe except 4 to 9
+
+See also: wipe, gwipe, wwipe, suggest

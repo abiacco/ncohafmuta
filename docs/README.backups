@@ -1,0 +1,52 @@
+There are 2 scripts (in the utils/ directory) that I wrote for backing up
+and restoring files..and 1 for deleting old backups.
+
+'backup' should be typed with NO arguments and backs up the important
+talker files (which are just about all of them) to the 'utils/backupd' directory
+in a file labeled as <today's date>backup.tar.gz
+
+'restore' takes 2 arguments. The first is the date of the archive you want
+to restore from. The 2nd is optional and specifies the files you want
+restored. If you want all files restored, leave the 2nd argument blank.
+The 2nd argument is based upon the directory structure from the main
+directory..see examples below.
+
+ The files will be restored into a directory labeled as..
+  utils/backupd/restored/<the archive date>
+
+Examples:
+ If today is Jan 2nd, 1998, to backup all files..
+ Type: cd utils
+ Type: ./backup
+ Backup archive is placed as the file utils/backupd/010298backup.tar.gz
+
+ To restore all files from the 010298 backup..
+ Type: cd utils
+ Type: ./restore 010298
+ All files are restored to the directory utils/backupd/restored/010298
+
+ To restore only the mail files from the 010298 backup..
+ Type: cd utils
+ Type: ./restore 010298 maildir
+ All files are restored to a directory utils/backupd/restored/010298/maildir
+
+Then you can copy which files you need over to the real directories
+
+'trimbackups' is a program to delete backups <# of days> old. 
+To compile it, go into utils/ and type:  make trimbackups
+It's usage is:
+	trimbackups <backup directory> <# of days to keep>
+
+<backup directory> is the directory the backups are in..usually backupd
+This can be a relative or absolute pathname.
+<# of days to keep> is a number specifying the number of days YOUNG a file
+must be to keep it. If a file is OLDER than this many days it will be
+deleted.
+Example..If you're in the utils directory with backups in the backupd
+diretory and you want to delete files more than 3 days old, you would
+type:  ./trimbackups backupd 3
+
+
+-Cygnus
+Anthony J. Biacco
+ncohafmuta@asteroid-b612.org

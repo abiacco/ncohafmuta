@@ -1,0 +1,295 @@
+TELOPT NEGOTIATION
+------------------------
+CLIENT		RESPONSE
+TinyFugue
+ TTYPE		WONT
+ NAWS		WILL
+ ECHO		DONT
+ EOR		DO
+Gmud
+ All		No IAC response
+Windows Telnet
+ TTYPE		WILL,term_type
+ ECHO		DO
+Linux Telnet
+ TTYPE		WILL,term_type
+ ECHO		DO
+ EOR		DONT
+SecureCRT
+ TTYPE		WILL,term_type
+ ECHO		DO
+ EOR		DONT
+ GA		Not recognized
+Putty
+ TTYPE		WILL,term_type
+ NAWS		WILL
+ ECHO		WILL
+ SGA		WILL,DO
+ EOR		DONT
+ TSPEED		WILL
+ NEW_ENVIRON	WILL
+
+
+VT100/ANSI Code Reference
+-------------------------
+
+This is not anything that's NORMALLY useful, but may be
+for a select few, and a good reference point.
+
+-Cygnus
+
+
+It isn't actually, there is a very simple algorithm for parsing all
+ANSI codes (even the ones that you don't know and wont implement) and
+that algorithm is itself part of the standard (but no one actually reads
+the standard itself because it is expensive and you can't find it on
+a web page -- so much for such standards being useful to the public).
+
+This is the 7 bit ASCII version of the escape code template:
+
+	Define the following sets of characters:
+		ESC = decimal 27 only
+		set_1 = decimal 32 to decimal 47 inclusive
+		set_2 = decimal 48 to decimal 63 inclusive
+		set_3 = decimal 64 to decimal 126 inclusive
+
+An ``escape sequence'' is defined as:
+
+	ES = 	exactly one ESC
+		followed by zero or more from set_1 (known as intermediates)
+		followed by exactly one from either set_2 or set_3 (known as final)
+
+One special escape sequence is called ``control sequence introduction'' which is:
+
+	CSI =   exactly one ESC followed by exactly one '['
+
+A ``control sequence'' is defined as:
+
+	CS =	exactly one CSI (i.e. ESC '[' )
+		followed by zero or more from set_2 (known as parameters)
+		followed by zero or more from set_1 (known as intermediates)
+		followed by exactly one from set_3 (known as final)
+
+As far as I know, ``zero or more'' has no upper limit on it so ensure that a
+nasty sender can't use a buffer overrun attack. In practice, very long sequences
+are most probably an error or an attack even though they are theoretically legal.
+Probably throwing away the overflow characters and keeping the final is a reasonable
+approximation to correct.
+
+Once you have that, you can parse ANSI codes. The only code that I know of that
+doesn't fit the above is the linux console code to change the VGA palette and that
+is a really oddball code (it may be fixed by now, I haven't checked lately).
+Anyway, any terminal that uses codes outside the above template is also breaking
+the standard so you really shouldn't support it. 
+
+There is a mapping between some of the common two character ES codes and single
+characters from the range [128 to 255] (i.e. outside 7 bit ASCII) which can be used
+for lines that are 8 bit clean (most lines these days). In particular a single
+byte CSI is defined which is what the Amiga uses. Unfortunately I don't have the
+mapping of these codes. I suspect that they might also be incompatible with UNICODE
+whereas plain 7 bit ASCII is compatible.
+
+So now there is no excuse for having strange codes turn up mixed with your text,
+even if you don't know what a code does, you still know that it is a code and that
+it should not be printed.
+
+If one of the above sequences gets a character in the middle of it (eg linefeed)
+that does not fit into the above template then the sender has made an error and
+you can do whatever you like in response. Most of the DEC terminals handle errors
+by making a guess at what the sender probably intended and doing that (e.g. silently
+behave as if the linefeed was seen BEFORE the escape sequence and continue from
+there). Similarly, cursor movement that takes you beyond the limits of the screen
+is an error on the part of the sender and you may do what you like, however the
+sensible thing is to move to the edge of the screen which is probably what was intended.
+
+So now you have the code, actually figuring the meaning of the code is another story,
+but it isn't as difficult as you might think. Firstly, the ``intermediates'' are
+almost never used. You have to allow for them when parsing out the code but you
+can often ignore the meaning of them in most cases. The ``parameters'' are
+almost always numbers separated by ; (although the :<=>? are legal here, no one
+seems to use them in practice). If any parameter number is omitted, it is presumed
+to be a default value, if any parameter number is 0 it is also presumed to be
+a default value. You only ever have one ``final'' and that always determines which
+command gets executed so putting a switch statement on the final and writing a
+generic parameter parsing routine has most of your problems solved.
+
+----------------------------------------------------------------------
+And a different posting with some of the more usual codes:
+----------------------------------------------------------------------
+
+From dkoepke@ScalPifoArniMa.com Tue Aug 10 01:14:15 1999
+
+Today, Rich Allen asked on <rec.games.mud.admin>:
+
+> 	Is there a standard that MUDs follow regarding the use of ANSI 
+> escape sequences?
+
+No.  Fortunately or unfortunately (I think the latter), there are very
+few, if any, set standards by which all muds subscribe.  You can, however,
+abstract a few de facto standards.  The following is what I recommend
+clients support.  Entries marked with an asterisk ('*') are for the bare
+minimal implementation (i.e., these are widely used and should be
+supported):  (CSI is Control Sequence Introducer, which is escape followed
+by '[')
+
+    CPS       Cursor Position Save (*)
+    CSI 's' (or '\x1b' '7')
+      Save the current cursor position.
+
+    CPU       Cursor Position Update/restore (*)
+    CSI 'u' (or '\x1b' '8')
+      Restore the saved cursor position.
+
+    CUB       Cursor Backward
+    CSI [number] 'D'
+      Moves the cursor backwards 'number' amount of times.  If 'number' is
+      omitted or is '0', move backwards once.  The cursor cannot be moved
+      past the left margin and does not wrap around.  Thus, if we receive
+      CSI '5' 'D' and are only three spaces from the left margin, we only
+      move three spaces backwards.  No characters are deleted.
+
+    CUD       Cursor Down
+    CSI [number] 'B'
+      Moves the cursor downwards 'number' amount of times without changing
+      the column position.  The cursor cannot be moved past the bottom of
+      the screen and *DOES NOT* cause scrolling.  If 'number' is omitted
+      or is '0', move downwards once.
+
+    CUF       Cursor Forward
+    CSI [number] 'C'
+      Operates as does CUB, but moves the cursor forwards rather than
+      backwards.
+
+    CUP       Cursor Position  (*)
+    CSI [ line ';' column ] 'H'
+      Positions the cursor at the specified line and column.  If either is
+      omitted or zero, we move the cursor to first line/column of the
+      display.  The sequence CSI 'H' homes the cursor (first line and
+      first column).  The cursor cannot move beyond the bottom right of
+      the screen/window (thus, only move it to the bottom-right).  You
+      should also interpret the sequence CSI [ line ';' column ] 'f' in
+      exactly the same manner, since some muds use it.
+
+    CUU       Cursor Up
+    CSI [number] 'A'
+      Operates as does CUD, but moves the cursor up rather than down.
+
+    DSR       Device Status Report (Report Active Position)
+    CSI '6' 'n'
+      The "ANSI" emulator should respond with a sequence in the form of
+      CSI [ line ';' column ] 'R'.  The mud receiving the code should
+      understand that if line or column is zero or absent, the default is
+      the first line or column.  If both parameters are zero or absent,
+      the default is the home position.
+
+    ED        Erase Display  (*)
+    CSI [param] 'J'
+      Erase some or all of the characters on the display (screen/window).
+      If the parameter is omitted, we default to '0'.  If the parameter is
+      '0', we erase from the cursor to the bottom of the display.  If the
+      parameter is '1', we erase from top of the display to the  cursor.
+      '2' means erase the entire display.
+
+    EL        Erase Line  (*)
+    CSI [param] 'K'
+      Erase some or all of the characters on the current line.  If the
+      parameter is omitted, we default to '0'.  If the paramter is '0', we
+      erase from the cursor to the end of the line; '1', we erase from the
+      beggining of the line to the cursor; '2', we erase the entire line.
+
+    SGR       Select Graphical Rendition  (*)
+    CSI attrib0 ';' ... ';' attribN 'm'
+      Changes the current textual color/attribute/etc.  All characters
+      following the SGR are rendered according to the selected graphic
+      rendition until another SGR is received, which modifies the current
+      rendition.  The following attributes are for a minimum
+      implementation:
+      
+          0     - reset to defaults  (**) [see below for defaults]
+          1     - increased intensity
+          5/6   - blink
+          22    - normal intensity (undoes 1)  [default]
+          25    - steady (not blinking, undoes 5/6)  [default]
+          30/40 - black foreground/background  [default background]
+          31/41 - red foreground/background
+          32/42 - green foreground/background
+          33/43 - yellow foreground/background
+          34/44 - blue foreground/background
+          35/45 - magenta foreground/background
+          36/46 - cyan foreground/background
+          37/47 - white foreground/background  [default foreground]
+      
+      However, there are a lot of other codes for SGR that could be used
+      to good effect if clients and servers supported them:
+
+          2     - decreased intensity or second color
+          3     - italicized
+          4     - singly underlined
+          5     - slowly blinking (less than 150/min)
+          6     - rapidly blinking (150/min or more)
+          7     - negative image
+          9     - strike-out
+          10    - primary font  [default]
+          11    - first alternate font
+          12-19 - Nth alternate font
+          21    - doubly underlined
+          23    - not italicized (turns off 3)  [default]
+          24    - not underlined (turns off 4 and 21)  [default]
+          27    - positive image (turns off 7)  [default]
+          39/49 - default foreground/background (**)  [default]
+          52    - encircled
+          53    - overlined
+          54    - not encircled (turns off 52)  [default]
+          55    - not overlined (turns off 53)  [default]          
+
+        ** Implementation-defined (i.e., systemic or your own, if you're
+           parsing them)
+      
+      Despite the verbosity of this, it is, by no means, a complete
+      listing of all the attributes specified for SGR by the latest ISO
+      6429 (ECMA-048) standard, which replaced the outdated ANSI X3.64
+      standard.
+
+There may be others worth supporting, particularly FNT if we have support
+for SGR's 10-19 codes for font selection.
+
+
+> ANSI escape sequences are a bugger to pick out of text,
+
+Not really.  The CSI ones end with a letter; the only others we need to
+bother with (the old way of save/restore) are '\x1b' '7' and '\x1b' '8',
+which shouldn't be hard to pick up.
+
+-dak : Remove the S...P...A...M...
+
+----------------------------------------------------------------------
+
+If you want to go further, find your local technical library (like at
+a university or technical college) and look for ANSI X3.41-1974,
+ANSI X3.64-1979 or whatever came later than those. Also look at old
+Amiga technical reference material (the Ami console was pretty close
+to ANSI) and old DEC VTxxx user guides (good luck) maybe even old MS-DOS
+manuals (I think they took the trouble to write documentation once upon
+a time before they realised how stupid their target market really was)
+because MS-DOS had an ansi.sys driver that contained all those codes.
+
+The ncurses distribution from GNU mirrors contains a big termcap file
+patched together from numerous sources containing incomplete control
+codes for bucketloads of terminals (but enough to get ncurses working
+on them all). You have to know how to read this file.
+
+The file /usr/src/linux/drivers/char/console.c contains C-code for
+an almost ANSI compliant terminal with most things you are likely
+to need. You do have that file I hope? You are writing under GPL I hope?
+
+Yet another option is to look at RIP codes which were an old BBS thing
+that was actually considerably more advanced than vt100 codes and very
+well documented at one time but then never took off
+
+If you want to use all of the above references and notice that they
+all conflict with each other -- welcome to the world of standards!
+
+	- Tel
+
+
+

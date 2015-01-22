@@ -1,0 +1,222 @@
+#!/bin/sh
+##########################################################################
+##  shell script compile for the code named  'Ncohafmuta 1.4.x'         ##
+##  by: Cygnus  for unix-type compiles     Last modified:  Oct 16, 2000 ##
+##########################################################################
+
+##########################################################################
+#####                     START OF SYSTEM TYPE DEFS                  #####
+#####          EDIT VARIABLES FOR YOUR SYSTEM IN PARTS 1 THROUGH 6   #####
+#####             DEFINE THE VARIABLE FOR EACH PART ONLY *ONCE*      #####
+
+##########################################################################
+# Part 1
+#
+# Your compiler program. Must be 
+# able to grok ANSI C
+##########################################################################
+#
+CC="gcc"
+#CC="cc"
+#
+##########################################################################
+# Part 2
+#
+# Warning options for compiler, if any
+# -Wall -pedantic compiles cleanly with:
+#	Linux, FreeBSD 2.2.7, Digital UNIX 4.0 (OSF1), OpenBSD 2.2
+# Other OSes might spew warnings out at you with those options
+# Last 2 WARNs are VERY VERY STRICT and also MAY spew tons of warnings,
+# except on Linux for sure.
+# Email me output, if you have time to try those options on your OS
+##########################################################################
+#
+WARN=""
+#WARN="-Wall -pedantic"
+#WARN='-Wall -Winline -Wshadow -Wstrict-prototypes -Wpointer-arith -Wcast-align  -Wnested-externs -pedantic'
+#WARN='-Wall -Wpointer-arith -Wcast-qual -Wcast-align -Waggregate-return -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wshadow -pedantic'
+# -Wredundant-decls returns any libc .h errors
+# -Wwrite-strings returns any "discards const" errors
+# -Wconversion returns any "different width due to" errors
+#
+##########################################################################
+# Part 3
+#
+# Optimization options go here
+# Pick one or none and comment the rest out
+#   Most will use -03 as long as it's supported.
+#   SystemV and HP-UX WITH cc uses NONE (the blank one)
+#   FreeBSD, OpenBSD, and NetBSD-x86 use -m486 -O2
+##########################################################################
+#
+#OPTIM="-m486 -O2"
+#OPTIM=""
+OPTIM="-O3"
+#
+##########################################################################
+# Part 4
+#
+# This section is to define compiler flags 
+# for your specific system
+# Uncomment the *1* DEFS line for your system 
+# and leave the rest out commented out
+#
+#
+#    For LINUX, SunOS 4.x, Sunos 5.x(Solaris), FreeBSD, NetBSD, OpenBSD,
+#        Digital Unix (OSF1 Alpha), UnixWare, DYNIX 4, SCO,
+#        and most HP-UX systems
+SYS_DEFS=""
+
+#
+# For IRIX 4.0.x
+#
+#SYS_DEFS="-cckr"
+
+#
+# For some *SPECIAL* HP-UX's if the above doesn't work or produces a
+# lot of warnings or errors.
+# (Remember you need the ANSI compiler, not the bundled K&R one)
+#  If you use this option, use "cc" compiler instead.
+#
+#SYS_DEFS="-Ae"
+
+##########################################################################
+# Part 5
+#
+# HEADER DEFINES
+#
+# The default should be ok for most systems
+HDR_DEFS="-DHAVE_CONFIG_H"
+
+##########################################################################
+# Part 6
+#
+# INCLUDE LIBS
+#
+# Uncomment the *1* LIBS line for your system
+# and comment the rest out
+#
+# If the resolver_clipon will not compile because it cannot find
+# the res_nmkquery function, add -lresolv to your LIBS line
+#
+# For System V OSes (SunOS 5/Solaris, AIX, etc..)
+#LIBS="-lmalloc -lsocket -lnsl"
+
+#
+# For UnixWare and DYNIX systems
+#LIBS="-lnsl -lsocket"
+
+#
+# For SCO systems
+#LIBS="-lsocket"
+
+#
+# For Linux systems, only if you're going to do gdb debugging
+#LIBS="-lg"
+
+# Everything else
+# (Linux, FreeBSD, NetBSD, OpenBSD, bsdi, HP-UX, Sunos 4.x, Digital osf)
+LIBS=""
+
+##########################################################################
+# Part 7 (optional)
+#
+# TALKER DEBUGGING
+#
+# Valid debugging options (not used under normal operation) are:
+# -DZOMBIE_DEBUG	Causes talker to output verbose info to syslog
+#			about child process killing, waitpid, zombies
+# -DQWRITE_DEBUG	Causes talker to output verbose info to syslog
+#			about writing user data to buffers for sending
+#			down user socket..mallocing, etc. This will fill
+#			up the syslog VERY quickly. You have been warned.
+# -DQFLUSH_DEBUG	Causes talker to output verbose info to syslog
+#			about the actual sending of the user data down the
+#			user socket and about socket reading errors
+# -DIAC_DEBUG		Causes talker to output verbose info to syslog
+#			regarding IAC telnet option negotiation
+# -DPOST_DEBUG		Causes talker to output verbose info to syslog
+#			regarding the web port POST method
+# -DRESOLVER_DEBUG	Causes talker to output verbose info to syslog
+#			regarding the clip-on resolver queries
+# -DSMTP_DEBUG          Causes talker to output verbose info to syslog
+#                       regarding SMTP conversations for email fwding
+#
+# You may define multiples on the line, like:
+#	DEBUGS="-DQFLUSH_DEBUG	-DZOMBIE_DEBUG"
+DEBUGS=""	
+
+#####                       END OF SYSTEM TYPE DEFS                  #####
+#####          YOU SHOULD NOT NEED TO EDIT ANYTHING AFTER THIS LINE  #####
+##########################################################################
+# Temp sub-directory that will be made for "make dist" processing
+DISTDIR="ncohafmuta"
+
+CONFIG=$1
+
+# The directory where the exectuable,
+# and all other main files/dirs lie
+MAINDIR="."
+
+# Directory where temp compiled files will be put
+OBJDIR="objfiles"
+# Directory where the source files are located
+SRCDIR="srcfiles"
+# Directory where the header or library files are located
+HDRDIR="hdrfiles"
+
+# Name of the executable to be made
+SERVBIN="server"
+
+# Name of executable to be made for testing..in a 'make test'
+TESTBIN="a.out"
+
+CFLAGS="$OPTIM $WARN $SYS_DEFS $HDR_DEFS $DEBUGS"
+
+# Header files
+HDRS=""
+
+# Files used by the program
+CFILES="authuser_funcs check_funcs comm_cmds command_funcs datautil_funcs \
+everify_funcs fileutil_funcs game_funcs get_funcs login_funcs main misc_funcs \
+resolve_funcs resolver_client restrict_funcs room_cmds rwho_funcs server signal_funcs smtp_funcs snprintf_funcs \
+social_funcs socket_funcs strutil_funcs telopt_funcs userutil_funcs whowww_funcs write_funcs"
+OFILES=""
+
+if test "$CONFIG" = "clean"
+then
+        rm -f $SERVBIN $TESTBIN resolver_clipon core
+        rm -f $OBJDIR/*
+	exit 0
+fi
+if test "$CONFIG" = "objclean"
+then
+        rm -f $OBJDIR/*
+	exit 0
+fi
+if test "$CONFIG" = "logclean"
+then
+        rm -f logfiles/*.log logfiles/lastcommand logfiles/lastcommand.*
+	exit 0
+fi
+
+for COMPFILE in $CFILES
+do
+OFILES="$OFILES $OBJDIR/$COMPFILE.o"
+echo "$CC $CFLAGS $HDRS -o $OBJDIR/$COMPFILE.o -c $SRCDIR/$COMPFILE.c"
+$CC $CFLAGS $HDRS -o $OBJDIR/$COMPFILE.o -c $SRCDIR/$COMPFILE.c
+done
+
+echo "$CC $CFLAGS $HDRS -o $SERVBIN $OFILES $LIBS"
+$CC $CFLAGS $HDRS -o $SERVBIN $OFILES $LIBS
+chmod 700 $SERVBIN restart shutdown
+
+echo "$CC $CFLAGS $HDRS -o $OBJDIR/resolver_clipon.o -c $SRCDIR/resolver_clipon.c"
+$CC $CFLAGS $HDRS -o $OBJDIR/resolver_clipon.o -c $SRCDIR/resolver_clipon.c
+echo "$CC $CFLAGS $HDRS -o resolver_clipon $OBJDIR/resolver_clipon.o $LIBS"
+$CC $CFLAGS $HDRS -o resolver_clipon $OBJDIR/resolver_clipon.o $LIBS 
+chmod 700 resolver_clipon
+
+echo 'Made all'
+echo 'If you changed .h files, do: make objclean before make to force recompile of all objects'
+

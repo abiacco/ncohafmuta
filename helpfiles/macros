@@ -1,0 +1,25 @@
+ Syntax:  .macros
+          .macros [-c|clear]                   (To clear ALL macros)
+          .macros [-d|del] <macro_name>        (To clear a macro)
+          .macros <macro_name> <macro_body>    (To create a macro)
+
+Results:  Dispays your currently defined macros.  You can use macros to
+          replace frequently typed phrases with short commands.
+          
+Example:  You can define a macros by typing: .macros <macro_name> <body> 
+          where <macro_name> is the command you will type to execute the 
+          macro body.
+           The ^HGname^ does NOT have to be a .command it could be just a 
+          word, or a letter/number even!
+           The ^HRbody^ can be anything up to the max macro length. To do 
+          substitutions, use a $1, $2, and/or $3 in place of what will be 
+          substituted in each time. (ALWAYS start with $1)
+           Say you wanted to make a macro to falldownlaughing at someone
+          particular every time and name it "fdl", you would type:
+             ^.macro fdl .emote falls down laughing at $1^
+          Then to use it on say "cygnus" you would type: ^fdl cygnus^
+          To append extra text to the end to do something like "falls 
+          down laughing at cygnus jsut for TODAY!" type:
+             ^fdl cygnus just for today^
+          Two variables: .macro fdl .emote falls down laughing with $1 at $2^
+                         fdl necros cygnus

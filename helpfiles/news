@@ -1,0 +1,7 @@
+Results:  Prints out the late-breaking (da-da-da-da-da-da) news 
+          (provided that a newsfile exists).
+
+  Notes:  If the newsfile is bigger than the screen it will be
+          paged with a message "** PRESS RETURN **" appearing.
+          If you wish to see more press return, but if you wish
+          to quit reading the news then press "q" then return.

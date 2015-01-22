@@ -1,0 +1,8 @@
+ Syntax:  .suname <old_name> <new_name>
+
+Results:  Used to change a user's name. Name will be saved and changed 
+          automatically in real time.
+
+  Notes:  DON'T use special characters or numbers in the name.
+
+See also: supass, nuke

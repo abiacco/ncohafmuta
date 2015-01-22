@@ -1,0 +1,18 @@
+ Syntax:  .gag    or   .gag <user>
+
+Results:  Allows you to stop a certain <user> from communicating with
+          you through .tell, .semote, .ptell, .sthink, .smail,
+          .examine, and .ustat
+          You will still be able to use these commands towards them,
+          they just can't towards you.
+          If you don't specify a user, it will show a list of people
+          you currently have gagged. You canNOT gag a wizard.
+          To UNgag someone, type .gag <user>    It's a toggle.
+          Ask a staff member to find out how many people you can gag.
+
+Example:  To gag necros (we all know we want to do this):
+          .gag necros
+
+See also: tell, semote, ptell, sthink, smail, igtells, ignore, examine,
+          ustat
+

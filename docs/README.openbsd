@@ -1,0 +1,8 @@
+OpenBSD machines
+----------------
+On OpenBSD 2.4, gcc might generate a warning in C files calling arpa/inet.h
+
+I believe this to be a C lib problem..no problems have been reported
+to occur from this warning.
+
+

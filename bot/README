@@ -1,0 +1,104 @@
+Documentation?  Are you CRAZY?  Oh... All right... 
+
+This is a hodgepodge of stuff taken from a stagnant but 
+running, non-development agent, known as Thoth on DragonMud
+(telnet dragonmud.org 4201) and currently ported/developed for the
+talker "PinWHeeLs" by me, Cygnus (ncohafmuta@asteroid-b612.org) to work on the
+SunOS and Linux operating system. I make no guarantees that this bot will
+work on other OSs. You're lucky if it does. :-)
+
+It's up to you to read through storybot.c, make the customizations
+that it requires and add any supporting directories, if it's unable
+to create them upon startup. I started structuring him for user
+interaction besides the story stuff.. the function handle_action()
+is where I began.
+
+What you will find:
+manual  ---  how to use the storybot (flatfile).
+restart  --- The startup script.
+compile  --- The simple script I use to compile the bot
+Stories   --- The directory that holds all learned stories.
+storybot.c --- the current source code. (has a lame paginator
+        to break up long lists of stories, and some decorative
+        characterization for most recent implementation)
+
+DO:
+    
+    In storybot.c:
+    Replace the BOT_NAME with the name you want to give your bot.
+    Change the destination address (host) and port (port) in the code.
+    Change the bot's password in #define CONNMSG, to what his password
+    will be when you create his username on the talker.
+    Change anything else you deem necessary to work with your talker.
+
+1)
+    If this is for a talker..create an account on the talker for the
+    bot with the name and password you put in the code file.
+    Make the bot the highest rank in the talker.
+    For ncohafmuta people, this can be done with:
+    .pcreate <bot_name> <highest_level_in_talker> <bot_password>
+    (example: .pcreate daisy 4 botpass)
+
+2)
+    * Make sure the bot's account has highlighting for .tells/pages TURNED
+      OFF!
+     For ncohafmuta people, you can do this 2 ways.
+      1) log in as the bot and type ".set hi" until it toggles to off.
+      2) as the BOTS_ROOTID type ".force <bot_name> hi" until it toggles off
+
+3)
+    * If you want the bot to recognize and output colored names (preferred)
+      Make sure the bot's color is on (.set color)
+     For ncohafmuta people, you can do this 2 ways.
+      1) log in as the bot and type ".set color" until it toggles to on.
+      2) as the BOTS_ROOTID type ".force <bot_name> color on"
+
+4)
+    * Turn the .monitor on for the bot to..
+	  *** Monitoring is now on for users ***
+
+     For ncohafmuta people, you can do this 2 ways.
+      1) log in as the bot and type: ".monitor" until it says that
+      2) as the BOTS_ROOTID (with the bot logged in) type ".force
+         <bot_name> com .monitor" until it says that
+
+5)
+    Type "compile" to compile the bot
+
+6)
+    Type "restart" to boot the bot.
+
+TIPS:
+as the BOTS_ROOTID you have control over the bot like noone else.
+You can force it, tell it to delete any story you wish, abort writing by
+anyone, etc..
+You can also tell it to reboot or shutdown itself.
+.tell it "reboot" to make it reboot itself
+.tell it "shutdown" to make it shutdown itself
+
+The bot formally was designed to work with the standard communications format
+set in the constants.h file in the ncohafmuta code. Now he works on a common
+format, generated internally by the ncohafmuta talker code. This means
+you can change the communications format any way you want in constants.h
+and the bot will still work. This is current as of version 1.3 of the bot 
+and 1.2.2b-2 of ncohafmuta.
+
+You may want to fire off mail to John Crane (jopsy@dragonmud.org)
+letting him know that you obtained this code from " Cray ", and are using
+it, and for what, just so he knows.
+
+DO NOT "expect" either John Crane OR myself to support this code,
+OR answer questions from overweening users having trouble getting
+it running...although I usually will :-)
+
+However, If you patch it, fix it, or modify it, patches are very
+welcome at jopsy@dragonmud.org and ncohafmuta@asteroid-b612.org.
+
+This code is not for resale or value added arrangements.  
+Distribution is strictly on an "as-interested" basis, in
+other words, please don't post the code or put it up on 
+an ftp archive for the world to grab.
+
+Thank you, and enjoy!
+
+-Cygnus

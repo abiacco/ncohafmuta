@@ -1,0 +1,10 @@
+ Syntax:  .pcreate <name_to_give> <level> <password>
+
+Results:  Allows you to create a new user from inside the talker, with 
+          the name of <name_to_give> and a rank of <level>, where level is a 
+          number <= the max level, and which conforms to the globals 
+          PROMOTE_TO_SAME and PROMOTE_TO_ABOVE (based on your level) set by 
+          the admin. The password field is REQUIRED. The user's last site
+          and hostname will be made 127.0.0.1 and localhost respectively.
+
+See also: suname, supass

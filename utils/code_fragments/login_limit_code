@@ -1,0 +1,140 @@
+/* This code has not been tested, but in theory, should work              */
+/* It KINDA prevents a user/site from hammering/flooding the login ports  */
+/* with connections, either to hurt the CPU usage, or more importantly,   */
+/* use up all the connection slots so no more connections can be taken.   */
+/* It will allow up to MAX_CONNS_PER_MIN connections per minute per site  */
+/* before it auto-restricts that ip.  We should really kill/quit all      */
+/* connections from said ip to the talker once auto-restrict is done,     */
+/* because said user might still have up to MAX_CONNS_PER_MIN connections */
+/* still open after the auto-restrict (until they time-out).              */
+/* We also might need to consider the fact, that even though a site is    */
+/* auto-restricted, the user may still try and hammer the login port,     */
+/* and for each connection (up until the talker responds with the "your   */
+/* site has been restricted" message) take up a user slot for that amount */
+/* of time. Whether this is effective for the flooder would depend on     */
+/* their quickness to generate a connection vs. our quickness to drop one */
+/* One would think the flooder would win, given a non-stop stream of      */
+/* connections for a very extended period of time                         */
+
+
+#define MAX_CONNLIST_ENTRIES	20
+#define MAX_CONNS_PER_MIN	10
+
+STRUCTURES:
+
+struct {
+	char site[16];
+	time_t starttime;
+        int connections;
+} connlist[MAX_CONNLIST_ENTRIES];
+
+
+PROTOTYPES:
+
+int find_free_connslot(void);
+int in_connlist(int user);
+void expire_connlist_entries(int mode);
+
+
+START CODE (when talker boots):
+
+expire_connlist_entries(-1);
+
+
+CHECK CODE:
+
+before gethostbyaddr()/name resolution, but AFTER ip determination..
+
+int pos=0,free=0;
+
+pos=in_connlist(new_user);
+
+if (!pos) {
+	/* not in list */
+	free=find_free_connslot();
+	strcpy(connlist[free].site,ustr[user].site);
+	connlist[free].connections=1;
+	connlist[free].starttime=time(0);
+	}
+else {
+	/* pos is where they are */
+	if (connlist[pos].connections > MAX_CONNS_PER_MIN) {
+	/* auto ban the site */
+	auto_restrict(new_user);
+	expire_connlist_entries(pos);
+	}
+	else connlist[pos].connections++;
+}
+
+
+TIMED CODE:
+
+in do_events() (in NUTS)
+
+expire_connlist_entries(-2);
+
+
+DECLARATIONS:
+
+int in_connlist(int user) {
+int z=0;
+
+for (z=0;z<MAX_CONNLIST_ENTRIES;++z) {
+ if (!strcmp(connlist[z].site,ustr[user].site)) return z;
+} /* for */
+
+return 0;
+}
+
+
+int find_free_connslot(void) {
+int z=0;
+int found=0;
+int lowest=0,lowestpos=0;
+
+for (z=0;z<MAX_CONNLIST_ENTRIES;++z) {
+ if (connlist[z].connections == 0) return z;
+} /* for */
+
+/* all slots used, bump lowest one */
+lowest=connlist[0].connections; /* we need to start somewhere */
+lowestpos=0;
+
+for (z=1;z<MAX_CONNLIST_ENTRIES;++z) {
+ if (connlist[z].connections <= lowest) {
+  lowest=connlist[z].connections;
+  lowestpos=z;
+ } /* if */
+} /* for */
+
+return lowestpos;
+}
+
+
+void expire_connlist_entries(int mode) {
+int z=0;
+
+for (z=0;z<MAX_CONNLIST_ENTRIES;++z) {
+ if (mode==-1) {
+  /* boot init */
+  goto DOCLEAR;
+ }
+ else if (mode==-2) {
+  /* per-minute clear */
+  if ((time(0) - connlist[z].starttime) >= 60) goto DOCLEAR;
+  else continue;
+ } /* else if */
+ else {
+  /* specific clear */
+  z=mode;
+  goto DOCLEAR;
+ } /* else */
+
+DOCLEAR:
+ connlist[z].site[0]=0;
+ connlist[z].connections=0;
+ connlist[z].starttime=0;
+ if (mode >= 0) break;
+} /* for */
+
+}

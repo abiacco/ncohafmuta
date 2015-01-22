@@ -1,0 +1,15 @@
+ Syntax:  .resolve [-c|clearcache|-l|listcache]
+
+Results:  By itself toggles how ip->hostname resolution is done in the talker.
+          The config file determines the default method for when the talker 
+          boots. Toggling on or off of the clipon option will start/kill the 
+          clipon immediately.
+          If the -c or clearcache argument is given, the DNS cache will be
+          cleared (if you use the caching function)
+          If the -l or listcache argument is given, the entries in the DNS 
+          cache will be shown to you. If will also show you the current TTL for
+          each entry, and will display an * if the entry's TTL is expired 
+          (meaning re-resolution will be done when a connection comes in from
+          this ip)
+
+See also: site

@@ -1,0 +1,32 @@
+To add new socials, do the following..
+
+Go in srcfiles/command_funcs.c
+
+1. In the sys[]. commands structure where all the commands are defined,
+   add a line for your social command just like you were adding any other
+   command.. in the following form..
+
+   {"NAME", LEVEL, JUMP_LEVEL, TYPE, "ABBREVIAITON"},
+   NAME        : The name of the social command
+   LEVEL       : The lowest level that can use the social (usually 0)
+   JUMP_LEVEL  : A unique number for the social command. This is the next 
+                 highest number not used in sys[].
+   TYPE        : always NONE for socials
+   ABBREVIATION: The single character abbreviation given to the social by 
+                 default. Usually blank.
+
+Example: {".grin",   0,   200, NONE, ""},
+
+
+2. In the exec_com() function add a case: for your social just like the
+   rest of the socials have but with an increasing mode number from the
+   last social defined in a case: The format is:
+
+   case JUMP_LEVEL: socials(user,inpstr,mode); break; /* social comment */
+
+Example: case 200: socials(user,inpstr,15);  break;  /* grin social */
+
+
+3. Add your social code in the actual socials() function. (So as to tell
+   the program what you want the command to do.)
+

@@ -1,0 +1,14 @@
+ Syntax:  .abbrs
+          .abbrs -d
+          .abbrs <command> <abbreviation>
+
+Results:  Shows the abbreviation keys for the commands with that feature.
+          Your set ones and the defaults are shown. To return your set
+          ones to the defaults use the ".abbrs -d" syntax. To change
+          an abbreviation for a command, use the latter syntax. The
+          command must be in your abbreviation list and the abbreviation
+          can NOT be a letter, number, or period.
+          e.g. To make [ the abbreviation for .emot you would do..
+               .abbrs .emote [
+ 
+

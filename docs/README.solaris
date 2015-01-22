@@ -1,0 +1,19 @@
+Solaris machines (Sunos 5.x)
+----------------------------
+1.
+If the code can't find cdefs.h and/or bitypes.h
+
+The cdefs.h and bitypes.h and netdb.h files belong to bind which can 
+be obtained from: ftp://ftp.isc.org/isc/bind/src
+
+
+2.
+Compiling with the strictest warning settings will return warnings of the
+sort:
+          "warning: function declaration isn't a prototype"
+This is due to a problem with signal() on these systems where the SIG_IGN
+and SIG_DFL macros contain function declarations (as part of a typecast,
+presumably) which are not prototypes. They can safely be ignored. I
+couldn't get rid of them because they deal with the system include files,
+not anything that we have control over.
+

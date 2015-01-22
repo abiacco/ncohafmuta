@@ -1,0 +1,10 @@
+ Syntax:  .arrest <user>
+
+Results:  Places a troublesome user in jail and prevents them from doing
+          anything except talking.
+          Use the .move or .unarrest commands to remove them from jail.
+
+Example:  To use, type: .arrest <user>
+             .arrest Bob
+
+See also: unarrest, xcomm, move, muzzle, unmuzzle

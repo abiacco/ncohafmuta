@@ -1,0 +1,29 @@
+Flood protection 
+
+Flood protection by the talker prevents a client/user from 
+bogging the talker down with excessive data or command requests. 
+It also prevents them from building up excessive output, usually 
+as a result of the former, to take up excessive system memory. 
+
+FLOOD_INPUT_LIMIT controls how many bytes/characters the talker 
+will accept from any one user in a 1 minute period. Set to 0 to 
+disable this protection. 
+If a user reaches the FLOOD_INPUT_LIMIT, the talker will stop reading 
+data from their socket, until the talker resets their limit to 0 after 
+1 minute. They will also be put on warning. If they commit the crime 
+again, the talker will disconnect them. This setting is saved, so, if 
+they log back on and do it again, the talker will disconnect them after 
+one attempt. 
+Alternatively, if the user was in the middle of a login when they violated 
+the FLOOD_INPUT_LIMIT, they will automatically be disconnected and their 
+IP address banned. 
+
+FLOOD_OUTPUT_LIMIT controls how many bytes/characters the talker 
+will buffer up to, for any one user, for output. Set to 0 to 
+disable. REMEMBER, this is a limit, not an allocation..so this 
+will not hurt your normal memory usage. 
+If a user reaches the FLOOD_OUTPUT_LIMIT, the talker will not buffer any 
+further information for them. Any output data that has already been 
+buffered will not be lost. Just no more will be allocated until they drop 
+below the limit. 
+

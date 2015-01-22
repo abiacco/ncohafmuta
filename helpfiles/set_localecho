@@ -1,0 +1,11 @@
+ Syntax:  .set localecho
+
+Results:  This command allows you to set whether or not the talker will 
+	  echo back to you the text that you type. Use this if you can't 
+          see whay you're typing and you don't know how to turn on localecho 
+          in your client.
+	  If you're seeing the input you type twice, then you have localecho 
+          on in your client AND in the talker. Turn it off in either place.
+          This command is a TOGGLE. Meaning, every time you type it, it
+          will either turn the option on or off.
+

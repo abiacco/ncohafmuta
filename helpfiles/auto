@@ -1,0 +1,18 @@
+ Syntax: .auto [nuke|expire|promote|settings]
+
+Results: This command toggles various talker settings on or off.
+
+   ".auto nuke"     Whether or not to automatically nuke new users
+                    who log off without at least setting a .desc
+   ".auto expire"   Whether or not to automatically nuke users
+                    during the midnight system check who would
+                    be deleted with ".expire -n" (see .help expire)
+   ".auto promote"  Whether or not to allow new users to be
+                    promoted automatically when the requirements 
+                    are met.
+   ".auto settings" Displays the talker's current settings.
+
+Note: Thank you to JaZzIn for this command.
+
+See also: expire
+

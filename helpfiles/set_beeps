@@ -1,0 +1,10 @@
+ Syntax:  .set beeps
+
+Results:  This command allows you to choose whether or not private
+          communications are accompanied by an audible beep. Examples
+          of private communications are .tell .semote .sthink
+          This command is a TOGGLE. Meaning, every time you type it, it
+          will either turn the option on or off.
+
+See also: beep  alert
+

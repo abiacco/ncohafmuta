@@ -1,0 +1,12 @@
+ Syntax:  .site  or  .site <user|search string>
+
+Results:  Displays a list of all of the <user>'s IP address, alpha address,
+          socket number, name, and user number.
+          If user is not online, it will show their last logged in IP and
+          hostname.
+          If a user is not specified, it will display site info for all
+          users in the format..
+
+          <username>      <ip_address>(<user #>:<socket>)  <alpha_addy>
+
+See also: restrict, unrestrict, bannew, unbannew

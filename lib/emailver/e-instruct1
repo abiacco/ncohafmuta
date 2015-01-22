@@ -1,0 +1,9 @@
+Hello and Welcome to %system%!
+
+%system% is currently setup to accept users on an email verification
+basis. This means that we email you a password..when you receive the
+email, return here (%host% %mainport%) with the password and enter it when
+asked. Your account will then be activated.
+ Be sure to return within 1 day or the pending account will be deleted.
+
+Please enter a valid email address that we can mail your info and password

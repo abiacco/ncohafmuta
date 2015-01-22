@@ -1,0 +1,69 @@
+#!/bin/csh -f
+# by Cygnus
+# ncohafmuta@asteroid-b612.org
+
+setenv FOUND 0
+setenv BFILE backup.tar
+setenv BACKUPDRIVE backupd
+setenv RESTOREDRIVE restored
+
+echo /---------------------------------------/
+echo / Ncohafmuta 1.4.x Data Restore Utility /
+echo /---------------------------------------/
+
+# Check if backup archive exists
+if (-e $BACKUPDRIVE/$1backup.tar.gz) then
+	echo Found compresssed archive..
+	if (-e $BACKUPDRIVE/$1backup.tar) then
+	rm -fr $BACKUPDRIVE/$1backup.tar
+	endif
+else
+	echo Compressed archive not found, I will look for uncompressed version..
+	if (-e $BACKUPDRIVE/$1backup.tar) then
+		echo ah ha! found that one!
+		setenv FOUND 1
+	else
+		echo Didn't find that either..exiting!
+	exit 0
+	endif
+endif
+
+if (-e $BACKUPDRIVE/$RESTOREDRIVE/$1) then
+	echo Removing existing restore..
+	rm -fr $BACKUPDRIVE/$RESTOREDRIVE/$1
+endif
+
+mkdir $BACKUPDRIVE/$RESTOREDRIVE/$1
+chmod 700 $BACKUPDRIVE/$RESTOREDRIVE/$1
+
+# Uncompress archive
+if ($FOUND == 0) then
+	echo -n Uncompressing archive..
+	gzip -d $BACKUPDRIVE/$1backup.tar.gz
+	echo Done.
+endif
+
+# Move tar file to restore directory
+mv $BACKUPDRIVE/$1backup.tar $BACKUPDRIVE/$RESTOREDRIVE/$1
+
+# Change to that directory for unarchiving
+pushd $BACKUPDRIVE/$RESTOREDRIVE/$1
+
+# Do unarchiving of specified files
+echo Unarchiving $2 from $1backup.tar..
+#tar xf $1backup.tar ../$2
+tar xf $1backup.tar $2
+echo Restore complete!
+
+# Move tar file to main backup directory and recompress
+popd
+echo
+echo -n "Cleaning up.."
+mv $BACKUPDRIVE/$RESTOREDRIVE/$1/$1backup.tar $BACKUPDRIVE/
+#rm -fr $BACKUPDRIVE/$RESTOREDRIVE/$1
+chmod 600 $BACKUPDRIVE/*.tar
+gzip -9 $BACKUPDRIVE/$1backup.tar
+chmod 600 $BACKUPDRIVE/*.tar.gz
+echo "Done."
+
+

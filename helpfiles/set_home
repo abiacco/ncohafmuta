@@ -1,0 +1,11 @@
+ Syntax:  .set home <room_name>
+
+Results:  This command allows you to set which room you will be put in
+          when you type .home
+          <room_name> must be typed in full and cannot be a hidden or
+          privledged room.
+          Typing this command without a room name will show your current
+          home room.
+
+See also: home
+          

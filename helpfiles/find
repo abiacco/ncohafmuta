@@ -1,0 +1,9 @@
+ Syntax:  .find
+          .find <user>
+
+Results:  Allows you to look and see which room a user is currently in.
+          If the user is not online, it will tell you where they were
+          when they last logged out. If no <user> is specified, You will
+          be shown all users online with their locations.
+
+See also: who

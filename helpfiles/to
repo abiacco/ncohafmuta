@@ -1,0 +1,19 @@
+ Syntax:  .to <user> <message>
+	  .to <user> ;[']<action>
+          $ <user> <message>
+	  $ <user> ;[']<action>
+
+Results:  This command is just like normally talking, but the text is 
+          directed to <user>. <user> MUST be in the room. It's still
+          a public message remember.
+	  The second syntaxes is to send a directed emote or possesive
+	  emote (with '). 
+          Command can be shortened with '$' or whatever you set with .abbrs
+          You cannot .to a user that is AFK or BAFK.
+
+Example:  $cygnus Did you go out for dinner?
+         Gives.. <your name> says (to cygnus) "Did you go out for dinner?"
+	  $cygnus ;jumps on you
+         Gives.. <your name> jumps on you (to cygnus)
+
+See also: say

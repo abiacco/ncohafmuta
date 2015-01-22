@@ -1,0 +1,45 @@
+
+.admin command to administrate almost all aspects and settings of the
+talker. The command will be command line based with descendingly specific
+levels. Sort of like the interface for Cisco IOS with their routers. All
+changes made using the command will be memory-effective ONLY unless saved
+to the config. A huge feature of this will be allowing administrator to
+edit,load, and save multiple configs on the fly. With one command you can
+change your talker to a whole other theme with new rooms,
+strings, and command names.
+ Tentative commands:
+   MAIN
+	commit	              - Save current settings to memory and
+				current boot
+	commit startup-config - Save current settings to the default
+				boot config
+	commit <config name>  - Save config settings to a new or
+				existing alternate config
+	copy <config> <config> - Copy a whole existing config to a new or
+				existing config name
+	config <type>	      - Enter configuration commannd line for
+				<type> which can be rooms,strings,globals,
+				or commands
+	load		      - Reload the current SAVED disk config
+	load <config name>    -	Load specific config into talker.
+	show configs	      - List all configurations
+	show <type>	      - Show settings for <type> under current
+				config
+	delete <config name>  - Deletes a specific configuration
+   GENERAL LINE COMMANDS
+	?		      - List commands for this line menu
+	exit		      - Exit up from this line menu
+   ROOM CONFIG LINE MENU COMMANDS
+	show		      - Show all settings for this config
+	add <room name>
+		exit <room name>
+		hide
+		atmos
+		publock
+		privlock
+	delete <room name>
+	modify <room name>
+   STRING CONFIG LINE MENU COMMANDS
+   GLOBAL CONFIG LINE MENU COMMANDS
+   COMMAND CONFIG LINE MENU COMMANDS
+

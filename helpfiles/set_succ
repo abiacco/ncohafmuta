@@ -1,0 +1,8 @@
+ Syntax:  .set succ <mess>
+	  .set succ [clear|none|-c]
+
+Results:  This is to set your success message. This is what people see when
+          they successfully .tell .semote .sthink  or .beep you. You can
+          make your message blank/no message by using the later syntax above.
+
+See also: set_fail

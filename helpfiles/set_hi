@@ -1,0 +1,16 @@
+ Syntax:  .set hi
+
+Results:  This command allows you to set whether or not you will hiliting
+          in the talker. Text that is hilited is either bright white or
+          just bold. Some terminal types that are capable of this are
+          VT100, VT102,and ANSI. This is on by default.
+           If you see codes in front of text like \033[1m, your terminal
+          does not support this feature..turn it off.
+           This command is a TOGGLE. Meaning, every time you type it, it
+          will either turn the option on or off.
+           In incoming private communication, the first toggle mode (all
+          on) will show private comms all bold. In the 2nd toggle mode it
+          will show them as normal and allow colors to come through.
+
+See also: hilite
+

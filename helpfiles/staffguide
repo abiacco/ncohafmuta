@@ -1,0 +1,161 @@
+                        Guidelines for Talker Staff
+
+
+RESPONSIBILITIES:
+All staff members have a certain degree of responsibility and
+power, both of which increase as your level increases. Here is a list
+of guidelines that ALL staff members need to follow in order for
+the talker to run as smoothly as possible.  First I will define the
+responsibilities of different staff ranks.
+
+Lower Staff : Mostly responsible for policing the talker, dealing with
+              troublesome users, taking the *appropriate* action to deal
+              with such users.
+
+Higher Staff: Mostly responsible for administrative duties, such as the
+              banning/unbanning of sites, clearing expired users, and
+              handling problems that wizards may need some
+              assistance with.
+
+ALL Staff   : Responsible for the general peace of the talker. All wizards are
+              partly responsible for helping newbies and policing the place.
+
+-------------------------------------------------------------------------
+
+GUIDELINES:
+Each level has a certain amount of "power", determined by the commands
+that level contains.  These commands should only be used for the purpose
+they are served for. Here is a listing of how certain commands should be 
+used.
+
+MUZZLE/UNMUZZLE: Used if a user has been abusing the .shout command. When
+                 the .shout command is being abused, a certain course of 
+                 action should be taken.  First, a .bcast should be done
+                 to notify users that shouting has gotten out of hand.
+                 If this does not help, give the particular user a 
+                 personal warning stating that if their behavior continues,
+                 they will be muzzled.  If at last this doesn't work, then
+                 use the .muzzle.  If it's a first time abuser, set a time
+                 limit on the muzzle according to your discretion.  If it's
+                 a repeat offender, make the muzzle permanant. Swearing
+                 continously in shouts are reason for an immediate .arrest
+
+BCAST: Only to be used to notify users to stop abusing shouts, or to
+       announce an event, such as clearing of room buffers or a system
+       shutdown.  It should NOT be used for any other purpose.
+
+ARREST: Used on troublesome users that have been given many warnings but
+        will not comply to the rules of the talker.  Do not use this 
+        command hastily.  Before .arresting a user, take that user into
+        another room via .move or .bring.  Try to talk to that user,
+        explaining the rules of the talker and how their behavior is
+        considered inappropriate.  Usually a person is just unsure of
+        themselves and didn't realize their behavior was unacceptable,
+        other times users just don't give a crap.  It's fairly easy to
+        tell which is which, so use your discretion.  The .arrest should
+        NEVER be used on another staff member unless you are the admin,
+        which you probably aren't.
+        If you see another staff member is behaving inproperly, bring it to
+        the admin's attention ASAP. DO NOT act first. The admin will deal with
+        the situation.
+
+MOVE/BRING:  Should only be used to move a newbie if they need assistance 
+             or to remove a troublesome user from an area. Moving or
+             bringing a user in general is permitted ONLY if you have that
+             users permission.
+
+PROMOTE/DEMOTE: All staff members have the right to promote a user from
+                level 0 to 1 at their discretion.
+
+                Promotions/demotions to level 2 and above are to be handled
+                as a community. NO ONE is to promote/demote within these
+                levels without consulting the admin beforehand.  No
+                promote/demote is so urgent that it cannot be taken up with
+                the admin ahead of time. The admin will then do what is
+                necessary to deal with the situation,
+                whether it is to hold a staff meeting for votes on a user's
+                promotion and availability of that position, or to iron
+                out whatever problems a staff member may be causing.
+
+KILL: IMO, kind of a worthless command, since .arrest should be all that is
+      really needed.  All .kill usually does is aggraviate a user if they 
+      are already causing problems.  Only use if a user is troublesome user
+      is logging back on as someone else after having been arrested.  Sometimes
+      this is effective which helps keep the ban list down.  NEVER use this
+      command on another staff member, unless asked to by that member for some
+      particular purpose. Kill is also used to remove users that are
+      lagged out and stuck.
+
+XCOMM: An alternative to arresting. Since it prevents the user from being 
+       able to do anything, including move from room to room, it should
+       be used VERY sparingly. Xcomm should NEVER be used on another staff 
+       member, nor should it be used as a joke any users/staff. If there's a 
+       problem with a staff member, take it up with the admin.
+
+FORCE: Only to be used for the purpose of helping a user with their settings
+       or to remove an abusive desc or enter/exit phrase if a user refuses to
+       do it themselves.  This should NOT be used on other staff nor on
+       abusive users just to razz them.  Deal with abusive users in the 
+       appropriate manner.
+
+DESCROOM/ATMOS: Only to be used in YOUR room unless asked to do otherwise
+                by the admin.
+
+NUKE: Only to be used to remove expired accounts, multiple accounts, or
+      to prevent a troublesome user from coming back after a .ban has been
+      done. If a user asks to be nuked, tell them to use .suicide (if the 
+      command is available to them), else, take the matter to the admin.
+
+* NOTE: All of the above commands are to be used in coordinance with the
+  wizboard (.wnote). Whenever one of the anti-abussive/spamming commands is
+  used, a wnote is needed to inform other staff of the situation. Also
+  please write a warning on the user with  .wlog <user> <message> So we can
+  keep track of the track record of users.
+
+* ANOTHER NOTE: If a user is being unruly through personal means via tells,
+  emotes. etc. It may be best to log the conversation for future reference.
+  Since it is often difficult to judge certain situations when the abuse
+  in on a personal level.
+
+---------------------------------------------------------------------------
+
+BEHAVIOR:
+Staff are expected to behave in an appropriate matter while on the talker.
+Certain behavior will not be tolerated. Here's a list of behaviors that
+will result in a re-evaluation of your position at the talker.
+
+SPAMMING: Not allowed under any circumstances, in any form.  This includes
+          through shouts, tells, through pictures such as Christ, mail,
+          boards, or in public.
+
+SWEARING: In private rooms with certain company, ok. But under any other
+          circumstances is not allowed.
+
+"MESSING" WITH USERS: Yes, some users can be annoying as hell, but this
+          is no reason to make a fool of them.  If a user is offending
+          other users, then deal with the situation by taking the user 
+          into another room and talking to them, explaining how their 
+          behavior is inappropriate.  If this does not work, then take 
+          disiplinary action using .arrest.  By "messing" with a user, 
+          you are setting a bad example for the talker, especially if this 
+          joking is done in the main room. A new user might be afraid too come
+          back if they see staff treating another user in such a manner.
+
+
+-------------------------------------------------------------------------
+
+Being a staff member at a talker comes with much responsibility and requires
+maturity to handle situations properly. Failure to follow set guidelines
+will result in a re-evaluation of your position at a talker, which may
+result in demotion.  This guide was created by Cygnus originally, but may
+have been modified for this specific talker by the admin. Any comments or
+questions about the contents of this file should be directed to the admin 
+first, and then if, appropriate, Cygnus secondly at:
+thelittleprince@asteroid-b612.org  Yes, being a staff member is hard work, 
+but a talker is meant to be a place of fun.  Let's do our best to make
+it that way for everyone, shall we? :)
+
+- Cygnus
+
+-------------------------------------------------------------------
+

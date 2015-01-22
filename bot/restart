@@ -1,0 +1,28 @@
+#!/bin/sh
+# by Cygnus
+# ncohafmuta@asteroid-b612.org
+#
+
+# The name of the storybot binary or program
+BINARY="storybot"
+
+#  This next part copies over the log file to a backup,
+
+	if test -f "botlog"
+	then
+         echo "Coping bot log to backup file..."
+	 cp botlog botlog.`/bin/date '+%m%d%y.%T'`
+	 rm botlog
+         touch botlog
+	fi
+
+if test -f "$BINARY"
+then
+echo -n "Starting the storybot..."
+./$BINARY
+echo "Done"
+echo "See log file for details"
+else
+echo "Can't find the storybot program! Have you compiled it with ./compile?"
+fi
+

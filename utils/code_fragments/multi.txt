@@ -1,0 +1,43 @@
+add #defines:
+MAX_MULTIS	10
+VIS_TELLS_M
+INVIS_TELLS_M
+
+add ints:
+int point=0,count=0,i=0,lastspace=0,lastcomma=0,gotchar=0
+int point2=0,multi=0
+int multilistnums[MAX_MULTIS];
+
+add chars:
+char multiliststr[ARR_SIZE];
+
+add arrays:
+char multilist[MAX_MULTIS][ARR_SIZE];
+
+code mods:
+clear arrays right at start of func.
+
+for() loop to parse users, starting after gagcomm check
+
+if (count>1) multi=1; after tells++;
+
+for() loop to check users, starting after if (count>1)...
+all return's to continue's if multi flag=1;
+add users user numbers to multilistnums in loop. check for user in list
+multiple times and ignore.
+
+check for point==0, which would indicate all user checks
+failed (nothing in multilistnum array) so just return.
+
+for() loop to compose user messages and write out to users
+pull each user 'u' from multilistnum.
+compose output string of users based on multilistnums[] array
+move copy to tell buffer inside for() right before write to u
+stops after write to u and before write/composition to teller
+
+compose output string of users based on multilistnums[] array
+to send to sender.
+
+if multi, no success printed out to teller.
+
+clear out arrays again

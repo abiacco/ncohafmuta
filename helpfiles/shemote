@@ -1,0 +1,11 @@
+ Syntax:  .shemote [']<message>
+          & [']<message>
+
+Results:  Used to shout an emote/action across the talker.
+          Where <message> is the emote/action.  If a ' is specified
+          before the message, it will become posessive. & is a
+          shortcut key.
+
+Example:  .shemote waves bye to everyone.
+
+See also: shout

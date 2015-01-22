@@ -1,0 +1,18 @@
+ Syntax:  .read
+          .read <last # of messages>
+          .read <room>
+          .read <room> <last # of messages>
+          
+Results:  Displays the message board of the room you are in.
+          If you specify a room name, it will try to read the
+          messages written in that room.  If you specify a number at the
+          end, it will read that many messages from the bottom of the 
+          message board.
+
+Example:  To read the last 5 messages in the current room, type --> .read 5
+          To read the last 3 messages in room "Path", type --> .read path 3
+
+  Notes:  If the board is larger than one screen it will be paged
+          with the message "** PRESS RETURN **" appearing.  If you
+          wish to read more press return, but if you wish to quit
+          reading the board press "q" then return.

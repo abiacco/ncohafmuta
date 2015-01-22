@@ -1,0 +1,9 @@
+ Syntax:  .ustat  or  .ustat <user>
+
+Results:  Allows you to get stats on a specified user. Name, desc, gender,
+          email, commands total, logins total, time online, flags set,
+          profile, etc.. If no user is specified, it will show your stats.
+          <user> is case INsensitive, (meaning it doesn't matter if you
+          type it upper or lower case)
+
+See also: set, examine, set_profile

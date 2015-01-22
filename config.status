@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Re-run this script to generate the same configuration
+# as you had on the last successful run of configure
+#
+
+./configure --enable-warn3
+

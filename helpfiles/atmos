@@ -1,0 +1,7 @@
+ Syntax:  .atmos [all | <room_name>]
+
+ Result:  Toggles the talkers atmospherics on or off for rooms.
+          If "all" is given as an option, all the room's atmospheres will
+          be toggled all on or all off. If a room name is given, it will
+          toggle the atmospheres just for that room.
+          Atmospherics are messages that show up in rooms at random.

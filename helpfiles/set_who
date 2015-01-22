@@ -1,0 +1,10 @@
+ Syntax:  .set who
+
+Results:  This command allows you to choose what you want the .who list to
+	  look like. Each option has a different way info is displayed and
+	  which info is displayed.
+          This command is a TOGGLE. Meaning, every time you type it, it
+          will rotate/cycle through the available options.
+
+See also: who  set_help  set_pbreak
+

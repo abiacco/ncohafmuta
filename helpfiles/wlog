@@ -1,0 +1,13 @@
+ Syntax:  .wlog
+          .wlog <user>                  *STAFF ONLY*
+          .wlog <user> <reason>         *STAFF ONLY*
+
+Results:  For normal users, let them read their warning log. Things they did 
+          wrong, punishments (muzzles,xcomm,gagcomm,etc..)
+           The latter syntax allows STAFF to write a log of warnings given to 
+          users about shouting, spamming, etc.. This is to keep track of 
+          user's misbehavior
+           For STAFF not specifying a message, it reads the current warning 
+          log that user has on them
+
+See also: wnote

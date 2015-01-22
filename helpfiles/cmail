@@ -1,0 +1,24 @@
+ Syntax:  .cmail <parameter>
+
+ Result:  Clears messages from your mail file.  This command will work
+          from any room on the system.
+          .cmail <number> <number> where both numbers are the same is a line 
+          delete. No line checking is done to verify how big your mail 
+          file is, so if you are in doubt, check your mail file with 
+          .rmail first. 
+
+   Note:  You will be asked if you are sure you want to clear your
+          mail file before it is erased, so don't panic if you type
+          this command by mistake.
+
+Example:
+   To clear all messages from your file, type           : .cmail all
+   To clear the first line type                         : .cmail 
+   To clear line 10 from your mail, type                : .cmail 10
+   To clear all lines from the beginning to line 5, type: .cmail to 5
+   To clear all lines from line 8 to the end, type      : .cmail from 8
+   To clear all lines from line 8 to line 10, type      : .cmail from 8 to 10
+   To clear all lines except line 4, type               : .cmail except 4     
+   To clear all lines except line 4 through 9, type     : .cmail except 4 to 9
+
+See also:  rmail, csent

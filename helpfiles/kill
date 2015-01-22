@@ -1,0 +1,8 @@
+ Syntax:  .kill <user> [<message>]
+
+Results:  Removes that little irritating twit of a user that has been 
+          causing trouble all day.  <user> is the twit in question.
+          <message> is an optional message that would be shown instead of 
+          the randomly picked message.
+
+See also: arrest

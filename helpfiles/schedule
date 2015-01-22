@@ -1,0 +1,5 @@
+ Syntax:  .schedule
+
+Results:  This command will show you the calendar for the current month
+          and any talker events that are occuring in that month.
+          Days marked with an * denote important events.

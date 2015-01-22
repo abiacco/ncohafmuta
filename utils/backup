@@ -1,0 +1,67 @@
+#!/bin/csh -f
+# by Cygnus
+# ncohafmuta@asteroid-b612.org
+
+setenv BFILE backup.tar
+setenv BACKUPDRIVE backupd
+
+echo /--------------------------------------/
+echo / Ncohafmuta 1.4.x Data Backup Utility /
+echo /--------------------------------------/
+
+if (-e $BFILE) then
+	echo Removing existing archive..
+	rm -f $BFILE
+endif
+
+if (-e $BACKUPDRIVE/`/bin/date '+%m%d%y'`$BFILE.gz) then
+	echo Removing existing compressed archive for today..
+	rm -f $BACKUPDRIVE/`/bin/date '+%m%d%y'`$BFILE.gz
+endif
+
+echo Files will be added to  $BFILE
+echo -n 'Archiving..  user data files..'
+tar cf $BFILE ../users
+echo                              DONE!
+echo -n '             mail files..'
+tar uf $BFILE ../maildir
+echo                              DONE!
+echo -n '             profile files..'
+tar uf $BFILE ../prodir
+echo                              DONE!
+echo -n '             restrict files..'
+tar uf $BFILE ../restrict
+echo                              DONE!
+echo -n '             new-restricts..'
+tar uf $BFILE ../newrestrict
+echo                              DONE!
+echo -n '             library..'
+tar uf $BFILE ../lib
+echo                              DONE!
+echo -n '             help files..'
+tar uf $BFILE ../helpfiles
+echo                              DONE!
+echo -n '             user warnings..'
+tar uf $BFILE ../warnings
+echo                              DONE!
+echo -n '             message boards..'
+tar uf $BFILE ../messboards
+echo                              DONE!
+echo -n '             configs..'
+tar uf $BFILE ../config ../webfiles
+echo                              DONE!
+echo -n '             documentation..'
+tar uf $BFILE ../docs
+echo                              DONE!
+echo -n '             code..'
+tar uf $BFILE ../hdrfiles/* ../srcfiles/* ../restart ../shutdown ../Makefile ../tzinfo
+echo                              DONE!
+echo Done archiving
+echo Compressing archive to.. $BACKUPDRIVE/`/bin/date '+%m%d%y'`$BFILE.gz
+gzip -9 $BFILE
+mv $BFILE.gz $BACKUPDRIVE/`/bin/date '+%m%d%y'`$BFILE.gz
+chmod 600 $BACKUPDRIVE/*.tar.gz
+echo Backup complete!
+
+
+

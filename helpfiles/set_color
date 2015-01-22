@@ -1,0 +1,13 @@
+ Syntax:  .set color <on|off|test>
+
+Results:  With the 'on' switch, the command enables ANSI colors for you.
+          If your terminal supports ANSI, you will see colors. If you are
+          on a vt100 terminal or similar, the colored stuff will appear
+          bold. the 'off' switch turns your coloring off. the 'test'
+          switch displays a series of X's on your screen in ANSI colors
+          to determine if you support ANSI.
+          This setting is saved to disk for future logins.
+          **Coloring is set to OFF, by default.
+
+See also: coloruse
+

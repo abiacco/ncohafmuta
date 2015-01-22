@@ -1,0 +1,8 @@
+ Syntax:  .set visemail    (it's a toggle)
+
+Results:  Toggle your set email address hidden or visible to normal users.
+          Your email address is always visible to Senior wizzes and up
+          for security purposes and in case of emergency. Default is
+          visible.
+
+See also: set, fmail, autofwd

@@ -1,0 +1,9 @@
+ Syntax:  .set hidden
+
+Results:  This command allows you to set whether, on login, you will see
+          your password as you are typing it in at the password prompt.
+          This command is a TOGGLE. Meaning, every time you type it, it
+          will either turn the option on or off.
+
+See also: password
+

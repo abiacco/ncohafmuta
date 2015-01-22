@@ -1,0 +1,16 @@
+ Syntax:  .frog
+          .frog <user> [<time>]
+
+Results:  Makes the user into a frog. Almost any communication that
+          comes out of them will be a Ribbit or other frog sound. .says,
+          .emotes, .semotes, etc..
+          If used without a user, it will list out all frogged users 
+          currently logged in.
+          A time is optional. If you do not specify a time (in mins), the
+          user will be frogged until you or someone else unfrogs them. 
+          Otherwise, the talker will auto-unfrog them after they have
+          served <time> online.
+          This is a toggle, when used on a user. i.e. if the user is frogged
+          frogging them again, will un-frog them.
+
+See also: arrest, muzzle, xcomm, gagcomm

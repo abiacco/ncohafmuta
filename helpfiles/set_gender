@@ -1,0 +1,8 @@
+ Syntax:  .set gender <your_true_or_fictionous_gender>
+
+Results:  This command allows you to set your gender which is shown to
+          people that .ustat you. Your gender can be anything you wish.
+          Male, Female, Rock, Computer, etc..
+
+See also: ustat
+

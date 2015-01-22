@@ -1,0 +1,7 @@
+ Syntax:  .show <message>  or  ' <message>
+
+Results:  Used to show newbies the syntax for typing commands.
+          Where <message> is the thing you want to show them.
+          Message will be hilited.
+
+Example:  '.h write   will show...  Type --> .h write

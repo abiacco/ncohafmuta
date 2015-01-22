@@ -1,0 +1,195 @@
+Things to do..in no good order!
+--------------------------------
+(if you would like to assist on any of these and are good in C,
+ let me know..ncohafmuta@asteroid-b612.org)
+
+1.5.x
+-----
+* = DONE
+1 . Maybe distinguish smtp codes between errors/successes/failures as per 
+    charts
+2 . Maybe show MAIL FROM and RCPT TO output in logs
+3 . Storybot devel.
+4 . Remove deprecated functions (e.g. .desc)
+5 . Finish terminal type detection/ and write code for talker to actually 
+    use it functionally.
+*6. .set localecho (maybe magic keyword for use at login prompt too)
+	*add set_localecho() prototype
+	*change set_car_ret() and set_white_space() prototype (no inpstr)
+	*add set_localecho helpfile
+	*fix set_space helpfile
+	*add localecho login keyword
+	*add localecho info to loginhelp file.
+	*add cr or lf respectively to clients that only send one or the 
+	 other
+	*make sure localecho doesn't write if passhid is on (login, 
+	 afk-lock)
+	*add write_char() function and prototype
+7 . Fix balance of tell colors (to and from should be colored or not 
+    colored or have an option to change behavior)
+8 . change ".set icq" to ".set im" then either add ".set imtype" or make 
+    it .set im <type> <handle>
+    e.g. .set im yahoo poetry_guy_23. Update .examine and ".set show" 
+    format info.
+9 . auto-afk option
+10. new config stuff from below.
+11. stacked colors
+12. Add user afk status to soft-reboot DB
+13. Maybe add room conversation buffers to soft-reboot DB
+14. Either redesign atmospheric algorithm, or update code to say that the atmos's
+    number is not a probability/chance number!!
+
+Future
+------
+Add IPV6 support 
+Add SSL/TLS connection encryption support 
+
+Maybe put .to messages in tell buffer for users that go idle. Alternative 
+is to auto-afk a user after XX number of minutes idle, then a .to would 
+fail since the user is idle.
+
+Put filesize or line limit on system logs so they cant fill up disk. Either
+stop logging at limit or start wrapping (might be resource wasteful). Put
+limits on amount of RSS or SIZE memory we can use, so malicious users
+cant malloc() to death the talker.
+
+Ability to turn off some or all logging from in the talker.
+
+More flexible autopromotion conditions.
+
+Wildcard * site banning. Change format of restrict files.
+
+Fix/enhance write out code in write_str() write_str_nr() because it 
+doesn't take in account color codes when writing out column-specific text 
+blocks to user
+
+Add new options that were added to cmail/wipe to rmail/read too:
+
+Multi-user recepients for .move
+
+Add direct TLS/SSL/SSH support
+
+.admin command to administrate almost all aspects and settings of the
+talker. The command will be command line based with descendingly specific
+levels. Sort of like the interface for Cisco IOS with their routers. All
+changes made using the command will be memory-effective ONLY unless saved
+to the config. A huge feature of this will be allowing administrator to
+edit,load, and save multiple configs on the fly. With one command you can
+change your talker to a whole other theme with new rooms,
+strings, and command names.
+ Tentative commands:
+   MAIN
+	commit	              - Save current settings to memory and
+				current boot
+	commit startup-config - Save current settings to the default
+				boot config
+	commit <config name>  - Save config settings to a new or
+				existing alternate config
+	copy <config> <config> - Copy a whole existing config to a new or
+				existing config name
+	config <type>	      - Enter configuration commannd line for
+				<type> which can be rooms,strings,globals,
+				or commands
+	load		      - Reload the current SAVED disk config
+	load <config name>    -	Load specific config into talker.
+	show configs	      - List all configurations
+	show <type>	      - Show settings for <type> under current
+				config
+	delete <config name>  - Deletes a specific configuration
+   GENERAL LINE COMMANDS
+	?		      - List commands for this line menu
+	exit		      - Exit up from this line menu
+   ROOM CONFIG LINE MENU COMMANDS
+	show		      - Show all settings for this config
+	add <room name>
+		exit <room name>
+		hide
+		atmos
+		publock
+		privlock
+	delete <room name>
+	modify <room name>
+   STRING CONFIG LINE MENU COMMANDS
+   GLOBAL CONFIG LINE MENU COMMANDS
+   COMMAND CONFIG LINE MENU COMMANDS
+
+Allocate memory for structures dynamically. Right now user structures are 
+allocated on bootup for MAX_USERS. Should allocate as needed (login/logout)
+Same for rooms. All rooms are allocated on bootup. Should be as
+needed..i.e. create and destroy rooms based on if users are in them, or
+are immediately ready to enter them.
+(start with mallocing for area conv buffer, user conv buffers, and user macros, 
+because these take the most memory)
+
+Split code into multiple C files (in progress!)
+
+Enhance color codes so users can STACK codes. like:
+^HR^BLthis is bold red and blinking^
+
+Make ".ignore alerts" maybe also send an alert when a user logs off.
+
+Possibly either make certain who columns not length-flexible, or make 
+the formatting accomadate the flexible-lengths (from constants.h)
+
+Create standards for different terminal types
+
+Implement and create load-in module support. Maybe have a directory with 
+a .c file for every user .<command>
+This also includes re-loading of commands and other data from 
+inside the talker.
+
+Port code to Windows natively
+(might not need because it already works great with Cygwin)
+
+CYGWIN STUFF:
+1. popen() doesn't work right
+
+Greatly enhance web port so that it can truely send and receive HTTP
+requests. (85% functional) _menu functions need to be finished for
+users to use advanced functions in webpage (send mail, read mail,
+read help, read message boards)
+Help reading may or may not be on _menu ( i suppose a person really doesn't
+need to be a user to read help) Formatting will probably be same as when
+you search for users.
+Reading mail formatting might be top frame for the header, middle frame for
+message list, with columns of
+1) Timestamp
+2) sender's name a link to their profile (popup in new
+window)
+3/4) maybe real small column links to their email addy and homepage.
+5) a column for the first few words of the email to distiguish it
+6) a view button/link to view message in the larger frame below
+Maybe make an _admin function for viewing talker status. See if up/down,
+set up/down, set system options, room editor, etc..
+
+Start inter-talker connectivity
+
+Maybe create and implement an email gateway to external email. Maybe have
+a talker email account and to send email to a person you put their name
+in the Subject: field. Or maybe just <name>.<talker_name>@<talker's host>
+cygnus.pinwheels@ncohafmuta.com
+
+
+Things being considered still
+-----------------------------
+* Using a database
+* Using Async I/O threads
+* Encrypting all user files
+* Mail folders w/folder management
+* .set age (maybe? possibly too customized for the distribution code)
+* Add route command to display a route between two rooms.  Maybe 
+  make it an option of another command instead of making a new command? Or
+  maybe the user should not be lazy and use .map? :)
+* Centralizing room flags to a command..and adding addition flags.
+  .set <room> visible (room is visible in exits and .rooms and .who)
+  .set <room> invisible (room is hidden in exits and .rooms and .who)
+  .set <room> public (unlocks room for enterage)
+  .set <room> private (locks room from enterage)
+  .set <room> windy (talk in the room also shows up in adjacent rooms)
+  .set <room> abode (users can .set home to this room)
+  .set <room> tellable (you can send tells from (to?) the room)
+  .set <room> talkable (you can say, mutter, emote, to in the room)
+  .set <room> readable (you can read the message board in the room)
+
+<room> can be replace by "here" if it's meant for the current room.
+as in: .set here public

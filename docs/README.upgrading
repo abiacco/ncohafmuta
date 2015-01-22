@@ -1,0 +1,9 @@
+
+Upgrading from < 1.2.3a TO >= 1.2.3a
+====================================
+You MUST remove your DNS cache file, which by default is in lib/sitecash
+before starting up the new server binary. A new TTL field has been added.
+
+
+-Cygnus
+ncohafmuta@asteroid-b612.org

@@ -1,0 +1,99 @@
+-------------------------------------------------
+  Java-based Terminal Emulator v3.x.x
+  Copyright (C) 1997 by Dave Jarvis
+-------------------------------------------------
+
+Installation Instructions
+-------------------------
+  1. Intro
+  2. Set-up
+  3. Configuring for Talkers
+  4. Using
+  5. Addendum
+
+
+1. Intro
+
+This README was authored by Dave Jarvis and modified by me (Anthony J. 
+Biacco) for specific use of Dave's emulator under my Ncohafmuta talker
+code's web port.
+Any questions about configuring the emulator under the webport can go to me,
+at ncohafmtua@asteroid-b612.org
+Any question about the emulator itself can go to Dave, at dave@joot.com
+
+
+2. Set-up
+
+* Correct File Placement
+
+    The files as they are, are already set up for use under Ncohafmuta's
+    webport. No modifications are necessary to index.html unless you want
+    to change applet options (font size, typing bar on/off)
+
+    If running the emulator outside the webport, i.e. in a public web-server
+    directory, make sure you put all the files here in a directory that
+    is visible from the World Wide Web (WWW).  Typically, you'll use
+    a directory called "public_html", ".www", "web", or some such
+    name from your main home directory. Verify with your system administrator.
+
+
+3. Configuring for Talkers
+
+   If using under Ncohafmuta's webport:
+    The host and port values are already configured (replaced by the talker 
+    automatically).
+    Things you MIGHT want to change are some of the applet options in the HTML
+    file, typing bar on/off, font size, colors. This is OPTIONAL.
+
+   If running the emulator outside the webport:
+    There are two lines you may want to change in the "index.html" file:
+
+    <PARAM NAME="HOST" VALUE="yourtalker.com">
+    <PARAM NAME="PORT" VALUE="5000">
+
+    These two lines are used by the Terminal Emulator to tell it where
+    to connect.  The first, "yourtalker.com", is must be the name of the
+    server on which your talker is running.  The second, "5000", is the
+    port number your talker is running on.  You must change the first,
+    and may need to change the second as well.
+
+
+4. Using
+
+* From Ncohafmuta's webport
+
+    Direct your users to http://www.yourtalker.com:yourwebport/connect
+    So, for example, if you talker was hosted on talker.com and the webport
+    for your talker was 1930, you would tell your users to connect at:
+      http://talker.com:1930/connect
+
+* As an applet in your public WWW directory
+
+    The Terminal Emulator may be used from the World Wide Web as described
+    above.  When a user connects up to the web page, the Terminal Emulator
+    will download off the page and automatically connect up to the server
+    as defined by the lines:
+
+    <PARAM NAME="HOST" VALUE="yourtalker.com">
+    <PARAM NAME="PORT" VALUE="5000">
+
+* As an application
+
+    The Terminal Emulator may also be used on a computer that has a Java
+    Virtual Machine on it.  It is used in exactly the same way as a regular
+    telnet client.  The difference is that you must specify the name of the
+    Java Virtual Machine executable as well.
+
+    For example:
+      java Telnet myserver.com
+  
+    Without any parameters, it defaults to connecting to the local machine's
+    shell.
+
+
+5. Addendum
+
+    Please make sure you read the files COPYRIGHT and LICENSE.
+
+    Thank you for using the Terminal Emulator!
+

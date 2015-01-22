@@ -1,0 +1,38 @@
+  
+ Syntax:  To ban w/defaults:  .restrict <ip-address>
+          To ban w/comment :  .restrict <ip_address> -c <message>
+          To ban w/reason  :  .restrict <ip_address> -r <message>
+          To list sites    :  .restrict
+          To unban:        :  .unrestrict <ip-address>
+
+Results:  Restrict turns off access to the talker for users at an entire 
+          site. <ip-address> is the address that is to be denied access.
+          This can be in the number format OR the hostname format  (below)
+          If you don't specify an address, you will get a list of 
+          all the restricted sites, how long ago they were banned,
+          the reason shown to users that TRY to login from there, and
+          the comments for wizzes why the site is banned.
+          <message> is REQUIRED if -c or -r option is given, and if the
+          site is already banned, the site will not be rebanned, just the
+          comment/reason added.
+          If no option is given, the default reason and comment is used.
+
+External
+Influences:
+          This command creates a possible 3 files in the RESTRICT_DIR
+          directory. <ip_address>, <ip_address>.c, <ip_address>.r
+          During login access, if a person is attempting to log in
+          from a site that has a file in the restrict directory, they
+          will not be allowed access.
+
+          <ip-address> can have one of four numeric forms..
+                a.b.c.d  - Specific IP 
+                a.b.c    - Cluster
+                a.b      - Sub-network
+                a        - Network
+          and four alpha-numeric forms..
+                misty.com   would ban all hosts from that domain  
+**WARNING**
+       Everyone from that specified site will be disallowed access.
+
+See also: unrestrict, bannew, unbannew

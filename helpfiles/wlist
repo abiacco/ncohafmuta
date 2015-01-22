@@ -1,0 +1,7 @@
+ Syntax:  .wlist
+
+Results:  This command will show a list of all the staff of our talker.
+          Top to bottom goes from lower to higher rank. 
+          The administrators are on the very bottom.
+
+See also: ranks,  wizards

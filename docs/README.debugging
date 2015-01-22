@@ -1,0 +1,53 @@
+TALKER DEBUG OPTIONS
+
+The following options are set using the ./configure program, and also
+briefly described there. Run "./configure --help" to see/set these.
+
+#
+# Valid debugging options (not used under normal operation) are:
+# -DZOMBIE_DEBUG        Causes talker to output verbose info to syslog
+#                       about child process killing, waitpid, zombies
+# -DQWRITE_DEBUG        Causes talker to output verbose info to syslog
+#                       about writing user data to buffers for sending
+#                       down user socket..mallocing, etc. This will fill
+#                       up the syslog VERY quickly. You have been warned.
+# -DQFLUSH_DEBUG        Causes talker to output verbose info to syslog
+#                       about the actual sending of the user data down the
+#                       user socket and about socket reading errors
+# -DIAC_DEBUG           Causes talker to output verbose info to syslog
+#                       regarding IAC telnet option negotiation
+# -DPOST_DEBUG          Causes talker to output verbose info to syslog
+#                       regarding the web port POST method
+# -DRESOLVER_DEBUG      Causes talker to output verbose info to syslog
+#                       regarding the clip-on resolver queries
+# -DSMTP_DEBUG          Causes talker to output verbose info to syslog
+#                       regarding SMTP conversations for email fwding
+#
+
+DEBUGGING THE TALKER
+
+Use a program such as strace or truss, depending on your OS. I prefer
+strace, and will run it after the talker is booted, attaching it to
+the talker pid. For example, if the talker is running as pid 10000 (gotten 
+from the server.pid file) I might run:
+ strace -f -F -v -p 10000 -o strace.log &
+This will log tons of information to the strace.log file, which, if i 
+wanted to see a running tally of, would do:  tail -f strace.log
+NOTE: This file can get VERY big VERY quickly, so i wouldn't suggest 
+running it for too long.
+
+You can use a debugger like "gdb" to debug the talker. To do this
+you must configure the talker to compile using a debugging switch.
+If you know you use gcc, you can pass --enable-gcc-debug to ./configure
+before you compile to have it enable debugging (adds the -g compile switch).
+The -g switch may not be valid for all OSes. If so, 
+you must add the proper switch into the Makefile, manually, after it's 
+created with ./configure
+Add whatever the switch is, to the CFLAGS line.
+
+As for how to use gdb, read one or more of the following tutorials:
+http://www.cs.princeton.edu/~benjasik/gdb/gdbtut.html
+http://heather.cs.ucdavis.edu/~matloff/UnixAndC/CLanguage/Debug.html
+http://oucsace.cs.ohiou.edu/~bhumphre/gdb.html
+http://students.cec.wustl.edu/~agg1/tutorial/
+

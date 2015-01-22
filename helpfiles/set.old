@@ -1,0 +1,8 @@
+ Syntax:  .set <option> <setting>
+
+Results:  This command allows a user to set various user attributes
+          that can control the way the terminal functions or things
+          that you wish to have available for others to see
+
+See also: 
+

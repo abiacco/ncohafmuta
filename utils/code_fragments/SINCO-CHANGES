@@ -1,0 +1,117 @@
+Very few major changes have been made to SiNCO this time around, thus the
+'a'
+designator on the version number.  Most of the changes are fixes and
+modifications to existing code.
+
+The most notable change with this release is the addition of a little
+function
+that should do well to eliminate the need for a map: the Forbidden Isle
+Routing
+Map (FIRM).  If you try to .go to a room that isn't joined to your current
+room, SiNCO will tell you the best route to take to get there.  It will
+even
+steer you around locked rooms.  If there isn't a viable route to the
+destination, it will tell you so.
+
+Telnet option negotiation, however, is one of the other new additions to
+the
+code.  If your client is a telnet compatible application and will support
+option negotiation, then SiNCO will be able to determine your window size
+dynamically.  This means that your rows and cols settings are set
+automatically
+when you log in and will be updated every time you change the window size. 
+Plans for supporting specific emulation functions are also in the works.
+
+As a result of this, SiNCO can now automatically wrap text for you.  If
+you
+find this annoying, simply change your columns to 256 after you log in,
+and
+don't resize your window.  A new setting will be added to turn off the
+word
+wrap if enough complaints are received about it.
+
+Bot support has been revised to a more flavourful format and an alternate
+method of interaction for users to direct commands to bots have been
+added. 
+Multiple bots are also now supported without code changes.
+
+Minor fixes were made to the midnight check, string loading, file paging
+and
+text outputting functions.
+
+Changes as of April 20, 1998
+============================
+
+In order to allow those using GMud to get around the inability for GMud to
+transmit blank lines, the action of the multiple screen paging prompt has
+been
+changed.  To page forward, those of you with GMud can now enter C to page
+forward.  The blank line does work the same so those without GMud don't
+have 
+to change a thing.
+
+Three administrative commands have been added: .grant, .revoke and .load.
+The
+.grant and .revoke commands will allow the wizards the ability to give 
+temporary access or denial to any of the commands in SiNCO.  The .load
+command
+allows for shell editing and online reloading of the talker's commands,
+ranks, 
+socials and strings.
+
+------------------------------------------------------------------------------
+
+There have been a number of notable changes that have been introduced with
+this new version.  Please consult the help pages to get more detail on how
+to use new or revised commands.
+
+Colour/Color
+============
+Seeing as how there's been some confusion about the right spelling of
+colo(u)r
+after moving from JOOT, both spellings will work on any of the colour
+commands.
+
+codes.  No terminating caret is necessary, nor are the @@ that some
+believe
+are required.
+
+The .set hi command has been replace with .set cmode which allows users
+to change the colour palette to use.  Some users have troubles seeing 16
+colours in their telnet application, so this option modifies which ANSI
+colour
+codes are sent.
+
+.cmail, .csent, .wipe, .wwipe, .gwipe, .swipe
+=============================================
+The message selection routines for these commands have been changed.  The
+old
+method was kinda clunky, and there was no verification on board wipes.  
+Messages can now be selected individually and by ranges, and the talker
+will
+will prompt you to confirm your selections.
+
+.heartells, .igtells
+====================
+These commands have been replaced by options of the environmentally
+friendly 
+.ignore tells and .listen tells commands.
+
+Be aware that .ignore all will now turn tells off as well.
+
+
+.ignore wizent, .listen wizent
+==============================
+Allows the user to enable or disable the beep when a wizard enters the
+room.
+
+.hilite
+=======
+This command was removed.  Isn't typing ^Hi quicker than typing .hi Hi?
+
+.woohoo, .doh
+=============
+Well, you asked for it and now you got it.  The old JOOT-style .woohoo is
+back
+and it seems it's brought a friend.
+

@@ -1,0 +1,8 @@
+Results:  Sets the room that you are currently in private; thus, no
+          user can enter unless invited.  At least two people must be in
+          a room before it can be locked. (Unless you are a wizard)
+
+  Notes:  Only some rooms can be made private. Rooms that are used as 
+          through rooms to get to others must remain public.
+
+See also: public

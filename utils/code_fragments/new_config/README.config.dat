@@ -1,0 +1,22 @@
+
+ This is the main config file for the talker.
+ These settings can be reloaded with .admin <config name> load <type>
+ i.e. .admin config load strings or .admin config load globals
+
+char config[num].name
+int config[num].type
+void config[num].value
+
+Rules:
+Lines with # in front are ignored
+Lines with spaces in front are ignored unless part of a description
+Strings are marked with a " aa the first character in their value.
+Ints are marked as values without a " as the first character
+
+Implementation:
+Config file will be read in sections (<type>) which can be reloaded
+on the fly. Each section marker is surrounded in ..'s
+the strings section starts with
+..Strings..
+and ends with
+..End Strings..

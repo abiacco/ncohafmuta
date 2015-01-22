@@ -1,0 +1,22 @@
+ Syntax:  .permission <user> <add|sub> <room>
+
+Results:  Gives permission or takes it away for a user to enter the
+          room you specify as <room>.
+          Used to add or delete permission from secured rooms for <user>.
+          Permissions from lowest to highest go:
+          "X" no access to room
+          "N" normal access to room
+          "Y" special access to room
+	  "add"ing and "sub"ing goes one level at a time. If a user
+          currently has "X" access and you "add" them, then they get "N"
+          access. To get "Y" access, you have to "add" again. And
+          vice-versa.
+          If you log out of a secure room, you will return to the main room
+          upon re-entering the talker unless you have .permission for that 
+          room. This applies to users and wizes.
+          To see just the permission list for the user, just type the command
+          and the user's name
+
+ Example:  To give frey access to the gazebo: .permission frey add gazebo
+
+See also: go, private

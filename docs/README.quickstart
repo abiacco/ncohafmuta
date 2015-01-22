@@ -1,0 +1,32 @@
+Quick primer to get your talker up and running
+-----------------------------------------------
+
+1. Configure and Compile the talker. Read docs/README.compiling
+   You do this first, so you know that it compiles on your system 
+   out-of-the-box, before you make any changes.
+After a successful configure and compile..
+2. Go back and really start changing stuff. Major things are:
+   * The main port in config/init_data. First line, first variable.
+     This is the main port the talker will listen on. See 
+     docs/README.init_data for specifc help.
+   * Room and system variables in config/init_data  Read 
+     docs/README.init_data for details.
+   * Variables and strings in hdrfiles/constants.h and hdrfiles/text.h
+     Especially the ROOT_ID, password lock string, port offsets.
+   * MOTDs (Log-in title screens), agreefile, rulesfile, faqfile, mapfile, 
+     newsfile in lib/
+   * Command levels in srcfiles/server.c under sys[] (if you wish)
+   * Variables in webfiles/webport.cfg
+   * index.html in webfiles/
+   * The README doc specifies the locations of all relevant files!
+3. Recompile the talker with 'make', as in docs/README.compiling.
+4. Boot the talker by typing "./restart"
+5. Connect to the talker with your favorite telnet-type client (e.g. 
+   telnet ip_address port_number) and login as the ROOT_ID username with 
+   whatever password you want that root/admin account to have. The ROOT_ID
+   will automatically be given the highest rank in the talker.
+
+
+-Cygnus
+ncohafmuta@asteroid-b612.org
+03-20-04

@@ -1,0 +1,54 @@
+#!/bin/sh
+
+VERSION="ncoh141"
+NUMVER="1.4.1"
+DEVEL="stable"
+
+echo --- MAKING ---
+make dist
+make distZ
+make distzip
+
+make distsmall
+make distsmallZ
+make distsmallzip
+
+make distpic
+make distpicZ
+make distpiczip
+
+make distbot
+make distbotZ
+make distbotzip
+
+make distutils
+make distutilsZ
+make distutilszip
+
+make disttzinfo
+make disttzinfoZ
+make disttzinfozip
+
+echo --- COPYING ---
+
+./copy $VERSION $DEVEL/$NUMVER dist
+./copy $VERSION $DEVEL/$NUMVER distsmall
+./copy $VERSION $DEVEL/$NUMVER distbot
+./copy $VERSION $DEVEL/$NUMVER distpic
+./copy $VERSION $DEVEL/$NUMVER distutils
+./copy $VERSION $DEVEL/$NUMVER disttzinfo
+
+./copy $VERSION $DEVEL/$NUMVER/other-formats distZ
+./copy $VERSION $DEVEL/$NUMVER/other-formats distsmallZ
+./copy $VERSION $DEVEL/$NUMVER/other-formats distbotZ
+./copy $VERSION $DEVEL/$NUMVER/other-formats distpicZ
+./copy $VERSION $DEVEL/$NUMVER/other-formats distutilsZ
+./copy $VERSION $DEVEL/$NUMVER/other-formats disttzinfoZ
+
+./copy $VERSION $DEVEL/$NUMVER/other-formats distzip
+./copy $VERSION $DEVEL/$NUMVER/other-formats distsmallzip
+./copy $VERSION $DEVEL/$NUMVER/other-formats distbotzip
+./copy $VERSION $DEVEL/$NUMVER/other-formats distpiczip
+./copy $VERSION $DEVEL/$NUMVER/other-formats distutilszip
+./copy $VERSION $DEVEL/$NUMVER/other-formats disttzinfozip
+ 

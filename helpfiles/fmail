@@ -1,0 +1,10 @@
+ Syntax:  .fmail <email address>     or    .fmail mine
+
+Results:  Forwards/sends/emails your current .smail file to either
+          <email address> or if the input string is "mine" will send it
+          to the email address you specified with (.set email <email>)
+          and that's located in your .ustat information.
+   Note:  *If email address is invalid or non-existant, mail WILL bounce.
+
+See also: set_autofwd, set, smail, ustat
+

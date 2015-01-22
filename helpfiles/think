@@ -1,0 +1,9 @@
+ Syntax:  .think  <mess>
+
+Results:  Allows you to express thoughts visibly to everyone on the room.
+
+Example:  Typing  .think hmm, this cygnus is cool
+          will show   <your name> thinks . o O ( hmm, this cygnus is cool )
+
+See also: sthink
+

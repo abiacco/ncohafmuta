@@ -1,0 +1,21 @@
+ Syntax:  .talker
+          .talker <search_string>
+          .talker -a             (To add a talker)
+          .talker -d <line_num>  (To delete a talker entry, staff only)
+          .talker <line_num>     (To modify a talker entry, staff only)
+
+Results:  By itself, gives a list of all known talkers with their
+          name, hostname, numeric address, and port.
+          Used with the -a switch, Prompts user to enter info for a new
+          talker entry. In the order talker_name,hostname,numeric
+          address,port. Name can be 23 chars, hostname 31, numeric 15, and
+          port 5.
+          Used with just a search string searches the talker database for
+          matches to the specified string and displays info on them. The
+          search is NOT case-sensitive, meaning a search string of 'pin'
+          will match 'pin','Pin','pIn',etc..
+
+NOTES:    Talker list is alphabetized on-the-fly. Punctuation preceeds
+          numbers (depending on mark). Numbers preceed letters.
+
+See also: .h chatsearch

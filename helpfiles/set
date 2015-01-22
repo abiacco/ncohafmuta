@@ -1,0 +1,15 @@
+ Syntax:  .set <option> <setting>
+
+Results:  This command allows a user to set various user attributes
+          that can control the way the terminal functions or things
+          that you wish to have available for others to see
+
+To get a list of keywords/options, type:  .set
+To see your settings now,          type:  .set show
+
+Help on each keyword/option is in their own separate helpfile, since
+there are too many options for one file.
+ The format is: .h set_<option>
+
+For example, help on setting your email address with the "email" option is
+under ".h set_email"

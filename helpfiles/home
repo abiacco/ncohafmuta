@@ -1,0 +1,7 @@
+Results:  Use this command to go to the home_room you have set
+          with ".set home <room>" (see .h set for details)
+          If the room is private or hidden you won't be able to go there.
+          If you want to log into this room, you would always type
+          .home, then .quit 
+
+See also: set

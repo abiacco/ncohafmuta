@@ -1,0 +1,11 @@
+ Syntax:  .emote [']<action>
+          ;[']<action>
+
+Results:  Allows you to perform an action or pose. Your name appears in
+          front of the action you specify. If a ' is specified before
+          the action, it will become posessive.
+
+Example:  If Cygnus types -->  ;smiles    
+          People in the same room will see -->  Cygnus smiles
+
+See also: semote

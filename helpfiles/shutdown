@@ -1,0 +1,33 @@
+ Syntax:  .shutdown -c
+          .shutdown [<num_of_minutes>]
+          .shutdown [-r|-h] [<num_of_minutes>]
+
+Results:  Shuts the talker down or reboots it.  It will ask if you really
+          want to do this, just in case you accidentally type .shutdown.
+          It will quit all users before going down. The "-c" string after
+          the command is used to cancel an auto-shutdown/reboot.
+          An auto-shutdown is done by specifying a number from 1-32766
+          after the shutdown command.
+
+	  If the -r option is specified, this will perform a SOFT-reboot.
+	  A soft-reboot will reboot the binary without disconnecting
+	  the users or losing their current information (I guess you could call
+	  it hot-rebooting)
+          If a number from 1-32766 is specified after the -r option, the talker will
+	  SOFT-reboot after that many minutes. Without a number specified, the talk soft-reboots
+	  immediately.
+
+	  If the -h option is specified, this will perform a HARD-reboot.
+	  A hard-reboot will reboot the binary, disconnecting the users and exiting
+	  the previous system.
+          If a number from 1-32766 is specified after the -h option, the talker will
+	  HARD-reboot after that many minutes. Without a number specified, the talk hard-reboots
+	  immediately.
+
+Example:  To have the talker shut itself down in 3 hours,
+          type --> .shutdown 180
+
+  Notes:  On auto-shutdowns/reboots, broadcasts will be given by the
+          talker automatically to let you and the other users know how
+          long before it will shutdown/reboot. No users need to be online
+          for an auto-shutdown or auto-reboot to take place.

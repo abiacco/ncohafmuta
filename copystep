@@ -1,0 +1,24 @@
+#!/bin/sh
+
+DEVEL="development"
+VERSION="ncoh153"
+NUMVER="1.5.3"
+
+mkdir ~/www/ncohafmuta/download/$DEVEL/$NUMVER
+make dist
+#make distsmall
+#make distbot
+#make distpic
+#make distutils
+#make disttzinfo
+./copy $VERSION $DEVEL/$NUMVER dist
+#./copy $VERSION $DEVEL/$NUMVER distsmall
+#./copy $VERSION $DEVEL/$NUMVER distbot
+#./copy $VERSION $DEVEL/$NUMVER distpic
+#./copy $VERSION $DEVEL/$NUMVER distutils
+#./copy $VERSION $DEVEL/$NUMVER disttzinfo
+
+./copydocs
+mv ~/www/ncohafmuta/download/LATEST_DEVEL* ~/www/ncohafmuta/download/LATEST_DEVEL_IS_$NUMVER
+mv ~/www/ncohafmuta/download/$DEVEL/LATEST_DEVEL* ~/www/ncohafmuta/download/$DEVEL/LATEST_DEVEL_IS_$NUMVER
+

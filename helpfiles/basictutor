@@ -1,0 +1,60 @@
+
+----------------------------------------------------------------------------
+                           The "Basics" Tutorial
+
+As mentioned in the "Introduction" tutorial, all commands start with a 
+period (.)
+This tutorial will show you the basic and most common commands used in 
+the talker and how to use them.
+The <>'s represent a variable, do not type these literally.
+To get advanced help on a command, type ".h <command>" For example, ".h who"
+
+To talk to other players in the room:
+       <just type your message>  OR
+       .say <message>                         Example: hi, i'm joe
+
+To do an emote/action to the room:
+       .emote <action>  OR
+       ;<action>                              Example: ;jumps on you
+
+To see what commands you have:
+       .help
+
+To see who is logged onto the talker:
+       .who
+
+To send a private message to someone:
+       .tell <user> <message>                 Example: .tell susan Hi
+
+To send a private emote/action to someone:
+       .semote <user> <action>                Example: .semote susan hugs you
+
+To shout a message to all users in all rooms:
+       .shout <message>
+
+To look at the current room and its
+exits, users, and description:
+       .look
+
+To move to another room:
+       .go <room name>                        Example: .go hayloft
+
+To read your talker mail:         
+       .rmail
+
+To send talker mail to someone:
+       .smail <user> <message>
+
+To read the current room's message board:
+       .read
+
+To write to the current room's message board:
+       .write <message>
+
+To examine another user's information:
+       .examine <user>
+
+You should now read the "How To Communicate" tutorial by typing 
+".h commtutor"
+----------------------------------------------------------------------------
+

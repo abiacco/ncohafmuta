@@ -1,0 +1,14 @@
+ Syntax:  .clist [<topic>] [<expression>]
+
+Results:  This command by itself shows a list of topics a high level
+          user can filter from all user files.
+          With a <topic> specified, it will show the info for <topic> for
+          ALL users in the database.
+          With an expression also specified, it will filter the previous
+          info out based on the expression.
+
+Example:  If user types ".clist ranks", it will display to that user all
+          users in the database and their rank.
+          If user types ".clist ranks 2", it will display to that user all
+          users in the database that are level 2.
+

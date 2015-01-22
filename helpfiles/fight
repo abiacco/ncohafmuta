@@ -1,0 +1,12 @@
+ Syntax:  When you want to challenge a user  :  .fight <user>
+          When you want to accept a challenge:  .fight yes
+          When you want to wimp out          :  .fight no
+          When you want to reset the fight   :  .fight reset
+          To see the current fight challenged:  .fight
+
+Results:  The fight command allows two users to fight to the "death"
+          on a talker.  The odds vary depending on who you fight.  If
+          you choose someone with a higher rank...you have less chance 
+          of winning.  Your odds of winning are.. 
+             user rank 1 odds : user rank 2 odds.
+          See .ranks for those numbers.

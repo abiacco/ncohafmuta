@@ -1,0 +1,85 @@
+READ THROUGH ALL OF THIS!
+
+ The web port on the talker code (port offset as WWW_OFFSET) has developed
+dramatically recently. For the longest time (since i got the iforms code), it
+had existed as a very cheesy way to get a list of who's online via the web. It
+didn't even work when i got the code. I fiddled with it and with time I got it
+to reasonably output the list, but it was still made wrong from the git-go.
+
+ So now i decided to do it again. Now, it has the ability to function as a web
+server, accepting and handling requests as the HTTP standard dictates.
+ It uses it's integration with the talker to provide to the web user real-time
+info, as it happens. Who listing, user list, user search, and specific user
+details (user pic, profile, homepage, email) It is STILL in development, but
+is meant to act as a normal web server does. It does take <FORM> methods GET
+and POST, although very simple right now.
+
+To get to the web port, with a browser, go to:
+http://your_host:web_port	like
+http://ncohafmuta.com:5030
+
+The files regarding the web port lie in the webfiles/ directory
+They are these:
+webport.cfg:	This file defines options to how the web port behaves, where
+		the main HTML file exists, text colors, background colors,
+		etc..Read the comments inside the file for more info. If you
+		make changes to an option in this file while the talker is
+		running, type .reinit to re-read the data.
+mimetype.cfg:	Just like a normal web server config file, this file defines
+		which file types the web server can generate to web browsers,
+		and contains the codes necessary to do this.
+		Format is: <mimetype> <file suffix> <file suffix> <...>
+index.html:	The normal main index HTML file, as referenced from
+		webport.cfg. This is a template and can be changed the way you
+		want.
+header.html:	The header HTML file, as referenced from webport.cfg. This
+		file will be catted to the web page BEFORE any real-time
+		talker info is shown. Use this space if you want specific HTML
+		to be shown first for any page the webport generates.
+footer.html:	The footer HTML file, as referenced from webport.cfg. This
+		file will be catted to the web page AFTER any real-time
+		talker info is shown. Use this space if you want specific HTML
+		to be shown at the end of any page the webport generates.
+logo.gif:	Just an image file containging the logo of the talker. In the
+		templates it is called from header.html and index.html. If
+		you change the name of this file, remember to change it in the
+		HTML files, if you use it.
+pic.gif:	A small image file put after a user's name to show that their
+		profile contains a picture of themselves. You may replace this
+		with any image you want, but DO NOT change the NAME of this file.
+userpics:	A directory to place user pictures into if the user doesn't
+		have their pic at a URL address that they can set with (.set
+		picurl) If you use this for a user, .force (or have THEM
+		.set) their picurl to
+		http://your_host:webport/userpics/filename_of_picture
+
+Lastly, calling dynamic features from the web pages.
+Currently there are 2 features that allow the talker to generate real-time
+info for you. These are: _who and _users
+They are called in their simplest form with:
+http://your_host:webport/_feature
+
+_who gives you a table-oriented listing of who's online the talker. It also
+displays the time, Provides links to user info (via their name), and a telnet
+link to the talker itself (via hostname info gotten from the machine)
+
+_users gives you user listings and info. By itself, it generates a HTML page
+with an alphabetically categorized listing and a search form. From inside
+this page, it can then be called with an argument to get a more detailed
+listing or info. For example, to get a listing of all "C" users, it calls:
+http://your_host:webport/_users?search=C
+To get a listing of ALL users, it calls it without a search string:
+http://your_host:webport/_users?search=
+To get a listing/info for a specific user, it calls it with a user string:
+http://your_host:webport/_users?search=Cygnus
+
+Future plans are to implement more of these features.
+This includes being able to read help files from the talker, message boards,
+room listings and descriptions, and the sending/receiving of email.
+This is in theorey right now, so if you have ideas, or feel you want to
+contribute code-wise to this project (experienced coders only PLEASE), email
+me.
+
+-Cygnus
+Anthony J. Biacco
+ncohafmuta@asteroid-b612.org

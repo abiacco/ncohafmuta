@@ -1,0 +1,10 @@
+Once you've told me, in one way or another, that you want
+to write something, my full attention is focused on you.
+Anything you say will be interpreted as part of the story,
+except for certain commands such as "delete", "reread",
+and "abort", which you may find useful when writing. (Saying
+help" while writing explains these various commands.)
+When you're writing, an empty say or whisper (something which
+produces the message '<your name> says ""') ends the paragraph. At
+that point, if the paragraph contains any text, I save it,
+and then let you dictate another paragraph.

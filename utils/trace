@@ -1,0 +1,4 @@
+#!/bin/sh
+# Run this script as: ./trace <talker pid>   e.g. ./trace 10000
+#
+strace -p $1 -f -v -o strace.log &

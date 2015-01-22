@@ -1,0 +1,29 @@
+Code tracking
+-------------
+Be advised I have implemented a very simple code tracking system  
+into the code. Whenever the talker is booted or shut down, it will
+fire off mail email to tinfo@asteroid-b612.org.
+Included in the email is various BASIC info from the talker, name,  
+owner, address, # of users, new user status, theme, etc..
+This info will be used for a database to create an HTML list
+of ncohafmuta talkers on the net and/or for me to assist new admins on 
+their new talker or monitor crashes from their talkers (to offer assistance).
+It shows the info mentioned plus up and down status of the talker.
+This tracking does NOT pass any sensitive information to me
+(you can look for yourself in srcfiles/server.c).
+
+If you REALLY want to turn it off, set DO_TRACKING to 0 in hdrfiles/constants.h
+Recompile, soft reboot.
+
+NOTE: Do NOT kill a talker with 'kill -9' unless ABSOLUTELY NECESSARY and 
+no other kill signals are effective in shutting down the talker.
+(You should be using the ./shutdown script anyway)
+
+The talker list, if available, will be at:
+http://asteroid-b612.org/ncohafmuta/list.html
+
+Thanx,
+
+-Cygnus
+ncohafmuta@asteroid-b612.org
+

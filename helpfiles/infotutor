@@ -1,0 +1,49 @@
+----------------------------------------------------------------------------
+                     The "How to Get Information" Tutorial
+
+There are quite a few ways to get information about yourself and other
+users.
+
+One of those ways is using the ".examine" command.  This command
+basically shows you all there is to offer in the world of information
+about the specific user. For example, type ".examine jazzin" to see 
+Jazzin's info/profile.
+For detailed help try ".h examine"
+
+Another command for obtaining information is the ".ustat" command.
+This command shows you settings and stats information about the user, 
+including, login time, tic-tac-toe wins/losses, hangman wins/losses.  
+For example, type ".ustat jazzin" to see Jazzin's user status.
+For detailed help try ".h ustat"
+
+The ".wlist" will give you a current, and hopefully, up-to-date list of
+all the current wizards/staff that frequent the talker.
+Along with this command you want to use the ".wizards" command.
+This command will show you what wizards are currently logged on to
+the talker.
+
+Another great command to know about is the ".last" command.
+The ".last" command will allow you to see the last time a user was
+logged into the talker.  
+For example: ".last jazzin" will show you the last time Jazzin was logged
+in.
+
+The ".log" command will show you the last 10 logins to the talker.
+You can see more if you wish by typing ".log <number>"
+For example: If you want to see the last 25 logins you type ".log 25"
+
+The ".who" of course, gives you a listing of who is currently on the talker.
+A shortened version of this command is the ".swho"
+
+There are many more commands that allow you to obtain information about
+yourself as a user and other users, not to mention about the talker
+itself.
+
+These are just a few of the main commands that you will use everyday.
+For more information on other commands, just type ".h <command>" and you
+will be given a detailed help file on that commands syntax and what it
+is used for.
+
+You should now read the "How To Change Settings/Info" tutorial by typing
+".h settutor"
+----------------------------------------------------------------------------

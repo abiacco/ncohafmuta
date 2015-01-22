@@ -1,0 +1,21 @@
+The files in utils/ are utilities for the Ncohafmuta talker code
+
+addstruct appends new structures to the end of users data files. It does 
+this for every user in the user directory, so if you add structures to 
+the ustr[user]. profile, you don't have to manually go into every user 
+file and append a bogus string or number so the talker can read it into 
+the ustr[user]. buffer that it's set up for.
+
+To compile these programs, type "make" in the utils directory
+
+no_make_compile is a shell script for compiling the talker on systems
+without the "make" command. This gets run from the TOP code directory, not
+from in here.
+
+see README.backups for info on the backup, restore, and trimbackups 
+utilities
+
+-Cygnus
+Anthony J. Biacco
+ncohafmuta@asteroid-b612.org
+

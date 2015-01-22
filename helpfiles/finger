@@ -1,0 +1,9 @@
+ Syntax:  .finger <email address>
+
+Results:  Use the Unix "finger" command to get info on a person from
+          their email address. Some connections may be refused. This 
+          command will cause some additional lag during it's use, so use
+          it sparingly.
+        
+See also: nslookup  whois
+

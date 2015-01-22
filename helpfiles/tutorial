@@ -1,0 +1,23 @@
+
+----------------------------------------------------------------------------
+                       Using a Talker - The Tutorials
+
+To read about..                         Type this..
+----------------------                  ------------------
+Introduction                            .h introtutor
+Getting Started                         .h jointutor
+The Basics                              .h basictutor
+How To Communicate                      .h commtutor
+Rooms/Moving Around                     .h movetutor
+How To Use Mail                         .h mailtutor
+How To Get Information                  .h infotutor
+How To Change Settings/Info             .h settutor
+General Concepts                        .h gentutor
+Ranks and Heirarchy                     .h ranktutor
+
+The tutorial files are intended to cover the BASICS of using the talker.
+Not all commands are covered in them. For advanced help, you are urged
+to read specific help on all commands given to you. Type ".h" to see the
+commands you have and ".h <command>" to read help on a command.
+----------------------------------------------------------------------------
+

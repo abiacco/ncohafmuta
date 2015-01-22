@@ -1,0 +1,43 @@
+Credits for this code distribution go to..
+------------------------------------------
+
+Deep, for writing the original Iforms code.
+
+Neil Robertson, for writing NUTS, which Iforms was originally based on.
+
+Arctic, for writing the auth_user code which is public domain.
+
+Jazzin, for tons of input, code ideas, finding bugs, adding socials,
+adding code, bullshit work, and being a pain in the ass. ;-) but NOT for
+filling up the server disk with a dumb-ass CGI script!
+
+Joelie, for being the BIGGEST pain in the ass about bugs, glitches, adding
+new features, not releasing tons of patch levels, and for blaming me for
+everything that's not my fault.
+
+Calysto, for doing bullshit (i.e. tedious) work regarding ANSI compliance
+and being an anti-people dork. ;-) He's the "Here's 1000 warnings, here's
+how to fix them..do it!" man.
+
+Rager, for joining me in the ritual sacrifice of sleep to help me test
+multi-commands and other things, for going through an endless number of
+reboots, for the races to log back into the talker after a reboot, and for
+being her natural wonderful freaky self.
+
+Andy, (of Amnuts fame) for insights we have given each other back and forth, 
+and for his talker.com account to do glibc2 testing.
+
+NoWhereMan, of NWL and neon lights for letting me use these talkers as a
+testing ground for a soft-reboot bug.
+
+OliverJones, (author of the TinyMUCK code) and Cynbe ru Taren (Chee Lan
+- muq author) for their help on an accept()/fork() problem.
+
+Nate, for compiling on OS/2 with EMX
+
+Ziffnab, for usage of his OpenBSD account to fix compile-time warnings.
+
+Lights, for compiling on Apple's OSX
+	
+Fellow coders, admins, and talker users for their input/ideas.
+

@@ -1,0 +1,16 @@
+ Syntax:  .anchor
+          .anchor <user> [<time>]
+
+Results:  This command is used to restrict a user's movement. When
+          a user is anchored they cannot use .go and are stuck in
+          the room they have been .anchor'd in.
+          If you only type .anchor <user> they will be anchored in that
+          room until the anchor is removed. (using the same command, it's
+          a toggle)
+          If you use .anchor <user> followed by a number they will be
+          anchored for that amount of login time.
+          For example, .anchor kyla 5  will result in Kyla being unable
+          to leave the room she's in for 5 minutes of login time,
+          regardless of relogs. Once the time period has expired the
+          user is released automatically and free to move around.
+

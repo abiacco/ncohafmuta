@@ -1,0 +1,25 @@
+ Syntax:  .expire  
+          .expire [-e | exempt]
+          .expire [-e | exempt] <user>
+          .expire -n
+          .expire -n <user>
+
+Results:  This command shows you users in the database that haven't been
+          used for the specified 'Expiration grace period' in .version
+          Also shows you when and from where they last logged in.
+          Specifying the -n flag nukes all users that are older that
+          the specifed # of days. If <user> is specified, they will
+          be exempt from the nuke..Furthermore..
+          Specifying the -e or exempt flag by themselves shows the list
+          of people exempt from .expire -n..and shows how long ago they
+          were last on. Specifying a user after the flag will add or
+          delete the user from the exempt list. It's a toggle.
+          Along with the command line exempt, you can exempt the MAX users
+          on the list + 1 from nuke-expires. It is recommended that you
+          look at who is going to be deleted before actually deleting
+          them.
+          If the administrator wishes, he may set the option which
+          will cause the users to be deleted automatically at midnight
+          instead of having to type .expire -n
+
+See also: nuke, auto

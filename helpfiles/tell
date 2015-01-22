@@ -1,0 +1,31 @@
+ Syntax:  .tell <user> <message>           ,<user> <message>
+          .tell <user,user,user> <message> ,<user,user,user> <message> 
+	  .tell -f <message>		   ,-f <message>
+
+Results:  Allows you to tell one or more users something without anyone
+	  else being able to see it.  <user> is the person you want to
+	  talk to.
+          <message> is the message you want to send him/her/them.
+	  If you use the -f syntax above, <message> will be sent to all
+	  your friends on your .alert list. Works the same as .ftell
+          This command also allows you to review your tells if you do not
+          specify anything after the .tell command.
+          If you do NOT specify a message, it will send to the user(s)..
+          "You sense that <your name> is looking for you in <your_room>"
+          while still applying to vis/invis conditions.
+
+Example:  To tell 'cygnus' "hi": .tell cygnus hi  or  
+                                 ,cygnus hi       or
+                                 ,cyg hi
+	  To tell 'cygnus' and 'rager' hi: .tell cygnus,rager hi  or
+					   ,cygnus,rager hi       or
+					   ,cyg,rag hi
+          To review your tells: .tell
+
+  NOTES:  Spaces can be placed in between user combinations w/commas.
+	  i.e. .tell cygnus, rager hi
+	       .tell cygnus , rager hi
+          You can tell to as many as MAX_MULTIS simultaneous people
+          Default is 10
+
+See also: semote, igtells, sthink

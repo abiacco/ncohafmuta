@@ -1,0 +1,10 @@
+ Syntax:  .hide   or   .hide <user>
+
+Results:  Turns you invis when used without name.  When used with a user's 
+          name behind it, turns that user invisible.  To return to being
+          visible, type .hide again.
+
+   Note:  You can only hide or unhide another user when they are
+          capable of doing it themselves. Reason being, if you make them
+          invis and then you log off, how do they become visible again?
+          They're up the creek without a paddle. :-)

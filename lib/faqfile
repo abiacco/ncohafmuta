@@ -1,0 +1,102 @@
+                   ^HRPinWHeeLs - Frequently Asked Question v1.2^
+                        
+1. ^HGWhat is this place?^
+
+PinWHeeLs is a relaxing atmosphere to, well, relax! :) The theme is based 
+on an idea my friends came up with when they were lagging really bad on 
+a talker one day. It was cute, so we adopted it for this talker.  It does 
+not mean that people here can only complain about lag :P It also doesn't 
+mean that we never have lag, we do (Hey, we're only human :P). All decent
+subjects all welcome. We are not a mud, mush, muse, moo, OR irc. We are 
+called a talker or chatline. WE do not have any goals, adventures, scores, 
+violence, hit points, objects, or anything like that.
+
+2. ^HGWho runs this place?^
+ 
+Cygnus is the owner, coder, maintainer of files and stuff.
+Cygnus's e-mail is ncohafmuta@asteroid-b612.org
+
+3. ^HRI need help!^^HG What do I do?^
+
+If you are a new user here, type --> .h new
+If you need general help, the .h command gives you a list of commands and
+if you type .h <topic> you will get specific info. on a topic. If that 
+doesn't help you, you may want to type .wiz to see what wizards are on
+that can help you. You can also send an SOS to all wizzes by typing 
+something like --> .sos I need help!
+
+4. ^HGHow do ranks/levels progress?^
+
+Ranks go in this order...Everyone starts out as a "Newbie". Once 
+you are a bit familiar with the commands, you can promote yourself
+to "Wheeler" by setting your desc, profile (entpro) and gender.
+The next levels are Wizard, Manager, and Admin.
+
+5. ^HGHow do I get promoted?^
+
+One of the most frequently asked questions, but a different response than 
+most. Here at PW we don't follow the "Don't ask us, We'll ask you" policy.
+If you think you are experienced, know your commands real well and like 
+to help out regardless of your rank, first read --> .h levels and then just
+ask. We don't mind. However, hassling wizards about promotions will hinder
+your chances and if taken too far (asking after you've been asked not to
+ask anymore) may result in a *demotion*, so use your common sense :)
+Promotion from Newbie to Wheeler can be done automatically by setting
+your desc, profile (entpro) and gender.
+
+6. ^HGWhat does .fight do?^
+
+Fight is a command that lets you fight another user, in sort of a cartoonish
+style. It's pretty funnny. to challenge a user, type --> .fight <user>
+that user will then be given the option to accept or decline with 
+--> .fight yes|no  If no, the fight is cancelled, if yes, the system 
+randomly picks a method for someone to win and lose. Your odds of winning 
+are based upon your rank. You may win, lose, or tie, in which case both 
+users are logged off. We think it's pretty cool :-) See for yourself :) 
+Fighting is not allowed in the front_gate, I mean you can't even if ya
+wanna :)
+
+7. ^HGHow do I use color?^
+
+Coloring inside the talker is by default turned off. The ".set color" command 
+controls your options for color...the options are...
+    .set color on      -  Turn your color on.
+    .set color off     -  Turn your color off.
+    .set color test    -  Test your terminal to see if it's color-capable
+
+".h coloruse" shows you how to use coloring in text.
+**Note with the color test it seems Yellow shows up as red on
+some computers. This is normal.
+
+8. ^HGWhy do I see weird code in front of some text, like \E[1;33;40m^
+
+These are the ansi codes used to make color. They are not meant to be
+seen. If you do see these, it means your computer/terminal is not color
+compatible. You can get rid of these, by typing --> .set color off
+If you use a modem program, you might be able to switch to ANSI/color
+In your program, find terminal emulation and see if you can change it 
+too "ANSI"  *Note: Remember when you leave PinWHeeLs you might have to 
+change it back to its original settings for some net programs to function 
+correctly.
+
+9. ^HGHow do I set my stats?^
+
+There are sevaral commands to input personal info. they are...
+   .desc            - To enter the text that appears after your name
+   .entpro          - To enter a profile
+   .set email <your email address>
+   .set gender <your gender>
+   .set homepage <your WWW homepage, if you have one>
+   .examine <user>  - To examine a user's profile   
+   .ustat <user>    - To examine a user's full statistics (for PinWHeeLers 
+                      and higher only)
+    See .h <command> for more info.
+
+10. ^HGI changed my password, and now the talker wont let me back
+    in to my account! What do I do??^
+
+You most likely used the wrong syntax for .password. It's
+.password <new_password>  NOT .password <old_password> <new_password>
+If this is not the case, let a level 3 or higher know.
+
+                                                --Cygnus

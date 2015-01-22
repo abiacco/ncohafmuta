@@ -1,0 +1,9 @@
+ Syntax:  .gripe
+          .gripe <last # of messages>
+          .gripe <message>
+
+Results:  Allows you to write a gripe/problem to senior wizzes, gods, 
+          and admins. Please use where appropriate only.
+          Only gods and higher can read these. If they specify a number
+          after the command, they can read the specified # of messages
+          from the bottom of the baord.

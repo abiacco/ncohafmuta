@@ -1,0 +1,11 @@
+ Syntax:  .quota  or  .quota <num_of_new_users>
+
+Results:  This command allows you to control how many new users
+          a day you will allow on the system.  When you run it
+          it will reset the counter for the day and allow <number_of
+          new_users> on.  If used without a number, it will reset to
+          the number specified as the default in the code. Usually 50.
+          The counter is automatically reset at midnight to allow 
+          <number_of_new_users> on the next day.
+
+Example:  To increase the new user quota to 100, type: .quota 100

@@ -1,0 +1,26 @@
+ Syntax:  .ttt <user>
+	  .ttt <square #>
+	  .ttt abort
+	  .ttt print
+
+Results:  Tic Tac Toe.. you know the one..
+	  First syntax starts a game with <user>.
+	  To move your O or X to a square, Type the second syntax, where
+	  <square #> is a number from 1-9 that donates where you want to
+	  put your X/O..corresponding to this board..
+		+---+---+---+
+		| 1 | 2 | 3 |
+		+---+---+---+
+		| 4 | 5 | 6 |
+		+---+---+---+
+		| 7 | 8 | 9 |
+		+---+---+---+
+
+	  Type the third syntax to leave part way through a game, or
+	  decline a game. Type the fourth syntax to redraw the current
+	  board.
+
+  Notes:  You have to play it against someone else.
+	  If you mess a command up, it will redraw the board.
+	  The numbers in the right-hand box are the square numbers..
+

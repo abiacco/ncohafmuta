@@ -1,0 +1,12 @@
+ Syntax:  .call <user>      .call clear 
+
+ Result:  This is to establish a telling link to a specific user. Use 
+          this if you're telling to one person over and over. after you 
+          establish a link, use .creply <mess> or ?<mess> to respond. 
+          Use ".call clear" to terminate the tell link.
+
+   Note:  You cannot establish a link with users that are ignoring tells, 
+          not listening, AFK, gagging you, or not online. 
+
+See also:  creply
+

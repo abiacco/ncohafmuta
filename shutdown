@@ -1,0 +1,34 @@
+#!/bin/sh
+# by Cygnus
+# ncohafmuta@asteroid-b612.org
+#
+SIG=$1
+BINARY="server"
+
+if test -f "./$BINARY.pid"
+then
+
+if [ "$SIG" = "" ]
+then
+	echo -n "Shutting down talker.."
+	kill -USR1 `cat $BINARY.pid`
+elif [ "$SIG" = "-c" ]
+then
+	echo -n "Re-initing talker config file.."
+	kill -USR2 `cat $BINARY.pid`
+elif [ "$SIG" = "-r" ]
+then
+	echo -n "Soft-rebooting talker.."
+	kill -QUIT `cat $BINARY.pid`
+elif [ "$SIG" = "clipon" ]
+then
+	echo -n "Killing resolver clip-on.."
+	kill `ps ux | grep -v grep | grep 'Resolver clip' | awk '{print $2}'`
+else
+	echo -n "Sending signal SIG$SIG to talker.."
+	kill $SIG `cat $BINARY.pid`
+fi
+echo "done."
+else
+	echo "Cant find $BINARY.pid file! Is talker really running to begin with?"
+fi

@@ -1,0 +1,43 @@
+
+----------------------------------------------------------------------------
+                        The "Introduction" Tutorial
+
+Welcome to a "talker"
+The game's user interface consists entirely of textual descriptions of rooms, 
+players, and exits.
+No mouse interaction is required. No sound, video, or graphics are present.
+All interaction with the talker is done via the keyboard.
+
+There is no object to the game other than to wander around and socially
+interact with other users.
+
+Communication with other users is usually public, but can be private by
+sending private 'tells' between users, or by those users moving into a 
+private room by themselves and then communicating.
+
+Structure on the talker is created by a series of connected virtual rooms.
+They are the basic places for conversation. Most are public, and some can be
+made private by the users.
+Messages sent to a room, by a user, are seen by all users in that room.
+Once in a room you will be presented with the name of the room, a description
+of the room, exits from the room to other rooms, what other users are in the
+room, and other misc info.
+In each room is a message board which is freely readable and writeable by 
+users. These can be used from anything ranging from announcements to jokes to
+random ramblings.
+Another form of communication on the talker is an internal mail system,
+used to communicate with users that aren't currently 'logged on'.
+
+Users can personalize their character by entering information about 
+themselves for others to see. Such information includes a profile, their
+email address, webpage, and icq #. This information is voluntary.
+
+All input is through a command system. All commands start with a 
+period (.) For example, the ".who" command tells you who is 
+logged on to the talker.
+
+To log out of the talker, i.e. disconnect, use the ".quit" command
+
+You should now read the "Getting Started" tutorial by typing ".h jointutor"
+----------------------------------------------------------------------------
+

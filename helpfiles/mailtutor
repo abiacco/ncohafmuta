@@ -1,0 +1,62 @@
+
+----------------------------------------------------------------------------
+                      The "How To Use Mail" Tutorial
+
+The talker's internal mail system is fairly easy to use.
+You have 2 mailboxes, your Inbox and your Sent-mail box. Every email you 
+send out to a user gets put in your Sent-mail box.
+You can mail users who are online OR offline, although mailing an online
+user is most of the times kind of pointless, since you can just .tell them.
+When you send a user a mail message, if they are online, they will get a 
+notice saying they have new mail, and vice-versa if someone sends you mail.
+If they are offline, the next time they come online they will get a notice 
+that they have X new mail messages.
+
+To read talker mail in your Inbox:
+       .rmail
+
+To read talker mail in your Sent-mail box:
+       .rsent
+
+To delete/clear mail from your Inbox:
+       .cmail
+
+To delete/clear mail from your Sent-mail box:
+       .csent
+
+NOTE: The above commands will take a variety of parameters for reading
+/deleting only portions or certain lines in your mailboxes. You should read
+the help on each command to learn about these options.
+
+To send talker mail to someone:
+       .smail <user> <message>
+
+To forward/send your whole Inbox to an email address:
+       .fmail <email address>
+
+If the talker knows your email address, i.e. you set it with the .set 
+commands (See "How To Change Settings/Info" tutorial), you can have it
+send your new talker mail messages to your email address.
+So if Joe sends you a mail message on the talker you will receive it in your
+internet email box. 
+
+An indirect command controls this setting, ".set autofwd"
+By typing it, it toggles the above feature between "autofwd when you're 
+offline", meaning it will only send the message to your email addy if you're
+NOT on the talker, "autofwd all the time", meaning it will send the message
+to your email addy no matter if you're on the talker or not, and "off" which
+disables the feature.
+This feature is off by default.
+
+As previously mentioned, when you get new mail on the talker, the talker will
+tell you so. Using another setting, ".set autoread", you can have the
+mail message shown to you right when it's sent (or right when you login)..
+this saves you from having to type .rmail to read it.
+".set autoread" is also a toggle, and will toggle the feature between "on"
+and "off" each time you type it.
+This feature is off by default.
+
+You should now read the "How To Get Information" tutorial by typing 
+".h infotutor"
+----------------------------------------------------------------------------
+

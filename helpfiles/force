@@ -1,0 +1,10 @@
+ Syntax:  .force <user> <option> <setting>
+
+Results:  This command allows a user to set various user attributes
+          that can control the way the terminal functions or things
+          that you wish to have available for others to see.
+          Leaving an option blank may cause it to show you the settings 
+          you can change on the <user>  See  ".h set" for specific details 
+          on each option.
+
+See also: set

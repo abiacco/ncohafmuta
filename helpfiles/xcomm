@@ -1,0 +1,16 @@
+ Syntax:  .xcomm
+          .xcomm <user> [<time>]
+
+Results:  Makes it so a troublesome user cannot do anything except says. 
+          This is a command that should be used only for real idiots that
+          are causing a lot of problems.
+          If used without a user, it will list out all xcommed users 
+          currently logged in.
+          A time is optional. If you do not specify a time (in mins), the
+          user will be xcommed until you or someone else unxcomms them. 
+          Otherwise, the talker will auto-unxcomm them after they have
+          served <time> online.
+          This is a toggle, when used on a user. i.e. if the user is xcommed
+          xcomming them again, will un-xcomm them.
+
+See also: arrest, muzzle, frog, gagcomm
