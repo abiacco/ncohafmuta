@@ -1,8 +1,8 @@
 #!/bin/sh
 
 DEVEL="development"
-VERSION="ncoh155"
-NUMVER="1.5.5"
+VERSION="ncoh156"
+NUMVER="1.5.6"
 
 mkdir ~/www/download/$DEVEL/$NUMVER
 make dist
