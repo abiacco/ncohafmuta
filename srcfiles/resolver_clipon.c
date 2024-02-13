@@ -1979,7 +1979,7 @@ u_char *Print_cdname(const u_char *cp, const u_char *msg, const u_char *eom)
 #if defined(RESOLVER_DEBUG)
 	write_log(RESOLVELOG,NOTIME,"%s",name);
 #endif
-        return (cp + n);
+        return ((u_char *)cp + n);
 }
 
 u_char *Print_rr(const u_char *ocp, const u_char *msg, const u_char *eom) {
