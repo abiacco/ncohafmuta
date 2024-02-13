@@ -7,6 +7,7 @@ in the URL to get it to work??
 
  02/13/24 1.4.4
 * Makefile.in cleanup
+* Fix resolver clipon warning
 * Default MAILPROG to smtp server
 
  09/01/23 1.4.3
