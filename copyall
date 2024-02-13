@@ -1,8 +1,8 @@
 #!/bin/sh
 
-VERSION="ncoh141"
-NUMVER="1.4.1"
-DEVEL="stable"
+VERSION="ncoh155"
+NUMVER="1.5.5"
+DEVEL="development"
 
 echo --- MAKING ---
 make dist
