@@ -124,6 +124,7 @@ fi
 
 echo -n Copying..
 
+mkdir -p $CODEPATH/download/$THISPATH
 cp /tmp/ncohafmuta/ncohafmuta-$THISTYPE.$THISEXT $CODEPATH/download/$THISPATH/$THISVER-$THISTYPE.$THISEXT
 chmod 644 $CODEPATH/download/$THISPATH/$THISVER-$THISTYPE.$THISEXT
 
