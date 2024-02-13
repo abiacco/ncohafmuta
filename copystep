@@ -1,10 +1,10 @@
 #!/bin/sh
 
 DEVEL="development"
-VERSION="ncoh153"
-NUMVER="1.5.3"
+VERSION="ncoh155"
+NUMVER="1.5.5"
 
-mkdir ~/www/ncohafmuta/download/$DEVEL/$NUMVER
+mkdir ~/www/download/$DEVEL/$NUMVER
 make dist
 #make distsmall
 #make distbot
@@ -19,6 +19,6 @@ make dist
 #./copy $VERSION $DEVEL/$NUMVER disttzinfo
 
 ./copydocs
-mv ~/www/ncohafmuta/download/LATEST_DEVEL* ~/www/ncohafmuta/download/LATEST_DEVEL_IS_$NUMVER
-mv ~/www/ncohafmuta/download/$DEVEL/LATEST_DEVEL* ~/www/ncohafmuta/download/$DEVEL/LATEST_DEVEL_IS_$NUMVER
+mv ~/www/download/LATEST_DEVEL* ~/www/download/LATEST_DEVEL_IS_$NUMVER
+mv ~/www/download/$DEVEL/LATEST_DEVEL* ~/www/download/$DEVEL/LATEST_DEVEL_IS_$NUMVER
 
