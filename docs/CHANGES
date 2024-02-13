@@ -5,6 +5,10 @@ cut off the recipients (because of the input socket limit imposed)
 * need to fix web port so you don't need to put a / after the port number
 in the URL to get it to work??
 
+ 02/13/24 1.4.4
+* Makefile.in cleanup
+* Default MAILPROG to smtp server
+
  09/01/23 1.4.3
 * Fixed compile error with restrict() function. Renamed to myrestrict()
 * Increased i_buff[] size in t_who
