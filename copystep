@@ -1,8 +1,8 @@
 #!/bin/sh
 
-DEVEL="development"
-VERSION="ncoh139"
-NUMVER="1.3.9"
+DEVEL="stable"
+VERSION="ncoh144"
+NUMVER="1.4.4"
 
 mkdir ~/www/ncohafmuta/download/$DEVEL/$NUMVER
 make dist
@@ -19,6 +19,6 @@ make dist
 #./copy $VERSION $DEVEL/$NUMVER disttzinfo
 
 ./copydocs
-mv ~/www/ncohafmuta/download/LATEST_DEVEL* ~/www/ncohafmuta/download/LATEST_DEVEL_IS_$NUMVER
-mv ~/www/ncohafmuta/download/$DEVEL/LATEST_DEVEL* ~/www/ncohafmuta/download/$DEVEL/LATEST_DEVEL_IS_$NUMVER
+mv ~/www/download/LATEST_DEVEL* ~/www/download/LATEST_DEVEL_IS_$NUMVER
+mv ~/www/download/$DEVEL/LATEST_DEVEL* ~/www/download/$DEVEL/LATEST_DEVEL_IS_$NUMVER
 
