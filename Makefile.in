@@ -456,9 +456,10 @@ $(OBJDIR)/login_funcs.o: $(SRCDIR)/login_funcs.c \
  $(HDRDIR)/constants.h $(HDRDIR)/includes.h $(HDRDIR)/netdb.h \
  $(HDRDIR)/osdefs.h $(HDRDIR)/protos.h $(HDRDIR)/config.h
 	$(CC) $(CFLAGS) $(HDRS) -o $(OBJDIR)/login_funcs.o -c $(SRCDIR)/login_funcs.c
-$(OBJDIR)/main.o: $(HDRDIR)/constants.h \
- $(HDRDIR)/includes.h $(HDRDIR)/netdb.h $(HDRDIR)/osdefs.h $(HDRDIR)/protos.h \
- $(HDRDIR)/resolver_clipon.h $(HDRDIR)/config.h
+$(OBJDIR)/main.o: $(SRCDIR)/main.c \
+ $(HDRDIR)/constants.h $(HDRDIR)/includes.h $(HDRDIR)/netdb.h \
+ $(HDRDIR)/osdefs.h $(HDRDIR)/protos.h $(HDRDIR)/resolver_clipon.h \
+ $(HDRDIR)/config.h
 	$(CC) $(CFLAGS) $(HDRS) -o $(OBJDIR)/main.o -c $(SRCDIR)/main.c
 $(OBJDIR)/misc_funcs.o: $(SRCDIR)/misc_funcs.c \
  $(HDRDIR)/constants.h $(HDRDIR)/includes.h $(HDRDIR)/netdb.h \
