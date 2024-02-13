@@ -5,6 +5,9 @@ cut off the recipients (because of the input socket limit imposed)
 * need to fix web port so you don't need to put a / after the port number
 in the URL to get it to work??
 
+ 02/13/24 1.5.6
+* Fix resolver clipon warning
+
  09/01/23 1.5.5
 * Fixed compile error with restrict() function. Renamed to myrestrict()
 * Increased i_buff[] size in t_who
