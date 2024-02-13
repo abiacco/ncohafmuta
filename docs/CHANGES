@@ -5,6 +5,10 @@ cut off the recipients (because of the input socket limit imposed)
 * need to fix web port so you don't need to put a / after the port number
 in the URL to get it to work??
 
+ 09/01/23 1.5.5
+* Fixed compile error with restrict() function. Renamed to myrestrict()
+* Increased i_buff[] size in t_who
+
  09/17/05
 * Changed cast of last argument of execlp() call in resolver_client.c.
   Newer GCCs throw a sentinel warning if not cast correctly.
