@@ -1,32 +1,32 @@
 #!/bin/sh
 
-VERSION="ncoh155"
-NUMVER="1.5.5"
+VERSION="ncoh156"
+NUMVER="1.5.6"
 DEVEL="development"
 
 echo --- MAKING ---
 make dist
-make distZ
+#make distZ
 make distzip
 
 make distsmall
-make distsmallZ
+#make distsmallZ
 make distsmallzip
 
 make distpic
-make distpicZ
+#make distpicZ
 make distpiczip
 
 make distbot
-make distbotZ
+#make distbotZ
 make distbotzip
 
 make distutils
-make distutilsZ
+#make distutilsZ
 make distutilszip
 
 make disttzinfo
-make disttzinfoZ
+#make disttzinfoZ
 make disttzinfozip
 
 echo --- COPYING ---
@@ -38,12 +38,12 @@ echo --- COPYING ---
 ./copy $VERSION $DEVEL/$NUMVER distutils
 ./copy $VERSION $DEVEL/$NUMVER disttzinfo
 
-./copy $VERSION $DEVEL/$NUMVER/other-formats distZ
-./copy $VERSION $DEVEL/$NUMVER/other-formats distsmallZ
-./copy $VERSION $DEVEL/$NUMVER/other-formats distbotZ
-./copy $VERSION $DEVEL/$NUMVER/other-formats distpicZ
-./copy $VERSION $DEVEL/$NUMVER/other-formats distutilsZ
-./copy $VERSION $DEVEL/$NUMVER/other-formats disttzinfoZ
+#./copy $VERSION $DEVEL/$NUMVER/other-formats distZ
+#./copy $VERSION $DEVEL/$NUMVER/other-formats distsmallZ
+#./copy $VERSION $DEVEL/$NUMVER/other-formats distbotZ
+#./copy $VERSION $DEVEL/$NUMVER/other-formats distpicZ
+#./copy $VERSION $DEVEL/$NUMVER/other-formats distutilsZ
+#./copy $VERSION $DEVEL/$NUMVER/other-formats disttzinfoZ
 
 ./copy $VERSION $DEVEL/$NUMVER/other-formats distzip
 ./copy $VERSION $DEVEL/$NUMVER/other-formats distsmallzip
@@ -52,3 +52,5 @@ echo --- COPYING ---
 ./copy $VERSION $DEVEL/$NUMVER/other-formats distutilszip
 ./copy $VERSION $DEVEL/$NUMVER/other-formats disttzinfozip
  
+mv ~/www/download/LATEST_DEVEL* ~/www/download/LATEST_DEVEL_IS_$NUMVER
+mv ~/www/download/$DEVEL/LATEST_DEVEL* ~/www/download/$DEVEL/LATEST_DEVEL_IS_$NUMVER
