@@ -4,5 +4,5 @@
 # as you had on the last successful run of configure
 #
 
-./configure --enable-warn3
+./configure
 
