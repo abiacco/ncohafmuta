@@ -880,7 +880,7 @@ int    with,num=0;
 char   ud[100],un[SAYNAME_LEN+5],an[ROOM_LEN+5],und[SAYNAME_LEN*2],rank[50];
 char   temp[256];
 char   check[NAME_LEN+1];
-char   i_buff[5];
+char   i_buff[10];
 char   filename[FILE_NAME_LEN];
 time_t tm;
 
@@ -14715,7 +14715,7 @@ return;
 /* where host address is a.b.c.d                            */
 /* or where ip address is d.c.b.a                           */
 /*----------------------------------------------------------*/
-void restrict(int user, char *inpstr, int type)
+void myrestrict(int user, char *inpstr, int type)
 {
 int num;
 int len=0;
