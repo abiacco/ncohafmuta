@@ -1,5 +1,5 @@
 #!/bin/sh
-CODEPATH=~thelittleprince/www/ncohafmuta
+CODEPATH=~ncohafmuta/www
 
 echo -n Copying..
 rm -fr $CODEPATH/docs/*
