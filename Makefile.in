@@ -1,7 +1,7 @@
 #####          YOU SHOULD NOT NEED TO EDIT ANYTHING AFTER THIS LINE  #####
 ##########################################################################
 # Temp sub-directory that will be made for "make dist" processing
-DIST-DIR	= ncohafmuta-1.5.3
+DIST-DIR	= ncohafmuta-1.5.5
 
 # The directory where the exectuable,
 # and all other main files/dirs lie
