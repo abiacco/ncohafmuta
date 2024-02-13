@@ -138,7 +138,7 @@ void unmuzzle(int user, char *inpstr);
 void bring(int user, char *inpstr);
 void hide(int user, char *inpstr);
 void display_ranks(int user);
-void restrict(int user, char *inpstr, int type);
+void myrestrict(int user, char *inpstr, int type);
 void unrestrict(int user, char *inpstr, int type);
 void picture(int user, char *inpstr);
 void preview(int user, char *inpstr);
