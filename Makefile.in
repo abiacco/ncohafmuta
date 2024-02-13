@@ -88,11 +88,13 @@ make_res: $(RES_OFILES) Makefile
 
 make_line:
 	@echo '-----------------------------------------------------------------------------'
+ 	mkdir -m 700 -p $(OBJDIR)
 
 clean:	objclean
 	rm -f $(SERVBIN) $(TESTBIN) $(RESBIN) core config.log
 
 distclean:	clean smtpclean logclean
+	rm -fr $(OBJDIR)
 	rm -f $(HDRDIR)/config.h	
 	rm -f junk/*
 	rm -f Makefile
