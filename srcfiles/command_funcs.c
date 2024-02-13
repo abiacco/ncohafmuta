@@ -364,7 +364,7 @@ switch(sys[com_num].jump_vector) {
 	case 54: bring(user,inpstr); break;
 	case 56: hide(user,inpstr); break;
 	case 58: display_ranks(user); break;
-	case 59: restrict(user,inpstr,ANY); break;
+	case 59: myrestrict(user,inpstr,ANY); break;
 	case 60: unrestrict(user,inpstr,ANY); break;
 	case 65: picture(user,inpstr); break;                 
 	case 66: preview(user,inpstr); break;                
@@ -456,7 +456,7 @@ switch(sys[com_num].jump_vector) {
                         write_str(user,"Ok");
                   break;
         case 148: schedule(user);  break;
-        case 149: restrict(user,inpstr,NEW); break;
+        case 149: myrestrict(user,inpstr,NEW); break;
         case 150: unrestrict(user,inpstr,NEW); break;
         case 151: sing(user,inpstr); break;
         case 152: show_expire(user,inpstr); break;
