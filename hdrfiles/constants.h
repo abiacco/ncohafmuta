@@ -41,7 +41,7 @@
 #ifndef _CONSTANTS_H
 #define _CONSTANTS_H
 
-#define VERSION  "Ncohafmuta 1.4.2 by Cygnus"
+#define VERSION  "Ncohafmuta 1.4.3 by Cygnus"
 #define UDATA_VERSION "122.ver" /* ONLY CYGNUS CHANGES THIS!!		*/
 				/* see README.converting for more info  */
 
